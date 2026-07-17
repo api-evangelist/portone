@@ -1,0 +1,43 @@
+generated: '2026-07-17'
+method: derived
+source: openapi/portone-openapi.yml
+summary:
+  types:
+  - http
+notes: >-
+  PortOne V2 (api.portone.io) authenticates with an API Secret passed in the
+  Authorization header using the custom scheme keyword "PortOne" (not "Bearer"):
+  `Authorization: PortOne <API_SECRET>`. The V2 API Secret is issued from the
+  PortOne admin console payment-integration tab. A short-lived access token can
+  also be exchanged (POST /login/api-secret) and presented as a JWT bearer token
+  (`Authorization: Bearer <accessToken>`). The legacy V1 API (api.iamport.kr) uses
+  a two-step token flow: POST /users/getToken with imp_key + imp_secret returns an
+  access_token that is then sent in the Authorization header.
+schemes:
+- name: portOne
+  type: http
+  scheme: portone
+  headerFormat: 'Authorization: PortOne <API_SECRET>'
+  description: >-
+    V2 API Secret authentication. Custom "PortOne" Authorization scheme carrying
+    the API Secret issued in the PortOne admin console.
+  sources:
+  - openapi/portone-openapi.yml
+- name: bearerJwt
+  type: http
+  scheme: bearer
+  headerFormat: 'Authorization: Bearer <accessToken>'
+  description: >-
+    V2 short-lived JWT access token, obtained by exchanging the API Secret via
+    POST /login/api-secret. Preferred for browser-adjacent or delegated calls.
+  sources:
+  - openapi/portone-openapi.yml
+- name: v1Token
+  type: http
+  scheme: bearer
+  headerFormat: 'Authorization: <access_token>'
+  description: >-
+    Legacy V1 (Iamport) token. POST /users/getToken with imp_key and imp_secret
+    returns an access_token presented on subsequent api.iamport.kr requests.
+  sources:
+  - https://developers.portone.io/api/rest-v1

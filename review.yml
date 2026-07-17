@@ -1,0 +1,80 @@
+aid: portone
+name: PortOne
+review:
+  question: Does PortOne expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-17'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was created. PortOne's V2 platform is a synchronous
+    HTTPS REST API (api.portone.io) and delivers asynchronous payment status
+    changes (paid, cancelled, virtual-account deposit, billing-key issued,
+    scheduled-payment result) via merchant-registered HTTP webhooks — an
+    outbound HTTP POST callback model, not a client-subscribed stream. There
+    is no Server-Sent Events (SSE) surface and no WebSocket surface, so nothing
+    is in scope for AsyncAPI modeling under current API Evangelist scope.
+findings:
+  summary: |
+    PortOne does not publish a documented public WebSocket API. The V2 REST API
+    is served over HTTPS at https://api.portone.io and the legacy V1 (Iamport)
+    REST API over HTTPS at https://api.iamport.kr. Asynchronous payment
+    notifications are delivered via configurable HTTP webhooks (outbound POST
+    to a merchant endpoint, with a resend-webhook operation), which is a
+    server-to-server callback mechanism and not a bidirectional or client-
+    subscribed WebSocket. The fetched V2 OpenAPI document (info.version 1.16.0)
+    contains no ws:// or wss:// server, channel, or callback definition; the
+    string "websocket" does not appear anywhere in the specification.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.portone.io
+      documented: true
+      note: V2 API, OpenAPI 3.0.3, 147 operations across 115 paths.
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.iamport.kr
+      documented: true
+      note: Legacy V1 (Iamport) API, Swagger 2.0, 66 paths, token auth.
+    - protocol: Webhook
+      scheme: https
+      documented: true
+      note: Outbound HTTP POST callbacks for payment status changes; a resend-webhook operation exists. Not a client-subscribed stream, not WebSocket.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in the V2 or V1 API reference, the OpenAPI schema, or the SDK docs as of the review date.
+  endpointsConfirmedRest:
+    - GET  https://api.portone.io/payments/{paymentId}
+    - POST https://api.portone.io/payments/{paymentId}/cancel
+    - POST https://api.portone.io/payments/{paymentId}/instant
+    - POST https://api.portone.io/payments/{paymentId}/billing-key
+    - POST https://api.portone.io/payments/{paymentId}/capture
+    - POST https://api.portone.io/payments/{paymentId}/resend-webhook
+    - GET  https://api.portone.io/billing-keys/{billingKey}
+    - POST https://api.portone.io/billing-keys
+    - POST https://api.portone.io/identity-verifications/{identityVerificationId}/send
+    - POST https://api.portone.io/b2b/tax-invoices/issuance
+    - GET  https://api.iamport.kr/payments/{imp_uid}
+    - POST https://api.iamport.kr/users/getToken
+sources:
+  - url: https://developers.portone.io/api/rest-v2
+    type: APIReference
+    note: V2 reference; all documented transports are HTTPS REST. No WebSocket surface.
+  - url: https://developers.portone.io/api/schema/v2/openapi.json
+    type: OpenAPI
+    note: Downloadable first-party OpenAPI 3.0.3 (v1.16.0); single server https://api.portone.io; no ws/wss.
+  - url: https://developers.portone.io/api/rest-v1
+    type: APIReference
+    note: Legacy V1 (Iamport) reference; HTTPS REST on api.iamport.kr; token auth; no WebSocket.
+  - url: https://developers.portone.io/opi/ko/integration/webhook/readme-v2
+    type: Documentation
+    note: Payment status change notifications are delivered via HTTP webhooks (outbound POST), not WebSocket.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: false
+  reason: |
+    No WebSocket or SSE protocol surface exists; asynchronous updates use HTTP
+    webhooks (server-to-server callbacks), which are out of AsyncAPI scope under
+    current API Evangelist policy. No AsyncAPI document was authored and no
+    AsyncAPI pointer was added to apis.yml.

@@ -1,0 +1,223 @@
+aid: portone
+url: https://raw.githubusercontent.com/api-evangelist/portone/refs/heads/main/apis.yml
+name: PortOne
+kind: company
+description: PortOne (formerly Iamport) is a Korea-based payment orchestration platform
+  that lets online businesses integrate one API to reach 100+ Korean and global payment
+  methods and PSPs. The V2 REST API (api.portone.io) covers payments, billing keys,
+  scheduled/recurring payments, identity verification, cash receipts, B2B tax invoices,
+  and partner settlement, with the legacy V1 API still served at api.iamport.kr.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Payments
+- Payment Orchestration
+- Fintech
+- Korea
+- Billing
+- Identity Verification
+created: '2026-07-17'
+modified: '2026-07-17'
+specificationVersion: '0.19'
+apis:
+- aid: portone:portone-payments-api
+  name: PortOne Payments API (V2)
+  tags:
+  - Payments
+  - Cancellation
+  - Escrow
+  - Virtual Account
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.portone.io/api/rest-v2/payment
+  baseURL: https://api.portone.io
+  properties:
+  - url: https://developers.portone.io/api/rest-v2/payment
+    type: Documentation
+  - url: https://developers.portone.io/api/rest-v2
+    type: APIReference
+  - url: openapi/portone-openapi.yml
+    type: OpenAPI
+  - url: collections/portone.postman_collection.json
+    type: PostmanCollection
+  description: Core payment lifecycle over api.portone.io — single/bulk payment lookup,
+    manual (keyed) payments, capture, cancellation, escrow, virtual-account close,
+    and cash-receipt issuance, keyed by merchant-supplied paymentId.
+- aid: portone:portone-billing-keys-api
+  name: PortOne Billing Keys API (V2)
+  tags:
+  - Billing
+  - Recurring
+  - Tokenization
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.portone.io/api/rest-v2/payment.billingKey
+  baseURL: https://api.portone.io
+  properties:
+  - url: https://developers.portone.io/api/rest-v2/payment.billingKey
+    type: Documentation
+  - url: openapi/portone-openapi.yml
+    type: OpenAPI
+  - url: collections/portone.postman_collection.json
+    type: PostmanCollection
+  description: Issue, look up, and delete billing keys and charge non-authenticated
+    (card-on-file) payments with them for subscriptions and recurring billing.
+- aid: portone:portone-payment-schedules-api
+  name: PortOne Payment Schedule API (V2)
+  tags:
+  - Scheduling
+  - Recurring
+  - Reservations
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.portone.io/api/rest-v2/paymentSchedule
+  baseURL: https://api.portone.io
+  properties:
+  - url: https://developers.portone.io/api/rest-v2/paymentSchedule
+    type: Documentation
+  - url: openapi/portone-openapi.yml
+    type: OpenAPI
+  description: Reserve future billing-key charges and query or revoke scheduled payments
+    for subscription and installment workflows.
+- aid: portone:portone-identity-verification-api
+  name: PortOne Identity Verification API (V2)
+  tags:
+  - Identity Verification
+  - KYC
+  - Bon-in Injung
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.portone.io/api/rest-v2/identityVerification
+  baseURL: https://api.portone.io
+  properties:
+  - url: https://developers.portone.io/api/rest-v2/identityVerification
+    type: Documentation
+  - url: openapi/portone-openapi.yml
+    type: OpenAPI
+  description: Korean identity verification (bon-in injung / 본인인증) — send and confirm
+    verification, and retrieve verified holder data via carrier and credit-authority
+    channels.
+- aid: portone:portone-cash-receipts-api
+  name: PortOne Cash Receipts API (V2)
+  tags:
+  - Cash Receipt
+  - Tax
+  - Hyeongeum Yeongsujeung
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.portone.io/api/rest-v2/cashReceipt
+  baseURL: https://api.portone.io
+  properties:
+  - url: https://developers.portone.io/api/rest-v2/cashReceipt
+    type: Documentation
+  - url: openapi/portone-openapi.yml
+    type: OpenAPI
+  description: Issue, cancel, and look up Korean cash receipts (hyeongeum yeongsujeung
+    / 현금영수증) required for tax-deductible cash and transfer settlements.
+- aid: portone:portone-b2b-tax-invoice-api
+  name: PortOne B2B Tax Invoice API (V2)
+  tags:
+  - B2B
+  - Tax Invoice
+  - Segyegyesanseo
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.portone.io/api/rest-v2/b2b
+  baseURL: https://api.portone.io
+  properties:
+  - url: https://developers.portone.io/api/rest-v2/b2b
+    type: Documentation
+  - url: openapi/portone-openapi.yml
+    type: OpenAPI
+  description: Electronic tax invoice (segyegyesanseo / 세금계산서) issuance, cancellation,
+    bulk operations, counterparty (member company) lookup, and NTS reporting for B2B
+    settlement.
+- aid: portone:portone-platform-partner-settlement-api
+  name: PortOne Platform Partner Settlement API (V2)
+  tags:
+  - Platform
+  - Settlement
+  - Marketplace
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.portone.io/api/rest-v2/platform
+  baseURL: https://api.portone.io
+  properties:
+  - url: https://developers.portone.io/api/rest-v2/platform
+    type: Documentation
+  - url: openapi/portone-openapi.yml
+    type: OpenAPI
+  description: Marketplace/platform settlement engine — manage partners, contracts,
+    policies, transfers, order-sheets, and payouts for splitting funds across sellers.
+- aid: portone:portone-payment-sessions-checkout-api
+  name: PortOne Payment Sessions & Checkout API (V2)
+  tags:
+  - Checkout
+  - Sessions
+  - Hosted Payment
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.portone.io/api/rest-v2/paymentSession
+  baseURL: https://api.portone.io
+  properties:
+  - url: https://developers.portone.io/api/rest-v2/paymentSession
+    type: Documentation
+  - url: openapi/portone-openapi.yml
+    type: OpenAPI
+  description: Create and manage server-side payment sessions and checkout profiles
+    that back PortOne's hosted/SDK checkout experience.
+- aid: portone:portone-payment-reconciliation-api
+  name: PortOne Payment Reconciliation API (V2)
+  tags:
+  - Reconciliation
+  - Reporting
+  - Ledger
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.portone.io/api/rest-v2
+  baseURL: https://api.portone.io
+  properties:
+  - url: https://developers.portone.io/api/rest-v2
+    type: APIReference
+  - url: openapi/portone-openapi.yml
+    type: OpenAPI
+  description: Retrieve payment reconciliation rounds and line items for matching PortOne
+    transaction records against PSP settlement statements.
+- aid: portone:portone-rest-api-v1
+  name: PortOne REST API (V1, legacy Iamport)
+  tags:
+  - Payments
+  - Legacy
+  - Iamport
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.portone.io/api/rest-v1
+  baseURL: https://api.iamport.kr
+  properties:
+  - url: https://developers.portone.io/api/rest-v1
+    type: Documentation
+  - url: https://developers.portone.io/api/rest-v1/payment
+    type: APIReference
+  description: Legacy V1 (Iamport) REST API on api.iamport.kr — token-authenticated
+    (POST /users/getToken with imp_key/imp_secret) payment lookup, cancellation, non-authenticated
+    and scheduled payments, virtual accounts, and identity verification. Maintained
+    for existing integrations; new integrations are directed to V2.
+common:
+- type: AgenticAccess
+  url: agentic-access/portone-agentic-access.yml
+- type: TrustCenter
+  url: security/portone-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/portone-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/portone-domain-security.yml
+- type: Authentication
+  url: authentication/portone-authentication.yml
+- type: GitHubOrganization
+  url: https://github.com/portone-io
+- type: LinkedIn
+  url: https://www.linkedin.com/company/portoneglobal
+- type: Website
+  url: https://portone.io/
+- type: Documentation
+  url: https://developers.portone.io/
+- type: Plans
+  url: plans/portone-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/portone-rate-limits.yml
+- type: FinOps
+  url: finops/portone-finops.yml
+- url: https://developers.portone.io/opi/ko/support/release-note
+  type: Blog
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

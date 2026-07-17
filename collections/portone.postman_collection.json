@@ -1,0 +1,791 @@
+{
+  "info": {
+    "name": "PortOne V2 API",
+    "description": "Curated Postman collection for the PortOne (formerly Iamport) V2 REST API (https://api.portone.io). Auth: set the {{apiSecret}} collection variable to your V2 API Secret from the PortOne admin console; every request sends 'Authorization: PortOne {{apiSecret}}'. Derived 2026-07-17 from the first-party OpenAPI at https://developers.portone.io/api/schema/v2/openapi.json (info.version 1.16.0). Path variables (e.g. :paymentId) and disabled query params are placeholders — fill before sending.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Payments",
+      "item": [
+        {
+          "name": "결제 단건 조회",
+          "request": {
+            "name": "결제 단건 조회",
+            "description": "결제 단건 조회\n\n주어진 아이디에 대응되는 결제 건을 조회합니다.",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "PortOne {{apiSecret}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payments/:paymentId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payments",
+                ":paymentId"
+              ],
+              "query": [
+                {
+                  "key": "storeId",
+                  "value": "",
+                  "description": "상점 아이디\n\n접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 인증 정보의 상점 아이디를 사용합니다.",
+                  "disabled": true
+                }
+              ],
+              "variable": [
+                {
+                  "key": "paymentId",
+                  "value": "<paymentId>"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "결제 취소",
+          "request": {
+            "name": "결제 취소",
+            "description": "결제 취소\n\n결제 취소를 요청합니다.",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "PortOne {{apiSecret}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payments/:paymentId/cancel",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payments",
+                ":paymentId",
+                "cancel"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "paymentId",
+                  "value": "<paymentId>"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "수기 결제",
+          "request": {
+            "name": "수기 결제",
+            "description": "수기 결제\n\n카드 비인증 결제 또는 가상 계좌 발급을 API로 요청합니다.",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "PortOne {{apiSecret}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payments/:paymentId/instant",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payments",
+                ":paymentId",
+                "instant"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "paymentId",
+                  "value": "<paymentId>"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "수동 매입",
+          "request": {
+            "name": "수동 매입",
+            "description": "수동 매입\n\n수동 매입을 요청합니다. PG 및 포트원과의 사전 협의가 필요합니다.",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "PortOne {{apiSecret}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payments/:paymentId/capture",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payments",
+                ":paymentId",
+                "capture"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "paymentId",
+                  "value": "<paymentId>"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "인증 결제 수동 승인",
+          "request": {
+            "name": "인증 결제 수동 승인",
+            "description": "인증 결제 수동 승인\n\n수동 승인으로 설정된 인증 결제에 대해, 결제를 완료 처리합니다.",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "PortOne {{apiSecret}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payments/:paymentId/confirm",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payments",
+                ":paymentId",
+                "confirm"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "paymentId",
+                  "value": "<paymentId>"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "웹훅 재발송",
+          "request": {
+            "name": "웹훅 재발송",
+            "description": "웹훅 재발송\n\n웹훅을 재발송합니다.",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "PortOne {{apiSecret}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payments/:paymentId/resend-webhook",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payments",
+                ":paymentId",
+                "resend-webhook"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "paymentId",
+                  "value": "<paymentId>"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "결제 시도 내역 조회",
+          "request": {
+            "name": "결제 시도 내역 조회",
+            "description": "결제 시도 내역 조회\n\n주어진 아이디에 대응되는 결제 건의 결제 시도 내역을 조회합니다.",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "PortOne {{apiSecret}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payments/:paymentId/transactions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payments",
+                ":paymentId",
+                "transactions"
+              ],
+              "query": [
+                {
+                  "key": "storeId",
+                  "value": "",
+                  "description": "상점 아이디",
+                  "disabled": true
+                }
+              ],
+              "variable": [
+                {
+                  "key": "paymentId",
+                  "value": "<paymentId>"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "결제 대용량 다건 조회(커서 기반)",
+          "request": {
+            "name": "결제 대용량 다건 조회(커서 기반)",
+            "description": "결제 대용량 다건 조회(커서 기반)\n\n기간 내 모든 결제 건을 커서 기반으로 조회합니다. 결제 건의 생성일시를 기준으로 주어진 기간 내 존재하는 모든 결제 건이 조회됩니다.",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "PortOne {{apiSecret}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payments-by-cursor",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payments-by-cursor"
+              ],
+              "query": [
+                {
+                  "key": "requestBody",
+                  "value": "",
+                  "description": "",
+                  "disabled": true
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Billing Keys",
+      "item": [
+        {
+          "name": "빌링키 발급",
+          "request": {
+            "name": "빌링키 발급",
+            "description": "빌링키 발급\n\n빌링키 발급을 요청합니다.",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "PortOne {{apiSecret}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/billing-keys",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "billing-keys"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "빌링키 단건 조회",
+          "request": {
+            "name": "빌링키 단건 조회",
+            "description": "빌링키 단건 조회\n\n주어진 빌링키에 대응되는 빌링키 정보를 조회합니다.",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "PortOne {{apiSecret}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/billing-keys/:billingKey",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "billing-keys",
+                ":billingKey"
+              ],
+              "query": [
+                {
+                  "key": "storeId",
+                  "value": "",
+                  "description": "상점 아이디\n\n접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 인증 정보의 상점 아이디를 사용합니다.",
+                  "disabled": true
+                }
+              ],
+              "variable": [
+                {
+                  "key": "billingKey",
+                  "value": "<billingKey>"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "빌링키 삭제",
+          "request": {
+            "name": "빌링키 삭제",
+            "description": "빌링키 삭제\n\n빌링키를 삭제합니다.",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "PortOne {{apiSecret}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/billing-keys/:billingKey",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "billing-keys",
+                ":billingKey"
+              ],
+              "query": [
+                {
+                  "key": "storeId",
+                  "value": "",
+                  "description": "상점 아이디\n\n접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 인증 정보의 상점 아이디를 사용합니다.",
+                  "disabled": true
+                },
+                {
+                  "key": "reason",
+                  "value": "",
+                  "description": "사유\n\n네이버페이: 자동결제 해지 사유입니다. 명시가 필요합니다.",
+                  "disabled": true
+                },
+                {
+                  "key": "requester",
+                  "value": "",
+                  "description": "요청 주체\n\n네이버페이: 자동결제 해지 요청 주체입니다. 명시가 필요합니다.",
+                  "disabled": true
+                },
+                {
+                  "key": "skipWebhook",
+                  "value": "",
+                  "description": "웹훅 생략 여부\n\n빌링키 삭제가 성공했을 때 웹훅을 전송하지 않으려면 true로 설정합니다.",
+                  "disabled": true
+                }
+              ],
+              "variable": [
+                {
+                  "key": "billingKey",
+                  "value": "<billingKey>"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "빌링키 결제",
+          "request": {
+            "name": "빌링키 결제",
+            "description": "빌링키 결제\n\n빌링키로 결제를 진행합니다.",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "PortOne {{apiSecret}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payments/:paymentId/billing-key",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payments",
+                ":paymentId",
+                "billing-key"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "paymentId",
+                  "value": "<paymentId>"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Payment Schedules",
+      "item": [
+        {
+          "name": "결제 예약",
+          "request": {
+            "name": "결제 예약",
+            "description": "결제 예약\n\n결제를 예약합니다.",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "PortOne {{apiSecret}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payments/:paymentId/schedule",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payments",
+                ":paymentId",
+                "schedule"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "paymentId",
+                  "value": "<paymentId>"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "결제 예약 다건 조회",
+          "request": {
+            "name": "결제 예약 다건 조회",
+            "description": "결제 예약 다건 조회\n\n주어진 조건에 맞는 결제 예약 건들을 조회합니다.\n`filter.from`, `filter.until` 파라미터의 기본값이 결제 시점 기준 지난 90일에 속하는 건을 조회하도록 되어 있으니, 미래 예약 상태의 건을 조회하기 위해서는 해당 파라미터를 직접 설정해 주셔야 합니다.",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "PortOne {{apiSecret}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payment-schedules",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payment-schedules"
+              ],
+              "query": [
+                {
+                  "key": "requestBody",
+                  "value": "",
+                  "description": "",
+                  "disabled": true
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Identity Verifications",
+      "item": [
+        {
+          "name": "본인인증 단건 조회",
+          "request": {
+            "name": "본인인증 단건 조회",
+            "description": "본인인증 단건 조회\n\n주어진 아이디에 대응되는 본인인증 내역을 조회합니다.",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "PortOne {{apiSecret}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "identity-verifications",
+                ":identityVerificationId"
+              ],
+              "query": [
+                {
+                  "key": "storeId",
+                  "value": "",
+                  "description": "상점 아이디\n\n접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 인증 정보의 상점 아이디를 사용합니다.",
+                  "disabled": true
+                }
+              ],
+              "variable": [
+                {
+                  "key": "identityVerificationId",
+                  "value": "<identityVerificationId>"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Cash Receipts",
+      "item": [
+        {
+          "name": "현금 영수증 단건 조회",
+          "request": {
+            "name": "현금 영수증 단건 조회",
+            "description": "현금 영수증 단건 조회\n\n주어진 결제 아이디에 대응되는 현금 영수증 내역을 조회합니다.",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "PortOne {{apiSecret}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payments/:paymentId/cash-receipt",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payments",
+                ":paymentId",
+                "cash-receipt"
+              ],
+              "query": [
+                {
+                  "key": "storeId",
+                  "value": "",
+                  "description": "상점 아이디\n\n접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 인증 정보의 상점 아이디를 사용합니다.",
+                  "disabled": true
+                }
+              ],
+              "variable": [
+                {
+                  "key": "paymentId",
+                  "value": "<paymentId>"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "B2B Tax Invoice",
+      "item": []
+    },
+    {
+      "name": "Platform Settlement",
+      "item": [
+        {
+          "name": "파트너 다건 조회",
+          "request": {
+            "name": "파트너 다건 조회",
+            "description": "파트너 다건 조회\n\n여러 파트너를 조회합니다.",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "PortOne {{apiSecret}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/platform/partners",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "platform",
+                "partners"
+              ],
+              "query": [
+                {
+                  "key": "test",
+                  "value": "",
+                  "description": "테스트 모드 여부\n\n테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가 있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값",
+                  "disabled": true
+                },
+                {
+                  "key": "requestBody",
+                  "value": "",
+                  "description": "",
+                  "disabled": true
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "PortOne {{apiSecret}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.portone.io"
+    },
+    {
+      "key": "apiSecret",
+      "value": "<YOUR_V2_API_SECRET>"
+    }
+  ]
+}

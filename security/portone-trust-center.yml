@@ -1,0 +1,35 @@
+generated: '2026-07-17'
+method: searched
+probe: true
+source: https://portone.io/
+url: https://portone.io/
+certifications:
+- PCI DSS
+- ISMS
+compliance_context: >-
+  PortOne operates as a licensed Korean payment orchestration / PG-adjacent
+  provider and is therefore in PCI DSS scope for handling cardholder data, and
+  is subject to Korean ISMS (Information Security Management System) and PIPA
+  (Personal Information Protection Act) obligations for identity verification
+  and personal data. Specific certification levels and current attestation dates
+  were not machine-verifiable from a public trust-center page at generation time
+  and should be reconciled against PortOne's official security materials.
+reconciled: false
+evidence:
+- source: https://portone.io/
+  keywords:
+  - payment
+  - security
+  - pci dss
+- source: openapi/portone-openapi.yml
+  keywords:
+  - identity-verifications
+  - b2b tax invoice
+  note: >-
+    Card, identity-verification, and tax-invoice surfaces confirm regulated
+    financial-data handling consistent with PCI DSS and Korean ISMS-P scope.
+notes: >-
+  No dedicated public trust-center portal (e.g. a SOC 2 / ISO evidence room) was
+  located during the review; certifications listed reflect the regulatory posture
+  documented for Korean payment gateways and PortOne's marketing. Treat as
+  unreconciled until confirmed against a first-party attestation.

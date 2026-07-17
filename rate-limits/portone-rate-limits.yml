@@ -1,0 +1,56 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: PortOne
+providerId: portone
+created: '2026-07-17'
+modified: '2026-07-17'
+reconciled: false
+tags:
+- Payments
+- Payment Orchestration
+- Korea
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  PortOne does not publish explicit numeric rate limits for the V2 (api.portone.io)
+  or legacy V1 (api.iamport.kr) REST APIs in its developer documentation. As a
+  payment gateway, effective throughput is bounded by the merchant's account
+  standing and, critically, by the rate and fraud controls of the downstream PSP
+  handling each transaction. Standard HTTP 429 handling with exponential backoff
+  is the recommended client posture. Specific per-endpoint values are not
+  reconciled in this artifact.
+notes: >-
+  No first-party rate-limit table is documented. Verify current limits with
+  PortOne support or the admin console during reconciliation; downstream PSP
+  limits dominate for the payment-acting endpoints.
+sources:
+- https://developers.portone.io/api/rest-v2
+- https://developers.portone.io/api/rest-v1
+responseCodes:
+  throttled: 429
+limits:
+- name: V2 REST API (api.portone.io)
+  scope: account
+  metric: requests
+  limit: see provider documentation
+  notes: No published numeric limit; bounded by account standing and PSP throughput.
+- name: V1 REST API (api.iamport.kr)
+  scope: account
+  metric: requests
+  limit: see provider documentation
+  notes: Legacy Iamport API; token-authenticated; no published numeric limit.
+- name: Payment (acting) endpoints
+  scope: account
+  metric: transactions
+  limit: bounded by downstream PSP
+  notes: Card / virtual-account / easy-pay throughput and fraud controls are enforced by the connected PSP, not PortOne.
+policies:
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter on HTTP 429 and idempotently retry payment lookups (not acting operations without idempotency keys).
+- name: Webhook Reconciliation
+  description: Rather than polling aggressively, rely on registered webhooks for payment status changes and use the resend-webhook operation to recover missed events.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,111 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: PortOne
+providerId: portone
+created: '2026-07-17'
+modified: '2026-07-17'
+reconciled: false
+tags:
+- Payments
+- Payment Orchestration
+- Fintech
+- Korea
+- Plans
+description: >-
+  PortOne is a payment orchestration layer that sits between merchants and
+  payment service providers (PSPs). PortOne does not publish a public per-API or
+  per-transaction rate card in KRW; commercial terms are quoted per merchant.
+  Its historical Korea model is to monetize through PSP partnerships and
+  value-added / larger-merchant usage rather than charging developers to call
+  the API. Underlying PSP processing fees (card, virtual account, easy-pay such
+  as KakaoPay/NaverPay/Payco) are set by each PSP and pass through to the
+  merchant. Currency for Korea settlement is KRW, with multi-currency payments
+  supported through global PSPs.
+notes: >-
+  No first-party numeric KRW price table is publicly documented; figures must be
+  obtained from PortOne sales / the admin console. Plans below capture the
+  documented commercial structure, not invented rates.
+sources:
+- https://portone.io/korea/en
+- https://developers.portone.io/
+plans:
+- id: portone-standard
+  name: Standard (self-serve integration)
+  type: usage
+  description: >-
+    Merchant signs up, connects one or more PSP channels in the admin console,
+    and integrates the V2 API/SDK. API access itself is not metered to the
+    developer; the merchant pays each connected PSP's processing fees.
+  entries:
+  - label: API / SDK access
+    name: api_access
+    type: flat
+    metric: access
+    limit: -1
+    timeFrame: month
+    geo: KR
+    unit: 1
+    price: no separate PortOne API fee (PSP processing fees pass through)
+    userMultiplied: false
+  - label: PSP processing fees
+    name: psp_fees
+    type: usage
+    metric: transactions
+    limit: -1
+    timeFrame: month
+    geo: KR
+    unit: 1
+    price: set by each connected PSP (card / virtual account / easy-pay); KRW
+    userMultiplied: false
+  elements:
+  - name: Payments
+  - name: Billing Keys
+  - name: Payment Schedules
+  - name: Identity Verification
+  - name: Cash Receipts
+- id: portone-platform
+  name: Platform / Marketplace Settlement
+  type: usage
+  description: >-
+    PortOne Platform partner-settlement engine for marketplaces splitting funds
+    across sellers (partners, contracts, policies, transfers, payouts). Priced
+    per commercial agreement.
+  entries:
+  - label: Platform settlement
+    name: platform_settlement
+    type: usage
+    metric: settlements
+    limit: -1
+    timeFrame: month
+    geo: KR
+    unit: 1
+    price: contact sales (KRW)
+    userMultiplied: false
+  elements:
+  - name: Partner Settlement
+  - name: B2B Tax Invoice
+- id: portone-enterprise
+  name: Enterprise / Global
+  type: enterprise
+  description: >-
+    Negotiated terms for high-volume merchants and cross-border orchestration
+    via PortOne Global, including dedicated routing, SLAs, and support.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Multi-PSP Orchestration
+  - name: Cross-border Payments
+  - name: Dedicated Support
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
