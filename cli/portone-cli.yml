@@ -1,0 +1,28 @@
+generated: '2026-07-17'
+method: searched
+source: https://developers.portone.io/opi/ko/integration/using-ai-tools
+repository: https://github.com/portone-io/portone-cli
+package: "@portone/cli"
+notes: >-
+  PortOne's first-party CLI is "AI Codemate" — an AI-assisted integration tool
+  rather than a traditional resource CLI. Running the setup command registers a
+  PortOne plugin into the user's Claude Code, backed by the PortOne MCP server,
+  official docs, and API spec, to generate and review payment-integration code.
+  Requires Node.js 22.6.0+. This is a codegen/assistant CLI; there is no
+  general-purpose resource-management command surface.
+install:
+  - method: npx
+    command: npx @portone/cli@latest setup
+commands:
+  - name: setup
+    description: >-
+      Register the PortOne Claude Code plugin (MCP server + docs + API spec) into
+      the local Claude Code environment.
+  - name: "/portone-integration:start"
+    surface: claude-code-slash-command
+    description: >-
+      Interactive command inside Claude Code that walks through options and
+      generates payment-integration code for the detected framework/language.
+supported:
+  versions: [v1, v2]
+  recommendation: New projects should target V2; V1 is maintenance-only.

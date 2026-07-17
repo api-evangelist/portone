@@ -1,0 +1,55 @@
+generated: '2026-07-17'
+method: searched
+source: https://developers.portone.io/opi/ko/integration/webhook/readme-v2
+spec_type: Webhooks
+notes: >-
+  PortOne V2 delivers asynchronous payment/billing-key lifecycle events to a
+  customer-registered endpoint. No machine-readable AsyncAPI document is
+  published, so this is a captured webhook catalog (type: Webhooks). Message
+  bodies and signing follow the Standard Webhooks spec
+  (https://www.standardwebhooks.com/): the request carries webhook-id,
+  webhook-timestamp, and webhook-signature headers, verified with HMAC-SHA256
+  against a console-issued webhook secret. The JVM and JS server SDKs ship a
+  WebhookVerifier. Webhook secrets are issued per mode (live / test) in the admin
+  console (결제 연동 → 연동 관리 → 결제알림(Webhook) 관리).
+verification:
+  standard: Standard Webhooks (standardwebhooks.com)
+  algorithm: HMAC-SHA256
+  headers: [webhook-id, webhook-timestamp, webhook-signature]
+  secret_source: PortOne admin console, per-mode (live/test)
+  sdk_helper: "@portone/server-sdk WebhookVerifier (JS/JVM)"
+delivery:
+  retries: true
+  retry_note: PortOne V2 implements advanced webhook retry (see blog 2024-02 v2-webhook).
+  source_ip: 52.78.5.241
+  ip_change_policy: PortOne emails customers before adding/changing the webhook source IP.
+envelope:
+  fields:
+    - {name: type, description: Event type that triggered the webhook (e.g. Transaction.Paid).}
+    - {name: timestamp, description: Event occurrence time (RFC 3339).}
+    - {name: data, description: Event detail payload (e.g. paymentId, storeId, transaction data).}
+events:
+  transaction:
+    - {type: Transaction.Ready, meaning: Payment record created / ready.}
+    - {type: Transaction.Paid, meaning: Payment completed (approved).}
+    - {type: Transaction.VirtualAccountIssued, meaning: Virtual account issued and awaiting deposit.}
+    - {type: Transaction.PayPending, meaning: Payment is pending.}
+    - {type: Transaction.Failed, meaning: Payment failed.}
+    - {type: Transaction.CancelPending, meaning: Async cancellation requested.}
+    - {type: Transaction.PartialCancelled, meaning: Payment partially cancelled/refunded.}
+    - {type: Transaction.Cancelled, meaning: Payment fully cancelled/refunded.}
+    - {type: Transaction.Confirm, meaning: Confirm webhook (pre-approval confirmation flow).}
+    - {type: Transaction.DisputeCreated, meaning: A dispute/chargeback was created.}
+    - {type: Transaction.DisputeResolved, meaning: A dispute/chargeback was resolved.}
+  billing_key:
+    - {type: BillingKey.Ready, meaning: Billing key ready.}
+    - {type: BillingKey.Issued, meaning: Billing key issued.}
+    - {type: BillingKey.Updated, meaning: Billing key updated.}
+    - {type: BillingKey.Failed, meaning: Billing key issuance failed.}
+    - {type: BillingKey.Deleted, meaning: Billing key deleted.}
+  tax_invoice:
+    - note: B2B tax-invoice status-change webhooks are documented separately at developers.portone.io/platform/ko/guides/webhook.
+docs:
+  - https://developers.portone.io/opi/ko/integration/webhook/readme-v2
+  - https://developers.portone.io/platform/ko/guides/webhook
+  - https://developers.portone.io/blog/posts/2024-02/v2-webhook

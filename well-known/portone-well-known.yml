@@ -1,0 +1,29 @@
+generated: '2026-07-17'
+method: probed
+notes: >-
+  Probed the /.well-known/ discovery surface on the API host (api.portone.io),
+  the marketing host (portone.io), and the developer-docs host
+  (developers.portone.io) on 2026-07-17. No real discovery documents are
+  published: the API host returns 404 for every probed path; portone.io issues a
+  308 redirect; developers.portone.io returns HTTP 200 for /.well-known/security.txt
+  but the body is the docs SPA's soft-404 shell (NotFoundError), i.e. not a real
+  RFC 9116 security.txt. No WellKnown/SecurityTxt pointer is emitted — recording
+  the honest absence. PortOne's auth is not OAuth/OIDC (custom "PortOne" header +
+  JWT), consistent with the absence of openid-configuration.
+hosts:
+  - host: https://api.portone.io
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://portone.io
+    documents:
+      - {path: /.well-known/security.txt, status: 308}
+      - {path: /.well-known/openid-configuration, status: 308}
+      - {path: /.well-known/ai-plugin.json, status: 308}
+  - host: https://developers.portone.io
+    documents:
+      - {path: /.well-known/security.txt, status: 200, real: false, note: SPA soft-404 (NotFoundError), not a real security.txt}
+      - {path: /.well-known/ai-plugin.json, status: 404}

@@ -1,6 +1,7 @@
 generated: '2026-07-17'
-method: derived
+method: searched
 source: openapi/portone-openapi.yml
+docs: https://developers.portone.io/api/rest-v2/auth
 summary:
   types:
   - http

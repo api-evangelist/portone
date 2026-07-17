@@ -1,0 +1,36 @@
+generated: '2026-07-17'
+method: searched
+source: https://developers.portone.io/opi/ko/console/guide/channel-manage
+notes: >-
+  PortOne separates test and live by CHANNEL, not by a key prefix. In the admin
+  console a merchant configures test-mode PG channels (테스트 채널) alongside live
+  channels; the channelKey selected on a request determines whether it runs
+  against a PSP's test environment. Several V2 operations also accept an explicit
+  test-mode flag. Test webhook secrets are issued separately from live secrets.
+  PortOne does not publish universal magic test card numbers — test card / bank
+  values are defined by each downstream PG (KG이니시스, NHN KCP, 토스페이먼츠, etc.) in
+  their own test-channel documentation; never invent them.
+modes:
+  separation: per-channel (test channel vs live channel)
+  channel_selector: channelKey (request parameter)
+  test_channel_setup: PortOne admin console 결제 연동 → 연동 관리 → 채널 관리 (add 테스트 채널)
+  mcp_helper: The official MCP server can add a test channel (add_test_channel tool).
+test_flag:
+  parameter: test
+  in: query
+  type: boolean
+  applies_to: >-
+    B2B tax-invoice and selected operations — when true the operation runs in test
+    mode; when false or omitted it runs live.
+  examples: [getB2bBulkTaxInvoice, issueB2bTaxInvoice]
+webhooks:
+  test_secret: A separate webhook secret can be issued for 테스트 mode in the console.
+test_values:
+  cards: null
+  bank_accounts: null
+  note: >-
+    Provided by the selected downstream PG's test channel, not by PortOne
+    centrally. Refer to the PG-specific integration guide.
+docs:
+  - https://developers.portone.io/opi/ko/console/guide/channel-manage
+  - https://developers.portone.io/opi/ko/integration/webhook/readme-v2

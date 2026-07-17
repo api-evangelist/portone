@@ -1,0 +1,74 @@
+generated: '2026-07-17'
+method: searched
+source: https://developers.portone.io/sdk/ko/v2-server-sdk/readme
+notes: >-
+  First-party PortOne V2 SDKs. The server SDK is published from the single
+  monorepo github.com/portone-io/server-sdk across JavaScript (npm + jsr),
+  Python (PyPI), and JVM (Kotlin/Java/Scala). The browser SDK loads the hosted
+  payment / identity-verification / billing-key UI. The MCP server and the AI
+  Codemate CLI are also published on npm. Registry facts verified 2026-07-17.
+packages:
+  - language: javascript
+    registry: npm
+    name: "@portone/server-sdk"
+    url: https://www.npmjs.com/package/@portone/server-sdk
+    install: npm install @portone/server-sdk
+    version: 0.19.0
+    license: Apache-2.0 OR MIT
+    repository: https://github.com/portone-io/server-sdk
+    docs: https://portone-io.github.io/server-sdk/js/
+    official: true
+    role: server-sdk
+    notes: >-
+      Node.js v20+. REST API client plus Standard Webhooks signature
+      verification (WebhookVerifier). Also published on jsr as @portone/server-sdk.
+  - language: python
+    registry: pypi
+    name: portone-server-sdk
+    url: https://pypi.org/project/portone-server-sdk/
+    install: pip install portone-server-sdk
+    repository: https://github.com/portone-io/server-sdk
+    docs: https://portone-io.github.io/server-sdk/py/
+    official: true
+    role: server-sdk
+  - language: jvm
+    registry: maven-central
+    name: io.portone:server-sdk
+    url: https://portone-io.github.io/server-sdk/jvm/
+    repository: https://github.com/portone-io/server-sdk
+    docs: https://portone-io.github.io/server-sdk/jvm/
+    official: true
+    role: server-sdk
+    notes: JVM SDK for Kotlin, Java, and Scala.
+  - language: javascript
+    registry: npm
+    name: "@portone/browser-sdk"
+    url: https://www.npmjs.com/package/@portone/browser-sdk
+    install: npm install @portone/browser-sdk
+    version: 0.1.9
+    official: true
+    role: browser-sdk
+    notes: >-
+      Browser SDK that invokes the hosted PortOne payment window, identity
+      verification, and billing-key issuance UI (PortOne.requestPayment, etc.).
+  - language: javascript
+    registry: npm
+    name: "@portone/mcp-server"
+    url: https://www.npmjs.com/package/@portone/mcp-server
+    install: npx -y @portone/mcp-server@latest
+    version: 0.18.0
+    repository: https://github.com/portone-io/mcp-server
+    official: true
+    role: mcp-server
+    notes: Official PortOne MCP server (stdio). See mcp/portone-mcp.yml.
+  - language: javascript
+    registry: npm
+    name: "@portone/cli"
+    url: https://www.npmjs.com/package/@portone/cli
+    install: npx @portone/cli@latest setup
+    repository: https://github.com/portone-io/portone-cli
+    official: true
+    role: cli
+    notes: >-
+      AI Codemate CLI — registers the PortOne Claude Code plugin for
+      integration codegen. See cli/portone-cli.yml.

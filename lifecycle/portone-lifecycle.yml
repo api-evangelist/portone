@@ -1,0 +1,47 @@
+generated: '2026-07-17'
+method: searched
+source: https://developers.portone.io/api/backward-compatibility
+notes: >-
+  PortOne runs two concurrent API generations: V2 (api.portone.io, current) and
+  V1 (api.iamport.kr, legacy Iamport, maintenance-only). Versioning is by host /
+  URI generation, not per-request version headers. PortOne publishes an explicit
+  backward-compatibility contract for both V1 and V2.
+versioning:
+  scheme: generation-host
+  current: v2
+  generations:
+    - {version: v2, host: https://api.portone.io, status: current}
+    - {version: v1, host: https://api.iamport.kr, status: legacy, note: Iamport; maintenance-only, new integrations directed to V2}
+  docs: https://developers.portone.io/api/backward-compatibility
+backward_compatibility:
+  policy_url: https://developers.portone.io/api/backward-compatibility
+  guarantees:
+    - Required response fields are never removed or made optional within an existing use case.
+    - Field types are only changed within the compatibility rules above.
+  additive_allowed:
+    - New fields, new enum values, and new oneOf cases may be added at any time.
+    - Clients must tolerate unknown fields/values without crashing (forward-compatible parsing).
+  v1_note: V1 additions are pre-announced via notice before rollout.
+deprecation:
+  policy_url: https://developers.portone.io/api/backward-compatibility
+  unstable_apis: >-
+    Operations marked UNSTABLE are exempt from the backward-compatibility policy
+    and may change or be discontinued.
+  advance_notice: true
+  advance_notice_channel: email / developer notice
+  examples:
+    - 'V1 imp_success / success response fields are deprecated (use status/imp_uid semantics).'
+    - "V2 'pg' request field is deprecated in favor of channelKey / pgProvider."
+status_page:
+  url: https://iamport.github.io/service-status/
+  provider: Upptime (github.com/iamport/service-status)
+  note: >-
+    Open-source Upptime uptime monitor / status page maintained under the legacy
+    Iamport org. No separate branded PortOne V2 statuspage.io was located.
+webhook_ip:
+  v2: 52.78.5.241
+  note: PortOne emails customers in advance before adding/changing the webhook source IP.
+sla:
+  url: null
+  note: No public numeric uptime SLA target was found on the developer center at review time.
+deprecated_operations: []

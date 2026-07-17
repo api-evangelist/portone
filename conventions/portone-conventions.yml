@@ -1,0 +1,64 @@
+generated: '2026-07-17'
+method: searched
+source: https://developers.portone.io/api/rest-v2
+derived_from: openapi/portone-openapi.yml
+notes: >-
+  Cross-cutting request/response semantics for the PortOne V2 REST API
+  (api.portone.io), captured from the developer center and derived from the
+  OpenAPI. Cross-links: authentication/portone-authentication.yml,
+  errors/portone-problem-types.yml, errors/portone-decline-codes.yml,
+  lifecycle/portone-lifecycle.yml.
+authentication:
+  style: custom-scheme-header
+  header: 'Authorization: PortOne <API_SECRET>'
+  alternative: 'Authorization: Bearer <accessToken>  (JWT from POST /login/api-secret)'
+  ref: authentication/portone-authentication.yml
+idempotency:
+  supported: true
+  mechanism: client-assigned-resource-key
+  key: paymentId (and billingKey / other resource ids), merchant-supplied in the request path
+  behavior: >-
+    Payment and billing-key resources are addressed by a merchant-assigned id
+    (e.g. POST /payments/{paymentId}/instant, POST /payments/{paymentId}/billing-key).
+    Re-issuing the same paymentId does not create a duplicate charge — an already
+    completed/pending payment returns AlreadyPaidError / AlreadyPaidOrWaitingError
+    (HTTP 409). This client-assigned-key model provides idempotency in place of a
+    dedicated Idempotency-Key header.
+  header: null
+  note: >-
+    No dedicated Idempotency-Key request header is documented; idempotency is
+    achieved through the client-controlled resource id in the path.
+pagination:
+  styles:
+    - name: page-offset
+      request: 'page: { number, size }  (PageInput)'
+      defaults: {number: 0, size: 10}
+      constraint: (number + 1) * size must not exceed 60000
+      response: 'page: { number, size, totalCount }  (PageOutput)'
+      used_by: [getPayments, getBillingKeyInfos, getCashReceipts, getPaymentSchedules]
+    - name: cursor
+      request: 'cursor (omit on first request; echo previous response cursor thereafter)'
+      response: cursor (next position)
+      used_by: [getAllPaymentsByCursor, getAllPaymentEventsByCursor]
+error_envelope:
+  shape: '{ type: string, message: string }'
+  discriminator: type
+  discriminator_examples: [FORBIDDEN, INVALID_REQUEST, UNAUTHORIZED, PAYMENT_NOT_FOUND, PAYMENT_NOT_PAID, PG_PROVIDER]
+  http_status: carried by HTTP status (x-portone-status-code in the spec); e.g. 400/401/403/404/409/502
+  per_operation: Each operation declares a oneOf of the concrete error types it can return.
+  format: custom (not RFC 9457 application/problem+json)
+  ref: errors/portone-problem-types.yml
+pg_passthrough:
+  fields: [pgCode, pgMessage]
+  meaning: On PSP failure, the downstream PG's raw error code/message are passed through unchanged.
+  ref: errors/portone-decline-codes.yml
+versioning:
+  scheme: generation-host (V2 api.portone.io / V1 api.iamport.kr)
+  ref: lifecycle/portone-lifecycle.yml
+rate_limiting:
+  documented: false
+  note: No published rate-limit headers or numeric quotas were found on the developer center.
+currency:
+  default: KRW
+  multicurrency: true
+  amounts: integer minor units (KRW has no decimal subunit)

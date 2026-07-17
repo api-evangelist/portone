@@ -1,0 +1,30 @@
+generated: '2026-07-17'
+method: searched
+source: https://developers.portone.io/opi/ko/support/code-info/pg-3
+notes: >-
+  PortOne is a payment ORCHESTRATOR, not a card acquirer. It does not define its
+  own numeric decline-code table; when a downstream PG (KG이니시스, NHN KCP,
+  토스페이먼츠, 스마트로, etc.) declines or errors, PortOne surfaces the PG's raw
+  result. At the API layer this is the PG_PROVIDER error (HTTP 502,
+  PgProviderError). In payment/response payloads the PSP's verbatim code and
+  message appear on the pgCode / pgMessage fields. The exhaustive per-PG decline
+  code books are published (and downloadable) on PortOne's PG error-code
+  reference pages — they are PG-specific and are NOT reproduced here to avoid
+  fabrication or staleness.
+envelope:
+  api_error:
+    type: PG_PROVIDER
+    schema: PgProviderError
+    http_status: 502
+  payment_fields:
+    - {field: pgCode, description: Downstream PG error code, verbatim, present when the PG returns an error.}
+    - {field: pgMessage, description: Downstream PG error message, verbatim, present when the PG returns an error.}
+  transaction_status:
+    - {status: FAILED, note: Failed transactions expose pgCode/pgMessage.}
+masking:
+  note: >-
+    PG messages are pass-through and may be Korean-language and PG-specific; PortOne
+    does not standardize or mask them into buyer-safe copy at the API layer.
+references:
+  - {label: PG error-code reference (downloadable per-PG code books), url: https://developers.portone.io/opi/ko/support/code-info/pg-3}
+  - {label: PG-specific integration codes, url: https://developers.portone.io/opi/ko/support/code-info}

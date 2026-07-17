@@ -1,0 +1,49 @@
+generated: '2026-07-17'
+method: derived
+source: openapi/portone-openapi.yml
+docs: https://developers.portone.io/api/rest-v2
+format: custom
+notes: >-
+  Derived from the PortOne V2 OpenAPI. Errors are NOT RFC 9457
+  application/problem+json. Each error is a JSON object { type, message } where
+  `type` is a SCREAMING_SNAKE discriminator code and the HTTP status is carried on
+  the response (captured in the spec as x-portone-status-code). Every operation
+  declares a oneOf of the concrete error types it can raise, discriminated on
+  `type`. The spec defines 183 leaf error types; the cross-cutting and highest-
+  frequency ones are catalogued below with the full status distribution.
+envelope:
+  shape: '{ type: string, message: string }'
+  discriminator: type
+  status_source: HTTP status line (x-portone-status-code in spec)
+status_distribution:
+  '400': 67
+  '401': 1
+  '403': 7
+  '404': 42
+  '409': 59
+  '410': 1
+  '502': 4
+  '503': 2
+  total_leaf_types: 183
+problems:
+  - {code: INVALID_REQUEST, status: 400, title: Request input is invalid, schema: InvalidRequestError}
+  - {code: UNAUTHORIZED, status: 401, title: Authentication credentials are incorrect, schema: UnauthorizedError, remediation: Check the Authorization header (PortOne <API_SECRET> or Bearer JWT).}
+  - {code: FORBIDDEN, status: 403, title: Request was refused, schema: ForbiddenError}
+  - {code: MAX_TRANSACTION_COUNT_REACHED, status: 400, title: Max payment/identity-verification attempt count reached, schema: MaxTransactionCountReachedError}
+  - {code: PAYMENT_NOT_FOUND, status: 404, title: Payment does not exist, schema: PaymentNotFoundError}
+  - {code: BILLING_KEY_NOT_FOUND, status: 404, title: Billing key does not exist, schema: BillingKeyNotFoundError}
+  - {code: CHANNEL_NOT_FOUND, status: 404, title: Requested channel does not exist, schema: ChannelNotFoundError}
+  - {code: IDENTITY_VERIFICATION_NOT_FOUND, status: 404, title: Identity verification does not exist, schema: IdentityVerificationNotFoundError}
+  - {code: CASH_RECEIPT_NOT_FOUND, status: 404, title: Cash receipt does not exist, schema: CashReceiptNotFoundError}
+  - {code: CASH_RECEIPT_NOT_ISSUED, status: 404, title: Cash receipt has not been issued, schema: CashReceiptNotIssuedError}
+  - {code: ALREADY_PAID, status: 409, title: Payment already completed, schema: AlreadyPaidError, remediation: Duplicate paymentId — treat as idempotent success.}
+  - {code: ALREADY_PAID_OR_WAITING, status: 409, title: Payment already completed or pending, schema: AlreadyPaidOrWaitingError}
+  - {code: PAYMENT_NOT_PAID, status: 409, title: Payment is not completed, schema: PaymentNotPaidError}
+  - {code: PAYMENT_ALREADY_CANCELLED, status: 409, title: Payment already cancelled, schema: PaymentAlreadyCancelledError}
+  - {code: PAYMENT_NOT_WAITING_FOR_DEPOSIT, status: 409, title: Payment is not awaiting deposit, schema: PaymentNotWaitingForDepositError}
+  - {code: CANCELLABLE_AMOUNT_CONSISTENCY_BROKEN, status: 409, title: Cancellable-balance validation failed, schema: CancellableAmountConsistencyBrokenError}
+  - {code: CANCEL_AMOUNT_EXCEEDS_CANCELLABLE_AMOUNT, status: 409, title: Cancel amount exceeds cancellable amount, schema: CancelAmountExceedsCancellableAmountError}
+  - {code: CANCEL_TAX_AMOUNT_EXCEEDS_CANCELLABLE_TAX_AMOUNT, status: 409, title: Cancel tax amount exceeds cancellable tax amount, schema: CancelTaxAmountExceedsCancellableTaxAmountError}
+  - {code: SUM_OF_PARTS_EXCEEDS_CANCEL_AMOUNT, status: 409, title: Sum of sub-amounts exceeds total cancel amount, schema: SumOfPartsExceedsCancelAmountError}
+  - {code: IDENTITY_VERIFICATION_ALREADY_VERIFIED, status: 409, title: Identity verification already completed, schema: IdentityVerificationAlreadyVerifiedError}
+  - {code: PG_PROVIDER, status: 502, title: Downstream PG returned an error, schema: PgProviderError, remediation: Inspect pgCode/pgMessage passthrough (see errors/portone-decline-codes.yml).}

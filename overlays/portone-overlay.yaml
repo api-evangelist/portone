@@ -1,0 +1,34 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for PortOne V2
+  version: 1.0.0
+# PROVENANCE
+# generated: '2026-07-17'
+# method: generated
+# source: openapi/portone-openapi.yml
+# Non-destructive Overlay 1.0.0 capturing API Evangelist enrichment metadata for the
+# harvested PortOne V2 spec. Does not mutate the upstream OpenAPI; apply with an
+# Overlay-aware tool to produce an annotated copy.
+extends: openapi/portone-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: portone
+      x-apievangelist-generation: v2
+      x-apievangelist-auth: 'Authorization: PortOne <API_SECRET> | Bearer <JWT>'
+      x-apievangelist-webhooks: asyncapi/portone-webhooks.yml
+      x-apievangelist-conventions: conventions/portone-conventions.yml
+      x-apievangelist-errors: errors/portone-problem-types.yml
+      x-apievangelist-idempotency: client-assigned resource key (paymentId)
+      x-apievangelist-mcp: mcp/portone-mcp.yml
+      x-apievangelist-sdks:
+        - "@portone/server-sdk (npm/jsr)"
+        - portone-server-sdk (PyPI)
+        - io.portone:server-sdk (Maven, JVM)
+        - "@portone/browser-sdk (npm)"
+  - target: $.servers
+    update:
+      - url: https://api.portone.io
+        description: PortOne V2 production (운영환경)
+      - url: https://api.iamport.kr
+        description: PortOne V1 legacy (Iamport) — maintenance only

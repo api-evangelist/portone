@@ -1,0 +1,59 @@
+generated: '2026-07-17'
+method: derived
+source: openapi/portone-openapi.yml
+docs: https://developers.portone.io/api/rest-v2
+notes: >-
+  Entity-relationship graph derived from the PortOne V2 OpenAPI schemas and path
+  keys. Resources are addressed primarily by merchant-assigned ids (paymentId,
+  billingKey) scoped to a store, routed through a PG channel selected by
+  channelKey. Amounts are KRW minor units. id-prefix conventions are noted where
+  the docs surface them; unknown prefixes are left null rather than guessed.
+entities:
+  - name: Store
+    id_field: storeId
+    description: Merchant account / store; top-level tenant that owns channels and payments.
+  - name: Channel
+    id_field: channelKey
+    belongs_to: Store
+    description: A configured PG connection (test or live) that a payment/billing-key request routes through.
+  - name: Payment
+    id_field: paymentId
+    id_assignment: merchant-supplied
+    belongs_to: Store
+    description: A single payment lifecycle record (ready → paid → cancelled/partial-cancelled), routed via a channel.
+  - name: BillingKey
+    id_field: billingKey
+    belongs_to: Store
+    description: Tokenized card-on-file credential used for non-authenticated / recurring charges.
+  - name: PaymentSchedule
+    id_field: scheduleId
+    description: A reserved future billing-key charge.
+  - name: IdentityVerification
+    id_field: identityVerificationId
+    description: Korean bon-in-injung (본인인증) verification record.
+  - name: CashReceipt
+    description: Cash receipt (현금영수증) tied to a payment.
+  - name: B2bTaxInvoice
+    description: Electronic tax invoice (세금계산서) issued to a counterparty.
+  - name: B2bCounterparty
+    description: Registered trading counterparty (거래처) for tax invoices.
+  - name: PlatformPartner
+    id_field: partnerId
+    description: A marketplace seller/partner in the platform settlement engine.
+  - name: PlatformContract
+    description: Fee/settlement contract governing a partner's payouts.
+  - name: PaymentSession
+    description: Server-side checkout session backing the hosted/SDK checkout.
+relationships:
+  - {from: Channel, to: Store, type: belongs_to, via: storeId}
+  - {from: Payment, to: Store, type: belongs_to, via: storeId}
+  - {from: Payment, to: Channel, type: belongs_to, via: channelKey}
+  - {from: Payment, to: BillingKey, type: belongs_to, via: billingKey, optional: true}
+  - {from: Payment, to: CashReceipt, type: has_one, via: paymentId}
+  - {from: BillingKey, to: Store, type: belongs_to, via: storeId}
+  - {from: PaymentSchedule, to: BillingKey, type: belongs_to, via: billingKey}
+  - {from: PaymentSchedule, to: Payment, type: has_one, via: paymentId}
+  - {from: B2bTaxInvoice, to: B2bCounterparty, type: belongs_to, via: counterparty}
+  - {from: PlatformContract, to: PlatformPartner, type: belongs_to, via: partnerId}
+  - {from: PlatformPartner, to: Store, type: belongs_to, via: storeId}
+render: null

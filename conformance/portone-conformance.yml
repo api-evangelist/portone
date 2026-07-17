@@ -1,0 +1,45 @@
+generated: '2026-07-17'
+method: derived
+source: openapi/portone-openapi.yml
+notes: >-
+  Cross-cutting standard conformance for PortOne V2, derived from the OpenAPI and
+  the developer center. PortOne's auth is a custom Authorization scheme (not
+  OAuth2/OIDC) and its errors are a custom { type, message } envelope (not RFC
+  9457). Its clearest external-standard adoption is Standard Webhooks for event
+  signing. PCI DSS / Korean ISMS-P posture is regulatory (see
+  security/portone-trust-center.yml, reconciled:false) and is left unverified
+  here rather than asserted as a published attestation — no Compliance pointer is
+  emitted until a first-party attestation is confirmed.
+standards:
+  - id: standard-webhooks
+    conforms: true
+    evidence: >-
+      Webhook messages follow standardwebhooks.com — webhook-id / webhook-timestamp
+      / webhook-signature headers, HMAC-SHA256 (asyncapi/portone-webhooks.yml).
+  - id: oauth2
+    conforms: false
+    evidence: Custom "PortOne <API_SECRET>" Authorization scheme; short-lived JWT bearer exchange, no OAuth2 flows.
+  - id: oidc
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use a custom { type, message } envelope, not application/problem+json.
+  - id: http-bearer
+    conforms: true
+    evidence: JWT access tokens (POST /login/api-secret) presented as Authorization Bearer.
+  - id: pagination
+    conforms: true
+    evidence: Page-offset (PageInput number/size) and cursor pagination (conventions/portone-conventions.yml).
+  - id: rfc3339-timestamps
+    conforms: true
+    evidence: Webhook and resource timestamps use RFC 3339 date-time.
+  - id: idempotency
+    conforms: true
+    evidence: Client-assigned resource keys (paymentId) provide idempotent create semantics (409 AlreadyPaid on retry).
+  - id: pci-dss
+    conforms: unknown
+    evidence: Regulatory posture for a Korean PG orchestrator; no machine-verifiable public attestation located.
+  - id: json-api
+    conforms: false
+  - id: fhir
+    conforms: false

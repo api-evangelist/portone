@@ -218,6 +218,54 @@ common:
   url: finops/portone-finops.yml
 - url: https://developers.portone.io/opi/ko/support/release-note
   type: Blog
+- type: DeveloperPortal
+  url: https://developers.portone.io/
+- type: GettingStarted
+  url: https://developers.portone.io/opi/ko/quick-guide/payment
+- type: Support
+  url: https://developers.portone.io/opi/ko/support/contact
+- type: SignUp
+  url: https://admin.portone.io/
+- type: TermsOfService
+  url: https://terms.portone.io/
+- type: Packages
+  url: packages/portone-packages.yml
+- type: SDKs
+  url: packages/portone-packages.yml
+- type: CLI
+  url: cli/portone-cli.yml
+- type: MCPServer
+  url: mcp/portone-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/portone-llms.txt
+- type: Overlay
+  url: overlays/portone-overlay.yaml
+- type: Conventions
+  url: conventions/portone-conventions.yml
+- type: Idempotency
+  url: conventions/portone-conventions.yml
+- type: ErrorCatalog
+  url: errors/portone-problem-types.yml
+- type: DeclineCodes
+  url: errors/portone-decline-codes.yml
+- type: Conformance
+  url: conformance/portone-conformance.yml
+- type: DataModel
+  url: data-model/portone-data-model.yml
+- type: Sandbox
+  url: sandbox/portone-sandbox.yml
+- type: Lifecycle
+  url: lifecycle/portone-lifecycle.yml
+- type: StatusPage
+  url: https://iamport.github.io/service-status/
+- type: Deprecation
+  url: https://developers.portone.io/api/backward-compatibility
+- type: ChangeLog
+  url: changelog/portone-changelog.yml
+- type: Webhooks
+  url: asyncapi/portone-webhooks.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

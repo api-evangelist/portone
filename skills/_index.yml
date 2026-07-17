@@ -1,0 +1,22 @@
+generated: '2026-07-17'
+method: generated
+source: openapi/portone-openapi.yml
+notes: >-
+  Packaged Agent Skills for PortOne V2 marquee flows. Every step is grounded in a
+  verified operationId from openapi/portone-openapi.yml and in the captured
+  conventions/errors/webhooks artifacts. No provider-published AGENTS.md/skill
+  files were found; these are generated. (PortOne does ship an AI Codemate CLI
+  plugin + MCP server for codegen — see cli/ and mcp/.)
+skills:
+  - file: portone-lookup-and-cancel-payment.md
+    name: Look up and cancel a PortOne payment
+    api: openapi/portone-openapi.yml
+    operations: [getPayment, cancelPayment]
+  - file: portone-recurring-billing.md
+    name: Charge a customer on file with a PortOne billing key
+    api: openapi/portone-openapi.yml
+    operations: [issueBillingKey, payWithBillingKey, createPaymentSchedule, deleteBillingKey]
+  - file: portone-identity-verification.md
+    name: Run Korean identity verification with PortOne
+    api: openapi/portone-openapi.yml
+    operations: [sendIdentityVerification, confirmIdentityVerification, resendIdentityVerification, getIdentityVerification]

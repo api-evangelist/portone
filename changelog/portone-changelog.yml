@@ -1,0 +1,53 @@
+generated: '2026-07-17'
+method: searched
+source: https://developers.portone.io/release-notes
+notes: >-
+  PortOne publishes dated release notes on the developer center, split into three
+  streams: api-sdk (API/SDK), console (admin console), and platform (partner
+  settlement automation). Notes are Korean-language and date-versioned (no semver
+  API version tag beyond the V1/V2 generation split). Recent-window entries below;
+  the live release-notes index is the source of truth. OpenAPI info.version was
+  1.16.0 at capture.
+scheme: date-versioned
+streams: [api-sdk, console, platform]
+current_spec_version: 1.16.0
+index_urls:
+  - https://developers.portone.io/release-notes/api-sdk
+  - https://developers.portone.io/release-notes/console
+  - https://developers.portone.io/release-notes/platform
+entries:
+  - date: '2026-03-06'
+    stream: platform
+    url: https://developers.portone.io/release-notes/platform/2026-03-06
+    breaking: false
+    highlights:
+      - Partner settlement automation usability/stability improvements.
+      - Clearer status labels on settlement detail records.
+  - date: '2026-02-19'
+    stream: platform
+    url: https://developers.portone.io/release-notes/platform/2026-02-19
+    breaking: false
+    highlights:
+      - Tax-invoice menu redesign.
+      - New counterparty (거래처) management for forward/reverse tax-invoice issuance.
+      - New tax-invoice FAQ category in the help center.
+  - date: '2025-10-17'
+    stream: console
+    url: https://developers.portone.io/release-notes/console/2025-10-17
+    breaking: false
+    highlights:
+      - Admin console design-system updates.
+  - date: '2025-05-19'
+    stream: api-sdk
+    url: https://developers.portone.io/release-notes/api-sdk/2025-05-19
+    breaking: false
+    highlights:
+      - Rebuilt unified payment-history page.
+  - date: '2025-01-15'
+    stream: api-sdk
+    url: https://developers.portone.io/release-notes/api-sdk/2025-01-15
+    breaking: false
+    highlights:
+      - New PG reconciliation (거래대사) menu.
+      - New payment-data analytics menu.
+      - Product onboarding guide.
