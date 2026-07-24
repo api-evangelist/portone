@@ -1,0 +1,448 @@
+openapi: 3.0.3
+info:
+  title: PortOne B2b Banks API
+  version: 1.16.0
+servers:
+- url: https://api.portone.io
+  description: 운영환경 서버
+tags:
+- name: Banks
+paths:
+  /banks:
+    get:
+      summary: 은행 정보 조회
+      description: '은행 정보 조회
+
+
+        은행의 이름 등 정보를 조회합니다. 사용자에게 한국어 명칭을 제공하는 등의 용도로 사용하실 수 있습니다.'
+      operationId: getBankInfos
+      responses:
+        '200':
+          description: 성공 응답으로 조회된 은행 정보 리스트가 반환됩니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetBankInfosResponse'
+          x-portone-title: 성공 응답으로 조회된 은행 정보 리스트가 반환됩니다.
+        '400':
+          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetBankInfosError'
+      x-portone-category: common
+      x-portone-title: 은행 정보 조회
+      x-portone-description: 은행의 이름 등 정보를 조회합니다. 사용자에게 한국어 명칭을 제공하는 등의 용도로 사용하실 수 있습니다.
+      x-portone-error:
+        $ref: '#/components/schemas/GetBankInfosError'
+      tags:
+      - Banks
+components:
+  schemas:
+    InvalidRequestError:
+      title: 요청된 입력 정보가 유효하지 않은 경우
+      description: '요청된 입력 정보가 유효하지 않은 경우
+
+
+        허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.'
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
+      x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
+      x-portone-status-code: 400
+    BankInfoName:
+      title: 은행 명칭
+      description: 은행 명칭
+      type: object
+      required:
+      - ko
+      properties:
+        ko:
+          type: string
+          title: 한국어 명칭
+      x-portone-title: 은행 명칭
+    Bank:
+      title: 은행
+      description: 은행
+      type: string
+      enum:
+      - BANK_OF_KOREA
+      - KDB
+      - IBK
+      - KOOKMIN
+      - SUHYUP
+      - KEXIM
+      - NONGHYUP
+      - LOCAL_NONGHYUP
+      - WOORI
+      - STANDARD_CHARTERED
+      - CITI
+      - SUHYUP_FEDERATION
+      - DAEGU
+      - BUSAN
+      - KWANGJU
+      - JEJU
+      - JEONBUK
+      - KYONGNAM
+      - KFCC
+      - SHINHYUP
+      - SAVINGS_BANK
+      - MORGAN_STANLEY
+      - HSBC
+      - DEUTSCHE
+      - JPMC
+      - MIZUHO
+      - MUFG
+      - BANK_OF_AMERICA
+      - BNP_PARIBAS
+      - ICBC
+      - BANK_OF_CHINA
+      - NFCF
+      - UOB
+      - BOCOM
+      - CCB
+      - POST
+      - KODIT
+      - KIBO
+      - HANA
+      - SHINHAN
+      - K_BANK
+      - KAKAO
+      - TOSS
+      - MISC_FOREIGN
+      - SGI
+      - KCIS
+      - YUANTA_SECURITIES
+      - KB_SECURITIES
+      - SANGSANGIN_SECURITIES
+      - HANYANG_SECURITIES
+      - LEADING_SECURITIES
+      - BNK_SECURITIES
+      - IBK_SECURITIES
+      - DAOL_SECURITIES
+      - MIRAE_ASSET_SECURITIES
+      - SAMSUNG_SECURITIES
+      - KOREA_SECURITIES
+      - NH_SECURITIES
+      - KYOBO_SECURITIES
+      - HI_SECURITIES
+      - HYUNDAI_MOTOR_SECURITIES
+      - KIWOOM_SECURITIES
+      - EBEST_SECURITIES
+      - SK_SECURITIES
+      - DAISHIN_SECURITIES
+      - HANHWA_SECURITIES
+      - HANA_SECURITIES
+      - TOSS_SECURITIES
+      - SHINHAN_SECURITIES
+      - DB_SECURITIES
+      - EUGENE_SECURITIES
+      - MERITZ_SECURITIES
+      - KAKAO_PAY_SECURITIES
+      - BOOKOOK_SECURITIES
+      - SHINYOUNG_SECURITIES
+      - CAPE_SECURITIES
+      - KOREA_SECURITIES_FINANCE
+      - KOREA_FOSS_SECURITIES
+      - WOORI_INVESTMENT_BANK
+      x-portone-title: 은행
+      x-portone-enum:
+        BANK_OF_CHINA:
+          title: 중국은행
+        KDB:
+          title: 산업은행
+        HANYANG_SECURITIES:
+          title: 한양증권
+        SK_SECURITIES:
+          title: SK증권
+        HANA_SECURITIES:
+          title: 하나증권
+        KB_SECURITIES:
+          title: KB증권
+        KYONGNAM:
+          title: 경남은행
+        WOORI_INVESTMENT_BANK:
+          title: 우리종합금융
+        CITI:
+          title: 한국씨티은행
+        SHINYOUNG_SECURITIES:
+          title: 신영증권
+        KOREA_SECURITIES:
+          title: 한국투자증권
+        SHINHAN:
+          title: 신한은행
+        LEADING_SECURITIES:
+          title: 리딩투자증권
+        UOB:
+          title: 대화은행
+        KOREA_FOSS_SECURITIES:
+          title: 한국포스증권
+        MERITZ_SECURITIES:
+          title: 메리츠증권
+        MIZUHO:
+          title: 미즈호은행
+        EBEST_SECURITIES:
+          title: LS증권
+        SANGSANGIN_SECURITIES:
+          title: 상상인증권
+        IBK:
+          title: 기업은행
+        DEUTSCHE:
+          title: 도이치은행
+        KCIS:
+          title: 한국신용정보원
+        KEXIM:
+          title: 수출입은행
+        SHINHYUP:
+          title: 신협
+        CCB:
+          title: 중국건설은행
+        HANA:
+          title: 하나은행
+        TOSS_SECURITIES:
+          title: 토스증권
+        IBK_SECURITIES:
+          title: IBK투자증권
+        SHINHAN_SECURITIES:
+          title: 신한투자증권
+        HANHWA_SECURITIES:
+          title: 한화투자증권
+        SUHYUP_FEDERATION:
+          title: 수협중앙회
+        LOCAL_NONGHYUP:
+          title: 지역농축협
+        WOORI:
+          title: 우리은행
+        SAMSUNG_SECURITIES:
+          title: 삼성증권
+        K_BANK:
+          title: 케이뱅크
+        DB_SECURITIES:
+          title: DB금융투자
+        SGI:
+          title: 서울보증보험
+        JEJU:
+          title: 제주은행
+        MIRAE_ASSET_SECURITIES:
+          title: 미래에셋증권
+        SAVINGS_BANK:
+          title: 저축은행
+        EUGENE_SECURITIES:
+          title: 유진투자증권
+        DAEGU:
+          title: 아이엠뱅크
+        BNK_SECURITIES:
+          title: BNK투자증권
+        KAKAO_PAY_SECURITIES:
+          title: 카카오페이증권
+        SUHYUP:
+          title: 수협은행
+        CAPE_SECURITIES:
+          title: 케이프투자증권
+        JEONBUK:
+          title: 전북은행
+        BNP_PARIBAS:
+          title: 비엔피파리바은행
+        KOREA_SECURITIES_FINANCE:
+          title: 한국증권금융
+        KODIT:
+          title: 신용보증기금
+        BOCOM:
+          title: 교통은행
+        DAOL_SECURITIES:
+          title: 다올투자증권
+        NFCF:
+          title: 산림조합중앙회
+        HSBC:
+          title: HSBC은행
+        STANDARD_CHARTERED:
+          title: SC제일은행
+        KWANGJU:
+          title: 광주은행
+        ICBC:
+          title: 중국공상은행
+        TOSS:
+          title: 토스뱅크
+        HYUNDAI_MOTOR_SECURITIES:
+          title: 현대차증권
+        BANK_OF_AMERICA:
+          title: BOA은행
+        BANK_OF_KOREA:
+          title: 한국은행
+        NONGHYUP:
+          title: NH농협은행
+        HI_SECURITIES:
+          title: 하이투자증권
+        KIBO:
+          title: 기술보증기금
+        KAKAO:
+          title: 카카오뱅크
+        KIWOOM_SECURITIES:
+          title: 키움증권
+        BUSAN:
+          title: 부산은행
+        NH_SECURITIES:
+          title: NH투자증권
+        MORGAN_STANLEY:
+          title: 모간스탠리은행
+        KFCC:
+          title: 새마을금고
+        BOOKOOK_SECURITIES:
+          title: 부국증권
+        MISC_FOREIGN:
+          title: 기타 외국계은행(중국 농업은행 등)
+        YUANTA_SECURITIES:
+          title: 유안타증권
+        POST:
+          title: 우체국
+        DAISHIN_SECURITIES:
+          title: 대신증권
+        KOOKMIN:
+          title: 국민은행
+        MUFG:
+          title: 엠유에프지은행
+        JPMC:
+          title: 제이피모간체이스은행
+        KYOBO_SECURITIES:
+          title: 교보증권
+    GetBankInfosError:
+      title: GetBankInfosError
+      oneOf:
+      - $ref: '#/components/schemas/InvalidRequestError'
+      discriminator:
+        propertyName: type
+        mapping:
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+    GetBankInfosResponse:
+      title: 은행 정보 조회 성공 응답 정보
+      description: 은행 정보 조회 성공 응답 정보
+      type: object
+      required:
+      - items
+      properties:
+        items:
+          title: 조회된 은행 정보 리스트
+          type: array
+          items:
+            $ref: '#/components/schemas/BankInfo'
+      x-portone-title: 은행 정보 조회 성공 응답 정보
+    BankInfo:
+      title: 은행 정보
+      description: 은행 정보
+      type: object
+      required:
+      - bank
+      - name
+      properties:
+        bank:
+          $ref: '#/components/schemas/Bank'
+          title: 은행
+        name:
+          $ref: '#/components/schemas/BankInfoName'
+          title: 언어별 명칭
+      x-portone-title: 은행 정보
+  securitySchemes:
+    bearerJwt:
+      type: http
+      description: 'Authorization: Bearer `엑세스 토큰`'
+      scheme: bearer
+    portOne:
+      type: http
+      description: 'Authorization: PortOne `발급된 API 시크릿`'
+      scheme: portone
+x-portone-categories:
+- id: payment
+  title: 결제 관련 API
+  description: 결제와 관련된 API 기능을 제공합니다.
+  children:
+  - id: payment.paymentSchedule
+    title: 결제 예약 관련 API
+    description: 결제 예약과 관련된 API 기능을 제공합니다.
+  - id: payment.billingKey
+    title: 빌링키 관련 API
+    description: 빌링키와 관련된 API 기능을 제공합니다.
+  - id: payment.cashReceipt
+    title: 현금 영수증 관련 API
+    description: 현금 영수증과 관련된 API 기능을 제공합니다.
+  - id: payment.promotion
+    title: 프로모션 관련 API
+    description: 프로모션과 관련된 API 기능을 제공합니다.
+  - id: payment.additionalFeature
+    title: 결제 부가기능 관련 API
+    description: 결제 부가기능과 관련된 API 기능을 제공합니다.
+- id: identityVerification
+  title: 본인인증 관련 API
+  description: 본인인증과 관련된 API 기능을 제공합니다.
+- id: pgSpecific
+  title: 특정 PG사 관련 API
+  description: 특정 PG사에 국한된 API 기능을 제공합니다.
+- id: reconciliation
+  title: 대사 서비스 API
+  description: 거래 대사 및 정산 대사 관련 API 기능을 제공합니다.
+- id: b2b
+  title: 세금계산서 API
+  description: 세금계산서 API 기능을 제공합니다.
+  children:
+  - id: b2b.counterparty
+    title: 거래처 관련 API
+    description: 거래처 관련 API 기능을 제공합니다.
+  - id: b2b.taxInvoice
+    title: 세금계산서 발행 관련 API
+    description: 세금계산서 발행 관련 API 기능을 제공합니다.
+- id: platform
+  title: 파트너 정산 관련 API
+  description: 파트너 정산 서비스 API 기능을 제공합니다.
+  children:
+  - id: platform.policy
+    title: 정책 관련 API
+    description: 파트너 정산에 적용할 정책에 관한 API 입니다.
+  - id: platform.partner
+    title: 파트너 관련 API
+    description: 파트너 정산에 적용할 파트너에 관한 API 입니다.
+  - id: platform.transfer
+    title: 정산 상세내역 관련 API
+    description: 파트너 정산 서비스의 정산 상세내역과 관련된 API 입니다.
+  - id: platform.account
+    title: 계좌 관련 API
+    description: 파트너 정산 서비스의 계좌와 관련된 API 입니다.
+  - id: platform.partnerSettlement
+    title: 정산 내역 관련 API
+    description: 파트너 정산 서비스의 정산 내역과 관련된 API 입니다.
+  - id: platform.payout
+    title: 지급 내역 관련 API
+    description: 파트너 정산 서비스의 지급 내역과 관련된 API 입니다.
+  - id: platform.bulkPayout
+    title: 일괄 지급 내역 관련 API
+    description: 파트너 정산 서비스의 일괄 지급 내역과 관련된 API 입니다.
+  - id: platform.accountTransfer
+    title: 이체 내역 관련 API
+    description: 파트너 정산 서비스의 이체 내역과 관련된 API 입니다.
+  - id: platform.bulkAccountTransfer
+    title: 일괄 이체 내역 관련 API
+    description: 파트너 정산 서비스의 일괄 이체 내역과 관련된 API 입니다.
+  - id: platform.company
+    title: 사업자 관련 API
+    description: 파트너 정산 서비스의 사업자와 관련된 API 입니다.
+- id: auth
+  title: 인증 관련 API
+  description: '인증과 관련된 API 기능을 제공합니다.
+
+    접근 토큰 방식으로 인증하기를 원하는 경우, API 시크릿을 통해 토큰을 발급받은 후 Authorization 헤더에 `Bearer ACCESS_TOKEN` 형식으로 전달합니다.'
+- id: paymentSession
+  title: 결제 세션 API
+  description: 결제 세션 생성 및 관리 API. 호스티드 체크아웃에 사용됩니다.
+- id: checkoutProfile
+  title: 체크아웃 프로필 API
+  description: 체크아웃 프로필에서 결제 수단 목록을 조회하기 위한 API.
+- id: ap
+  title: AP API
+  description: AP 기능을 제공합니다.
+- id: common
+  title: 공통 API
+  description: 공통 API 기능을 제공합니다.

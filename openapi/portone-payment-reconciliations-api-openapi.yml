@@ -1,0 +1,589 @@
+openapi: 3.0.3
+info:
+  title: PortOne B2b Payment Reconciliations API
+  version: 1.16.0
+servers:
+- url: https://api.portone.io
+  description: 운영환경 서버
+tags:
+- name: Payment Reconciliations
+paths:
+  /payment-reconciliations/settlements/vat-report:
+    get:
+      summary: 정산일 기준 부가세 내역 조회
+      description: 정산일 기준 부가세 내역 조회
+      operationId: getPaymentReconciliationSettlementVatReport
+      parameters:
+      - name: requestBody
+        in: query
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetPaymentReconciliationSettlementVatReportBody'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPaymentReconciliationSettlementVatReportResponse'
+        '400':
+          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPaymentReconciliationSettlementVatReportError'
+        '401':
+          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPaymentReconciliationSettlementVatReportError'
+        '403':
+          description: '* `ForbiddenError`: 요청이 거절된 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPaymentReconciliationSettlementVatReportError'
+      security:
+      - bearerJwt: []
+      - portOne: []
+      x-portone-category: reconciliation
+      x-portone-title: 정산일 기준 부가세 내역 조회
+      x-portone-error:
+        $ref: '#/components/schemas/GetPaymentReconciliationSettlementVatReportError'
+      x-portone-unstable: true
+      tags:
+      - Payment Reconciliations
+  /payment-reconciliations/transactions/vat-report:
+    get:
+      summary: 거래일 기준 부가세 내역 조회
+      description: 거래일 기준 부가세 내역 조회
+      operationId: getPaymentReconciliationTransactionVatReport
+      parameters:
+      - name: requestBody
+        in: query
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetPaymentReconciliationTransactionVatReportBody'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPaymentReconciliationTransactionVatReportResponse'
+        '400':
+          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPaymentReconciliationTransactionVatReportError'
+        '401':
+          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPaymentReconciliationTransactionVatReportError'
+        '403':
+          description: '* `ForbiddenError`: 요청이 거절된 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPaymentReconciliationTransactionVatReportError'
+      security:
+      - bearerJwt: []
+      - portOne: []
+      x-portone-category: reconciliation
+      x-portone-title: 거래일 기준 부가세 내역 조회
+      x-portone-error:
+        $ref: '#/components/schemas/GetPaymentReconciliationTransactionVatReportError'
+      x-portone-unstable: true
+      tags:
+      - Payment Reconciliations
+components:
+  schemas:
+    GetPaymentReconciliationSettlementVatReportBody:
+      title: GetPaymentReconciliationSettlementVatReportBody
+      type: object
+      required:
+      - dateRange
+      properties:
+        dateRange:
+          $ref: '#/components/schemas/DateRange'
+          title: 정산일 범위
+        filter:
+          $ref: '#/components/schemas/PaymentReconciliationSettlementSummaryFilterInput'
+    PaymentReconciliationVatReportItem:
+      title: PaymentReconciliationVatReportItem
+      type: object
+      required:
+      - paymentMethod
+      - supplyAmount
+      - vatAmount
+      - taxFreeAmount
+      - totalAmount
+      properties:
+        paymentMethod:
+          $ref: '#/components/schemas/SimplifiedPaymentMethodType'
+          title: 결제수단
+        supplyAmount:
+          type: integer
+          format: int64
+          title: 공급가액
+        vatAmount:
+          type: integer
+          format: int64
+          title: 부가세 금액
+        taxFreeAmount:
+          type: integer
+          format: int64
+          title: 면세 금액
+        totalAmount:
+          type: integer
+          format: int64
+          title: 총 금액
+    GetPaymentReconciliationTransactionVatReportBody:
+      title: GetPaymentReconciliationTransactionVatReportBody
+      type: object
+      required:
+      - dateRange
+      properties:
+        dateRange:
+          $ref: '#/components/schemas/DateRange'
+          title: 거래일 범위
+        filter:
+          $ref: '#/components/schemas/PaymentReconciliationTransactionSummaryFilterInput'
+    GetPaymentReconciliationSettlementVatReportError:
+      title: GetPaymentReconciliationSettlementVatReportError
+      oneOf:
+      - $ref: '#/components/schemas/ForbiddenError'
+      - $ref: '#/components/schemas/InvalidRequestError'
+      - $ref: '#/components/schemas/UnauthorizedError'
+      discriminator:
+        propertyName: type
+        mapping:
+          FORBIDDEN: '#/components/schemas/ForbiddenError'
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
+    SimplifiedPaymentMethodType:
+      title: 간소화된 결제수단 목록
+      description: 간소화된 결제수단 목록
+      type: string
+      enum:
+      - CARD
+      - VIRTUAL_ACCOUNT
+      - TRANSFER
+      - CHARGE
+      - MOBILE
+      - POINT
+      - ETC
+      x-portone-title: 간소화된 결제수단 목록
+      x-portone-enum:
+        TRANSFER:
+          title: 계좌이체
+        VIRTUAL_ACCOUNT:
+          title: 가상계좌
+        CHARGE:
+          title: 머니
+        POINT:
+          title: 포인트
+        ETC:
+          title: 기타
+        MOBILE:
+          title: 모바일
+        CARD:
+          title: 신용카드/체크카드
+    InvalidRequestError:
+      title: 요청된 입력 정보가 유효하지 않은 경우
+      description: '요청된 입력 정보가 유효하지 않은 경우
+
+
+        허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.'
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
+      x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
+      x-portone-status-code: 400
+    GetPaymentReconciliationSettlementVatReportResponse:
+      title: GetPaymentReconciliationSettlementVatReportResponse
+      type: object
+      required:
+      - summary
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentReconciliationVatReportItem'
+          properties:
+            paymentMethod:
+              title: 결제수단
+            vatAmount:
+              title: 부가세 금액
+            taxFreeAmount:
+              title: 면세 금액
+            totalAmount:
+              title: 총 금액
+            supplyAmount:
+              title: 공급가액
+          title: 부가세 내역 항목 리스트
+        summary:
+          $ref: '#/components/schemas/PaymentReconciliationVatReportSummary'
+          title: 부가세 내역 요약
+        pgSpecifiers:
+          title: PG사 식별자 리스트
+          type: array
+          items:
+            $ref: '#/components/schemas/ReconciliationPgSpecifier'
+          x-portone-title: 대사용 PG사 가맹점 식별자
+          properties:
+            pgMerchantId:
+              title: PG사 가맹점 식별 아이디
+            pgProvider:
+              title: PG사
+    DateRange:
+      title: DateRange
+      type: object
+      required:
+      - from
+      - until
+      properties:
+        from:
+          description: 날짜를 나타내는 문자열로, `yyyy-MM-dd` 형식을 따릅니다.
+          type: string
+          format: date
+          x-portone-description: 날짜를 나타내는 문자열로, `yyyy-MM-dd` 형식을 따릅니다.
+        until:
+          description: 날짜를 나타내는 문자열로, `yyyy-MM-dd` 형식을 따릅니다.
+          type: string
+          format: date
+          x-portone-description: 날짜를 나타내는 문자열로, `yyyy-MM-dd` 형식을 따릅니다.
+    PaymentReconciliationTransactionSummaryFilterInput:
+      title: 거래대사 거래내역 필터
+      description: 거래대사 거래내역 필터
+      type: object
+      properties:
+        reconciliationStatuses:
+          title: 대사 상태 필터
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentReconciliationStatus'
+        pgSpecifiers:
+          title: 대사용 PG사 가맹점 식별자 필터
+          type: array
+          items:
+            $ref: '#/components/schemas/ReconciliationPgSpecifier'
+        storeIds:
+          type: array
+          items:
+            type: string
+          title: 하위 상점 아이디 필터
+      x-portone-title: 거래대사 거래내역 필터
+    GetPaymentReconciliationTransactionVatReportError:
+      title: GetPaymentReconciliationTransactionVatReportError
+      oneOf:
+      - $ref: '#/components/schemas/ForbiddenError'
+      - $ref: '#/components/schemas/InvalidRequestError'
+      - $ref: '#/components/schemas/UnauthorizedError'
+      discriminator:
+        propertyName: type
+        mapping:
+          FORBIDDEN: '#/components/schemas/ForbiddenError'
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
+    GetPaymentReconciliationTransactionVatReportResponse:
+      title: GetPaymentReconciliationTransactionVatReportResponse
+      type: object
+      required:
+      - summary
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentReconciliationVatReportItem'
+          properties:
+            paymentMethod:
+              title: 결제수단
+            vatAmount:
+              title: 부가세 금액
+            taxFreeAmount:
+              title: 면세 금액
+            totalAmount:
+              title: 총 금액
+            supplyAmount:
+              title: 공급가액
+          title: 부가세 내역 항목 리스트
+        summary:
+          $ref: '#/components/schemas/PaymentReconciliationVatReportSummary'
+          title: 부가세 내역 요약
+        pgSpecifiers:
+          title: PG사 식별자 리스트
+          type: array
+          items:
+            $ref: '#/components/schemas/ReconciliationPgSpecifier'
+          x-portone-title: 대사용 PG사 가맹점 식별자
+          properties:
+            pgMerchantId:
+              title: PG사 가맹점 식별 아이디
+            pgProvider:
+              title: PG사
+    UnauthorizedError:
+      title: 인증 정보가 올바르지 않은 경우
+      description: 인증 정보가 올바르지 않은 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 인증 정보가 올바르지 않은 경우
+      x-portone-status-code: 401
+    ForbiddenError:
+      title: 요청이 거절된 경우
+      description: 요청이 거절된 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 요청이 거절된 경우
+      x-portone-status-code: 403
+    ReconciliationPgSpecifier:
+      title: 대사용 PG사 가맹점 식별자
+      description: 대사용 PG사 가맹점 식별자
+      type: object
+      required:
+      - pgMerchantId
+      - pgProvider
+      properties:
+        pgMerchantId:
+          type: string
+          title: PG사 가맹점 식별 아이디
+        pgProvider:
+          $ref: '#/components/schemas/ReconciliationPgProvider'
+          title: PG사
+      x-portone-title: 대사용 PG사 가맹점 식별자
+    PaymentReconciliationVatReportSummary:
+      title: PaymentReconciliationVatReportSummary
+      type: object
+      required:
+      - totalSupplyAmount
+      - totalVatAmount
+      - totalTaxFreeAmount
+      - totalAmount
+      properties:
+        totalSupplyAmount:
+          type: integer
+          format: int64
+          title: 총 공급가액
+        totalVatAmount:
+          type: integer
+          format: int64
+          title: 총 부가세 금액
+        totalTaxFreeAmount:
+          type: integer
+          format: int64
+          title: 총 면세 금액
+        totalAmount:
+          type: integer
+          format: int64
+          title: 총 금액
+    PaymentReconciliationSettlementSummaryFilterInput:
+      title: 거래대사 정산 요약 내역 필터
+      description: 거래대사 정산 요약 내역 필터
+      type: object
+      properties:
+        pgSpecifiers:
+          title: PG사 가맹점 식별자 필터
+          type: array
+          items:
+            $ref: '#/components/schemas/ReconciliationPgSpecifier'
+        storeIds:
+          type: array
+          items:
+            type: string
+          title: 하위 상점 아이디 필터
+      x-portone-title: 거래대사 정산 요약 내역 필터
+    PaymentReconciliationStatus:
+      title: 결제 건의 대사 상태
+      description: 결제 건의 대사 상태
+      type: string
+      enum:
+      - MATCHED
+      - NOT_MATCHED
+      - INCOMPARABLE
+      - NOT_COLLECTED
+      x-portone-title: 결제 건의 대사 상태
+      x-portone-enum:
+        MATCHED:
+          title: 대사 매칭 성공 상태
+        NOT_MATCHED:
+          title: 대사 매칭 실패 상태
+        INCOMPARABLE:
+          title: 대사 불가능 상태
+        NOT_COLLECTED:
+          title: PG사 결제 정보가 수집되지 않은 상태
+    ReconciliationPgProvider:
+      title: ReconciliationPgProvider
+      type: string
+      enum:
+      - KAKAOPAY
+      - NICEPAY
+      - NAVERPAY
+      - UPLUS
+      - TOSSPAYMENTS
+      - TOSSPAY
+      - PAYCO
+      - KCP
+      - DANAL
+      - EXIMBAY
+      - INICIS
+      - HECTO
+      - KSNET
+      - KPN
+      - HYPHEN
+      - PAYPAL
+      - HECTO_EASY
+      - MOBILIANS
+      - PAYLETTER_GLOBAL
+      - KIWOOMPAY
+      - PAYMENTWALL
+      - INNOPAY
+      - GALAXIA
+      x-portone-enum:
+        PAYMENTWALL: {}
+        HECTO: {}
+        GALAXIA: {}
+        TOSSPAY: {}
+        INICIS: {}
+        PAYPAL: {}
+        KPN: {}
+        DANAL: {}
+        NICEPAY: {}
+        TOSSPAYMENTS: {}
+        EXIMBAY: {}
+        KIWOOMPAY: {}
+        PAYLETTER_GLOBAL: {}
+        PAYCO: {}
+        NAVERPAY: {}
+        INNOPAY: {}
+        MOBILIANS: {}
+        UPLUS: {}
+        HYPHEN: {}
+        HECTO_EASY: {}
+        KAKAOPAY: {}
+        KSNET: {}
+        KCP: {}
+  securitySchemes:
+    bearerJwt:
+      type: http
+      description: 'Authorization: Bearer `엑세스 토큰`'
+      scheme: bearer
+    portOne:
+      type: http
+      description: 'Authorization: PortOne `발급된 API 시크릿`'
+      scheme: portone
+x-portone-categories:
+- id: payment
+  title: 결제 관련 API
+  description: 결제와 관련된 API 기능을 제공합니다.
+  children:
+  - id: payment.paymentSchedule
+    title: 결제 예약 관련 API
+    description: 결제 예약과 관련된 API 기능을 제공합니다.
+  - id: payment.billingKey
+    title: 빌링키 관련 API
+    description: 빌링키와 관련된 API 기능을 제공합니다.
+  - id: payment.cashReceipt
+    title: 현금 영수증 관련 API
+    description: 현금 영수증과 관련된 API 기능을 제공합니다.
+  - id: payment.promotion
+    title: 프로모션 관련 API
+    description: 프로모션과 관련된 API 기능을 제공합니다.
+  - id: payment.additionalFeature
+    title: 결제 부가기능 관련 API
+    description: 결제 부가기능과 관련된 API 기능을 제공합니다.
+- id: identityVerification
+  title: 본인인증 관련 API
+  description: 본인인증과 관련된 API 기능을 제공합니다.
+- id: pgSpecific
+  title: 특정 PG사 관련 API
+  description: 특정 PG사에 국한된 API 기능을 제공합니다.
+- id: reconciliation
+  title: 대사 서비스 API
+  description: 거래 대사 및 정산 대사 관련 API 기능을 제공합니다.
+- id: b2b
+  title: 세금계산서 API
+  description: 세금계산서 API 기능을 제공합니다.
+  children:
+  - id: b2b.counterparty
+    title: 거래처 관련 API
+    description: 거래처 관련 API 기능을 제공합니다.
+  - id: b2b.taxInvoice
+    title: 세금계산서 발행 관련 API
+    description: 세금계산서 발행 관련 API 기능을 제공합니다.
+- id: platform
+  title: 파트너 정산 관련 API
+  description: 파트너 정산 서비스 API 기능을 제공합니다.
+  children:
+  - id: platform.policy
+    title: 정책 관련 API
+    description: 파트너 정산에 적용할 정책에 관한 API 입니다.
+  - id: platform.partner
+    title: 파트너 관련 API
+    description: 파트너 정산에 적용할 파트너에 관한 API 입니다.
+  - id: platform.transfer
+    title: 정산 상세내역 관련 API
+    description: 파트너 정산 서비스의 정산 상세내역과 관련된 API 입니다.
+  - id: platform.account
+    title: 계좌 관련 API
+    description: 파트너 정산 서비스의 계좌와 관련된 API 입니다.
+  - id: platform.partnerSettlement
+    title: 정산 내역 관련 API
+    description: 파트너 정산 서비스의 정산 내역과 관련된 API 입니다.
+  - id: platform.payout
+    title: 지급 내역 관련 API
+    description: 파트너 정산 서비스의 지급 내역과 관련된 API 입니다.
+  - id: platform.bulkPayout
+    title: 일괄 지급 내역 관련 API
+    description: 파트너 정산 서비스의 일괄 지급 내역과 관련된 API 입니다.
+  - id: platform.accountTransfer
+    title: 이체 내역 관련 API
+    description: 파트너 정산 서비스의 이체 내역과 관련된 API 입니다.
+  - id: platform.bulkAccountTransfer
+    title: 일괄 이체 내역 관련 API
+    description: 파트너 정산 서비스의 일괄 이체 내역과 관련된 API 입니다.
+  - id: platform.company
+    title: 사업자 관련 API
+    description: 파트너 정산 서비스의 사업자와 관련된 API 입니다.
+- id: auth
+  title: 인증 관련 API
+  description: '인증과 관련된 API 기능을 제공합니다.
+
+    접근 토큰 방식으로 인증하기를 원하는 경우, API 시크릿을 통해 토큰을 발급받은 후 Authorization 헤더에 `Bearer ACCESS_TOKEN` 형식으로 전달합니다.'
+- id: paymentSession
+  title: 결제 세션 API
+  description: 결제 세션 생성 및 관리 API. 호스티드 체크아웃에 사용됩니다.
+- id: checkoutProfile
+  title: 체크아웃 프로필 API
+  description: 체크아웃 프로필에서 결제 수단 목록을 조회하기 위한 API.
+- id: ap
+  title: AP API
+  description: AP 기능을 제공합니다.
+- id: common
+  title: 공통 API
+  description: 공통 API 기능을 제공합니다.

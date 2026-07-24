@@ -1,0 +1,2107 @@
+openapi: 3.0.3
+info:
+  title: PortOne B2b Payment Sessions API
+  version: 1.16.0
+servers:
+- url: https://api.portone.io
+  description: 운영환경 서버
+tags:
+- name: Payment Sessions
+paths:
+  /payment-sessions:
+    post:
+      summary: 결제 세션 생성
+      description: '결제 세션 생성
+
+
+        결제 세션을 생성합니다. 호스티드 체크아웃 페이지가 생성되어 URL이 반환됩니다.'
+      operationId: createPaymentSession
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePaymentSessionBody'
+        required: true
+      responses:
+        '200':
+          description: 성공 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePaymentSessionResponse'
+          x-portone-title: 성공 응답
+        '400':
+          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우
+
+            * `MaxTtlExceededError`: 요청된 TTL이 정책 상한을 초과한 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePaymentSessionError'
+        '401':
+          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePaymentSessionError'
+        '403':
+          description: '* `ForbiddenError`: 요청이 거절된 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePaymentSessionError'
+      security:
+      - bearerJwt: []
+      - portOne: []
+      x-portone-category: paymentSession
+      x-portone-title: 결제 세션 생성
+      x-portone-description: 결제 세션을 생성합니다. 호스티드 체크아웃 페이지가 생성되어 URL이 반환됩니다.
+      x-portone-error:
+        $ref: '#/components/schemas/CreatePaymentSessionError'
+      tags:
+      - Payment Sessions
+  /payment-sessions/{sessionId}:
+    get:
+      summary: 결제 세션 조회
+      description: '결제 세션 조회
+
+
+        결제 세션을 조회합니다. 인증 헤더 없이 웹 페이지에서도 접근 가능합니다.'
+      operationId: getPaymentSession
+      parameters:
+      - name: sessionId
+        in: path
+        description: 결제 세션 아이디
+        required: true
+        schema:
+          type: string
+        x-portone-title: 결제 세션 아이디
+      responses:
+        '200':
+          description: 결제 세션 조회 성공 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentSession'
+          x-portone-title: 결제 세션 조회 성공 응답
+        '400':
+          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPaymentSessionError'
+        '404':
+          description: '* `SessionNotFoundError`: 결제 세션이 존재하지 않는 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPaymentSessionError'
+        '410':
+          description: '* `SessionExpiredError`: 결제 세션이 만료된 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPaymentSessionError'
+      x-portone-category: paymentSession
+      x-portone-title: 결제 세션 조회
+      x-portone-description: 결제 세션을 조회합니다. 인증 헤더 없이 웹 페이지에서도 접근 가능합니다.
+      x-portone-error:
+        $ref: '#/components/schemas/GetPaymentSessionError'
+      tags:
+      - Payment Sessions
+  /payment-sessions/{sessionId}/close:
+    post:
+      summary: 결제 세션 종료
+      description: '결제 세션 종료
+
+
+        결제 세션을 즉시 만료시킵니다. 이후 해당 세션으로는 결제 페이지에 접근할 수 없습니다.'
+      operationId: closePaymentSession
+      parameters:
+      - name: sessionId
+        in: path
+        description: 결제 세션 아이디
+        required: true
+        schema:
+          type: string
+        x-portone-title: 결제 세션 아이디
+      responses:
+        '200':
+          description: 성공 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClosePaymentSessionResponse'
+          x-portone-title: 성공 응답
+        '400':
+          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClosePaymentSessionError'
+        '401':
+          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClosePaymentSessionError'
+        '403':
+          description: '* `ForbiddenError`: 요청이 거절된 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClosePaymentSessionError'
+        '404':
+          description: '* `SessionNotFoundError`: 결제 세션이 존재하지 않는 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClosePaymentSessionError'
+      security:
+      - bearerJwt: []
+      - portOne: []
+      x-portone-category: paymentSession
+      x-portone-title: 결제 세션 종료
+      x-portone-description: 결제 세션을 즉시 만료시킵니다. 이후 해당 세션으로는 결제 페이지에 접근할 수 없습니다.
+      x-portone-error:
+        $ref: '#/components/schemas/ClosePaymentSessionError'
+      tags:
+      - Payment Sessions
+components:
+  schemas:
+    CreatePaymentSessionBody:
+      title: 결제 세션 생성 요청
+      description: 결제 세션 생성 요청
+      type: object
+      required:
+      - storeId
+      - paymentId
+      - profileKey
+      - country
+      - currency
+      - totalAmount
+      - orderName
+      properties:
+        storeId:
+          type: string
+          title: 상점 아이디
+        paymentId:
+          type: string
+          title: 결제 건 아이디
+        profileKey:
+          type: string
+          title: 프로필 키
+        paymentMethod:
+          $ref: '#/components/schemas/CheckoutPaymentMethod'
+          title: 결제 수단 지정
+          description: 지정한 경우, 정보 추가 입력이 필요하지 않은 경우에 주문서를 건너뛰고 결제로 바로 이동합니다.
+        country:
+          $ref: '#/components/schemas/Country'
+          title: 국가
+        currency:
+          $ref: '#/components/schemas/Currency'
+          title: 통화
+        totalAmount:
+          type: integer
+          format: int64
+          title: 전체 결제 금액
+        orderName:
+          type: string
+          title: 주문명
+        redirectUrl:
+          type: string
+          title: 결제 완료 후 리다이렉트 URL
+          description: 지정하지 않으면 기본 결과 페이지가 표시됩니다.
+        products:
+          title: 주문 항목 목록
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentSessionProduct'
+          x-portone-title: 결제 세션 주문 항목
+          properties:
+            url:
+              title: 판매 링크
+            id:
+              title: 항목 아이디
+            nPayUid:
+              title: 네이버페이 상품 식별자
+            unitPrice:
+              title: 상품 단가
+            startDate:
+              title: 제공 시작일
+              description: 구독 등 제공 기간이 있는 상품의 경우 입력하세요.
+            name:
+              title: 상품 이름
+            quantity:
+              title: 상품 수량
+            endDate:
+              title: 제공 종료일
+              description: 구독 등 제공 기간이 있는 상품의 경우 입력하세요.
+            nPayCategoryId:
+              title: 네이버페이 카테고리 아이디
+            code:
+              title: 상품 코드
+            nPayCategoryType:
+              title: 네이버페이 카테고리 타입
+        customerName:
+          type: string
+          title: 구매자 이름
+        customerEmail:
+          type: string
+          title: 구매자 이메일
+        storeName:
+          type: string
+          title: 상점 이름
+          description: 페이지 헤더 및 결제사 UI에 표시됩니다.
+        agreements:
+          title: 사용자 지정 약관 목록
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentSessionAgreement'
+          x-portone-title: 결제 세션 약관
+          properties:
+            name:
+              title: 약관 이름
+            url:
+              title: 약관 URL
+          description: 구매자가 모든 약관에 동의해야 결제 버튼이 활성화됩니다.
+        orderImageUrl:
+          type: string
+          title: 주문 대표 이미지 URL
+        customData:
+          type: string
+          title: 사용자 지정 데이터
+          description: 결제 완료 후 결제 건 조회에서도 확인할 수 있습니다.
+        colors:
+          $ref: '#/components/schemas/PaymentSessionColors'
+          title: 체크아웃 페이지 색 설정
+        ttlSeconds:
+          type: integer
+          format: int64
+          title: 세션 TTL (초)
+      x-portone-title: 결제 세션 생성 요청
+    MaxTtlExceededError:
+      title: 요청된 TTL이 정책 상한을 초과한 경우
+      description: 요청된 TTL이 정책 상한을 초과한 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 요청된 TTL이 정책 상한을 초과한 경우
+      x-portone-status-code: 400
+    ClosePaymentSessionResponse:
+      title: 결제 세션 종료 성공 응답
+      description: 결제 세션 종료 성공 응답
+      type: object
+      required:
+      - closedAt
+      properties:
+        closedAt:
+          type: string
+          format: date-time
+          title: 결제 세션 종료 시각
+      x-portone-title: 결제 세션 종료 성공 응답
+    PaymentSessionColors:
+      title: 체크아웃 페이지 색 설정
+      description: 체크아웃 페이지 색 설정
+      type: object
+      properties:
+        primary:
+          type: string
+          title: 주 색상
+          description: CSS 색 문자열 형식
+        primaryHover:
+          type: string
+          title: 호버 주 색상
+          description: CSS 색 문자열 형식
+        primaryLight:
+          type: string
+          title: 밝은 주 색상
+          description: CSS 색 문자열 형식
+      x-portone-title: 체크아웃 페이지 색 설정
+    CreatePaymentSessionError:
+      title: CreatePaymentSessionError
+      oneOf:
+      - $ref: '#/components/schemas/ForbiddenError'
+      - $ref: '#/components/schemas/InvalidRequestError'
+      - $ref: '#/components/schemas/MaxTtlExceededError'
+      - $ref: '#/components/schemas/UnauthorizedError'
+      discriminator:
+        propertyName: type
+        mapping:
+          FORBIDDEN: '#/components/schemas/ForbiddenError'
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          MAX_TTL_EXCEEDED: '#/components/schemas/MaxTtlExceededError'
+          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
+    Country:
+      title: 국가
+      description: 국가
+      type: string
+      enum:
+      - AD
+      - AE
+      - AF
+      - AG
+      - AI
+      - AL
+      - AM
+      - AO
+      - AQ
+      - AR
+      - AS
+      - AT
+      - AU
+      - AW
+      - AX
+      - AZ
+      - BA
+      - BB
+      - BD
+      - BE
+      - BF
+      - BG
+      - BH
+      - BI
+      - BJ
+      - BL
+      - BM
+      - BN
+      - BO
+      - BQ
+      - BR
+      - BS
+      - BT
+      - BV
+      - BW
+      - BY
+      - BZ
+      - CA
+      - CC
+      - CD
+      - CF
+      - CG
+      - CH
+      - CI
+      - CK
+      - CL
+      - CM
+      - CN
+      - CO
+      - CR
+      - CU
+      - CV
+      - CW
+      - CX
+      - CY
+      - CZ
+      - DE
+      - DJ
+      - DK
+      - DM
+      - DO
+      - DZ
+      - EC
+      - EE
+      - EG
+      - EH
+      - ER
+      - ES
+      - ET
+      - FI
+      - FJ
+      - FK
+      - FM
+      - FO
+      - FR
+      - GA
+      - GB
+      - GD
+      - GE
+      - GF
+      - GG
+      - GH
+      - GI
+      - GL
+      - GM
+      - GN
+      - GP
+      - GQ
+      - GR
+      - GS
+      - GT
+      - GU
+      - GW
+      - GY
+      - HK
+      - HM
+      - HN
+      - HR
+      - HT
+      - HU
+      - ID
+      - IE
+      - IL
+      - IM
+      - IN
+      - IO
+      - IQ
+      - IR
+      - IS
+      - IT
+      - JE
+      - JM
+      - JO
+      - JP
+      - KE
+      - KG
+      - KH
+      - KI
+      - KM
+      - KN
+      - KP
+      - KR
+      - KW
+      - KY
+      - KZ
+      - LA
+      - LB
+      - LC
+      - LI
+      - LK
+      - LR
+      - LS
+      - LT
+      - LU
+      - LV
+      - LY
+      - MA
+      - MC
+      - MD
+      - ME
+      - MF
+      - MG
+      - MH
+      - MK
+      - ML
+      - MM
+      - MN
+      - MO
+      - MP
+      - MQ
+      - MR
+      - MS
+      - MT
+      - MU
+      - MV
+      - MW
+      - MX
+      - MY
+      - MZ
+      - NA
+      - NC
+      - NE
+      - NF
+      - NG
+      - NI
+      - NL
+      - 'NO'
+      - NP
+      - NR
+      - NU
+      - NZ
+      - OM
+      - PA
+      - PE
+      - PF
+      - PG
+      - PH
+      - PK
+      - PL
+      - PM
+      - PN
+      - PR
+      - PS
+      - PT
+      - PW
+      - PY
+      - QA
+      - RE
+      - RO
+      - RS
+      - RU
+      - RW
+      - SA
+      - SB
+      - SC
+      - SD
+      - SE
+      - SG
+      - SH
+      - SI
+      - SJ
+      - SK
+      - SL
+      - SM
+      - SN
+      - SO
+      - SR
+      - SS
+      - ST
+      - SV
+      - SX
+      - SY
+      - SZ
+      - TC
+      - TD
+      - TF
+      - TG
+      - TH
+      - TJ
+      - TK
+      - TL
+      - TM
+      - TN
+      - TO
+      - TR
+      - TT
+      - TV
+      - TW
+      - TZ
+      - UA
+      - UG
+      - UM
+      - US
+      - UY
+      - UZ
+      - VA
+      - VC
+      - VE
+      - VG
+      - VI
+      - VN
+      - VU
+      - WF
+      - WS
+      - YE
+      - YT
+      - ZA
+      - ZM
+      - ZW
+      x-portone-title: 국가
+      x-portone-enum:
+        CV:
+          title: Cabo Verde
+        MA:
+          title: Morocco
+        AO:
+          title: Angola
+        VN:
+          title: Viet Nam
+        IN:
+          title: India
+        KW:
+          title: Kuwait
+        ML:
+          title: Mali
+        ID:
+          title: Indonesia
+        JE:
+          title: Jersey
+        HM:
+          title: Heard Island and McDonald Islands
+        EG:
+          title: Egypt
+        BG:
+          title: Bulgaria
+        SG:
+          title: Singapore
+        SV:
+          title: El Salvador
+        BD:
+          title: Bangladesh
+        TC:
+          title: Turks and Caicos Islands (the)
+        TH:
+          title: Thailand
+        AT:
+          title: Austria
+        GQ:
+          title: Equatorial Guinea
+        TR:
+          title: Türkiye
+        HT:
+          title: Haiti
+        UM:
+          title: United States Minor Outlying Islands (the)
+        MH:
+          title: Marshall Islands (the)
+        MY:
+          title: Malaysia
+        RU:
+          title: Russian Federation (the)
+        NI:
+          title: Nicaragua
+        BZ:
+          title: Belize
+        KP:
+          title: Korea (the Democratic People's Republic of)
+        VE:
+          title: Venezuela (Bolivarian Republic of)
+        IL:
+          title: Israel
+        GD:
+          title: Grenada
+        GI:
+          title: Gibraltar
+        TN:
+          title: Tunisia
+        DM:
+          title: Dominica
+        MO:
+          title: Macao
+        PR:
+          title: Puerto Rico
+        NF:
+          title: Norfolk Island
+        TW:
+          title: Taiwan (Province of China)
+        KN:
+          title: Saint Kitts and Nevis
+        PH:
+          title: Philippines (the)
+        WF:
+          title: Wallis and Futuna
+        JO:
+          title: Jordan
+        ME:
+          title: Montenegro
+        ES:
+          title: Spain
+        AZ:
+          title: Azerbaijan
+        MR:
+          title: Mauritania
+        SM:
+          title: San Marino
+        BL:
+          title: Saint Barthélemy
+        PK:
+          title: Pakistan
+        NZ:
+          title: New Zealand
+        GP:
+          title: Guadeloupe
+        NA:
+          title: Namibia
+        JM:
+          title: Jamaica
+        AX:
+          title: Åland Islands
+        CM:
+          title: Cameroon
+        US:
+          title: United States of America (the)
+        GU:
+          title: Guam
+        SB:
+          title: Solomon Islands
+        MV:
+          title: Maldives
+        SI:
+          title: Slovenia
+        CW:
+          title: Curaçao
+        BH:
+          title: Bahrain
+        VG:
+          title: Virgin Islands (British)
+        HK:
+          title: Hong Kong
+        SD:
+          title: Sudan (the)
+        AD:
+          title: Andorra
+        RO:
+          title: Romania
+        LU:
+          title: Luxembourg
+        VC:
+          title: Saint Vincent and the Grenadines
+        FO:
+          title: Faroe Islands (the)
+        GL:
+          title: Greenland
+        BW:
+          title: Botswana
+        CF:
+          title: Central African Republic (the)
+        CI:
+          title: Côte d'Ivoire
+        KG:
+          title: Kyrgyzstan
+        BV:
+          title: Bouvet Island
+        KY:
+          title: Cayman Islands (the)
+        LY:
+          title: Libya
+        MM:
+          title: Myanmar
+        MZ:
+          title: Mozambique
+        IR:
+          title: Iran (Islamic Republic of)
+        EH:
+          title: Western Sahara
+        IQ:
+          title: Iraq
+        BB:
+          title: Barbados
+        SZ:
+          title: Eswatini
+        IE:
+          title: Ireland
+        FK:
+          title: Falkland Islands (the) [Malvinas]
+        NP:
+          title: Nepal
+        BE:
+          title: Belgium
+        AU:
+          title: Australia
+        TZ:
+          title: Tanzania, the United Republic of
+        UY:
+          title: Uruguay
+        SA:
+          title: Saudi Arabia
+        ZW:
+          title: Zimbabwe
+        MD:
+          title: Moldova (the Republic of)
+        HU:
+          title: Hungary
+        PG:
+          title: Papua New Guinea
+        AF:
+          title: Afghanistan
+        MU:
+          title: Mauritius
+        SL:
+          title: Sierra Leone
+        GT:
+          title: Guatemala
+        BO:
+          title: Bolivia (Plurinational State of)
+        TM:
+          title: Turkmenistan
+        NE:
+          title: Niger (the)
+        CL:
+          title: Chile
+        FI:
+          title: Finland
+        MN:
+          title: Mongolia
+        'NO':
+          title: Norway
+        GG:
+          title: Guernsey
+        EE:
+          title: Estonia
+        KM:
+          title: Comoros (the)
+        LT:
+          title: Lithuania
+        ER:
+          title: Eritrea
+        SH:
+          title: Saint Helena, Ascension and Tristan da Cunha
+        SY:
+          title: Syrian Arab Republic (the)
+        LC:
+          title: Saint Lucia
+        CC:
+          title: Cocos (Keeling) Islands (the)
+        PL:
+          title: Poland
+        CH:
+          title: Switzerland
+        ST:
+          title: Sao Tome and Principe
+        NG:
+          title: Nigeria
+        TF:
+          title: French Southern Territories (the)
+        KI:
+          title: Kiribati
+        LV:
+          title: Latvia
+        UG:
+          title: Uganda
+        CY:
+          title: Cyprus
+        MW:
+          title: Malawi
+        CG:
+          title: Congo (the)
+        MF:
+          title: Saint Martin (French part)
+        PM:
+          title: Saint Pierre and Miquelon
+        IS:
+          title: Iceland
+        BI:
+          title: Burundi
+        TK:
+          title: Tokelau
+        SE:
+          title: Sweden
+        AE:
+          title: United Arab Emirates (the)
+        KZ:
+          title: Kazakhstan
+        LB:
+          title: Lebanon
+        AR:
+          title: Argentina
+        GS:
+          title: South Georgia and the South Sandwich Islands
+        BF:
+          title: Burkina Faso
+        DJ:
+          title: Djibouti
+        BA:
+          title: Bosnia and Herzegovina
+        SJ:
+          title: Svalbard and Jan Mayen
+        FR:
+          title: France
+        GM:
+          title: Gambia (the)
+        HR:
+          title: Croatia
+        BS:
+          title: Bahamas (the)
+        RS:
+          title: Serbia
+        WS:
+          title: Samoa
+        GB:
+          title: United Kingdom of Great Britain and Northern Ireland (the)
+        LS:
+          title: Lesotho
+        UZ:
+          title: Uzbekistan
+        PF:
+          title: French Polynesia
+        AG:
+          title: Antigua and Barbuda
+        GW:
+          title: Guinea-Bissau
+        FJ:
+          title: Fiji
+        CO:
+          title: Colombia
+        ZM:
+          title: Zambia
+        AQ:
+          title: Antarctica
+        GF:
+          title: French Guiana
+        NU:
+          title: Niue
+        BN:
+          title: Brunei Darussalam
+        RW:
+          title: Rwanda
+        PT:
+          title: Portugal
+        SO:
+          title: Somalia
+        MT:
+          title: Malta
+        PW:
+          title: Palau
+        KH:
+          title: Cambodia
+        SX:
+          title: Sint Maarten (Dutch part)
+        TJ:
+          title: Tajikistan
+        KR:
+          title: Korea (the Republic of)
+        SS:
+          title: South Sudan
+        PY:
+          title: Paraguay
+        AM:
+          title: Armenia
+        MC:
+          title: Monaco
+        CX:
+          title: Christmas Island
+        TT:
+          title: Trinidad and Tobago
+        UA:
+          title: Ukraine
+        LI:
+          title: Liechtenstein
+        BR:
+          title: Brazil
+        PA:
+          title: Panama
+        MQ:
+          title: Martinique
+        NR:
+          title: Nauru
+        PN:
+          title: Pitcairn
+        GA:
+          title: Gabon
+        TG:
+          title: Togo
+        FM:
+          title: Micronesia (Federated States of)
+        GN:
+          title: Guinea
+        YT:
+          title: Mayotte
+        CD:
+          title: Congo (the Democratic Republic of the)
+        MG:
+          title: Madagascar
+        AI:
+          title: Anguilla
+        YE:
+          title: Yemen
+        HN:
+          title: Honduras
+        IT:
+          title: Italy
+        RE:
+          title: Réunion
+        DO:
+          title: Dominican Republic (the)
+        IO:
+          title: British Indian Ocean Territory (the)
+        GR:
+          title: Greece
+        AS:
+          title: American Samoa
+        ZA:
+          title: South Africa
+        GY:
+          title: Guyana
+        BY:
+          title: Belarus
+        LK:
+          title: Sri Lanka
+        BT:
+          title: Bhutan
+        OM:
+          title: Oman
+        CK:
+          title: Cook Islands (the)
+        KE:
+          title: Kenya
+        CZ:
+          title: Czechia
+        GH:
+          title: Ghana
+        MX:
+          title: Mexico
+        SK:
+          title: Slovakia
+        MK:
+          title: North Macedonia
+        DZ:
+          title: Algeria
+        QA:
+          title: Qatar
+        CU:
+          title: Cuba
+        BJ:
+          title: Benin
+        LA:
+          title: Lao People's Democratic Republic (the)
+        TL:
+          title: Timor-Leste
+        DK:
+          title: Denmark
+        VI:
+          title: Virgin Islands (U.S.)
+        NL:
+          title: Netherlands (Kingdom of the)
+        CA:
+          title: Canada
+        BM:
+          title: Bermuda
+        JP:
+          title: Japan
+        AW:
+          title: Aruba
+        TO:
+          title: Tonga
+        CN:
+          title: China
+        VU:
+          title: Vanuatu
+        AL:
+          title: Albania
+        ET:
+          title: Ethiopia
+        IM:
+          title: Isle of Man
+        SN:
+          title: Senegal
+        PE:
+          title: Peru
+        BQ:
+          title: Bonaire, Sint Eustatius and Saba
+        NC:
+          title: New Caledonia
+        MP:
+          title: Northern Mariana Islands (the)
+        GE:
+          title: Georgia
+        CR:
+          title: Costa Rica
+        VA:
+          title: Holy See (the)
+        PS:
+          title: Palestine, State of
+        EC:
+          title: Ecuador
+        TV:
+          title: Tuvalu
+        LR:
+          title: Liberia
+        MS:
+          title: Montserrat
+        TD:
+          title: Chad
+        SC:
+          title: Seychelles
+        DE:
+          title: Germany
+        SR:
+          title: Suriname
+    SessionExpiredError:
+      title: 결제 세션이 만료된 경우
+      description: 결제 세션이 만료된 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 결제 세션이 만료된 경우
+      x-portone-status-code: 410
+    CheckoutPaymentMethod:
+      title: 결제 수단
+      description: 결제 수단
+      type: string
+      enum:
+      - CARD_KR
+      - N_PAY
+      - KAKAO_PAY
+      - TOSS_PAY
+      - CARD_INTERNATIONAL
+      - PAY_PAL
+      - UNION_PAY
+      - ALIPAY_CN
+      - ALIPAY_HK
+      - TRUE_MONEY
+      - DANA
+      - TOUCH_N_GO
+      - G_CASH
+      - WE_CHAT_PAY
+      - KLARNA
+      - E_CONTEXT
+      - GRAB_PAY_MY
+      - GRAB_PAY_SG
+      - SHOPEE_PAY_TH
+      - PAY_PAY
+      - BPI
+      - RABBIT_LINE_PAY
+      - CONVENIENCE_STORE_JP
+      - AMAZON_PAY
+      - RAKUTEN_PAY
+      - D_BARAI
+      - AU_PAY
+      - MERPAY
+      x-portone-title: 결제 수단
+      x-portone-enum:
+        PAY_PAY: {}
+        ALIPAY_HK: {}
+        PAY_PAL: {}
+        WE_CHAT_PAY: {}
+        UNION_PAY: {}
+        MERPAY: {}
+        E_CONTEXT: {}
+        G_CASH: {}
+        CARD_KR: {}
+        AU_PAY: {}
+        SHOPEE_PAY_TH: {}
+        N_PAY: {}
+        AMAZON_PAY: {}
+        CARD_INTERNATIONAL: {}
+        GRAB_PAY_SG: {}
+        GRAB_PAY_MY: {}
+        KLARNA: {}
+        RABBIT_LINE_PAY: {}
+        KAKAO_PAY: {}
+        RAKUTEN_PAY: {}
+        TOSS_PAY: {}
+        CONVENIENCE_STORE_JP: {}
+        D_BARAI: {}
+        DANA: {}
+        TOUCH_N_GO: {}
+        BPI: {}
+        ALIPAY_CN: {}
+        TRUE_MONEY: {}
+    GetPaymentSessionError:
+      title: GetPaymentSessionError
+      oneOf:
+      - $ref: '#/components/schemas/InvalidRequestError'
+      - $ref: '#/components/schemas/SessionExpiredError'
+      - $ref: '#/components/schemas/SessionNotFoundError'
+      discriminator:
+        propertyName: type
+        mapping:
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          SESSION_EXPIRED: '#/components/schemas/SessionExpiredError'
+          SESSION_NOT_FOUND: '#/components/schemas/SessionNotFoundError'
+    PaymentSessionProduct:
+      title: 결제 세션 주문 항목
+      description: 결제 세션 주문 항목
+      type: object
+      required:
+      - name
+      - unitPrice
+      - quantity
+      properties:
+        id:
+          type: string
+          title: 항목 아이디
+        name:
+          type: string
+          title: 상품 이름
+        code:
+          type: string
+          title: 상품 코드
+        unitPrice:
+          type: integer
+          format: int64
+          title: 상품 단가
+        quantity:
+          type: integer
+          format: int32
+          title: 상품 수량
+        startDate:
+          description: 구독 등 제공 기간이 있는 상품의 경우 입력하세요.
+          type: string
+          format: date
+          x-portone-description: 날짜를 나타내는 문자열로, `yyyy-MM-dd` 형식을 따릅니다.
+          title: 제공 시작일
+        endDate:
+          description: 구독 등 제공 기간이 있는 상품의 경우 입력하세요.
+          type: string
+          format: date
+          x-portone-description: 날짜를 나타내는 문자열로, `yyyy-MM-dd` 형식을 따릅니다.
+          title: 제공 종료일
+        url:
+          type: string
+          title: 판매 링크
+        nPayCategoryType:
+          type: string
+          title: 네이버페이 카테고리 타입
+        nPayCategoryId:
+          type: string
+          title: 네이버페이 카테고리 아이디
+        nPayUid:
+          type: string
+          title: 네이버페이 상품 식별자
+      x-portone-title: 결제 세션 주문 항목
+    ForbiddenError:
+      title: 요청이 거절된 경우
+      description: 요청이 거절된 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 요청이 거절된 경우
+      x-portone-status-code: 403
+    PaymentSessionAgreement:
+      title: 결제 세션 약관
+      description: 결제 세션 약관
+      type: object
+      required:
+      - name
+      - url
+      properties:
+        name:
+          type: string
+          title: 약관 이름
+        url:
+          type: string
+          title: 약관 URL
+      x-portone-title: 결제 세션 약관
+    Currency:
+      title: 통화
+      description: 통화
+      type: string
+      enum:
+      - KRW
+      - USD
+      - JPY
+      - AED
+      - AFN
+      - ALL
+      - AMD
+      - ANG
+      - AOA
+      - ARS
+      - AUD
+      - AWG
+      - AZN
+      - BAM
+      - BBD
+      - BDT
+      - BGN
+      - BHD
+      - BIF
+      - BMD
+      - BND
+      - BOB
+      - BOV
+      - BRL
+      - BSD
+      - BTN
+      - BWP
+      - BYN
+      - BZD
+      - CAD
+      - CDF
+      - CHE
+      - CHF
+      - CHW
+      - CLF
+      - CLP
+      - CNY
+      - COP
+      - COU
+      - CRC
+      - CUC
+      - CUP
+      - CVE
+      - CZK
+      - DJF
+      - DKK
+      - DOP
+      - DZD
+      - EGP
+      - ERN
+      - ETB
+      - EUR
+      - FJD
+      - FKP
+      - GBP
+      - GEL
+      - GHS
+      - GIP
+      - GMD
+      - GNF
+      - GTQ
+      - GYD
+      - HKD
+      - HNL
+      - HRK
+      - HTG
+      - HUF
+      - IDR
+      - ILS
+      - INR
+      - IQD
+      - IRR
+      - ISK
+      - JMD
+      - JOD
+      - KES
+      - KGS
+      - KHR
+      - KMF
+      - KPW
+      - KWD
+      - KYD
+      - KZT
+      - LAK
+      - LBP
+      - LKR
+      - LRD
+      - LSL
+      - LYD
+      - MAD
+      - MDL
+      - MGA
+      - MKD
+      - MMK
+      - MNT
+      - MOP
+      - MRU
+      - MUR
+      - MVR
+      - MWK
+      - MXN
+      - MXV
+      - MYR
+      - MZN
+      - NAD
+      - NGN
+      - NIO
+      - NOK
+      - NPR
+      - NZD
+      - OMR
+      - PAB
+      - PEN
+      - PGK
+      - PHP
+      - PKR
+      - PLN
+      - PYG
+      - QAR
+      - RON
+      - RSD
+      - RUB
+      - RWF
+      - SAR
+      - SBD
+      - SCR
+      - SDG
+      - SEK
+      - SGD
+      - SHP
+      - SLE
+      - SLL
+      - SOS
+      - SRD
+      - SSP
+      - STN
+      - SVC
+      - SYP
+      - SZL
+      - THB
+      - TJS
+      - TMT
+      - TND
+      - TOP
+      - TRY
+      - TTD
+      - TWD
+      - TZS
+      - UAH
+      - UGX
+      - USN
+      - UYI
+      - UYU
+      - UYW
+      - UZS
+      - VED
+      - VES
+      - VND
+      - VUV
+      - WST
+      - XAF
+      - XAG
+      - XAU
+      - XBA
+      - XBB
+      - XBC
+      - XBD
+      - XCD
+      - XDR
+      - XOF
+      - XPD
+      - XPF
+      - XPT
+      - XSU
+      - XTS
+      - XUA
+      - XXX
+      - YER
+      - ZAR
+      - ZMW
+      - ZWL
+      x-portone-title: 통화
+      x-portone-enum:
+        OMR:
+          title: Rial Omani
+        CUC:
+          title: Peso Convertible
+        BBD:
+          title: Barbados Dollar
+        PLN:
+          title: Zloty
+        SVC:
+          title: El Salvador Colon
+        BMD:
+          title: Bermudian Dollar
+        TJS:
+          title: Somoni
+        TND:
+          title: Tunisian Dinar
+        GNF:
+          title: Guinean Franc
+        SDG:
+          title: Sudanese Pound
+        MRU:
+          title: Ouguiya
+        XBB:
+          title: Bond Markets Unit European Monetary Unit (E.M.U.-6)
+        PKR:
+          title: Pakistan Rupee
+        FKP:
+          title: Falkland Islands Pound
+        MUR:
+          title: Mauritius Rupee
+        XAF:
+          title: CFA Franc BEAC
+        SAR:
+          title: Saudi Riyal
+        CAD:
+          title: Canadian Dollar
+        HKD:
+          title: Hong Kong Dollar
+        PYG:
+          title: Guarani
+        MGA:
+          title: Malagasy Ariary
+        UYI:
+          title: Uruguay Peso en Unidades Indexadas (UI)
+        AUD:
+          title: Australian Dollar
+        AMD:
+          title: Armenian Dram
+        YER:
+          title: Yemeni Rial
+        CHE:
+          title: WIR Euro
+        MMK:
+          title: Kyat
+        SEK:
+          title: Swedish Krona
+        TRY:
+          title: Turkish Lira
+        XBC:
+          title: Bond Markets Unit European Unit of Account 9 (E.U.A.-9)
+        KES:
+          title: Kenyan Shilling
+        GEL:
+          title: Lari
+        GTQ:
+          title: Quetzal
+        TZS:
+          title: Tanzanian Shilling
+        CUP:
+          title: Cuban Peso
+        ALL:
+          title: Lek
+        ERN:
+          title: Nakfa
+        BRL:
+          title: Brazilian Real
+        UGX:
+          title: Uganda Shilling
+        XUA:
+          title: ADB Unit of Account
+        GIP:
+          title: Gibraltar Pound
+        MZN:
+          title: Mozambique Metical
+        KRW:
+          title: 대한민국 원화
+        JOD:
+          title: Jordanian Dinar
+        IQD:
+          title: Iraqi Dinar
+        VUV:
+          title: Vatu
+        XXX:
+          title: The codes assigned for transactions where no currency is involved
+        UZS:
+          title: Uzbekistan Sum
+        BOV:
+          title: Mvdol
+        UAH:
+          title: Hryvnia
+        PEN:
+          title: Sol
+        KMF:
+          title: 'Comorian Franc '
+        DOP:
+          title: Dominican Peso
+        BDT:
+          title: Taka
+        LKR:
+          title: Sri Lanka Rupee
+        FJD:
+          title: Fiji Dollar
+        LSL:
+          title: Loti
+        BSD:
+          title: Bahamian Dollar
+        SRD:
+          title: Surinam Dollar
+        XTS:
+          title: Codes specifically reserved for testing purposes
+        SHP:
+          title: Saint Helena Pound
+        LRD:
+          title: Liberian Dollar
+        QAR:
+          title: Qatari Rial
+        BND:
+          title: Brunei Dollar
+        CDF:
+          title: Congolese Franc
+        SLE:
+          title: Leone
+        USN:
+          title: US Dollar (Next day)
+        VES:
+          title: Bolívar Soberano
+        TMT:
+          title: Turkmenistan New Manat
+        CHW:
+          title: WIR Franc
+        BGN:
+          title: Bulgarian Lev
+        JMD:
+          title: Jamaican Dollar
+        SZL:
+          title: Lilangeni
+        CZK:
+          title: Czech Koruna
+        ZMW:
+          title: Zambian Kwacha
+        UYU:
+          title: Peso Uruguayo
+        NPR:
+          title: Nepalese Rupee
+        EGP:
+          title: Egyptian Pound
+        AZN:
+          title: Azerbaijan Manat
+        CLP:
+          title: Chilean Peso
+        MOP:
+          title: Pataca
+        SCR:
+          title: Seychelles Rupee
+        HTG:
+          title: Gourde
+        VND:
+          title: Dong
+        LAK:
+          title: Lao Kip
+        BTN:
+          title: Ngultrum
+        GBP:
+          title: Pound Sterling
+        SSP:
+          title: South Sudanese Pound
+        XPD:
+          title: Palladium
+        TWD:
+          title: New Taiwan Dollar
+        DZD:
+          title: Algerian Dinar
+        MXN:
+          title: Mexican Peso
+        XDR:
+          title: SDR (Special Drawing Right)
+        ZWL:
+          title: Zimbabwe Dollar
+        AWG:
+          title: Aruban Florin
+        THB:
+          title: Baht
+        ISK:
+          title: Iceland Krona
+        LBP:
+          title: Lebanese Pound
+        SGD:
+          title: Singapore Dollar
+        MWK:
+          title: Malawi Kwacha
+        KZT:
+          title: Tenge
+        CRC:
+          title: Costa Rican Colon
+        WST:
+          title: Tala
+        DJF:
+          title: Djibouti Franc
+        LYD:
+          title: Libyan Dinar
+        NGN:
+          title: Naira
+        BIF:
+          title: Burundi Franc
+        AED:
+          title: UAE Dirham
+        CHF:
+          title: Swiss Franc
+        RWF:
+          title: Rwanda Franc
+        XBD:
+          title: Bond Markets Unit European Unit of Account 17 (E.U.A.-17)
+        INR:
+          title: Indian Rupee
+        CLF:
+          title: Unidad de Fomento
+        XOF:
+          title: CFA Franc BCEAO
+        COU:
+          title: Unidad de Valor Real
+        MXV:
+          title: Mexican Unidad de Inversion (UDI)
+        PGK:
+          title: Kina
+        CNY:
+          title: Yuan Renminbi
+        SYP:
+          title: Syrian Pound
+        VED:
+          title: Bolívar Soberano
+        RON:
+          title: Romanian Leu
+        AFN:
+          title: Afghani
+        PHP:
+          title: Philippine Peso
+        MDL:
+          title: Moldovan Leu
+        KHR:
+          title: Riel
+        XPT:
+          title: Platinum
+        COP:
+          title: Colombian Peso
+        DKK:
+          title: Danish Krone
+        KYD:
+          title: Cayman Islands Dollar
+        XPF:
+          title: CFP Franc
+        GMD:
+          title: Dalasi
+        MVR:
+          title: Rufiyaa
+        STN:
+          title: Dobra
+        TTD:
+          title: Trinidad and Tobago Dollar
+        PAB:
+          title: Balboa
+        XAU:
+          title: Gold
+        XAG:
+          title: Silver
+        JPY:
+          title: 일본 엔화
+        TOP:
+          title: Pa’anga
+        BWP:
+          title: Pula
+        MKD:
+          title: Denar
+        ARS:
+          title: Argentine Peso
+        HUF:
+          title: Forint
+        MYR:
+          title: Malaysian Ringgit
+        USD:
+          title: 미국 달러
+        SLL:
+          title: Leone
+        MAD:
+          title: Moroccan Dirham
+        RUB:
+          title: Russian Ruble
+        MNT:
+          title: Tugrik
+        BOB:
+          title: Boliviano
+        GYD:
+          title: Guyana Dollar
+        SBD:
+          title: Solomon Islands Dollar
+        XBA:
+          title: Bond Markets Unit European Composite Unit (EURCO)
+        BHD:
+          title: Bahraini Dinar
+        HNL:
+          title: Lempira
+        UYW:
+          title: Unidad Previsional
+        NZD:
+          title: New Zealand Dollar
+        XCD:
+          title: East Caribbean Dollar
+        XSU:
+          title: Sucre
+        KGS:
+          title: Som
+        AOA:
+          title: Kwanza
+        BZD:
+          title: Belize Dollar
+        IDR:
+          title: Rupiah
+        SOS:
+          title: Somali Shilling
+        NIO:
+          title: Cordoba Oro
+        GHS:
+          title: Ghana Cedi
+        ANG:
+          title: Netherlands Antillean Guilder
+        RSD:
+          title: Serbian Dinar
+        ILS:
+          title: New Israeli Sheqel
+        NOK:
+          title: Norwegian Krone
+        KWD:
+          title: Kuwaiti Dinar
+        NAD:
+          title: Namibia Dollar
+        ETB:
+          title: Ethiopian Birr
+        BYN:
+          title: Belarusian Ruble
+        KPW:
+          title: North Korean Won
+        EUR:
+          title: Euro
+        CVE:
+          title: Cabo Verde Escudo
+        ZAR:
+          title: Rand
+        IRR:
+          title: Iranian Rial
+        HRK:
+          title: Kuna (Replaced by EUR)
+        BAM:
+          title: Convertible Mark
+    ClosePaymentSessionError:
+      title: ClosePaymentSessionError
+      oneOf:
+      - $ref: '#/components/schemas/ForbiddenError'
+      - $ref: '#/components/schemas/InvalidRequestError'
+      - $ref: '#/components/schemas/SessionNotFoundError'
+      - $ref: '#/components/schemas/UnauthorizedError'
+      discriminator:
+        propertyName: type
+        mapping:
+          FORBIDDEN: '#/components/schemas/ForbiddenError'
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          SESSION_NOT_FOUND: '#/components/schemas/SessionNotFoundError'
+          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
+    InvalidRequestError:
+      title: 요청된 입력 정보가 유효하지 않은 경우
+      description: '요청된 입력 정보가 유효하지 않은 경우
+
+
+        허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.'
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
+      x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
+      x-portone-status-code: 400
+    PaymentSession:
+      title: 결제 세션
+      description: 결제 세션
+      type: object
+      required:
+      - id
+      - storeId
+      - paymentId
+      - profileKey
+      - country
+      - currency
+      - totalAmount
+      - orderName
+      - createdAt
+      - expiresAt
+      properties:
+        id:
+          type: string
+          title: 결제 세션 아이디
+        storeId:
+          type: string
+          title: 상점 아이디
+        paymentId:
+          type: string
+          title: 결제 건 아이디
+        profileKey:
+          type: string
+          title: 프로필 키
+        paymentMethod:
+          $ref: '#/components/schemas/CheckoutPaymentMethod'
+          title: 결제 수단 지정
+          description: 지정한 경우, 정보 추가 입력이 필요하지 않은 경우에 주문서를 건너뛰고 결제로 바로 이동합니다.
+        country:
+          $ref: '#/components/schemas/Country'
+          title: 국가
+        currency:
+          $ref: '#/components/schemas/Currency'
+          title: 통화
+        totalAmount:
+          type: integer
+          format: int64
+          title: 전체 결제 금액
+        orderName:
+          type: string
+          title: 주문명
+        redirectUrl:
+          type: string
+          title: 결제 완료 후 리다이렉트 URL
+          description: 지정하지 않으면 기본 결과 페이지가 표시됩니다.
+        products:
+          title: 주문 항목 목록
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentSessionProduct'
+          x-portone-title: 결제 세션 주문 항목
+          properties:
+            url:
+              title: 판매 링크
+            id:
+              title: 항목 아이디
+            nPayUid:
+              title: 네이버페이 상품 식별자
+            unitPrice:
+              title: 상품 단가
+            startDate:
+              title: 제공 시작일
+              description: 구독 등 제공 기간이 있는 상품의 경우 입력하세요.
+            name:
+              title: 상품 이름
+            quantity:
+              title: 상품 수량
+            endDate:
+              title: 제공 종료일
+              description: 구독 등 제공 기간이 있는 상품의 경우 입력하세요.
+            nPayCategoryId:
+              title: 네이버페이 카테고리 아이디
+            code:
+              title: 상품 코드
+            nPayCategoryType:
+              title: 네이버페이 카테고리 타입
+        customerName:
+          type: string
+          title: 구매자 이름
+        customerEmail:
+          type: string
+          title: 구매자 이메일
+        storeName:
+          type: string
+          title: 상점 이름
+          description: 페이지 헤더 및 결제사 UI에 표시됩니다.
+        agreements:
+          title: 사용자 지정 약관 목록
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentSessionAgreement'
+          x-portone-title: 결제 세션 약관
+          properties:
+            name:
+              title: 약관 이름
+            url:
+              title: 약관 URL
+          description: 구매자가 모든 약관에 동의해야 결제 버튼이 활성화됩니다.
+        orderImageUrl:
+          type: string
+          title: 주문 대표 이미지 URL
+        customData:
+          type: string
+          title: 사용자 지정 데이터
+          description: 결제 완료 후 결제 건 조회에서도 확인할 수 있습니다.
+        colors:
+          $ref: '#/components/schemas/PaymentSessionColors'
+          title: 체크아웃 페이지 색 설정
+        createdAt:
+          type: string
+          format: date-time
+          title: 생성 시각
+        expiresAt:
+          type: string
+          format: date-time
+          title: 만료 시각
+      x-portone-title: 결제 세션
+    UnauthorizedError:
+      title: 인증 정보가 올바르지 않은 경우
+      description: 인증 정보가 올바르지 않은 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 인증 정보가 올바르지 않은 경우
+      x-portone-status-code: 401
+    SessionNotFoundError:
+      title: 결제 세션이 존재하지 않는 경우
+      description: 결제 세션이 존재하지 않는 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 결제 세션이 존재하지 않는 경우
+      x-portone-status-code: 404
+    CreatePaymentSessionResponse:
+      title: 결제 세션 생성 성공 응답
+      description: 결제 세션 생성 성공 응답
+      type: object
+      required:
+      - sessionId
+      - url
+      - expiresAt
+      properties:
+        sessionId:
+          type: string
+          title: 세션 아이디
+        url:
+          type: string
+          title: 호스티드 체크아웃 페이지 URL
+        expiresAt:
+          type: string
+          format: date-time
+          title: 만료 시각
+      x-portone-title: 결제 세션 생성 성공 응답
+  securitySchemes:
+    bearerJwt:
+      type: http
+      description: 'Authorization: Bearer `엑세스 토큰`'
+      scheme: bearer
+    portOne:
+      type: http
+      description: 'Authorization: PortOne `발급된 API 시크릿`'
+      scheme: portone
+x-portone-categories:
+- id: payment
+  title: 결제 관련 API
+  description: 결제와 관련된 API 기능을 제공합니다.
+  children:
+  - id: payment.paymentSchedule
+    title: 결제 예약 관련 API
+    description: 결제 예약과 관련된 API 기능을 제공합니다.
+  - id: payment.billingKey
+    title: 빌링키 관련 API
+    description: 빌링키와 관련된 API 기능을 제공합니다.
+  - id: payment.cashReceipt
+    title: 현금 영수증 관련 API
+    description: 현금 영수증과 관련된 API 기능을 제공합니다.
+  - id: payment.promotion
+    title: 프로모션 관련 API
+    description: 프로모션과 관련된 API 기능을 제공합니다.
+  - id: payment.additionalFeature
+    title: 결제 부가기능 관련 API
+    description: 결제 부가기능과 관련된 API 기능을 제공합니다.
+- id: identityVerification
+  title: 본인인증 관련 API
+  description: 본인인증과 관련된 API 기능을 제공합니다.
+- id: pgSpecific
+  title: 특정 PG사 관련 API
+  description: 특정 PG사에 국한된 API 기능을 제공합니다.
+- id: reconciliation
+  title: 대사 서비스 API
+  description: 거래 대사 및 정산 대사 관련 API 기능을 제공합니다.
+- id: b2b
+  title: 세금계산서 API
+  description: 세금계산서 API 기능을 제공합니다.
+  children:
+  - id: b2b.counterparty
+    title: 거래처 관련 API
+    description: 거래처 관련 API 기능을 제공합니다.
+  - id: b2b.taxInvoice
+    title: 세금계산서 발행 관련 API
+    description: 세금계산서 발행 관련 API 기능을 제공합니다.
+- id: platform
+  title: 파트너 정산 관련 API
+  description: 파트너 정산 서비스 API 기능을 제공합니다.
+  children:
+  - id: platform.policy
+    title: 정책 관련 API
+    description: 파트너 정산에 적용할 정책에 관한 API 입니다.
+  - id: platform.partner
+    title: 파트너 관련 API
+    description: 파트너 정산에 적용할 파트너에 관한 API 입니다.
+  - id: platform.transfer
+    title: 정산 상세내역 관련 API
+    description: 파트너 정산 서비스의 정산 상세내역과 관련된 API 입니다.
+  - id: platform.account
+    title: 계좌 관련 API
+    description: 파트너 정산 서비스의 계좌와 관련된 API 입니다.
+  - id: platform.partnerSettlement
+    title: 정산 내역 관련 API
+    description: 파트너 정산 서비스의 정산 내역과 관련된 API 입니다.
+  - id: platform.payout
+    title: 지급 내역 관련 API
+    description: 파트너 정산 서비스의 지급 내역과 관련된 API 입니다.
+  - id: platform.bulkPayout
+    title: 일괄 지급 내역 관련 API
+    description: 파트너 정산 서비스의 일괄 지급 내역과 관련된 API 입니다.
+  - id: platform.accountTransfer
+    title: 이체 내역 관련 API
+    description: 파트너 정산 서비스의 이체 내역과 관련된 API 입니다.
+  - id: platform.bulkAccountTransfer
+    title: 일괄 이체 내역 관련 API
+    description: 파트너 정산 서비스의 일괄 이체 내역과 관련된 API 입니다.
+  - id: platform.company
+    title: 사업자 관련 API
+    description: 파트너 정산 서비스의 사업자와 관련된 API 입니다.
+- id: auth
+  title: 인증 관련 API
+  description: '인증과 관련된 API 기능을 제공합니다.
+
+    접근 토큰 방식으로 인증하기를 원하는 경우, API 시크릿을 통해 토큰을 발급받은 후 Authorization 헤더에 `Bearer ACCESS_TOKEN` 형식으로 전달합니다.'
+- id: paymentSession
+  title: 결제 세션 API
+  description: 결제 세션 생성 및 관리 API. 호스티드 체크아웃에 사용됩니다.
+- id: checkoutProfile
+  title: 체크아웃 프로필 API
+  description: 체크아웃 프로필에서 결제 수단 목록을 조회하기 위한 API.
+- id: ap
+  title: AP API
+  description: AP 기능을 제공합니다.
+- id: common
+  title: 공통 API
+  description: 공통 API 기능을 제공합니다.

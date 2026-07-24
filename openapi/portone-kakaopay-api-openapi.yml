@@ -1,0 +1,224 @@
+openapi: 3.0.3
+info:
+  title: PortOne B2b Kakaopay API
+  version: 1.16.0
+servers:
+- url: https://api.portone.io
+  description: 운영환경 서버
+tags:
+- name: Kakaopay
+paths:
+  /kakaopay/payment/order:
+    get:
+      summary: 카카오페이 주문 조회 API
+      description: '카카오페이 주문 조회 API
+
+
+        주어진 아이디에 대응되는 카카오페이 주문 건을 조회합니다.
+
+        해당 API 사용이 필요한 경우 포트원 기술지원팀으로 문의 주시길 바랍니다.'
+      operationId: getKakaopayPaymentOrder
+      parameters:
+      - name: pgTxId
+        in: query
+        description: 카카오페이 주문 번호 (tid)
+        required: true
+        schema:
+          type: string
+        x-portone-title: 카카오페이 주문 번호 (tid)
+      - name: channelKey
+        in: query
+        description: 채널 키
+        required: true
+        schema:
+          type: string
+        x-portone-title: 채널 키
+      responses:
+        '200':
+          description: 성공 응답으로 카카오페이 주문 조회 응답 객체를 반환합니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetKakaopayPaymentOrderResponse'
+          x-portone-title: 성공 응답으로 카카오페이 주문 조회 응답 객체를 반환합니다.
+        '400':
+          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetKakaopayPaymentOrderError'
+        '401':
+          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetKakaopayPaymentOrderError'
+      security:
+      - bearerJwt: []
+      - portOne: []
+      x-portone-category: pgSpecific
+      x-portone-title: 카카오페이 주문 조회 API
+      x-portone-description: '주어진 아이디에 대응되는 카카오페이 주문 건을 조회합니다.
+
+        해당 API 사용이 필요한 경우 포트원 기술지원팀으로 문의 주시길 바랍니다.'
+      x-portone-error:
+        $ref: '#/components/schemas/GetKakaopayPaymentOrderError'
+      tags:
+      - Kakaopay
+components:
+  schemas:
+    GetKakaopayPaymentOrderError:
+      title: GetKakaopayPaymentOrderError
+      oneOf:
+      - $ref: '#/components/schemas/InvalidRequestError'
+      - $ref: '#/components/schemas/UnauthorizedError'
+      discriminator:
+        propertyName: type
+        mapping:
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
+    InvalidRequestError:
+      title: 요청된 입력 정보가 유효하지 않은 경우
+      description: '요청된 입력 정보가 유효하지 않은 경우
+
+
+        허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.'
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
+      x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
+      x-portone-status-code: 400
+    UnauthorizedError:
+      title: 인증 정보가 올바르지 않은 경우
+      description: 인증 정보가 올바르지 않은 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 인증 정보가 올바르지 않은 경우
+      x-portone-status-code: 401
+    GetKakaopayPaymentOrderResponse:
+      title: 카카오페이 주문 조회 응답
+      description: 카카오페이 주문 조회 응답
+      type: object
+      required:
+      - statusCode
+      - body
+      properties:
+        statusCode:
+          type: integer
+          format: int32
+          title: HTTP 상태 코드
+        body:
+          type: string
+          title: HTTP 응답 본문 (JSON)
+      x-portone-title: 카카오페이 주문 조회 응답
+  securitySchemes:
+    bearerJwt:
+      type: http
+      description: 'Authorization: Bearer `엑세스 토큰`'
+      scheme: bearer
+    portOne:
+      type: http
+      description: 'Authorization: PortOne `발급된 API 시크릿`'
+      scheme: portone
+x-portone-categories:
+- id: payment
+  title: 결제 관련 API
+  description: 결제와 관련된 API 기능을 제공합니다.
+  children:
+  - id: payment.paymentSchedule
+    title: 결제 예약 관련 API
+    description: 결제 예약과 관련된 API 기능을 제공합니다.
+  - id: payment.billingKey
+    title: 빌링키 관련 API
+    description: 빌링키와 관련된 API 기능을 제공합니다.
+  - id: payment.cashReceipt
+    title: 현금 영수증 관련 API
+    description: 현금 영수증과 관련된 API 기능을 제공합니다.
+  - id: payment.promotion
+    title: 프로모션 관련 API
+    description: 프로모션과 관련된 API 기능을 제공합니다.
+  - id: payment.additionalFeature
+    title: 결제 부가기능 관련 API
+    description: 결제 부가기능과 관련된 API 기능을 제공합니다.
+- id: identityVerification
+  title: 본인인증 관련 API
+  description: 본인인증과 관련된 API 기능을 제공합니다.
+- id: pgSpecific
+  title: 특정 PG사 관련 API
+  description: 특정 PG사에 국한된 API 기능을 제공합니다.
+- id: reconciliation
+  title: 대사 서비스 API
+  description: 거래 대사 및 정산 대사 관련 API 기능을 제공합니다.
+- id: b2b
+  title: 세금계산서 API
+  description: 세금계산서 API 기능을 제공합니다.
+  children:
+  - id: b2b.counterparty
+    title: 거래처 관련 API
+    description: 거래처 관련 API 기능을 제공합니다.
+  - id: b2b.taxInvoice
+    title: 세금계산서 발행 관련 API
+    description: 세금계산서 발행 관련 API 기능을 제공합니다.
+- id: platform
+  title: 파트너 정산 관련 API
+  description: 파트너 정산 서비스 API 기능을 제공합니다.
+  children:
+  - id: platform.policy
+    title: 정책 관련 API
+    description: 파트너 정산에 적용할 정책에 관한 API 입니다.
+  - id: platform.partner
+    title: 파트너 관련 API
+    description: 파트너 정산에 적용할 파트너에 관한 API 입니다.
+  - id: platform.transfer
+    title: 정산 상세내역 관련 API
+    description: 파트너 정산 서비스의 정산 상세내역과 관련된 API 입니다.
+  - id: platform.account
+    title: 계좌 관련 API
+    description: 파트너 정산 서비스의 계좌와 관련된 API 입니다.
+  - id: platform.partnerSettlement
+    title: 정산 내역 관련 API
+    description: 파트너 정산 서비스의 정산 내역과 관련된 API 입니다.
+  - id: platform.payout
+    title: 지급 내역 관련 API
+    description: 파트너 정산 서비스의 지급 내역과 관련된 API 입니다.
+  - id: platform.bulkPayout
+    title: 일괄 지급 내역 관련 API
+    description: 파트너 정산 서비스의 일괄 지급 내역과 관련된 API 입니다.
+  - id: platform.accountTransfer
+    title: 이체 내역 관련 API
+    description: 파트너 정산 서비스의 이체 내역과 관련된 API 입니다.
+  - id: platform.bulkAccountTransfer
+    title: 일괄 이체 내역 관련 API
+    description: 파트너 정산 서비스의 일괄 이체 내역과 관련된 API 입니다.
+  - id: platform.company
+    title: 사업자 관련 API
+    description: 파트너 정산 서비스의 사업자와 관련된 API 입니다.
+- id: auth
+  title: 인증 관련 API
+  description: '인증과 관련된 API 기능을 제공합니다.
+
+    접근 토큰 방식으로 인증하기를 원하는 경우, API 시크릿을 통해 토큰을 발급받은 후 Authorization 헤더에 `Bearer ACCESS_TOKEN` 형식으로 전달합니다.'
+- id: paymentSession
+  title: 결제 세션 API
+  description: 결제 세션 생성 및 관리 API. 호스티드 체크아웃에 사용됩니다.
+- id: checkoutProfile
+  title: 체크아웃 프로필 API
+  description: 체크아웃 프로필에서 결제 수단 목록을 조회하기 위한 API.
+- id: ap
+  title: AP API
+  description: AP 기능을 제공합니다.
+- id: common
+  title: 공통 API
+  description: 공통 API 기능을 제공합니다.

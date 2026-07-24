@@ -1,0 +1,4485 @@
+openapi: 3.0.3
+info:
+  title: PortOne B2b Payments By Cursor API
+  version: 1.16.0
+servers:
+- url: https://api.portone.io
+  description: 운영환경 서버
+tags:
+- name: Payments By Cursor
+paths:
+  /payments-by-cursor:
+    get:
+      summary: 결제 대용량 다건 조회(커서 기반)
+      description: '결제 대용량 다건 조회(커서 기반)
+
+
+        기간 내 모든 결제 건을 커서 기반으로 조회합니다. 결제 건의 생성일시를 기준으로 주어진 기간 내 존재하는 모든 결제 건이 조회됩니다.'
+      operationId: getAllPaymentsByCursor
+      parameters:
+      - name: requestBody
+        in: query
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetAllPaymentsByCursorBody'
+      responses:
+        '200':
+          description: 성공 응답으로 조회된 결제 건 리스트와 커서 정보가 반환됩니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllPaymentsByCursorResponse'
+          x-portone-title: 성공 응답으로 조회된 결제 건 리스트와 커서 정보가 반환됩니다.
+        '400':
+          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllPaymentsError'
+        '401':
+          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllPaymentsError'
+        '403':
+          description: '* `ForbiddenError`: 요청이 거절된 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllPaymentsError'
+      security:
+      - bearerJwt: []
+      - portOne: []
+      x-portone-category: payment
+      x-portone-title: 결제 대용량 다건 조회(커서 기반)
+      x-portone-description: 기간 내 모든 결제 건을 커서 기반으로 조회합니다. 결제 건의 생성일시를 기준으로 주어진 기간 내 존재하는 모든 결제 건이 조회됩니다.
+      x-portone-error:
+        $ref: '#/components/schemas/GetAllPaymentsError'
+      x-portone-unstable: true
+      tags:
+      - Payments By Cursor
+components:
+  schemas:
+    PaymentMethodTransfer:
+      title: 계좌 이체 상세 정보
+      description: 계좌 이체 상세 정보
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        bank:
+          $ref: '#/components/schemas/Bank'
+          title: 표준 은행 코드
+        accountNumber:
+          type: string
+          title: 계좌번호
+      x-portone-title: 계좌 이체 상세 정보
+    GetAllPaymentsError:
+      title: GetAllPaymentsError
+      oneOf:
+      - $ref: '#/components/schemas/ForbiddenError'
+      - $ref: '#/components/schemas/InvalidRequestError'
+      - $ref: '#/components/schemas/UnauthorizedError'
+      discriminator:
+        propertyName: type
+        mapping:
+          FORBIDDEN: '#/components/schemas/ForbiddenError'
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
+    CancelledPayment:
+      title: 결제 취소 상태 건
+      description: 결제 취소 상태 건
+      type: object
+      required:
+      - status
+      - id
+      - transactionId
+      - merchantId
+      - storeId
+      - channel
+      - version
+      - requestedAt
+      - updatedAt
+      - statusChangedAt
+      - orderName
+      - amount
+      - currency
+      - customer
+      - origin
+      - cancellations
+      - cancelledAt
+      properties:
+        status:
+          type: string
+          title: 결제 건 상태
+        id:
+          type: string
+          title: 결제 건 아이디
+        transactionId:
+          type: string
+          title: 결제 건 포트원 채번 아이디
+          description: V1 결제 건의 경우 imp_uid에 해당합니다.
+        merchantId:
+          type: string
+          title: 고객사 아이디
+        storeId:
+          type: string
+          title: 상점 아이디
+        method:
+          $ref: '#/components/schemas/PaymentMethod'
+          title: 결제수단 정보
+        channel:
+          $ref: '#/components/schemas/SelectedChannel'
+          title: 결제 채널
+        channelGroup:
+          $ref: '#/components/schemas/ChannelGroupSummary'
+          title: 결제 채널 그룹 정보
+        version:
+          $ref: '#/components/schemas/PortOneVersion'
+          title: 포트원 버전
+        scheduleId:
+          type: string
+          title: 결제 예약 건 아이디
+          description: 결제 예약을 이용한 경우에만 존재
+        billingKey:
+          type: string
+          title: 결제 시 사용된 빌링키
+          description: 빌링키 결제인 경우에만 존재
+        webhooks:
+          title: 웹훅 발송 내역
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentWebhook'
+        requestedAt:
+          type: string
+          format: date-time
+          title: 결제 요청 시점
+        updatedAt:
+          type: string
+          format: date-time
+          title: 업데이트 시점
+        statusChangedAt:
+          type: string
+          format: date-time
+          title: 상태 업데이트 시점
+        orderName:
+          type: string
+          title: 주문명
+        amount:
+          $ref: '#/components/schemas/PaymentAmount'
+          title: 결제 금액 관련 세부 정보
+        currency:
+          $ref: '#/components/schemas/Currency'
+          title: 통화
+        customer:
+          $ref: '#/components/schemas/Customer'
+          title: 구매자 정보
+        origin:
+          $ref: '#/components/schemas/PaymentOrigin'
+          title: 결제 출처 정보
+        promotionId:
+          type: string
+          title: 프로모션 아이디
+        isCulturalExpense:
+          type: boolean
+          title: 문화비 지출 여부
+        escrow:
+          $ref: '#/components/schemas/PaymentEscrow'
+          title: 에스크로 결제 정보
+          description: 에스크로 결제인 경우 존재합니다.
+        products:
+          title: 상품 정보
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentProduct'
+        productCount:
+          type: integer
+          format: int32
+          title: 상품 갯수
+        customData:
+          type: string
+          title: 사용자 지정 데이터
+        country:
+          $ref: '#/components/schemas/Country'
+          title: 국가 코드
+        paidAt:
+          type: string
+          format: date-time
+          title: 결제 완료 시점
+        pgTxId:
+          type: string
+          title: PG사 거래 아이디
+        cashReceipt:
+          $ref: '#/components/schemas/PaymentCashReceipt'
+          title: 현금영수증
+        cashReceiptIssuanceStatus:
+          $ref: '#/components/schemas/CashReceiptIssuanceStatus'
+          title: 현금영수증 발행여부
+          description: '승인 시점에 확인된 발행여부입니다.
+
+            발행번호 없이 발행여부만 제공 가능한 경우, ISSUED이면서 cashReceipt가 존재하지 않을 수 있습니다.'
+        receiptUrl:
+          type: string
+          title: 거래 영수증 URL
+        cancellations:
+          title: 결제 취소 내역
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentCancellation'
+        cancelledAt:
+          type: string
+          format: date-time
+          title: 결제 취소 시점
+      x-portone-title: 결제 취소 상태 건
+    Customer:
+      title: 고객 정보
+      description: 고객 정보
+      type: object
+      properties:
+        id:
+          type: string
+          title: 고객 아이디
+          description: 고객사가 지정한 고객의 고유 식별자입니다.
+        name:
+          type: string
+          title: 이름
+        birthYear:
+          type: string
+          title: 출생 연도
+        birthMonth:
+          type: string
+          title: 출생 월
+        birthDay:
+          type: string
+          title: 출생 일자
+        gender:
+          $ref: '#/components/schemas/Gender'
+          title: 성별
+        email:
+          type: string
+          title: 이메일
+        phoneNumber:
+          type: string
+          title: 전화번호
+        address:
+          $ref: '#/components/schemas/Address'
+          title: 주소
+        zipcode:
+          type: string
+          title: 우편번호
+      x-portone-title: 고객 정보
+    PaymentWebhookTrigger:
+      title: 웹훅 실행 트리거
+      description: '웹훅 실행 트리거
+
+
+        수동 웹훅 재발송, 가상계좌 입금, 비동기 취소 승인 시 발생한 웹훅일 때 필드의 값이 존재합니다.'
+      type: string
+      enum:
+      - MANUAL
+      - VIRTUAL_ACCOUNT_DEPOSIT
+      - ASYNC_CANCEL_APPROVED
+      - ASYNC_CANCEL_FAILED
+      - ASYNC_PAY_APPROVED
+      - ASYNC_PAY_FAILED
+      - ASYNC_PAY_PENDING
+      - DISPUTE_CREATED
+      - DISPUTE_RESOLVED
+      x-portone-title: 웹훅 실행 트리거
+      x-portone-description: 수동 웹훅 재발송, 가상계좌 입금, 비동기 취소 승인 시 발생한 웹훅일 때 필드의 값이 존재합니다.
+      x-portone-enum:
+        ASYNC_PAY_PENDING: {}
+        ASYNC_CANCEL_APPROVED: {}
+        DISPUTE_CREATED: {}
+        ASYNC_CANCEL_FAILED: {}
+        MANUAL: {}
+        DISPUTE_RESOLVED: {}
+        VIRTUAL_ACCOUNT_DEPOSIT: {}
+        ASYNC_PAY_FAILED: {}
+        ASYNC_PAY_APPROVED: {}
+    PaymentAmount:
+      title: 결제 금액 세부 정보
+      description: 결제 금액 세부 정보
+      type: object
+      required:
+      - total
+      - taxFree
+      - discount
+      - paid
+      - cancelled
+      - cancelledTaxFree
+      properties:
+        total:
+          type: integer
+          format: int64
+          title: 총 결제금액
+        taxFree:
+          type: integer
+          format: int64
+          title: 면세액
+        vat:
+          type: integer
+          format: int64
+          title: 부가세액
+        supply:
+          type: integer
+          format: int64
+          title: 공급가액
+        discount:
+          type: integer
+          format: int64
+          title: 총 할인금액
+          description: 카드사 할인금액, 포트원 프로모션 할인금액, 간편결제 할인금액(적립형 포인트 결제, 쿠폰 할인) 등을 포함합니다.
+        paid:
+          type: integer
+          format: int64
+          title: 실제 결제금액
+        cancelled:
+          type: integer
+          format: int64
+          title: 총 취소금액
+        cancelledTaxFree:
+          type: integer
+          format: int64
+          title: 총 취소금액 중 면세액
+      x-portone-title: 결제 금액 세부 정보
+    FailedPaymentCancellation:
+      title: 취소 실패 상태
+      description: 취소 실패 상태
+      type: object
+      required:
+      - status
+      - id
+      - totalAmount
+      - taxFreeAmount
+      - vatAmount
+      - reason
+      - requestedAt
+      properties:
+        status:
+          type: string
+          title: 결제 취소 내역 상태
+        id:
+          type: string
+          title: 취소 내역 아이디
+        pgCancellationId:
+          type: string
+          title: PG사 결제 취소 내역 아이디
+        totalAmount:
+          type: integer
+          format: int64
+          title: 취소 금액
+        taxFreeAmount:
+          type: integer
+          format: int64
+          title: 취소 금액 중 면세 금액
+        vatAmount:
+          type: integer
+          format: int64
+          title: 취소 금액 중 부가세액
+        easyPayDiscountAmount:
+          type: integer
+          format: int64
+          title: 적립형 포인트의 환불 금액
+        reason:
+          type: string
+          title: 취소 사유
+        cancelledAt:
+          type: string
+          format: date-time
+          title: 취소 시점
+        requestedAt:
+          type: string
+          format: date-time
+          title: 취소 요청 시점
+        trigger:
+          $ref: '#/components/schemas/Trigger'
+          title: 취소 요청 경로
+      x-portone-title: 취소 실패 상태
+    PaymentOriginPlatformType:
+      title: 플랫폼 타입
+      description: 플랫폼 타입
+      type: string
+      enum:
+      - PC
+      - MOBILE
+      - API
+      x-portone-title: 플랫폼 타입
+      x-portone-enum:
+        PC: {}
+        MOBILE: {}
+        API: {}
+    PaymentWithCursor:
+      title: 결제 건 및 커서 정보
+      description: 결제 건 및 커서 정보
+      type: object
+      required:
+      - payment
+      - cursor
+      properties:
+        payment:
+          $ref: '#/components/schemas/Payment'
+          title: 결제 건 정보
+        cursor:
+          type: string
+          title: 해당 결제 건의 커서 정보
+      x-portone-title: 결제 건 및 커서 정보
+    PaymentMethodCrypto:
+      title: 암호화폐 결제 상세 정보
+      description: 암호화폐 결제 상세 정보
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+      x-portone-title: 암호화폐 결제 상세 정보
+    PaymentWebhook:
+      title: 성공 웹훅 내역
+      description: 성공 웹훅 내역
+      type: object
+      required:
+      - id
+      - url
+      properties:
+        paymentStatus:
+          $ref: '#/components/schemas/PaymentWebhookPaymentStatus'
+          title: 웹훅 발송 시 결제 건 상태
+          description: V1 결제 건인 경우, 값이 존재하지 않습니다.
+        id:
+          type: string
+          title: 웹훅 아이디
+        status:
+          $ref: '#/components/schemas/PaymentWebhookStatus'
+          title: 웹훅 상태
+        url:
+          type: string
+          title: 웹훅이 발송된 url
+          description: V1 결제 건인 경우, 값이 존재하지 않습니다.
+        isAsync:
+          type: boolean
+          title: 비동기 웹훅 여부
+          description: V1 결제 건인 경우, 값이 존재하지 않습니다.
+        currentExecutionCount:
+          type: integer
+          format: int32
+          title: 현재 발송 횟수
+        maxExecutionCount:
+          type: integer
+          format: int32
+          title: 최대 발송 횟수
+        trigger:
+          $ref: '#/components/schemas/PaymentWebhookTrigger'
+          title: 웹훅 실행 맥락
+        request:
+          $ref: '#/components/schemas/PaymentWebhookRequest'
+          title: 웹훅 요청 정보
+        response:
+          $ref: '#/components/schemas/PaymentWebhookResponse'
+          title: 웹훅 응답 정보
+        triggeredAt:
+          type: string
+          format: date-time
+          title: 웹훅 처리 시작 시점
+      x-portone-title: 성공 웹훅 내역
+    SelectedChannelType:
+      title: 채널 타입
+      description: 채널 타입
+      type: string
+      enum:
+      - LIVE
+      - TEST
+      x-portone-title: 채널 타입
+      x-portone-enum:
+        LIVE:
+          title: 실 연동 채널
+        TEST:
+          title: 테스트 연동 채널
+    EasyPayProvider:
+      title: 간편 결제사
+      description: 간편 결제사
+      type: string
+      enum:
+      - SAMSUNGPAY
+      - KAKAOPAY
+      - NAVERPAY
+      - PAYCO
+      - SSGPAY
+      - CHAI
+      - LPAY
+      - KPAY
+      - TOSSPAY
+      - LGPAY
+      - PINPAY
+      - APPLEPAY
+      - SKPAY
+      - TOSS_BRANDPAY
+      - KB_APP
+      - ALIPAY
+      - HYPHEN
+      - TMONEY
+      - PAYPAL
+      - SMILEPAY
+      - MIR
+      - WECHAT
+      - LINEPAY
+      - KLARNA
+      - GRABPAY
+      - SHOPEEPAY
+      - JKOPAY
+      - PAYPAY
+      - AMAZONPAY
+      - RAKUTENPAY
+      - DBARAI
+      - AUPAY
+      - MERPAY
+      - MONEYTREE
+      - KPLUS
+      - TINABA
+      - BILL_EASE
+      - KREDIVO
+      - RABBIT_LINE_PAY
+      - ALIPAY_HK
+      - AKULAKU_PAY_LATER
+      - BOOST
+      - BPI
+      - DANA
+      - G_CASH
+      - HIPAY
+      - MPAY
+      - TOUCH_N_GO
+      - TRUE_MONEY
+      - DOKU_WALLET
+      - JENIUS_PAY
+      - OVO
+      - MAYA
+      - QRIS
+      - THAI_QR
+      - GOOGLE_PAY
+      x-portone-title: 간편 결제사
+      x-portone-enum:
+        ALIPAY_HK: {}
+        MIR: {}
+        QRIS: {}
+        MONEYTREE: {}
+        GRABPAY: {}
+        TOSS_BRANDPAY: {}
+        JKOPAY: {}
+        SHOPEEPAY: {}
+        BOOST: {}
+        ALIPAY: {}
+        LPAY: {}
+        DBARAI: {}
+        KB_APP: {}
+        LINEPAY: {}
+        PAYCO: {}
+        HIPAY: {}
+        BILL_EASE: {}
+        DOKU_WALLET: {}
+        SMILEPAY: {}
+        TINABA: {}
+        KLARNA: {}
+        JENIUS_PAY: {}
+        RABBIT_LINE_PAY: {}
+        THAI_QR: {}
+        NAVERPAY: {}
+        GOOGLE_PAY: {}
+        KREDIVO: {}
+        CHAI: {}
+        PINPAY: {}
+        WECHAT: {}
+        KPLUS: {}
+        MAYA: {}
+        TMONEY: {}
+        TOSSPAY: {}
+        SSGPAY: {}
+        MERPAY: {}
+        PAYPAL: {}
+        OVO: {}
+        G_CASH: {}
+        LGPAY: {}
+        APPLEPAY: {}
+        HYPHEN: {}
+        AUPAY: {}
+        SAMSUNGPAY: {}
+        DANA: {}
+        TOUCH_N_GO: {}
+        KPAY: {}
+        AMAZONPAY: {}
+        BPI: {}
+        TRUE_MONEY: {}
+        SKPAY: {}
+        AKULAKU_PAY_LATER: {}
+        RAKUTENPAY: {}
+        PAYPAY: {}
+        KAKAOPAY: {}
+        MPAY: {}
+    CancelledPaymentCashReceipt:
+      title: 취소된 현금영수증
+      description: 취소된 현금영수증
+      type: object
+      required:
+      - status
+      - issueNumber
+      - totalAmount
+      - currency
+      - issuedAt
+      - cancelledAt
+      properties:
+        status:
+          type: string
+          title: 결제 건 내 현금영수증 상태
+        type:
+          $ref: '#/components/schemas/CashReceiptType'
+          title: 현금영수증 유형
+        pgReceiptId:
+          type: string
+          title: PG사 영수증 발급 아이디
+        issueNumber:
+          type: string
+          title: 승인 번호
+        totalAmount:
+          type: integer
+          format: int64
+          title: 총 금액
+        taxFreeAmount:
+          type: integer
+          format: int64
+          title: 면세액
+        currency:
+          $ref: '#/components/schemas/Currency'
+          title: 통화
+        url:
+          type: string
+          title: 현금영수증 URL
+        issuedAt:
+          type: string
+          format: date-time
+          title: 발급 시점
+        cancelledAt:
+          type: string
+          format: date-time
+          title: 취소 시점
+      x-portone-title: 취소된 현금영수증
+    Trigger:
+      title: Trigger
+      type: string
+      enum:
+      - CONSOLE
+      - API
+      - PORTONE_ADMIN
+      - CHARGEBACK
+      x-portone-enum:
+        CONSOLE: {}
+        API: {}
+        PORTONE_ADMIN: {}
+        CHARGEBACK: {}
+    RequestedPaymentCancellation:
+      title: 취소 요청 상태
+      description: 취소 요청 상태
+      type: object
+      required:
+      - status
+      - id
+      - totalAmount
+      - taxFreeAmount
+      - vatAmount
+      - reason
+      - requestedAt
+      properties:
+        status:
+          type: string
+          title: 결제 취소 내역 상태
+        id:
+          type: string
+          title: 취소 내역 아이디
+        pgCancellationId:
+          type: string
+          title: PG사 결제 취소 내역 아이디
+        totalAmount:
+          type: integer
+          format: int64
+          title: 취소 금액
+        taxFreeAmount:
+          type: integer
+          format: int64
+          title: 취소 금액 중 면세 금액
+        vatAmount:
+          type: integer
+          format: int64
+          title: 취소 금액 중 부가세액
+        easyPayDiscountAmount:
+          type: integer
+          format: int64
+          title: 적립형 포인트의 환불 금액
+        reason:
+          type: string
+          title: 취소 사유
+        cancelledAt:
+          type: string
+          format: date-time
+          title: 취소 시점
+        requestedAt:
+          type: string
+          format: date-time
+          title: 취소 요청 시점
+        trigger:
+          $ref: '#/components/schemas/Trigger'
+          title: 취소 요청 경로
+      x-portone-title: 취소 요청 상태
+    PaymentMethodMobile:
+      title: 모바일 상세 정보
+      description: 모바일 상세 정보
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        phoneNumber:
+          type: string
+          title: 전화번호
+      x-portone-title: 모바일 상세 정보
+    PaymentEscrow:
+      title: 에스크로 정보
+      description: '에스크로 정보
+
+
+        V1 결제 건의 경우 타입이 REGISTERED 로 고정됩니다.'
+      oneOf:
+      - $ref: '#/components/schemas/BeforeRegisteredPaymentEscrow'
+      - $ref: '#/components/schemas/CancelledPaymentEscrow'
+      - $ref: '#/components/schemas/ConfirmedPaymentEscrow'
+      - $ref: '#/components/schemas/DeliveredPaymentEscrow'
+      - $ref: '#/components/schemas/RegisteredPaymentEscrow'
+      - $ref: '#/components/schemas/RejectConfirmedPaymentEscrow'
+      - $ref: '#/components/schemas/RejectedPaymentEscrow'
+      discriminator:
+        propertyName: status
+        mapping:
+          BEFORE_REGISTERED: '#/components/schemas/BeforeRegisteredPaymentEscrow'
+          CANCELLED: '#/components/schemas/CancelledPaymentEscrow'
+          CONFIRMED: '#/components/schemas/ConfirmedPaymentEscrow'
+          DELIVERED: '#/components/schemas/DeliveredPaymentEscrow'
+          REGISTERED: '#/components/schemas/RegisteredPaymentEscrow'
+          REJECTED: '#/components/schemas/RejectedPaymentEscrow'
+          REJECT_CONFIRMED: '#/components/schemas/RejectConfirmedPaymentEscrow'
+      x-portone-title: 에스크로 정보
+      x-portone-description: V1 결제 건의 경우 타입이 REGISTERED 로 고정됩니다.
+      x-portone-discriminator:
+        CONFIRMED:
+          title: 구매 확정
+        REJECTED:
+          title: 구매 거절
+        CANCELLED:
+          title: 거래 취소
+        REJECT_CONFIRMED:
+          title: 구매 거절 확정
+        DELIVERED:
+          title: 배송 완료
+        BEFORE_REGISTERED:
+          title: 배송 정보 등록 전
+        REGISTERED:
+          title: 배송 정보 등록 완료
+    Gender:
+      title: 성별
+      description: 성별
+      type: string
+      enum:
+      - MALE
+      - FEMALE
+      - OTHER
+      x-portone-title: 성별
+      x-portone-enum:
+        MALE:
+          title: 남성
+        FEMALE:
+          title: 여성
+        OTHER:
+          title: 그 외 성별
+    CancelledPaymentEscrow:
+      title: 거래 취소
+      description: 거래 취소
+      type: object
+      required:
+      - status
+      - company
+      - invoiceNumber
+      properties:
+        status:
+          type: string
+          title: 에스크로 상태
+        company:
+          type: string
+          title: 택배사
+        invoiceNumber:
+          type: string
+          title: 송장번호
+        sentAt:
+          type: string
+          format: date-time
+          title: 발송 일시
+        appliedAt:
+          type: string
+          format: date-time
+          title: 배송등록 처리 일자
+      x-portone-title: 거래 취소
+    BeforeRegisteredPaymentEscrow:
+      title: 배송 정보 등록 전
+      description: 배송 정보 등록 전
+      type: object
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          title: 에스크로 상태
+      x-portone-title: 배송 정보 등록 전
+    Bank:
+      title: 은행
+      description: 은행
+      type: string
+      enum:
+      - BANK_OF_KOREA
+      - KDB
+      - IBK
+      - KOOKMIN
+      - SUHYUP
+      - KEXIM
+      - NONGHYUP
+      - LOCAL_NONGHYUP
+      - WOORI
+      - STANDARD_CHARTERED
+      - CITI
+      - SUHYUP_FEDERATION
+      - DAEGU
+      - BUSAN
+      - KWANGJU
+      - JEJU
+      - JEONBUK
+      - KYONGNAM
+      - KFCC
+      - SHINHYUP
+      - SAVINGS_BANK
+      - MORGAN_STANLEY
+      - HSBC
+      - DEUTSCHE
+      - JPMC
+      - MIZUHO
+      - MUFG
+      - BANK_OF_AMERICA
+      - BNP_PARIBAS
+      - ICBC
+      - BANK_OF_CHINA
+      - NFCF
+      - UOB
+      - BOCOM
+      - CCB
+      - POST
+      - KODIT
+      - KIBO
+      - HANA
+      - SHINHAN
+      - K_BANK
+      - KAKAO
+      - TOSS
+      - MISC_FOREIGN
+      - SGI
+      - KCIS
+      - YUANTA_SECURITIES
+      - KB_SECURITIES
+      - SANGSANGIN_SECURITIES
+      - HANYANG_SECURITIES
+      - LEADING_SECURITIES
+      - BNK_SECURITIES
+      - IBK_SECURITIES
+      - DAOL_SECURITIES
+      - MIRAE_ASSET_SECURITIES
+      - SAMSUNG_SECURITIES
+      - KOREA_SECURITIES
+      - NH_SECURITIES
+      - KYOBO_SECURITIES
+      - HI_SECURITIES
+      - HYUNDAI_MOTOR_SECURITIES
+      - KIWOOM_SECURITIES
+      - EBEST_SECURITIES
+      - SK_SECURITIES
+      - DAISHIN_SECURITIES
+      - HANHWA_SECURITIES
+      - HANA_SECURITIES
+      - TOSS_SECURITIES
+      - SHINHAN_SECURITIES
+      - DB_SECURITIES
+      - EUGENE_SECURITIES
+      - MERITZ_SECURITIES
+      - KAKAO_PAY_SECURITIES
+      - BOOKOOK_SECURITIES
+      - SHINYOUNG_SECURITIES
+      - CAPE_SECURITIES
+      - KOREA_SECURITIES_FINANCE
+      - KOREA_FOSS_SECURITIES
+      - WOORI_INVESTMENT_BANK
+      x-portone-title: 은행
+      x-portone-enum:
+        BANK_OF_CHINA:
+          title: 중국은행
+        KDB:
+          title: 산업은행
+        HANYANG_SECURITIES:
+          title: 한양증권
+        SK_SECURITIES:
+          title: SK증권
+        HANA_SECURITIES:
+          title: 하나증권
+        KB_SECURITIES:
+          title: KB증권
+        KYONGNAM:
+          title: 경남은행
+        WOORI_INVESTMENT_BANK:
+          title: 우리종합금융
+        CITI:
+          title: 한국씨티은행
+        SHINYOUNG_SECURITIES:
+          title: 신영증권
+        KOREA_SECURITIES:
+          title: 한국투자증권
+        SHINHAN:
+          title: 신한은행
+        LEADING_SECURITIES:
+          title: 리딩투자증권
+        UOB:
+          title: 대화은행
+        KOREA_FOSS_SECURITIES:
+          title: 한국포스증권
+        MERITZ_SECURITIES:
+          title: 메리츠증권
+        MIZUHO:
+          title: 미즈호은행
+        EBEST_SECURITIES:
+          title: LS증권
+        SANGSANGIN_SECURITIES:
+          title: 상상인증권
+        IBK:
+          title: 기업은행
+        DEUTSCHE:
+          title: 도이치은행
+        KCIS:
+          title: 한국신용정보원
+        KEXIM:
+          title: 수출입은행
+        SHINHYUP:
+          title: 신협
+        CCB:
+          title: 중국건설은행
+        HANA:
+          title: 하나은행
+        TOSS_SECURITIES:
+          title: 토스증권
+        IBK_SECURITIES:
+          title: IBK투자증권
+        SHINHAN_SECURITIES:
+          title: 신한투자증권
+        HANHWA_SECURITIES:
+          title: 한화투자증권
+        SUHYUP_FEDERATION:
+          title: 수협중앙회
+        LOCAL_NONGHYUP:
+          title: 지역농축협
+        WOORI:
+          title: 우리은행
+        SAMSUNG_SECURITIES:
+          title: 삼성증권
+        K_BANK:
+          title: 케이뱅크
+        DB_SECURITIES:
+          title: DB금융투자
+        SGI:
+          title: 서울보증보험
+        JEJU:
+          title: 제주은행
+        MIRAE_ASSET_SECURITIES:
+          title: 미래에셋증권
+        SAVINGS_BANK:
+          title: 저축은행
+        EUGENE_SECURITIES:
+          title: 유진투자증권
+        DAEGU:
+          title: 아이엠뱅크
+        BNK_SECURITIES:
+          title: BNK투자증권
+        KAKAO_PAY_SECURITIES:
+          title: 카카오페이증권
+        SUHYUP:
+          title: 수협은행
+        CAPE_SECURITIES:
+          title: 케이프투자증권
+        JEONBUK:
+          title: 전북은행
+        BNP_PARIBAS:
+          title: 비엔피파리바은행
+        KOREA_SECURITIES_FINANCE:
+          title: 한국증권금융
+        KODIT:
+          title: 신용보증기금
+        BOCOM:
+          title: 교통은행
+        DAOL_SECURITIES:
+          title: 다올투자증권
+        NFCF:
+          title: 산림조합중앙회
+        HSBC:
+          title: HSBC은행
+        STANDARD_CHARTERED:
+          title: SC제일은행
+        KWANGJU:
+          title: 광주은행
+        ICBC:
+          title: 중국공상은행
+        TOSS:
+          title: 토스뱅크
+        HYUNDAI_MOTOR_SECURITIES:
+          title: 현대차증권
+        BANK_OF_AMERICA:
+          title: BOA은행
+        BANK_OF_KOREA:
+          title: 한국은행
+        NONGHYUP:
+          title: NH농협은행
+        HI_SECURITIES:
+          title: 하이투자증권
+        KIBO:
+          title: 기술보증기금
+        KAKAO:
+          title: 카카오뱅크
+        KIWOOM_SECURITIES:
+          title: 키움증권
+        BUSAN:
+          title: 부산은행
+        NH_SECURITIES:
+          title: NH투자증권
+        MORGAN_STANLEY:
+          title: 모간스탠리은행
+        KFCC:
+          title: 새마을금고
+        BOOKOOK_SECURITIES:
+          title: 부국증권
+        MISC_FOREIGN:
+          title: 기타 외국계은행(중국 농업은행 등)
+        YUANTA_SECURITIES:
+          title: 유안타증권
+        POST:
+          title: 우체국
+        DAISHIN_SECURITIES:
+          title: 대신증권
+        KOOKMIN:
+          title: 국민은행
+        MUFG:
+          title: 엠유에프지은행
+        JPMC:
+          title: 제이피모간체이스은행
+        KYOBO_SECURITIES:
+          title: 교보증권
+    PartialCancelledPayment:
+      title: 결제 부분 취소 상태 건
+      description: 결제 부분 취소 상태 건
+      type: object
+      required:
+      - status
+      - id
+      - transactionId
+      - merchantId
+      - storeId
+      - channel
+      - version
+      - requestedAt
+      - updatedAt
+      - statusChangedAt
+      - orderName
+      - amount
+      - currency
+      - customer
+      - origin
+      - cancellations
+      - cancelledAt
+      properties:
+        status:
+          type: string
+          title: 결제 건 상태
+        id:
+          type: string
+          title: 결제 건 아이디
+        transactionId:
+          type: string
+          title: 결제 건 포트원 채번 아이디
+          description: V1 결제 건의 경우 imp_uid에 해당합니다.
+        merchantId:
+          type: string
+          title: 고객사 아이디
+        storeId:
+          type: string
+          title: 상점 아이디
+        method:
+          $ref: '#/components/schemas/PaymentMethod'
+          title: 결제수단 정보
+        channel:
+          $ref: '#/components/schemas/SelectedChannel'
+          title: 결제 채널
+        channelGroup:
+          $ref: '#/components/schemas/ChannelGroupSummary'
+          title: 결제 채널 그룹 정보
+        version:
+          $ref: '#/components/schemas/PortOneVersion'
+          title: 포트원 버전
+        scheduleId:
+          type: string
+          title: 결제 예약 건 아이디
+          description: 결제 예약을 이용한 경우에만 존재
+        billingKey:
+          type: string
+          title: 결제 시 사용된 빌링키
+          description: 빌링키 결제인 경우에만 존재
+        webhooks:
+          title: 웹훅 발송 내역
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentWebhook'
+        requestedAt:
+          type: string
+          format: date-time
+          title: 결제 요청 시점
+        updatedAt:
+          type: string
+          format: date-time
+          title: 업데이트 시점
+        statusChangedAt:
+          type: string
+          format: date-time
+          title: 상태 업데이트 시점
+        orderName:
+          type: string
+          title: 주문명
+        amount:
+          $ref: '#/components/schemas/PaymentAmount'
+          title: 결제 금액 관련 세부 정보
+        currency:
+          $ref: '#/components/schemas/Currency'
+          title: 통화
+        customer:
+          $ref: '#/components/schemas/Customer'
+          title: 구매자 정보
+        origin:
+          $ref: '#/components/schemas/PaymentOrigin'
+          title: 결제 출처 정보
+        promotionId:
+          type: string
+          title: 프로모션 아이디
+        isCulturalExpense:
+          type: boolean
+          title: 문화비 지출 여부
+        escrow:
+          $ref: '#/components/schemas/PaymentEscrow'
+          title: 에스크로 결제 정보
+          description: 에스크로 결제인 경우 존재합니다.
+        products:
+          title: 상품 정보
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentProduct'
+        productCount:
+          type: integer
+          format: int32
+          title: 상품 갯수
+        customData:
+          type: string
+          title: 사용자 지정 데이터
+        country:
+          $ref: '#/components/schemas/Country'
+          title: 국가 코드
+        paidAt:
+          type: string
+          format: date-time
+          title: 결제 완료 시점
+        pgTxId:
+          type: string
+          title: PG사 거래 아이디
+        cashReceipt:
+          $ref: '#/components/schemas/PaymentCashReceipt'
+          title: 현금영수증
+        cashReceiptIssuanceStatus:
+          $ref: '#/components/schemas/CashReceiptIssuanceStatus'
+          title: 현금영수증 발행여부
+          description: '승인 시점에 확인된 발행여부입니다.
+
+            발행번호 없이 발행여부만 제공 가능한 경우, ISSUED이면서 cashReceipt가 존재하지 않을 수 있습니다.'
+        receiptUrl:
+          type: string
+          title: 거래 영수증 URL
+        cancellations:
+          title: 결제 취소 내역
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentCancellation'
+        cancelledAt:
+          type: string
+          format: date-time
+          title: 결제 취소 시점
+      x-portone-title: 결제 부분 취소 상태 건
+    PaymentMethodEasyPay:
+      title: 간편 결제 상세 정보
+      description: 간편 결제 상세 정보
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        provider:
+          $ref: '#/components/schemas/EasyPayProvider'
+          title: 간편 결제 PG사
+        easyPayMethod:
+          $ref: '#/components/schemas/PaymentMethodEasyPayMethod'
+          title: 간편 결제 수단
+      x-portone-title: 간편 결제 상세 정보
+    RejectedPaymentEscrow:
+      title: 구매 거절
+      description: 구매 거절
+      type: object
+      required:
+      - status
+      - company
+      - invoiceNumber
+      properties:
+        status:
+          type: string
+          title: 에스크로 상태
+        company:
+          type: string
+          title: 택배사
+        invoiceNumber:
+          type: string
+          title: 송장번호
+        sentAt:
+          type: string
+          format: date-time
+          title: 발송 일시
+        appliedAt:
+          type: string
+          format: date-time
+          title: 배송등록 처리 일자
+      x-portone-title: 구매 거절
+    SucceededPaymentCancellation:
+      title: 취소 완료 상태
+      description: 취소 완료 상태
+      type: object
+      required:
+      - status
+      - id
+      - totalAmount
+      - taxFreeAmount
+      - vatAmount
+      - reason
+      - requestedAt
+      properties:
+        status:
+          type: string
+          title: 결제 취소 내역 상태
+        id:
+          type: string
+          title: 취소 내역 아이디
+        pgCancellationId:
+          type: string
+          title: PG사 결제 취소 내역 아이디
+        totalAmount:
+          type: integer
+          format: int64
+          title: 취소 금액
+        taxFreeAmount:
+          type: integer
+          format: int64
+          title: 취소 금액 중 면세 금액
+        vatAmount:
+          type: integer
+          format: int64
+          title: 취소 금액 중 부가세액
+        easyPayDiscountAmount:
+          type: integer
+          format: int64
+          title: 적립형 포인트의 환불 금액
+        reason:
+          type: string
+          title: 취소 사유
+        cancelledAt:
+          type: string
+          format: date-time
+          title: 취소 시점
+        requestedAt:
+          type: string
+          format: date-time
+          title: 취소 요청 시점
+        receiptUrl:
+          type: string
+          title: 취소 영수증 URL
+        trigger:
+          $ref: '#/components/schemas/Trigger'
+          title: 취소 요청 경로
+      x-portone-title: 취소 완료 상태
+    Country:
+      title: 국가
+      description: 국가
+      type: string
+      enum:
+      - AD
+      - AE
+      - AF
+      - AG
+      - AI
+      - AL
+      - AM
+      - AO
+      - AQ
+      - AR
+      - AS
+      - AT
+      - AU
+      - AW
+      - AX
+      - AZ
+      - BA
+      - BB
+      - BD
+      - BE
+      - BF
+      - BG
+      - BH
+      - BI
+      - BJ
+      - BL
+      - BM
+      - BN
+      - BO
+      - BQ
+      - BR
+      - BS
+      - BT
+      - BV
+      - BW
+      - BY
+      - BZ
+      - CA
+      - CC
+      - CD
+      - CF
+      - CG
+      - CH
+      - CI
+      - CK
+      - CL
+      - CM
+      - CN
+      - CO
+      - CR
+      - CU
+      - CV
+      - CW
+      - CX
+      - CY
+      - CZ
+      - DE
+      - DJ
+      - DK
+      - DM
+      - DO
+      - DZ
+      - EC
+      - EE
+      - EG
+      - EH
+      - ER
+      - ES
+      - ET
+      - FI
+      - FJ
+      - FK
+      - FM
+      - FO
+      - FR
+      - GA
+      - GB
+      - GD
+      - GE
+      - GF
+      - GG
+      - GH
+      - GI
+      - GL
+      - GM
+      - GN
+      - GP
+      - GQ
+      - GR
+      - GS
+      - GT
+      - GU
+      - GW
+      - GY
+      - HK
+      - HM
+      - HN
+      - HR
+      - HT
+      - HU
+      - ID
+      - IE
+      - IL
+      - IM
+      - IN
+      - IO
+      - IQ
+      - IR
+      - IS
+      - IT
+      - JE
+      - JM
+      - JO
+      - JP
+      - KE
+      - KG
+      - KH
+      - KI
+      - KM
+      - KN
+      - KP
+      - KR
+      - KW
+      - KY
+      - KZ
+      - LA
+      - LB
+      - LC
+      - LI
+      - LK
+      - LR
+      - LS
+      - LT
+      - LU
+      - LV
+      - LY
+      - MA
+      - MC
+      - MD
+      - ME
+      - MF
+      - MG
+      - MH
+      - MK
+      - ML
+      - MM
+      - MN
+      - MO
+      - MP
+      - MQ
+      - MR
+      - MS
+      - MT
+      - MU
+      - MV
+      - MW
+      - MX
+      - MY
+      - MZ
+      - NA
+      - NC
+      - NE
+      - NF
+      - NG
+      - NI
+      - NL
+      - 'NO'
+      - NP
+      - NR
+      - NU
+      - NZ
+      - OM
+      - PA
+      - PE
+      - PF
+      - PG
+      - PH
+      - PK
+      - PL
+      - PM
+      - PN
+      - PR
+      - PS
+      - PT
+      - PW
+      - PY
+      - QA
+      - RE
+      - RO
+      - RS
+      - RU
+      - RW
+      - SA
+      - SB
+      - SC
+      - SD
+      - SE
+      - SG
+      - SH
+      - SI
+      - SJ
+      - SK
+      - SL
+      - SM
+      - SN
+      - SO
+      - SR
+      - SS
+      - ST
+      - SV
+      - SX
+      - SY
+      - SZ
+      - TC
+      - TD
+      - TF
+      - TG
+      - TH
+      - TJ
+      - TK
+      - TL
+      - TM
+      - TN
+      - TO
+      - TR
+      - TT
+      - TV
+      - TW
+      - TZ
+      - UA
+      - UG
+      - UM
+      - US
+      - UY
+      - UZ
+      - VA
+      - VC
+      - VE
+      - VG
+      - VI
+      - VN
+      - VU
+      - WF
+      - WS
+      - YE
+      - YT
+      - ZA
+      - ZM
+      - ZW
+      x-portone-title: 국가
+      x-portone-enum:
+        CV:
+          title: Cabo Verde
+        MA:
+          title: Morocco
+        AO:
+          title: Angola
+        VN:
+          title: Viet Nam
+        IN:
+          title: India
+        KW:
+          title: Kuwait
+        ML:
+          title: Mali
+        ID:
+          title: Indonesia
+        JE:
+          title: Jersey
+        HM:
+          title: Heard Island and McDonald Islands
+        EG:
+          title: Egypt
+        BG:
+          title: Bulgaria
+        SG:
+          title: Singapore
+        SV:
+          title: El Salvador
+        BD:
+          title: Bangladesh
+        TC:
+          title: Turks and Caicos Islands (the)
+        TH:
+          title: Thailand
+        AT:
+          title: Austria
+        GQ:
+          title: Equatorial Guinea
+        TR:
+          title: Türkiye
+        HT:
+          title: Haiti
+        UM:
+          title: United States Minor Outlying Islands (the)
+        MH:
+          title: Marshall Islands (the)
+        MY:
+          title: Malaysia
+        RU:
+          title: Russian Federation (the)
+        NI:
+          title: Nicaragua
+        BZ:
+          title: Belize
+        KP:
+          title: Korea (the Democratic People's Republic of)
+        VE:
+          title: Venezuela (Bolivarian Republic of)
+        IL:
+          title: Israel
+        GD:
+          title: Grenada
+        GI:
+          title: Gibraltar
+        TN:
+          title: Tunisia
+        DM:
+          title: Dominica
+        MO:
+          title: Macao
+        PR:
+          title: Puerto Rico
+        NF:
+          title: Norfolk Island
+        TW:
+          title: Taiwan (Province of China)
+        KN:
+          title: Saint Kitts and Nevis
+        PH:
+          title: Philippines (the)
+        WF:
+          title: Wallis and Futuna
+        JO:
+          title: Jordan
+        ME:
+          title: Montenegro
+        ES:
+          title: Spain
+        AZ:
+          title: Azerbaijan
+        MR:
+          title: Mauritania
+        SM:
+          title: San Marino
+        BL:
+          title: Saint Barthélemy
+        PK:
+          title: Pakistan
+        NZ:
+          title: New Zealand
+        GP:
+          title: Guadeloupe
+        NA:
+          title: Namibia
+        JM:
+          title: Jamaica
+        AX:
+          title: Åland Islands
+        CM:
+          title: Cameroon
+        US:
+          title: United States of America (the)
+        GU:
+          title: Guam
+        SB:
+          title: Solomon Islands
+        MV:
+          title: Maldives
+        SI:
+          title: Slovenia
+        CW:
+          title: Curaçao
+        BH:
+          title: Bahrain
+        VG:
+          title: Virgin Islands (British)
+        HK:
+          title: Hong Kong
+        SD:
+          title: Sudan (the)
+        AD:
+          title: Andorra
+        RO:
+          title: Romania
+        LU:
+          title: Luxembourg
+        VC:
+          title: Saint Vincent and the Grenadines
+        FO:
+          title: Faroe Islands (the)
+        GL:
+          title: Greenland
+        BW:
+          title: Botswana
+        CF:
+          title: Central African Republic (the)
+        CI:
+          title: Côte d'Ivoire
+        KG:
+          title: Kyrgyzstan
+        BV:
+          title: Bouvet Island
+        KY:
+          title: Cayman Islands (the)
+        LY:
+          title: Libya
+        MM:
+          title: Myanmar
+        MZ:
+          title: Mozambique
+        IR:
+          title: Iran (Islamic Republic of)
+        EH:
+          title: Western Sahara
+        IQ:
+          title: Iraq
+        BB:
+          title: Barbados
+        SZ:
+          title: Eswatini
+        IE:
+          title: Ireland
+        FK:
+          title: Falkland Islands (the) [Malvinas]
+        NP:
+          title: Nepal
+        BE:
+          title: Belgium
+        AU:
+          title: Australia
+        TZ:
+          title: Tanzania, the United Republic of
+        UY:
+          title: Uruguay
+        SA:
+          title: Saudi Arabia
+        ZW:
+          title: Zimbabwe
+        MD:
+          title: Moldova (the Republic of)
+        HU:
+          title: Hungary
+        PG:
+          title: Papua New Guinea
+        AF:
+          title: Afghanistan
+        MU:
+          title: Mauritius
+        SL:
+          title: Sierra Leone
+        GT:
+          title: Guatemala
+        BO:
+          title: Bolivia (Plurinational State of)
+        TM:
+          title: Turkmenistan
+        NE:
+          title: Niger (the)
+        CL:
+          title: Chile
+        FI:
+          title: Finland
+        MN:
+          title: Mongolia
+        'NO':
+          title: Norway
+        GG:
+          title: Guernsey
+        EE:
+          title: Estonia
+        KM:
+          title: Comoros (the)
+        LT:
+          title: Lithuania
+        ER:
+          title: Eritrea
+        SH:
+          title: Saint Helena, Ascension and Tristan da Cunha
+        SY:
+          title: Syrian Arab Republic (the)
+        LC:
+          title: Saint Lucia
+        CC:
+          title: Cocos (Keeling) Islands (the)
+        PL:
+          title: Poland
+        CH:
+          title: Switzerland
+        ST:
+          title: Sao Tome and Principe
+        NG:
+          title: Nigeria
+        TF:
+          title: French Southern Territories (the)
+        KI:
+          title: Kiribati
+        LV:
+          title: Latvia
+        UG:
+          title: Uganda
+        CY:
+          title: Cyprus
+        MW:
+          title: Malawi
+        CG:
+          title: Congo (the)
+        MF:
+          title: Saint Martin (French part)
+        PM:
+          title: Saint Pierre and Miquelon
+        IS:
+          title: Iceland
+        BI:
+          title: Burundi
+        TK:
+          title: Tokelau
+        SE:
+          title: Sweden
+        AE:
+          title: United Arab Emirates (the)
+        KZ:
+          title: Kazakhstan
+        LB:
+          title: Lebanon
+        AR:
+          title: Argentina
+        GS:
+          title: South Georgia and the South Sandwich Islands
+        BF:
+          title: Burkina Faso
+        DJ:
+          title: Djibouti
+        BA:
+          title: Bosnia and Herzegovina
+        SJ:
+          title: Svalbard and Jan Mayen
+        FR:
+          title: France
+        GM:
+          title: Gambia (the)
+        HR:
+          title: Croatia
+        BS:
+          title: Bahamas (the)
+        RS:
+          title: Serbia
+        WS:
+          title: Samoa
+        GB:
+          title: United Kingdom of Great Britain and Northern Ireland (the)
+        LS:
+          title: Lesotho
+        UZ:
+          title: Uzbekistan
+        PF:
+          title: French Polynesia
+        AG:
+          title: Antigua and Barbuda
+        GW:
+          title: Guinea-Bissau
+        FJ:
+          title: Fiji
+        CO:
+          title: Colombia
+        ZM:
+          title: Zambia
+        AQ:
+          title: Antarctica
+        GF:
+          title: French Guiana
+        NU:
+          title: Niue
+        BN:
+          title: Brunei Darussalam
+        RW:
+          title: Rwanda
+        PT:
+          title: Portugal
+        SO:
+          title: Somalia
+        MT:
+          title: Malta
+        PW:
+          title: Palau
+        KH:
+          title: Cambodia
+        SX:
+          title: Sint Maarten (Dutch part)
+        TJ:
+          title: Tajikistan
+        KR:
+          title: Korea (the Republic of)
+        SS:
+          title: South Sudan
+        PY:
+          title: Paraguay
+        AM:
+          title: Armenia
+        MC:
+          title: Monaco
+        CX:
+          title: Christmas Island
+        TT:
+          title: Trinidad and Tobago
+        UA:
+          title: Ukraine
+        LI:
+          title: Liechtenstein
+        BR:
+          title: Brazil
+        PA:
+          title: Panama
+        MQ:
+          title: Martinique
+        NR:
+          title: Nauru
+        PN:
+          title: Pitcairn
+        GA:
+          title: Gabon
+        TG:
+          title: Togo
+        FM:
+          title: Micronesia (Federated States of)
+        GN:
+          title: Guinea
+        YT:
+          title: Mayotte
+        CD:
+          title: Congo (the Democratic Republic of the)
+        MG:
+          title: Madagascar
+        AI:
+          title: Anguilla
+        YE:
+          title: Yemen
+        HN:
+          title: Honduras
+        IT:
+          title: Italy
+        RE:
+          title: Réunion
+        DO:
+          title: Dominican Republic (the)
+        IO:
+          title: British Indian Ocean Territory (the)
+        GR:
+          title: Greece
+        AS:
+          title: American Samoa
+        ZA:
+          title: South Africa
+        GY:
+          title: Guyana
+        BY:
+          title: Belarus
+        LK:
+          title: Sri Lanka
+        BT:
+          title: Bhutan
+        OM:
+          title: Oman
+        CK:
+          title: Cook Islands (the)
+        KE:
+          title: Kenya
+        CZ:
+          title: Czechia
+        GH:
+          title: Ghana
+        MX:
+          title: Mexico
+        SK:
+          title: Slovakia
+        MK:
+          title: North Macedonia
+        DZ:
+          title: Algeria
+        QA:
+          title: Qatar
+        CU:
+          title: Cuba
+        BJ:
+          title: Benin
+        LA:
+          title: Lao People's Democratic Republic (the)
+        TL:
+          title: Timor-Leste
+        DK:
+          title: Denmark
+        VI:
+          title: Virgin Islands (U.S.)
+        NL:
+          title: Netherlands (Kingdom of the)
+        CA:
+          title: Canada
+        BM:
+          title: Bermuda
+        JP:
+          title: Japan
+        AW:
+          title: Aruba
+        TO:
+          title: Tonga
+        CN:
+          title: China
+        VU:
+          title: Vanuatu
+        AL:
+          title: Albania
+        ET:
+          title: Ethiopia
+        IM:
+          title: Isle of Man
+        SN:
+          title: Senegal
+        PE:
+          title: Peru
+        BQ:
+          title: Bonaire, Sint Eustatius and Saba
+        NC:
+          title: New Caledonia
+        MP:
+          title: Northern Mariana Islands (the)
+        GE:
+          title: Georgia
+        CR:
+          title: Costa Rica
+        VA:
+          title: Holy See (the)
+        PS:
+          title: Palestine, State of
+        EC:
+          title: Ecuador
+        TV:
+          title: Tuvalu
+        LR:
+          title: Liberia
+        MS:
+          title: Montserrat
+        TD:
+          title: Chad
+        SC:
+          title: Seychelles
+        DE:
+          title: Germany
+        SR:
+          title: Suriname
+    PaymentMethodEasyPayMethod:
+      title: 간편 결제 수단
+      description: 간편 결제 수단
+      oneOf:
+      - $ref: '#/components/schemas/PaymentMethodCard'
+      - $ref: '#/components/schemas/PaymentMethodEasyPayMethodCharge'
+      - $ref: '#/components/schemas/PaymentMethodTransfer'
+      discriminator:
+        propertyName: type
+        mapping:
+          PaymentMethodCard: '#/components/schemas/PaymentMethodCard'
+          PaymentMethodEasyPayMethodCharge: '#/components/schemas/PaymentMethodEasyPayMethodCharge'
+          PaymentMethodTransfer: '#/components/schemas/PaymentMethodTransfer'
+      x-portone-title: 간편 결제 수단
+      x-portone-discriminator:
+        PaymentMethodCard:
+          title: 결제수단 카드 정보
+        PaymentMethodTransfer:
+          title: 계좌 이체 상세 정보
+        PaymentMethodEasyPayMethodCharge:
+          title: 충전식 포인트 결제 정보
+    PaymentInstallment:
+      title: 할부 정보
+      description: 할부 정보
+      type: object
+      required:
+      - month
+      - isInterestFree
+      properties:
+        month:
+          type: integer
+          format: int32
+          title: 할부 개월 수
+        isInterestFree:
+          type: boolean
+          title: 무이자할부 여부
+        isInterestFreeFromMerchant:
+          type: boolean
+          title: 상점 부담 무이자할부 여부
+          description: 정보 필요시 포트원과 협의해 주세요.
+      x-portone-title: 할부 정보
+    PaymentWebhookPaymentStatus:
+      title: 웹훅 발송 시 결제 건 상태
+      description: 웹훅 발송 시 결제 건 상태
+      type: string
+      enum:
+      - READY
+      - VIRTUAL_ACCOUNT_ISSUED
+      - PAID
+      - FAILED
+      - PARTIAL_CANCELLED
+      - CANCELLED
+      - PAY_PENDING
+      x-portone-title: 웹훅 발송 시 결제 건 상태
+      x-portone-enum:
+        VIRTUAL_ACCOUNT_ISSUED: {}
+        PAID: {}
+        READY: {}
+        FAILED: {}
+        PAY_PENDING: {}
+        CANCELLED: {}
+        PARTIAL_CANCELLED: {}
+    PortOneVersion:
+      title: 포트원 버전
+      description: 포트원 버전
+      type: string
+      enum:
+      - V1
+      - V2
+      x-portone-title: 포트원 버전
+      x-portone-enum:
+        V1: {}
+        V2: {}
+    SelectedChannel:
+      title: (결제, 본인인증 등에) 선택된 채널 정보
+      description: (결제, 본인인증 등에) 선택된 채널 정보
+      type: object
+      required:
+      - type
+      - pgProvider
+      - pgMerchantId
+      properties:
+        type:
+          $ref: '#/components/schemas/SelectedChannelType'
+          title: 채널 타입
+        id:
+          type: string
+          title: 채널 아이디
+        key:
+          type: string
+          title: 채널 키
+        name:
+          type: string
+          title: 채널 명
+        pgProvider:
+          $ref: '#/components/schemas/PgProvider'
+          title: PG사 결제 모듈
+        pgMerchantId:
+          type: string
+          title: PG사 고객사 식별 아이디
+      x-portone-title: (결제, 본인인증 등에) 선택된 채널 정보
+    Currency:
+      title: 통화
+      description: 통화
+      type: string
+      enum:
+      - KRW
+      - USD
+      - JPY
+      - AED
+      - AFN
+      - ALL
+      - AMD
+      - ANG
+      - AOA
+      - ARS
+      - AUD
+      - AWG
+      - AZN
+      - BAM
+      - BBD
+      - BDT
+      - BGN
+      - BHD
+      - BIF
+      - BMD
+      - BND
+      - BOB
+      - BOV
+      - BRL
+      - BSD
+      - BTN
+      - BWP
+      - BYN
+      - BZD
+      - CAD
+      - CDF
+      - CHE
+      - CHF
+      - CHW
+      - CLF
+      - CLP
+      - CNY
+      - COP
+      - COU
+      - CRC
+      - CUC
+      - CUP
+      - CVE
+      - CZK
+      - DJF
+      - DKK
+      - DOP
+      - DZD
+      - EGP
+      - ERN
+      - ETB
+      - EUR
+      - FJD
+      - FKP
+      - GBP
+      - GEL
+      - GHS
+      - GIP
+      - GMD
+      - GNF
+      - GTQ
+      - GYD
+      - HKD
+      - HNL
+      - HRK
+      - HTG
+      - HUF
+      - IDR
+      - ILS
+      - INR
+      - IQD
+      - IRR
+      - ISK
+      - JMD
+      - JOD
+      - KES
+      - KGS
+      - KHR
+      - KMF
+      - KPW
+      - KWD
+      - KYD
+      - KZT
+      - LAK
+      - LBP
+      - LKR
+      - LRD
+      - LSL
+      - LYD
+      - MAD
+      - MDL
+      - MGA
+      - MKD
+      - MMK
+      - MNT
+      - MOP
+      - MRU
+      - MUR
+      - MVR
+      - MWK
+      - MXN
+      - MXV
+      - MYR
+      - MZN
+      - NAD
+      - NGN
+      - NIO
+      - NOK
+      - NPR
+      - NZD
+      - OMR
+      - PAB
+      - PEN
+      - PGK
+      - PHP
+      - PKR
+      - PLN
+      - PYG
+      - QAR
+      - RON
+      - RSD
+      - RUB
+      - RWF
+      - SAR
+      - SBD
+      - SCR
+      - SDG
+      - SEK
+      - SGD
+      - SHP
+      - SLE
+      - SLL
+      - SOS
+      - SRD
+      - SSP
+      - STN
+      - SVC
+      - SYP
+      - SZL
+      - THB
+      - TJS
+      - TMT
+      - TND
+      - TOP
+      - TRY
+      - TTD
+      - TWD
+      - TZS
+      - UAH
+      - UGX
+      - USN
+      - UYI
+      - UYU
+      - UYW
+      - UZS
+      - VED
+      - VES
+      - VND
+      - VUV
+      - WST
+      - XAF
+      - XAG
+      - XAU
+      - XBA
+      - XBB
+      - XBC
+      - XBD
+      - XCD
+      - XDR
+      - XOF
+      - XPD
+      - XPF
+      - XPT
+      - XSU
+      - XTS
+      - XUA
+      - XXX
+      - YER
+      - ZAR
+      - ZMW
+      - ZWL
+      x-portone-title: 통화
+      x-portone-enum:
+        OMR:
+          title: Rial Omani
+        CUC:
+          title: Peso Convertible
+        BBD:
+          title: Barbados Dollar
+        PLN:
+          title: Zloty
+        SVC:
+          title: El Salvador Colon
+        BMD:
+          title: Bermudian Dollar
+        TJS:
+          title: Somoni
+        TND:
+          title: Tunisian Dinar
+        GNF:
+          title: Guinean Franc
+        SDG:
+          title: Sudanese Pound
+        MRU:
+          title: Ouguiya
+        XBB:
+          title: Bond Markets Unit European Monetary Unit (E.M.U.-6)
+        PKR:
+          title: Pakistan Rupee
+        FKP:
+          title: Falkland Islands Pound
+        MUR:
+          title: Mauritius Rupee
+        XAF:
+          title: CFA Franc BEAC
+        SAR:
+          title: Saudi Riyal
+        CAD:
+          title: Canadian Dollar
+        HKD:
+          title: Hong Kong Dollar
+        PYG:
+          title: Guarani
+        MGA:
+          title: Malagasy Ariary
+        UYI:
+          title: Uruguay Peso en Unidades Indexadas (UI)
+        AUD:
+          title: Australian Dollar
+        AMD:
+          title: Armenian Dram
+        YER:
+          title: Yemeni Rial
+        CHE:
+          title: WIR Euro
+        MMK:
+          title: Kyat
+        SEK:
+          title: Swedish Krona
+        TRY:
+          title: Turkish Lira
+        XBC:
+          title: Bond Markets Unit European Unit of Account 9 (E.U.A.-9)
+        KES:
+          title: Kenyan Shilling
+        GEL:
+          title: Lari
+        GTQ:
+          title: Quetzal
+        TZS:
+          title: Tanzanian Shilling
+        CUP:
+          title: Cuban Peso
+        ALL:
+          title: Lek
+        ERN:
+          title: Nakfa
+        BRL:
+          title: Brazilian Real
+        UGX:
+          title: Uganda Shilling
+        XUA:
+          title: ADB Unit of Account
+        GIP:
+          title: Gibraltar Pound
+        MZN:
+          title: Mozambique Metical
+        KRW:
+          title: 대한민국 원화
+        JOD:
+          title: Jordanian Dinar
+        IQD:
+          title: Iraqi Dinar
+        VUV:
+          title: Vatu
+        XXX:
+          title: The codes assigned for transactions where no currency is involved
+        UZS:
+          title: Uzbekistan Sum
+        BOV:
+          title: Mvdol
+        UAH:
+          title: Hryvnia
+        PEN:
+          title: Sol
+        KMF:
+          title: 'Comorian Franc '
+        DOP:
+          title: Dominican Peso
+        BDT:
+          title: Taka
+        LKR:
+          title: Sri Lanka Rupee
+        FJD:
+          title: Fiji Dollar
+        LSL:
+          title: Loti
+        BSD:
+          title: Bahamian Dollar
+        SRD:
+          title: Surinam Dollar
+        XTS:
+          title: Codes specifically reserved for testing purposes
+        SHP:
+          title: Saint Helena Pound
+        LRD:
+          title: Liberian Dollar
+        QAR:
+          title: Qatari Rial
+        BND:
+          title: Brunei Dollar
+        CDF:
+          title: Congolese Franc
+        SLE:
+          title: Leone
+        USN:
+          title: US Dollar (Next day)
+        VES:
+          title: Bolívar Soberano
+        TMT:
+          title: Turkmenistan New Manat
+        CHW:
+          title: WIR Franc
+        BGN:
+          title: Bulgarian Lev
+        JMD:
+          title: Jamaican Dollar
+        SZL:
+          title: Lilangeni
+        CZK:
+          title: Czech Koruna
+        ZMW:
+          title: Zambian Kwacha
+        UYU:
+          title: Peso Uruguayo
+        NPR:
+          title: Nepalese Rupee
+        EGP:
+          title: Egyptian Pound
+        AZN:
+          title: Azerbaijan Manat
+        CLP:
+          title: Chilean Peso
+        MOP:
+          title: Pataca
+        SCR:
+          title: Seychelles Rupee
+        HTG:
+          title: Gourde
+        VND:
+          title: Dong
+        LAK:
+          title: Lao Kip
+        BTN:
+          title: Ngultrum
+        GBP:
+          title: Pound Sterling
+        SSP:
+          title: South Sudanese Pound
+        XPD:
+          title: Palladium
+        TWD:
+          title: New Taiwan Dollar
+        DZD:
+          title: Algerian Dinar
+        MXN:
+          title: Mexican Peso
+        XDR:
+          title: SDR (Special Drawing Right)
+        ZWL:
+          title: Zimbabwe Dollar
+        AWG:
+          title: Aruban Florin
+        THB:
+          title: Baht
+        ISK:
+          title: Iceland Krona
+        LBP:
+          title: Lebanese Pound
+        SGD:
+          title: Singapore Dollar
+        MWK:
+          title: Malawi Kwacha
+        KZT:
+          title: Tenge
+        CRC:
+          title: Costa Rican Colon
+        WST:
+          title: Tala
+        DJF:
+          title: Djibouti Franc
+        LYD:
+          title: Libyan Dinar
+        NGN:
+          title: Naira
+        BIF:
+          title: Burundi Franc
+        AED:
+          title: UAE Dirham
+        CHF:
+          title: Swiss Franc
+        RWF:
+          title: Rwanda Franc
+        XBD:
+          title: Bond Markets Unit European Unit of Account 17 (E.U.A.-17)
+        INR:
+          title: Indian Rupee
+        CLF:
+          title: Unidad de Fomento
+        XOF:
+          title: CFA Franc BCEAO
+        COU:
+          title: Unidad de Valor Real
+        MXV:
+          title: Mexican Unidad de Inversion (UDI)
+        PGK:
+          title: Kina
+        CNY:
+          title: Yuan Renminbi
+        SYP:
+          title: Syrian Pound
+        VED:
+          title: Bolívar Soberano
+        RON:
+          title: Romanian Leu
+        AFN:
+          title: Afghani
+        PHP:
+          title: Philippine Peso
+        MDL:
+          title: Moldovan Leu
+        KHR:
+          title: Riel
+        XPT:
+          title: Platinum
+        COP:
+          title: Colombian Peso
+        DKK:
+          title: Danish Krone
+        KYD:
+          title: Cayman Islands Dollar
+        XPF:
+          title: CFP Franc
+        GMD:
+          title: Dalasi
+        MVR:
+          title: Rufiyaa
+        STN:
+          title: Dobra
+        TTD:
+          title: Trinidad and Tobago Dollar
+        PAB:
+          title: Balboa
+        XAU:
+          title: Gold
+        XAG:
+          title: Silver
+        JPY:
+          title: 일본 엔화
+        TOP:
+          title: Pa’anga
+        BWP:
+          title: Pula
+        MKD:
+          title: Denar
+        ARS:
+          title: Argentine Peso
+        HUF:
+          title: Forint
+        MYR:
+          title: Malaysian Ringgit
+        USD:
+          title: 미국 달러
+        SLL:
+          title: Leone
+        MAD:
+          title: Moroccan Dirham
+        RUB:
+          title: Russian Ruble
+        MNT:
+          title: Tugrik
+        BOB:
+          title: Boliviano
+        GYD:
+          title: Guyana Dollar
+        SBD:
+          title: Solomon Islands Dollar
+        XBA:
+          title: Bond Markets Unit European Composite Unit (EURCO)
+        BHD:
+          title: Bahraini Dinar
+        HNL:
+          title: Lempira
+        UYW:
+          title: Unidad Previsional
+        NZD:
+          title: New Zealand Dollar
+        XCD:
+          title: East Caribbean Dollar
+        XSU:
+          title: Sucre
+        KGS:
+          title: Som
+        AOA:
+          title: Kwanza
+        BZD:
+          title: Belize Dollar
+        IDR:
+          title: Rupiah
+        SOS:
+          title: Somali Shilling
+        NIO:
+          title: Cordoba Oro
+        GHS:
+          title: Ghana Cedi
+        ANG:
+          title: Netherlands Antillean Guilder
+        RSD:
+          title: Serbian Dinar
+        ILS:
+          title: New Israeli Sheqel
+        NOK:
+          title: Norwegian Krone
+        KWD:
+          title: Kuwaiti Dinar
+        NAD:
+          title: Namibia Dollar
+        ETB:
+          title: Ethiopian Birr
+        BYN:
+          title: Belarusian Ruble
+        KPW:
+          title: North Korean Won
+        EUR:
+          title: Euro
+        CVE:
+          title: Cabo Verde Escudo
+        ZAR:
+          title: Rand
+        IRR:
+          title: Iranian Rial
+        HRK:
+          title: Kuna (Replaced by EUR)
+        BAM:
+          title: Convertible Mark
+    PaymentCashReceipt:
+      title: 결제 건 내 현금영수증 정보
+      description: 결제 건 내 현금영수증 정보
+      oneOf:
+      - $ref: '#/components/schemas/CancelledPaymentCashReceipt'
+      - $ref: '#/components/schemas/IssuedPaymentCashReceipt'
+      discriminator:
+        propertyName: status
+        mapping:
+          CANCELLED: '#/components/schemas/CancelledPaymentCashReceipt'
+          ISSUED: '#/components/schemas/IssuedPaymentCashReceipt'
+      x-portone-title: 결제 건 내 현금영수증 정보
+      x-portone-discriminator:
+        ISSUED:
+          title: 발급 완료
+        CANCELLED:
+          title: 발급 취소
+    CashReceiptIssuanceStatus:
+      title: 현금영수증 발행여부
+      description: 현금영수증 발행여부
+      type: string
+      enum:
+      - ISSUED
+      - NOT_ISSUED
+      x-portone-title: 현금영수증 발행여부
+      x-portone-enum:
+        ISSUED:
+          title: 발행 완료
+        NOT_ISSUED:
+          title: 미발행
+    PaymentProduct:
+      title: 상품 정보
+      description: 상품 정보
+      type: object
+      required:
+      - id
+      - name
+      - amount
+      - quantity
+      properties:
+        id:
+          type: string
+          title: 상품 고유 식별자
+          description: 고객사가 직접 부여한 식별자입니다.
+        name:
+          type: string
+          title: 상품명
+        tag:
+          type: string
+          title: 상품 태그
+          description: 카테고리 등으로 활용될 수 있습니다.
+        code:
+          type: string
+          title: 상품 코드
+        amount:
+          type: integer
+          format: int64
+          title: 상품 단위가격
+        quantity:
+          type: integer
+          format: int32
+          title: 주문 수량
+        link:
+          type: string
+          title: 판매 링크
+      x-portone-title: 상품 정보
+    PaymentMethodGiftCertificate:
+      title: 상품권 상세 정보
+      description: 상품권 상세 정보
+      type: object
+      required:
+      - type
+      - approvalNumber
+      properties:
+        type:
+          type: string
+        giftCertificateType:
+          $ref: '#/components/schemas/PaymentMethodGiftCertificateType'
+          title: 상품권 종류
+        approvalNumber:
+          type: string
+          title: 상품권 승인 번호
+      x-portone-title: 상품권 상세 정보
+    PaymentMethodVirtualAccountRefundStatus:
+      title: 가상계좌 환불 상태
+      description: 가상계좌 환불 상태
+      type: string
+      enum:
+      - PENDING
+      - PARTIAL_REFUND_FAILED
+      - FAILED
+      - COMPLETED
+      x-portone-title: 가상계좌 환불 상태
+      x-portone-enum:
+        PENDING:
+          title: 처리중
+        PARTIAL_REFUND_FAILED:
+          title: 부분 환불 실패
+        FAILED:
+          title: 환불 실패
+        COMPLETED:
+          title: 환불 완료
+    DisputeStatus:
+      title: 분쟁 상태
+      description: 분쟁 상태
+      type: string
+      enum:
+      - UNRESOLVED
+      - RESOLVED
+      x-portone-title: 분쟁 상태
+      x-portone-enum:
+        UNRESOLVED:
+          title: 분쟁 발생 상태
+          description: 분쟁이 발생하였으며 아직 해소되지 않은 상태입니다.
+        RESOLVED:
+          title: 분쟁 해소 상태
+          description: 분쟁이 발생하였으나 해소된 상태입니다.
+    IssuedPaymentCashReceipt:
+      title: 발급 완료된 현금영수증
+      description: 발급 완료된 현금영수증
+      type: object
+      required:
+      - status
+      - issueNumber
+      - totalAmount
+      - currency
+      - issuedAt
+      properties:
+        status:
+          type: string
+          title: 결제 건 내 현금영수증 상태
+        type:
+          $ref: '#/components/schemas/CashReceiptType'
+          title: 현금영수증 유형
+        pgReceiptId:
+          type: string
+          title: PG사 영수증 발급 아이디
+        issueNumber:
+          type: string
+          title: 승인 번호
+        totalAmount:
+          type: integer
+          format: int64
+          title: 총 금액
+        taxFreeAmount:
+          type: integer
+          format: int64
+          title: 면세액
+        currency:
+          $ref: '#/components/schemas/Currency'
+          title: 통화
+        url:
+          type: string
+          title: 현금영수증 URL
+        issuedAt:
+          type: string
+          format: date-time
+          title: 발급 시점
+      x-portone-title: 발급 완료된 현금영수증
+    Payment:
+      title: 결제 건
+      description: 결제 건
+      oneOf:
+      - $ref: '#/components/schemas/CancelledPayment'
+      - $ref: '#/components/schemas/FailedPayment'
+      - $ref: '#/components/schemas/PaidPayment'
+      - $ref: '#/components/schemas/PartialCancelledPayment'
+      - $ref: '#/components/schemas/PayPendingPayment'
+      - $ref: '#/components/schemas/ReadyPayment'
+      - $ref: '#/components/schemas/VirtualAccountIssuedPayment'
+      discriminator:
+        propertyName: status
+        mapping:
+          CANCELLED: '#/components/schemas/CancelledPayment'
+          FAILED: '#/components/schemas/FailedPayment'
+          PAID: '#/components/schemas/PaidPayment'
+          PARTIAL_CANCELLED: '#/components/schemas/PartialCancelledPayment'
+          PAY_PENDING: '#/components/schemas/PayPendingPayment'
+          READY: '#/components/schemas/ReadyPayment'
+          VIRTUAL_ACCOUNT_ISSUED: '#/components/schemas/VirtualAccountIssuedPayment'
+      x-portone-title: 결제 건
+      x-portone-discriminator:
+        VIRTUAL_ACCOUNT_ISSUED:
+          title: 가상계좌 발급 완료
+        PAID:
+          title: 결제 완료
+        READY:
+          title: 결제 준비
+        FAILED:
+          title: 결제 실패
+        PAY_PENDING:
+          title: 결제 완료 대기
+        CANCELLED:
+          title: 결제 취소
+        PARTIAL_CANCELLED:
+          title: 결제 부분 취소
+    PgProvider:
+      title: PG사 결제 모듈
+      description: PG사 결제 모듈
+      type: string
+      enum:
+      - HTML5_INICIS
+      - PAYPAL
+      - PAYPAL_V2
+      - INICIS
+      - DANAL
+      - NICE
+      - DANAL_TPAY
+      - JTNET
+      - UPLUS
+      - NAVERPAY
+      - KAKAO
+      - SETTLE
+      - KCP
+      - MOBILIANS
+      - KAKAOPAY
+      - NAVERCO
+      - SYRUP
+      - KICC
+      - EXIMBAY
+      - SMILEPAY
+      - PAYCO
+      - KCP_BILLING
+      - ALIPAY
+      - PAYPLE
+      - CHAI
+      - BLUEWALNUT
+      - SMARTRO
+      - SMARTRO_V2
+      - PAYMENTWALL
+      - TOSSPAYMENTS
+      - KCP_QUICK
+      - DAOU
+      - GALAXIA
+      - TOSSPAY
+      - KCP_DIRECT
+      - SETTLE_ACC
+      - SETTLE_FIRM
+      - INICIS_UNIFIED
+      - KSNET
+      - PINPAY
+      - NICE_V2
+      - TOSS_BRANDPAY
+      - WELCOME
+      - TOSSPAY_V2
+      - INICIS_V2
+      - KPN
+      - KCP_V2
+      - HYPHEN
+      - EXIMBAY_V2
+      - INICIS_JP
+      - PAYLETTER_GLOBAL
+      - MOBILIANS_V2
+      - TRIPLE_A
+      - KICC_V2
+      - INNOPAY
+      - HECTO_GLOBAL
+      x-portone-title: PG사 결제 모듈
+      x-portone-enum:
+        KICC: {}
+        SYRUP: {}
+        KCP_BILLING: {}
+        SMARTRO_V2: {}
+        CHAI: {}
+        NICE_V2: {}
+        KAKAO: {}
+        DANAL: {}
+        KAKAOPAY: {}
+        EXIMBAY: {}
+        ALIPAY: {}
+        HTML5_INICIS: {}
+        WELCOME: {}
+        SMARTRO: {}
+        PAYLETTER_GLOBAL: {}
+        PAYCO: {}
+        SMILEPAY: {}
+        PAYMENTWALL: {}
+        NAVERPAY: {}
+        EXIMBAY_V2: {}
+        INNOPAY: {}
+        KCP_QUICK: {}
+        NAVERCO: {}
+        DAOU: {}
+        GALAXIA: {}
+        PINPAY: {}
+        MOBILIANS_V2: {}
+        INICIS_JP: {}
+        SETTLE_ACC: {}
+        TOSSPAY_V2: {}
+        TOSSPAY: {}
+        SETTLE_FIRM: {}
+        INICIS: {}
+        TOSS_BRANDPAY: {}
+        JTNET: {}
+        PAYPAL: {}
+        DANAL_TPAY: {}
+        KCP_DIRECT: {}
+        SETTLE: {}
+        MOBILIANS: {}
+        UPLUS: {}
+        HYPHEN: {}
+        PAYPAL_V2: {}
+        HECTO_GLOBAL: {}
+        TRIPLE_A: {}
+        KPN: {}
+        KICC_V2: {}
+        INICIS_V2: {}
+        KCP_V2: {}
+        INICIS_UNIFIED: {}
+        BLUEWALNUT: {}
+        NICE: {}
+        TOSSPAYMENTS: {}
+        PAYPLE: {}
+        KSNET: {}
+        KCP: {}
+    PaymentMethod:
+      title: 결제수단 정보
+      description: 결제수단 정보
+      oneOf:
+      - $ref: '#/components/schemas/PaymentMethodCard'
+      - $ref: '#/components/schemas/PaymentMethodConvenienceStore'
+      - $ref: '#/components/schemas/PaymentMethodCrypto'
+      - $ref: '#/components/schemas/PaymentMethodEasyPay'
+      - $ref: '#/components/schemas/PaymentMethodGiftCertificate'
+      - $ref: '#/components/schemas/PaymentMethodMobile'
+      - $ref: '#/components/schemas/PaymentMethodTransfer'
+      - $ref: '#/components/schemas/PaymentMethodVirtualAccount'
+      discriminator:
+        propertyName: type
+        mapping:
+          PaymentMethodCard: '#/components/schemas/PaymentMethodCard'
+          PaymentMethodConvenienceStore: '#/components/schemas/PaymentMethodConvenienceStore'
+          PaymentMethodCrypto: '#/components/schemas/PaymentMethodCrypto'
+          PaymentMethodEasyPay: '#/components/schemas/PaymentMethodEasyPay'
+          PaymentMethodGiftCertificate: '#/components/schemas/PaymentMethodGiftCertificate'
+          PaymentMethodMobile: '#/components/schemas/PaymentMethodMobile'
+          PaymentMethodTransfer: '#/components/schemas/PaymentMethodTransfer'
+          PaymentMethodVirtualAccount: '#/components/schemas/PaymentMethodVirtualAccount'
+      x-portone-title: 결제수단 정보
+      x-portone-discriminator:
+        PaymentMethodCard:
+          title: 결제수단 카드 정보
+        PaymentMethodConvenienceStore:
+          title: 편의점 결제 상세 정보
+        PaymentMethodEasyPay:
+          title: 간편 결제 상세 정보
+        PaymentMethodMobile:
+          title: 모바일 상세 정보
+        PaymentMethodGiftCertificate:
+          title: 상품권 상세 정보
+        PaymentMethodCrypto:
+          title: 암호화폐 결제 상세 정보
+        PaymentMethodTransfer:
+          title: 계좌 이체 상세 정보
+        PaymentMethodVirtualAccount:
+          title: 가상계좌 상세 정보
+    CardType:
+      title: 카드 유형
+      description: 카드 유형
+      type: string
+      enum:
+      - CREDIT
+      - DEBIT
+      - GIFT
+      x-portone-title: 카드 유형
+      x-portone-enum:
+        CREDIT:
+          title: 신용카드
+        DEBIT:
+          title: 체크카드
+        GIFT:
+          title: 기프트카드
+    CashReceiptType:
+      title: 발급 유형
+      description: 발급 유형
+      type: string
+      enum:
+      - PERSONAL
+      - CORPORATE
+      x-portone-title: 발급 유형
+      x-portone-enum:
+        PERSONAL:
+          title: 소득공제용
+        CORPORATE:
+          title: 지출증빙용
+    RegisteredPaymentEscrow:
+      title: 배송 정보 등록 완료
+      description: 배송 정보 등록 완료
+      type: object
+      required:
+      - status
+      - company
+      - invoiceNumber
+      properties:
+        status:
+          type: string
+          title: 에스크로 상태
+        company:
+          type: string
+          title: 택배사
+        invoiceNumber:
+          type: string
+          title: 송장번호
+        sentAt:
+          type: string
+          format: date-time
+          title: 발송 일시
+        appliedAt:
+          type: string
+          format: date-time
+          title: 배송등록 처리 일자
+      x-portone-title: 배송 정보 등록 완료
+    PaymentOrigin:
+      title: 결제 출처 정보
+      description: 결제 출처 정보
+      type: object
+      required:
+      - platformType
+      - ipAddress
+      properties:
+        platformType:
+          $ref: '#/components/schemas/PaymentOriginPlatformType'
+          title: 결제를 요청한 플랫폼 타입
+        userAgent:
+          type: string
+          title: 결제를 요청한 user agent 문자열
+        url:
+          type: string
+          title: 결제를 요청한 페이지 URL
+        ipAddress:
+          type: string
+          title: 결제를 요청한 IP 주소
+      x-portone-title: 결제 출처 정보
+    Address:
+      title: 분리 형식 주소
+      description: '분리 형식 주소
+
+
+        oneLine(한 줄 형식 주소) 필드는 항상 존재합니다.'
+      oneOf:
+      - $ref: '#/components/schemas/OneLineAddress'
+      - $ref: '#/components/schemas/SeparatedAddress'
+      discriminator:
+        propertyName: type
+        mapping:
+          ONE_LINE: '#/components/schemas/OneLineAddress'
+          SEPARATED: '#/components/schemas/SeparatedAddress'
+      x-portone-title: 분리 형식 주소
+      x-portone-description: oneLine(한 줄 형식 주소) 필드는 항상 존재합니다.
+      x-portone-discriminator:
+        ONE_LINE:
+          title: 한 줄 형식
+        SEPARATED:
+          title: 분리 형식
+    ChannelGroupSummary:
+      title: 채널 그룹 정보
+      description: 채널 그룹 정보
+      type: object
+      required:
+      - id
+      - name
+      - isForTest
+      properties:
+        id:
+          type: string
+          title: 채널 그룹 아이디
+        name:
+          type: string
+          title: 채널 그룹 이름
+        isForTest:
+          type: boolean
+          title: 테스트 채널 그룹 여부
+      x-portone-title: 채널 그룹 정보
+    Card:
+      title: 카드 상세 정보
+      description: 카드 상세 정보
+      type: object
+      properties:
+        publisher:
+          type: string
+          title: 발행사 코드
+        issuer:
+          type: string
+          title: 발급사 코드
+        brand:
+          $ref: '#/components/schemas/CardBrand'
+          title: 카드 브랜드
+        type:
+          $ref: '#/components/schemas/CardType'
+          title: 카드 유형
+        ownerType:
+          $ref: '#/components/schemas/CardOwnerType'
+          title: 카드 소유주 유형
+        bin:
+          type: string
+          title: 카드 번호 앞 6자리 또는 8자리의 BIN (Bank Identification Number)
+        name:
+          type: string
+          title: 카드 상품명
+        number:
+          type: string
+          title: 마스킹된 카드 번호
+      x-portone-title: 카드 상세 정보
+    PaymentCancellation:
+      title: 결제 취소 내역
+      description: 결제 취소 내역
+      oneOf:
+      - $ref: '#/components/schemas/FailedPaymentCancellation'
+      - $ref: '#/components/schemas/RequestedPaymentCancellation'
+      - $ref: '#/components/schemas/SucceededPaymentCancellation'
+      discriminator:
+        propertyName: status
+        mapping:
+          FAILED: '#/components/schemas/FailedPaymentCancellation'
+          REQUESTED: '#/components/schemas/RequestedPaymentCancellation'
+          SUCCEEDED: '#/components/schemas/SucceededPaymentCancellation'
+      x-portone-title: 결제 취소 내역
+      x-portone-discriminator:
+        REQUESTED:
+          title: 취소 요청
+        FAILED:
+          title: 취소 실패
+        SUCCEEDED:
+          title: 취소 완료
+    Dispute:
+      title: 분쟁 내역
+      description: 분쟁 내역
+      type: object
+      required:
+      - status
+      - reason
+      - createdAt
+      properties:
+        status:
+          $ref: '#/components/schemas/DisputeStatus'
+          title: 분쟁 상태
+        pgDisputeId:
+          type: string
+          title: PG사 분쟁 아이디
+        reason:
+          type: string
+          title: 분쟁 사유
+        createdAt:
+          type: string
+          format: date-time
+          title: 분쟁 발생 시각
+        resolvedAt:
+          type: string
+          format: date-time
+          title: 분쟁 해소 시각
+      x-portone-title: 분쟁 내역
+    FailedPayment:
+      title: 결제 실패 상태 건
+      description: 결제 실패 상태 건
+      type: object
+      required:
+      - status
+      - id
+      - transactionId
+      - merchantId
+      - storeId
+      - version
+      - requestedAt
+      - updatedAt
+      - statusChangedAt
+      - orderName
+      - amount
+      - currency
+      - customer
+      - origin
+      - failedAt
+      - failure
+      properties:
+        status:
+          type: string
+          title: 결제 건 상태
+        id:
+          type: string
+          title: 결제 건 아이디
+        transactionId:
+          type: string
+          title: 결제 건 포트원 채번 아이디
+          description: V1 결제 건의 경우 imp_uid에 해당합니다.
+        merchantId:
+          type: string
+          title: 고객사 아이디
+        storeId:
+          type: string
+          title: 상점 아이디
+        method:
+          $ref: '#/components/schemas/PaymentMethod'
+          title: 결제수단 정보
+        channel:
+          $ref: '#/components/schemas/SelectedChannel'
+          title: 결제 채널
+        channelGroup:
+          $ref: '#/components/schemas/ChannelGroupSummary'
+          title: 결제 채널 그룹 정보
+        version:
+          $ref: '#/components/schemas/PortOneVersion'
+          title: 포트원 버전
+        scheduleId:
+          type: string
+          title: 결제 예약 건 아이디
+          description: 결제 예약을 이용한 경우에만 존재
+        billingKey:
+          type: string
+          title: 결제 시 사용된 빌링키
+          description: 빌링키 결제인 경우에만 존재
+        webhooks:
+          title: 웹훅 발송 내역
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentWebhook'
+        requestedAt:
+          type: string
+          format: date-time
+          title: 결제 요청 시점
+        updatedAt:
+          type: string
+          format: date-time
+          title: 업데이트 시점
+        statusChangedAt:
+          type: string
+          format: date-time
+          title: 상태 업데이트 시점
+        orderName:
+          type: string
+          title: 주문명
+        amount:
+          $ref: '#/components/schemas/PaymentAmount'
+          title: 결제 금액 관련 세부 정보
+        currency:
+          $ref: '#/components/schemas/Currency'
+          title: 통화
+        customer:
+          $ref: '#/components/schemas/Customer'
+          title: 구매자 정보
+        origin:
+          $ref: '#/components/schemas/PaymentOrigin'
+          title: 결제 출처 정보
+        promotionId:
+          type: string
+          title: 프로모션 아이디
+        isCulturalExpense:
+          type: boolean
+          title: 문화비 지출 여부
+        escrow:
+          $ref: '#/components/schemas/PaymentEscrow'
+          title: 에스크로 결제 정보
+          description: 에스크로 결제인 경우 존재합니다.
+        products:
+          title: 상품 정보
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentProduct'
+        productCount:
+          type: integer
+          format: int32
+          title: 상품 갯수
+        customData:
+          type: string
+          title: 사용자 지정 데이터
+        country:
+          $ref: '#/components/schemas/Country'
+          title: 국가 코드
+        failedAt:
+          type: string
+          format: date-time
+          title: 결제 실패 시점
+        failure:
+          $ref: '#/components/schemas/PaymentFailure'
+          title: 결제 실패 정보
+      x-portone-title: 결제 실패 상태 건
+    OneLineAddress:
+      title: 한 줄 형식 주소
+      description: '한 줄 형식 주소
+
+
+        한 줄 형식 주소만 존재합니다.'
+      type: object
+      required:
+      - type
+      - oneLine
+      properties:
+        type:
+          type: string
+        oneLine:
+          type: string
+          title: 주소 (한 줄)
+      x-portone-title: 한 줄 형식 주소
+      x-portone-description: 한 줄 형식 주소만 존재합니다.
+    RejectConfirmedPaymentEscrow:
+      title: 구매 거절 확정
+      description: 구매 거절 확정
+      type: object
+      required:
+      - status
+      - company
+      - invoiceNumber
+      properties:
+        status:
+          type: string
+          title: 에스크로 상태
+        company:
+          type: string
+          title: 택배사
+        invoiceNumber:
+          type: string
+          title: 송장번호
+        sentAt:
+          type: string
+          format: date-time
+          title: 발송 일시
+        appliedAt:
+          type: string
+          format: date-time
+          title: 배송등록 처리 일자
+      x-portone-title: 구매 거절 확정
+    PaymentMethodCard:
+      title: 결제수단 카드 정보
+      description: 결제수단 카드 정보
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        card:
+          $ref: '#/components/schemas/Card'
+          title: 카드 상세 정보
+        approvalNumber:
+          type: string
+          title: 승인 번호
+        installment:
+          $ref: '#/components/schemas/PaymentInstallment'
+          title: 할부 정보
+        pointUsed:
+          type: boolean
+          title: 카드 포인트 사용여부
+      x-portone-title: 결제수단 카드 정보
+    PaymentWebhookRequest:
+      title: 웹훅 요청 정보
+      description: 웹훅 요청 정보
+      type: object
+      required:
+      - body
+      properties:
+        header:
+          type: string
+          title: 요청 헤더
+        body:
+          type: string
+          title: 요청 본문
+        requestedAt:
+          type: string
+          format: date-time
+          title: 요청 시점
+      x-portone-title: 웹훅 요청 정보
+    PaymentMethodVirtualAccount:
+      title: 가상계좌 상세 정보
+      description: 가상계좌 상세 정보
+      type: object
+      required:
+      - type
+      - accountNumber
+      properties:
+        type:
+          type: string
+        bank:
+          $ref: '#/components/schemas/Bank'
+          title: 표준 은행 코드
+        accountNumber:
+          type: string
+          title: 계좌번호
+        accountType:
+          $ref: '#/components/schemas/PaymentMethodVirtualAccountType'
+          title: 계좌 유형
+        remitteeName:
+          type: string
+          title: 계좌주
+        remitterName:
+          type: string
+          title: 송금인(입금자)
+        expiredAt:
+          type: string
+          format: date-time
+          title: 입금만료시점
+        issuedAt:
+          type: string
+          format: date-time
+          title: 계좌발급시점
+        refundStatus:
+          $ref: '#/components/schemas/PaymentMethodVirtualAccountRefundStatus'
+          title: 가상계좌 결제가 환불 단계일 때의 환불 상태
+      x-portone-title: 가상계좌 상세 정보
+    UnauthorizedError:
+      title: 인증 정보가 올바르지 않은 경우
+      description: 인증 정보가 올바르지 않은 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 인증 정보가 올바르지 않은 경우
+      x-portone-status-code: 401
+    PaymentFailure:
+      title: 결제 실패 정보
+      description: 결제 실패 정보
+      type: object
+      properties:
+        reason:
+          type: string
+          title: 실패 사유
+        pgCode:
+          type: string
+          title: PG사 실패 코드
+        pgMessage:
+          type: string
+          title: PG사 실패 메시지
+      x-portone-title: 결제 실패 정보
+    PaymentMethodConvenienceStore:
+      title: 편의점 결제 상세 정보
+      description: 편의점 결제 상세 정보
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        convenienceStoreBrand:
+          $ref: '#/components/schemas/ConvenienceStoreBrand'
+          title: 편의점 브랜드
+        confirmationNumber:
+          type: string
+          title: 결제 확인 번호
+        receiptNumber:
+          type: string
+          title: 결제 접수 번호
+        paymentDeadline:
+          type: string
+          format: date-time
+          title: 결제 마감 시간
+      x-portone-title: 편의점 결제 상세 정보
+    GetAllPaymentsByCursorResponse:
+      title: 결제 건 커서 기반 대용량 다건 조회 성공 응답 정보
+      description: 결제 건 커서 기반 대용량 다건 조회 성공 응답 정보
+      type: object
+      required:
+      - items
+      properties:
+        items:
+          title: 조회된 결제 건 및 커서 정보 리스트
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentWithCursor'
+      x-portone-title: 결제 건 커서 기반 대용량 다건 조회 성공 응답 정보
+    SeparatedAddress:
+      title: 분리 형식 주소
+      description: '분리 형식 주소
+
+
+        한 줄 형식 주소와 분리 형식 주소 모두 존재합니다.
+
+        한 줄 형식 주소는 분리 형식 주소를 이어 붙인 형태로 생성됩니다.'
+      type: object
+      required:
+      - type
+      - oneLine
+      - addressLine1
+      - addressLine2
+      properties:
+        type:
+          type: string
+        oneLine:
+          type: string
+          title: 주소 (한 줄)
+        addressLine1:
+          type: string
+          title: 상세 주소 1
+        addressLine2:
+          type: string
+          title: 상세 주소 2
+        city:
+          type: string
+          title: 시/군/구
+        province:
+          type: string
+          title: 주/도/시
+        country:
+          $ref: '#/components/schemas/Country'
+          title: 국가
+      x-portone-title: 분리 형식 주소
+      x-portone-description: '한 줄 형식 주소와 분리 형식 주소 모두 존재합니다.
+
+        한 줄 형식 주소는 분리 형식 주소를 이어 붙인 형태로 생성됩니다.'
+    ConfirmedPaymentEscrow:
+      title: 구매 확정
+      description: 구매 확정
+      type: object
+      required:
+      - status
+      - company
+      - invoiceNumber
+      - isAutomaticallyConfirmed
+      properties:
+        status:
+          type: string
+          title: 에스크로 상태
+        company:
+          type: string
+          title: 택배사
+        invoiceNumber:
+          type: string
+          title: 송장번호
+        sentAt:
+          type: string
+          format: date-time
+          title: 발송 일시
+        appliedAt:
+          type: string
+          format: date-time
+          title: 배송등록 처리 일자
+        isAutomaticallyConfirmed:
+          type: boolean
+          title: 자동 구매 확정 처리 여부
+      x-portone-title: 구매 확정
+    CardOwnerType:
+      title: 카드 소유주 유형
+      description: 카드 소유주 유형
+      type: string
+      enum:
+      - PERSONAL
+      - CORPORATE
+      x-portone-title: 카드 소유주 유형
+      x-portone-enum:
+        PERSONAL:
+          title: 개인
+        CORPORATE:
+          title: 법인
+    CardBrand:
+      title: 카드 브랜드
+      description: 카드 브랜드
+      type: string
+      enum:
+      - LOCAL
+      - MASTER
+      - UNIONPAY
+      - VISA
+      - JCB
+      - AMEX
+      - DINERS
+      x-portone-title: 카드 브랜드
+      x-portone-enum:
+        VISA: {}
+        JCB: {}
+        DINERS: {}
+        MASTER: {}
+        LOCAL: {}
+        AMEX: {}
+        UNIONPAY: {}
+    PaymentMethodGiftCertificateType:
+      title: 상품권 종류
+      description: 상품권 종류
+      type: string
+      enum:
+      - BOOKNLIFE
+      - SMART_MUNSANG
+      - CULTURELAND
+      - HAPPYMONEY
+      - CULTUREGIFT
+      x-portone-title: 상품권 종류
+      x-portone-enum:
+        SMART_MUNSANG: {}
+        CULTUREGIFT: {}
+        BOOKNLIFE: {}
+        CULTURELAND: {}
+        HAPPYMONEY: {}
+    PayPendingPayment:
+      title: 결제 완료 대기 상태 건
+      description: 결제 완료 대기 상태 건
+      type: object
+      required:
+      - status
+      - id
+      - transactionId
+      - merchantId
+      - storeId
+      - channel
+      - version
+      - requestedAt
+      - updatedAt
+      - statusChangedAt
+      - orderName
+      - amount
+      - currency
+      - customer
+      - origin
+      properties:
+        status:
+          type: string
+          title: 결제 건 상태
+        id:
+          type: string
+          title: 결제 건 아이디
+        transactionId:
+          type: string
+          title: 결제 건 포트원 채번 아이디
+          description: V1 결제 건의 경우 imp_uid에 해당합니다.
+        merchantId:
+          type: string
+          title: 고객사 아이디
+        storeId:
+          type: string
+          title: 상점 아이디
+        method:
+          $ref: '#/components/schemas/PaymentMethod'
+          title: 결제수단 정보
+        channel:
+          $ref: '#/components/schemas/SelectedChannel'
+          title: 결제 채널
+        channelGroup:
+          $ref: '#/components/schemas/ChannelGroupSummary'
+          title: 결제 채널 그룹 정보
+        version:
+          $ref: '#/components/schemas/PortOneVersion'
+          title: 포트원 버전
+        scheduleId:
+          type: string
+          title: 결제 예약 건 아이디
+          description: 결제 예약을 이용한 경우에만 존재
+        billingKey:
+          type: string
+          title: 결제 시 사용된 빌링키
+          description: 빌링키 결제인 경우에만 존재
+        webhooks:
+          title: 웹훅 발송 내역
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentWebhook'
+        requestedAt:
+          type: string
+          format: date-time
+          title: 결제 요청 시점
+        updatedAt:
+          type: string
+          format: date-time
+          title: 업데이트 시점
+        statusChangedAt:
+          type: string
+          format: date-time
+          title: 상태 업데이트 시점
+        orderName:
+          type: string
+          title: 주문명
+        amount:
+          $ref: '#/components/schemas/PaymentAmount'
+          title: 결제 금액 관련 세부 정보
+        currency:
+          $ref: '#/components/schemas/Currency'
+          title: 통화
+        customer:
+          $ref: '#/components/schemas/Customer'
+          title: 구매자 정보
+        origin:
+          $ref: '#/components/schemas/PaymentOrigin'
+          title: 결제 출처 정보
+        promotionId:
+          type: string
+          title: 프로모션 아이디
+        isCulturalExpense:
+          type: boolean
+          title: 문화비 지출 여부
+        escrow:
+          $ref: '#/components/schemas/PaymentEscrow'
+          title: 에스크로 결제 정보
+          description: 에스크로 결제인 경우 존재합니다.
+        products:
+          title: 상품 정보
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentProduct'
+        productCount:
+          type: integer
+          format: int32
+          title: 상품 갯수
+        customData:
+          type: string
+          title: 사용자 지정 데이터
+        country:
+          $ref: '#/components/schemas/Country'
+          title: 국가 코드
+        pgTxId:
+          type: string
+          title: PG사 거래 아이디
+      x-portone-title: 결제 완료 대기 상태 건
+    GetAllPaymentsByCursorBody:
+      title: GetAllPaymentsByCursorBody
+      description: 결제 건 커서 기반 대용량 다건 조회를 위한 입력 정보
+      type: object
+      properties:
+        storeId:
+          type: string
+          title: 상점 아이디
+          description: 접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 인증 정보의 상점 아이디를 사용합니다.
+        from:
+          type: string
+          format: date-time
+          title: 결제 건 생성시점 범위 조건의 시작
+          description: 값을 입력하지 않으면 end의 90일 전으로 설정됩니다.
+        until:
+          type: string
+          format: date-time
+          title: 결제 건 생성시점 범위 조건의 끝
+          description: 값을 입력하지 않으면 현재 시점으로 설정됩니다.
+        cursor:
+          type: string
+          title: 커서
+          description: 결제 건 리스트 중 어디서부터 읽어야 할지 가리키는 값입니다. 최초 요청일 경우 값을 입력하지 마시되, 두번째 요청 부터는 이전 요청 응답값의 cursor를 입력해주시면 됩니다.
+        size:
+          type: integer
+          format: int32
+          title: 페이지 크기
+          description: 미입력 시 기본값은 10 이며 최대 1000까지 허용
+      x-portone-description: 결제 건 커서 기반 대용량 다건 조회를 위한 입력 정보
+    VirtualAccountIssuedPayment:
+      title: 가상계좌 발급 완료 상태 건
+      description: 가상계좌 발급 완료 상태 건
+      type: object
+      required:
+      - status
+      - id
+      - transactionId
+      - merchantId
+      - storeId
+      - channel
+      - version
+      - requestedAt
+      - updatedAt
+      - statusChangedAt
+      - orderName
+      - amount
+      - currency
+      - customer
+      - origin
+      properties:
+        status:
+          type: string
+          title: 결제 건 상태
+        id:
+          type: string
+          title: 결제 건 아이디
+        transactionId:
+          type: string
+          title: 결제 건 포트원 채번 아이디
+          description: V1 결제 건의 경우 imp_uid에 해당합니다.
+        merchantId:
+          type: string
+          title: 고객사 아이디
+        storeId:
+          type: string
+          title: 상점 아이디
+        method:
+          $ref: '#/components/schemas/PaymentMethod'
+          title: 결제수단 정보
+        channel:
+          $ref: '#/components/schemas/SelectedChannel'
+          title: 결제 채널
+        channelGroup:
+          $ref: '#/components/schemas/ChannelGroupSummary'
+          title: 결제 채널 그룹 정보
+        version:
+          $ref: '#/components/schemas/PortOneVersion'
+          title: 포트원 버전
+        scheduleId:
+          type: string
+          title: 결제 예약 건 아이디
+          description: 결제 예약을 이용한 경우에만 존재
+        billingKey:
+          type: string
+          title: 결제 시 사용된 빌링키
+          description: 빌링키 결제인 경우에만 존재
+        webhooks:
+          title: 웹훅 발송 내역
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentWebhook'
+        requestedAt:
+          type: string
+          format: date-time
+          title: 결제 요청 시점
+        updatedAt:
+          type: string
+          format: date-time
+          title: 업데이트 시점
+        statusChangedAt:
+          type: string
+          format: date-time
+          title: 상태 업데이트 시점
+        orderName:
+          type: string
+          title: 주문명
+        amount:
+          $ref: '#/components/schemas/PaymentAmount'
+          title: 결제 금액 관련 세부 정보
+        currency:
+          $ref: '#/components/schemas/Currency'
+          title: 통화
+        customer:
+          $ref: '#/components/schemas/Customer'
+          title: 구매자 정보
+        origin:
+          $ref: '#/components/schemas/PaymentOrigin'
+          title: 결제 출처 정보
+        promotionId:
+          type: string
+          title: 프로모션 아이디
+        isCulturalExpense:
+          type: boolean
+          title: 문화비 지출 여부
+        escrow:
+          $ref: '#/components/schemas/PaymentEscrow'
+          title: 에스크로 결제 정보
+          description: 에스크로 결제인 경우 존재합니다.
+        products:
+          title: 상품 정보
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentProduct'
+        productCount:
+          type: integer
+          format: int32
+          title: 상품 갯수
+        customData:
+          type: string
+          title: 사용자 지정 데이터
+        country:
+          $ref: '#/components/schemas/Country'
+          title: 국가 코드
+        pgTxId:
+          type: string
+          title: PG사 거래 아이디
+      x-portone-title: 가상계좌 발급 완료 상태 건
+    PaymentWebhookResponse:
+      title: 웹훅 응답 정보
+      description: 웹훅 응답 정보
+      type: object
+      required:
+      - code
+      - header
+      - body
+      - respondedAt
+      properties:
+        code:
+          type: string
+          title: 응답 HTTP 코드
+        header:
+          type: string
+          title: 응답 헤더
+        body:
+          type: string
+          title: 응답 본문
+        respondedAt:
+          type: string
+          format: date-time
+          title: 응답 시점
+      x-portone-title: 웹훅 응답 정보
+    ReadyPayment:
+      title: 준비 상태 건
+      description: 준비 상태 건
+      type: object
+      required:
+      - status
+      - id
+      - transactionId
+      - merchantId
+      - storeId
+      - version
+      - requestedAt
+      - updatedAt
+      - statusChangedAt
+      - orderName
+      - amount
+      - currency
+      - customer
+      - origin
+      properties:
+        status:
+          type: string
+          title: 결제 건 상태
+        id:
+          type: string
+          title: 결제 건 아이디
+        transactionId:
+          type: string
+          title: 결제 건 포트원 채번 아이디
+          description: V1 결제 건의 경우 imp_uid에 해당합니다.
+        merchantId:
+          type: string
+          title: 고객사 아이디
+        storeId:
+          type: string
+          title: 상점 아이디
+        method:
+          $ref: '#/components/schemas/PaymentMethod'
+          title: 결제수단 정보
+        channel:
+          $ref: '#/components/schemas/SelectedChannel'
+          title: 결제 채널
+        channelGroup:
+          $ref: '#/components/schemas/ChannelGroupSummary'
+          title: 결제 채널 그룹 정보
+        version:
+          $ref: '#/components/schemas/PortOneVersion'
+          title: 포트원 버전
+        scheduleId:
+          type: string
+          title: 결제 예약 건 아이디
+          description: 결제 예약을 이용한 경우에만 존재
+        billingKey:
+          type: string
+          title: 결제 시 사용된 빌링키
+          description: 빌링키 결제인 경우에만 존재
+        webhooks:
+          title: 웹훅 발송 내역
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentWebhook'
+        requestedAt:
+          type: string
+          format: date-time
+          title: 결제 요청 시점
+        updatedAt:
+          type: string
+          format: date-time
+          title: 업데이트 시점
+        statusChangedAt:
+          type: string
+          format: date-time
+          title: 상태 업데이트 시점
+        orderName:
+          type: string
+          title: 주문명
+        amount:
+          $ref: '#/components/schemas/PaymentAmount'
+          title: 결제 금액 관련 세부 정보
+        currency:
+          $ref: '#/components/schemas/Currency'
+          title: 통화
+        customer:
+          $ref: '#/components/schemas/Customer'
+          title: 구매자 정보
+        origin:
+          $ref: '#/components/schemas/PaymentOrigin'
+          title: 결제 출처 정보
+        promotionId:
+          type: string
+          title: 프로모션 아이디
+        isCulturalExpense:
+          type: boolean
+          title: 문화비 지출 여부
+        escrow:
+          $ref: '#/components/schemas/PaymentEscrow'
+          title: 에스크로 결제의 배송 정보
+          description: 에스크로 결제인 경우 존재합니다.
+        products:
+          title: 상품 정보
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentProduct'
+        productCount:
+          type: integer
+          format: int32
+          title: 상품 갯수
+        customData:
+          type: string
+          title: 사용자 지정 데이터
+        country:
+          $ref: '#/components/schemas/Country'
+          title: 국가 코드
+      x-portone-title: 준비 상태 건
+    PaymentMethodVirtualAccountType:
+      title: 가상계좌 유형
+      description: 가상계좌 유형
+      type: string
+      enum:
+      - FIXED
+      - NORMAL
+      x-portone-title: 가상계좌 유형
+      x-portone-enum:
+        FIXED:
+          title: 고정식
+        NORMAL:
+          title: 회전식
+    PaymentMethodEasyPayMethodCharge:
+      title: 충전식 포인트 결제 정보
+      description: 충전식 포인트 결제 정보
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        bank:
+          $ref: '#/components/schemas/Bank'
+          title: 표준 은행 코드
+      x-portone-title: 충전식 포인트 결제 정보
+    PaymentWebhookStatus:
+      title: 웹훅 전송 상태
+      description: 웹훅 전송 상태
+      type: string
+      enum:
+      - SUCCEEDED
+      - FAILED_NOT_OK_RESPONSE
+      - FAILED_UNEXPECTED_ERROR
+      x-portone-title: 웹훅 전송 상태
+      x-portone-enum:
+        SUCCEEDED: {}
+        FAILED_NOT_OK_RESPONSE: {}
+        FAILED_UNEXPECTED_ERROR: {}
+    ForbiddenError:
+      title: 요청이 거절된 경우
+      description: 요청이 거절된 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 요청이 거절된 경우
+      x-portone-status-code: 403
+    PaidPayment:
+      title: 결제 완료 상태 건
+      description: 결제 완료 상태 건
+      type: object
+      required:
+      - status
+      - id
+      - transactionId
+      - merchantId
+      - storeId
+      - channel
+      - version
+      - requestedAt
+      - updatedAt
+      - statusChangedAt
+      - orderName
+      - amount
+      - currency
+      - customer
+      - origin
+      - paidAt
+      - disputes
+      properties:
+        status:
+          type: string
+          title: 결제 건 상태
+        id:
+          type: string
+          title: 결제 건 아이디
+        transactionId:
+          type: string
+          title: 결제 건 포트원 채번 아이디
+          description: V1 결제 건의 경우 imp_uid에 해당합니다.
+        merchantId:
+          type: string
+          title: 고객사 아이디
+        storeId:
+          type: string
+          title: 상점 아이디
+        method:
+          $ref: '#/components/schemas/PaymentMethod'
+          title: 결제수단 정보
+        channel:
+          $ref: '#/components/schemas/SelectedChannel'
+          title: 결제 채널
+        channelGroup:
+          $ref: '#/components/schemas/ChannelGroupSummary'
+          title: 결제 채널 그룹 정보
+        version:
+          $ref: '#/components/schemas/PortOneVersion'
+          title: 포트원 버전
+        scheduleId:
+          type: string
+          title: 결제 예약 건 아이디
+          description: 결제 예약을 이용한 경우에만 존재
+        billingKey:
+          type: string
+          title: 결제 시 사용된 빌링키
+          description: 빌링키 결제인 경우에만 존재
+        webhooks:
+          title: 웹훅 발송 내역
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentWebhook'
+        requestedAt:
+          type: string
+          format: date-time
+          title: 결제 요청 시점
+        updatedAt:
+          type: string
+          format: date-time
+          title: 업데이트 시점
+        statusChangedAt:
+          type: string
+          format: date-time
+          title: 상태 업데이트 시점
+        orderName:
+          type: string
+          title: 주문명
+        amount:
+          $ref: '#/components/schemas/PaymentAmount'
+          title: 결제 금액 관련 세부 정보
+        currency:
+          $ref: '#/components/schemas/Currency'
+          title: 통화
+        customer:
+          $ref: '#/components/schemas/Customer'
+          title: 구매자 정보
+        origin:
+          $ref: '#/components/schemas/PaymentOrigin'
+          title: 결제 출처 정보
+        promotionId:
+          type: string
+          title: 프로모션 아이디
+        isCulturalExpense:
+          type: boolean
+          title: 문화비 지출 여부
+        escrow:
+          $ref: '#/components/schemas/PaymentEscrow'
+          title: 에스크로 결제 정보
+          description: 에스크로 결제인 경우 존재합니다.
+        products:
+          title: 상품 정보
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentProduct'
+        productCount:
+          type: integer
+          format: int32
+          title: 상품 갯수
+        customData:
+          type: string
+          title: 사용자 지정 데이터
+        country:
+          $ref: '#/components/schemas/Country'
+          title: 국가 코드
+        paidAt:
+          type: string
+          format: date-time
+          title: 결제 완료 시점
+        pgTxId:
+          type: string
+          title: PG사 거래 아이디
+        pgResponse:
+          type: string
+          title: PG사 거래 응답 본문
+        cashReceipt:
+          $ref: '#/components/schemas/PaymentCashReceipt'
+          title: 현금영수증
+        cashReceiptIssuanceStatus:
+          $ref: '#/components/schemas/CashReceiptIssuanceStatus'
+          title: 현금영수증 발행여부
+          description: '승인 시점에 확인된 발행여부입니다.
+
+            발행번호 없이 발행여부만 제공 가능한 경우, ISSUED이면서 cashReceipt가 존재하지 않을 수 있습니다.'
+        receiptUrl:
+          type: string
+          title: 거래 영수증 URL
+        disputes:
+          title: 분쟁 목록
+          type: array
+          items:
+            $ref: '#/components/schemas/Dispute'
+        cancellations:
+          title: 결제 취소 요청 내역
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentCancellation'
+      x-portone-title: 결제 완료 상태 건
+    DeliveredPaymentEscrow:
+      title: 배송 완료
+      description: 배송 완료
+      type: object
+      required:
+      - status
+      - company
+      - invoiceNumber
+      properties:
+        status:
+          type: string
+          title: 에스크로 상태
+        company:
+          type: string
+          title: 택배사
+        invoiceNumber:
+          type: string
+          title: 송장번호
+        sentAt:
+          type: string
+          format: date-time
+          title: 발송 일시
+        appliedAt:
+          type: string
+          format: date-time
+          title: 배송등록 처리 일자
+      x-portone-title: 배송 완료
+    ConvenienceStoreBrand:
+      title: 편의점 브랜드
+      description: 편의점 브랜드
+      type: string
+      enum:
+      - LAWSON
+      - FAMILY_MART
+      - MINI_STOP
+      - SEVEN_ELEVEN
+      - SEICOMART
+      x-portone-title: 편의점 브랜드
+      x-portone-enum:
+        SEVEN_ELEVEN:
+          title: 세븐일레븐
+        MINI_STOP:
+          title: 미니스톱
+        FAMILY_MART:
+          title: 패밀리마트
+        SEICOMART:
+          title: 세이코마트
+        LAWSON:
+          title: 로손
+    InvalidRequestError:
+      title: 요청된 입력 정보가 유효하지 않은 경우
+      description: '요청된 입력 정보가 유효하지 않은 경우
+
+
+        허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.'
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
+      x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
+      x-portone-status-code: 400
+  securitySchemes:
+    bearerJwt:
+      type: http
+      description: 'Authorization: Bearer `엑세스 토큰`'
+      scheme: bearer
+    portOne:
+      type: http
+      description: 'Authorization: PortOne `발급된 API 시크릿`'
+      scheme: portone
+x-portone-categories:
+- id: payment
+  title: 결제 관련 API
+  description: 결제와 관련된 API 기능을 제공합니다.
+  children:
+  - id: payment.paymentSchedule
+    title: 결제 예약 관련 API
+    description: 결제 예약과 관련된 API 기능을 제공합니다.
+  - id: payment.billingKey
+    title: 빌링키 관련 API
+    description: 빌링키와 관련된 API 기능을 제공합니다.
+  - id: payment.cashReceipt
+    title: 현금 영수증 관련 API
+    description: 현금 영수증과 관련된 API 기능을 제공합니다.
+  - id: payment.promotion
+    title: 프로모션 관련 API
+    description: 프로모션과 관련된 API 기능을 제공합니다.
+  - id: payment.additionalFeature
+    title: 결제 부가기능 관련 API
+    description: 결제 부가기능과 관련된 API 기능을 제공합니다.
+- id: identityVerification
+  title: 본인인증 관련 API
+  description: 본인인증과 관련된 API 기능을 제공합니다.
+- id: pgSpecific
+  title: 특정 PG사 관련 API
+  description: 특정 PG사에 국한된 API 기능을 제공합니다.
+- id: reconciliation
+  title: 대사 서비스 API
+  description: 거래 대사 및 정산 대사 관련 API 기능을 제공합니다.
+- id: b2b
+  title: 세금계산서 API
+  description: 세금계산서 API 기능을 제공합니다.
+  children:
+  - id: b2b.counterparty
+    title: 거래처 관련 API
+    description: 거래처 관련 API 기능을 제공합니다.
+  - id: b2b.taxInvoice
+    title: 세금계산서 발행 관련 API
+    description: 세금계산서 발행 관련 API 기능을 제공합니다.
+- id: platform
+  title: 파트너 정산 관련 API
+  description: 파트너 정산 서비스 API 기능을 제공합니다.
+  children:
+  - id: platform.policy
+    title: 정책 관련 API
+    description: 파트너 정산에 적용할 정책에 관한 API 입니다.
+  - id: platform.partner
+    title: 파트너 관련 API
+    description: 파트너 정산에 적용할 파트너에 관한 API 입니다.
+  - id: platform.transfer
+    title: 정산 상세내역 관련 API
+    description: 파트너 정산 서비스의 정산 상세내역과 관련된 API 입니다.
+  - id: platform.account
+    title: 계좌 관련 API
+    description: 파트너 정산 서비스의 계좌와 관련된 API 입니다.
+  - id: platform.partnerSettlement
+    title: 정산 내역 관련 API
+    description: 파트너 정산 서비스의 정산 내역과 관련된 API 입니다.
+  - id: platform.payout
+    title: 지급 내역 관련 API
+    description: 파트너 정산 서비스의 지급 내역과 관련된 API 입니다.
+  - id: platform.bulkPayout
+    title: 일괄 지급 내역 관련 API
+    description: 파트너 정산 서비스의 일괄 지급 내역과 관련된 API 입니다.
+  - id: platform.accountTransfer
+    title: 이체 내역 관련 API
+    description: 파트너 정산 서비스의 이체 내역과 관련된 API 입니다.
+  - id: platform.bulkAccountTransfer
+    title: 일괄 이체 내역 관련 API
+    description: 파트너 정산 서비스의 일괄 이체 내역과 관련된 API 입니다.
+  - id: platform.company
+    title: 사업자 관련 API
+    description: 파트너 정산 서비스의 사업자와 관련된 API 입니다.
+- id: auth
+  title: 인증 관련 API
+  description: '인증과 관련된 API 기능을 제공합니다.
+
+    접근 토큰 방식으로 인증하기를 원하는 경우, API 시크릿을 통해 토큰을 발급받은 후 Authorization 헤더에 `Bearer ACCESS_TOKEN` 형식으로 전달합니다.'
+- id: paymentSession
+  title: 결제 세션 API
+  description: 결제 세션 생성 및 관리 API. 호스티드 체크아웃에 사용됩니다.
+- id: checkoutProfile
+  title: 체크아웃 프로필 API
+  description: 체크아웃 프로필에서 결제 수단 목록을 조회하기 위한 API.
+- id: ap
+  title: AP API
+  description: AP 기능을 제공합니다.
+- id: common
+  title: 공통 API
+  description: 공통 API 기능을 제공합니다.

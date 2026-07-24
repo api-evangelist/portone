@@ -1,0 +1,1083 @@
+openapi: 3.0.3
+info:
+  title: PortOne B2b Promotions API
+  version: 1.16.0
+servers:
+- url: https://api.portone.io
+  description: 운영환경 서버
+tags:
+- name: Promotions
+paths:
+  /promotions/{promotionId}:
+    get:
+      summary: 프로모션 단건 조회
+      description: '프로모션 단건 조회
+
+
+        주어진 아이디에 대응되는 프로모션을 조회합니다.'
+      operationId: getPromotion
+      parameters:
+      - name: promotionId
+        in: path
+        description: 조회할 프로모션 아이디
+        required: true
+        schema:
+          type: string
+        x-portone-title: 조회할 프로모션 아이디
+      responses:
+        '200':
+          description: 성공 응답으로 프로모션 객체를 반환합니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Promotion'
+          x-portone-title: 성공 응답으로 프로모션 객체를 반환합니다.
+        '400':
+          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPromotionError'
+        '401':
+          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPromotionError'
+        '403':
+          description: '* `ForbiddenError`: 요청이 거절된 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPromotionError'
+        '404':
+          description: '* `PromotionNotFoundError`: 프로모션이 존재하지 않는 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPromotionError'
+      security:
+      - bearerJwt: []
+      - portOne: []
+      x-portone-category: payment.promotion
+      x-portone-title: 프로모션 단건 조회
+      x-portone-description: 주어진 아이디에 대응되는 프로모션을 조회합니다.
+      x-portone-error:
+        $ref: '#/components/schemas/GetPromotionError'
+      tags:
+      - Promotions
+components:
+  schemas:
+    PromotionDiscountPartition:
+      title: 금액 구간별 프로모션 할인 정책
+      description: 금액 구간별 프로모션 할인 정책
+      type: object
+      required:
+      - amountFrom
+      - scheme
+      properties:
+        amountFrom:
+          type: integer
+          format: int64
+        scheme:
+          $ref: '#/components/schemas/PromotionDiscountScheme'
+      x-portone-title: 금액 구간별 프로모션 할인 정책
+    PromotionAmountDiscountScheme:
+      title: PromotionAmountDiscountScheme
+      type: object
+      required:
+      - type
+      - amount
+      properties:
+        type:
+          type: string
+          title: 프로모션 할인 유형
+        amount:
+          type: integer
+          format: int64
+    PromotionNotFoundError:
+      title: 프로모션이 존재하지 않는 경우
+      description: 프로모션이 존재하지 않는 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 프로모션이 존재하지 않는 경우
+      x-portone-status-code: 404
+    PromotionSpareBudgetPercent:
+      title: PromotionSpareBudgetPercent
+      type: object
+      required:
+      - type
+      - percent
+      properties:
+        type:
+          type: string
+          title: 환불 대비용 프로모션 추가 예산
+        percent:
+          type: integer
+          format: int32
+    PromotionStatus:
+      title: PromotionStatus
+      type: string
+      enum:
+      - SCHEDULED
+      - IN_PROGRESS
+      - PAUSED
+      - BUDGET_EXHAUSTED
+      - TERMINATED
+      - COMPLETED
+      x-portone-enum:
+        IN_PROGRESS:
+          title: 진행중
+        TERMINATED:
+          title: 중단됨
+        COMPLETED:
+          title: 완료됨
+        SCHEDULED:
+          title: 예정됨
+        PAUSED:
+          title: 일시 중지됨
+        BUDGET_EXHAUSTED:
+          title: 예산 소진됨
+    PromotionPercentDiscountScheme:
+      title: PromotionPercentDiscountScheme
+      type: object
+      required:
+      - type
+      - percent
+      properties:
+        type:
+          type: string
+          title: 프로모션 할인 유형
+        percent:
+          type: integer
+          format: int32
+    PromotionDiscountPolicy:
+      title: 프로모션 할인 정책
+      description: 프로모션 할인 정책
+      type: object
+      required:
+      - partitions
+      properties:
+        partitions:
+          title: 금액 구간별 프로모션 할인 정책
+          type: array
+          items:
+            $ref: '#/components/schemas/PromotionDiscountPartition'
+      x-portone-title: 프로모션 할인 정책
+    PromotionRecoverOption:
+      title: PromotionRecoverOption
+      oneOf:
+      - $ref: '#/components/schemas/PromotionRecoverOptionNoRecover'
+      - $ref: '#/components/schemas/PromotionRecoverOptionRecover'
+      discriminator:
+        propertyName: type
+        mapping:
+          NO_RECOVER: '#/components/schemas/PromotionRecoverOptionNoRecover'
+          RECOVER: '#/components/schemas/PromotionRecoverOptionRecover'
+      x-portone-discriminator:
+        RECOVER:
+          title: 결제 취소 시 프로모션 예산 복구
+        NO_RECOVER:
+          title: 결제 취소 시 프로모션 예산 미복구
+    CardPromotion:
+      title: 카드 프로모션
+      description: 카드 프로모션
+      type: object
+      required:
+      - type
+      - id
+      - storeId
+      - name
+      - discountPolicy
+      - totalBudget
+      - spentAmount
+      - currency
+      - startAt
+      - endAt
+      - cardCompany
+      - status
+      - createdAt
+      - recoverOption
+      properties:
+        type:
+          type: string
+          title: 프로모션 유형
+        id:
+          type: string
+          title: 프로모션 아이디
+        storeId:
+          type: string
+          title: 상점 아이디
+        name:
+          type: string
+          title: 프로모션 이름
+        discountPolicy:
+          $ref: '#/components/schemas/PromotionDiscountPolicy'
+          title: 할인 정책
+        totalBudget:
+          type: integer
+          format: int64
+          title: 총 예산
+        maxDiscountAmount:
+          type: integer
+          format: int64
+          title: 최대 할인 금액
+        spentAmount:
+          type: integer
+          format: int64
+          title: 소진 금액
+        currency:
+          $ref: '#/components/schemas/Currency'
+          title: 금액 화폐
+        startAt:
+          type: string
+          format: date-time
+          title: 프로모션 시작 시각
+        endAt:
+          type: string
+          format: date-time
+          title: 프로모션 종료 시각
+        terminatedAt:
+          type: string
+          format: date-time
+          title: 프로모션 중단 시각
+        cardCompany:
+          $ref: '#/components/schemas/PromotionCardCompany'
+          title: 프로모션 카드사
+        status:
+          $ref: '#/components/schemas/PromotionStatus'
+          title: 프로모션 상태
+        createdAt:
+          type: string
+          format: date-time
+          title: 프로모션 생성 시각
+        recoverOption:
+          $ref: '#/components/schemas/PromotionRecoverOption'
+          title: 결제 취소 시 프로모션 예산 복구 옵션
+      x-portone-title: 카드 프로모션
+    GetPromotionError:
+      title: GetPromotionError
+      oneOf:
+      - $ref: '#/components/schemas/ForbiddenError'
+      - $ref: '#/components/schemas/InvalidRequestError'
+      - $ref: '#/components/schemas/PromotionNotFoundError'
+      - $ref: '#/components/schemas/UnauthorizedError'
+      discriminator:
+        propertyName: type
+        mapping:
+          FORBIDDEN: '#/components/schemas/ForbiddenError'
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          PROMOTION_NOT_FOUND: '#/components/schemas/PromotionNotFoundError'
+          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
+    PromotionDiscountScheme:
+      title: PromotionDiscountScheme
+      oneOf:
+      - $ref: '#/components/schemas/PromotionAmountDiscountScheme'
+      - $ref: '#/components/schemas/PromotionPercentDiscountScheme'
+      discriminator:
+        propertyName: type
+        mapping:
+          AMOUNT: '#/components/schemas/PromotionAmountDiscountScheme'
+          PERCENT: '#/components/schemas/PromotionPercentDiscountScheme'
+      x-portone-discriminator:
+        PERCENT:
+          title: 정률 할인
+        AMOUNT:
+          title: 정액 할인
+    Promotion:
+      title: 프로모션
+      description: 프로모션
+      oneOf:
+      - $ref: '#/components/schemas/CardPromotion'
+      discriminator:
+        propertyName: type
+        mapping:
+          CARD: '#/components/schemas/CardPromotion'
+      x-portone-title: 프로모션
+      x-portone-discriminator:
+        CARD:
+          title: 카드 프로모션
+    PromotionRecoverOptionNoRecover:
+      title: 결제 취소 시 프로모션 예산 미복구
+      description: 결제 취소 시 프로모션 예산 미복구
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          title: 결제 취소 시 프로모션 예산 복구 옵션
+        spareBudget:
+          $ref: '#/components/schemas/PromotionSpareBudget'
+      x-portone-title: 결제 취소 시 프로모션 예산 미복구
+    ForbiddenError:
+      title: 요청이 거절된 경우
+      description: 요청이 거절된 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 요청이 거절된 경우
+      x-portone-status-code: 403
+    Currency:
+      title: 통화
+      description: 통화
+      type: string
+      enum:
+      - KRW
+      - USD
+      - JPY
+      - AED
+      - AFN
+      - ALL
+      - AMD
+      - ANG
+      - AOA
+      - ARS
+      - AUD
+      - AWG
+      - AZN
+      - BAM
+      - BBD
+      - BDT
+      - BGN
+      - BHD
+      - BIF
+      - BMD
+      - BND
+      - BOB
+      - BOV
+      - BRL
+      - BSD
+      - BTN
+      - BWP
+      - BYN
+      - BZD
+      - CAD
+      - CDF
+      - CHE
+      - CHF
+      - CHW
+      - CLF
+      - CLP
+      - CNY
+      - COP
+      - COU
+      - CRC
+      - CUC
+      - CUP
+      - CVE
+      - CZK
+      - DJF
+      - DKK
+      - DOP
+      - DZD
+      - EGP
+      - ERN
+      - ETB
+      - EUR
+      - FJD
+      - FKP
+      - GBP
+      - GEL
+      - GHS
+      - GIP
+      - GMD
+      - GNF
+      - GTQ
+      - GYD
+      - HKD
+      - HNL
+      - HRK
+      - HTG
+      - HUF
+      - IDR
+      - ILS
+      - INR
+      - IQD
+      - IRR
+      - ISK
+      - JMD
+      - JOD
+      - KES
+      - KGS
+      - KHR
+      - KMF
+      - KPW
+      - KWD
+      - KYD
+      - KZT
+      - LAK
+      - LBP
+      - LKR
+      - LRD
+      - LSL
+      - LYD
+      - MAD
+      - MDL
+      - MGA
+      - MKD
+      - MMK
+      - MNT
+      - MOP
+      - MRU
+      - MUR
+      - MVR
+      - MWK
+      - MXN
+      - MXV
+      - MYR
+      - MZN
+      - NAD
+      - NGN
+      - NIO
+      - NOK
+      - NPR
+      - NZD
+      - OMR
+      - PAB
+      - PEN
+      - PGK
+      - PHP
+      - PKR
+      - PLN
+      - PYG
+      - QAR
+      - RON
+      - RSD
+      - RUB
+      - RWF
+      - SAR
+      - SBD
+      - SCR
+      - SDG
+      - SEK
+      - SGD
+      - SHP
+      - SLE
+      - SLL
+      - SOS
+      - SRD
+      - SSP
+      - STN
+      - SVC
+      - SYP
+      - SZL
+      - THB
+      - TJS
+      - TMT
+      - TND
+      - TOP
+      - TRY
+      - TTD
+      - TWD
+      - TZS
+      - UAH
+      - UGX
+      - USN
+      - UYI
+      - UYU
+      - UYW
+      - UZS
+      - VED
+      - VES
+      - VND
+      - VUV
+      - WST
+      - XAF
+      - XAG
+      - XAU
+      - XBA
+      - XBB
+      - XBC
+      - XBD
+      - XCD
+      - XDR
+      - XOF
+      - XPD
+      - XPF
+      - XPT
+      - XSU
+      - XTS
+      - XUA
+      - XXX
+      - YER
+      - ZAR
+      - ZMW
+      - ZWL
+      x-portone-title: 통화
+      x-portone-enum:
+        OMR:
+          title: Rial Omani
+        CUC:
+          title: Peso Convertible
+        BBD:
+          title: Barbados Dollar
+        PLN:
+          title: Zloty
+        SVC:
+          title: El Salvador Colon
+        BMD:
+          title: Bermudian Dollar
+        TJS:
+          title: Somoni
+        TND:
+          title: Tunisian Dinar
+        GNF:
+          title: Guinean Franc
+        SDG:
+          title: Sudanese Pound
+        MRU:
+          title: Ouguiya
+        XBB:
+          title: Bond Markets Unit European Monetary Unit (E.M.U.-6)
+        PKR:
+          title: Pakistan Rupee
+        FKP:
+          title: Falkland Islands Pound
+        MUR:
+          title: Mauritius Rupee
+        XAF:
+          title: CFA Franc BEAC
+        SAR:
+          title: Saudi Riyal
+        CAD:
+          title: Canadian Dollar
+        HKD:
+          title: Hong Kong Dollar
+        PYG:
+          title: Guarani
+        MGA:
+          title: Malagasy Ariary
+        UYI:
+          title: Uruguay Peso en Unidades Indexadas (UI)
+        AUD:
+          title: Australian Dollar
+        AMD:
+          title: Armenian Dram
+        YER:
+          title: Yemeni Rial
+        CHE:
+          title: WIR Euro
+        MMK:
+          title: Kyat
+        SEK:
+          title: Swedish Krona
+        TRY:
+          title: Turkish Lira
+        XBC:
+          title: Bond Markets Unit European Unit of Account 9 (E.U.A.-9)
+        KES:
+          title: Kenyan Shilling
+        GEL:
+          title: Lari
+        GTQ:
+          title: Quetzal
+        TZS:
+          title: Tanzanian Shilling
+        CUP:
+          title: Cuban Peso
+        ALL:
+          title: Lek
+        ERN:
+          title: Nakfa
+        BRL:
+          title: Brazilian Real
+        UGX:
+          title: Uganda Shilling
+        XUA:
+          title: ADB Unit of Account
+        GIP:
+          title: Gibraltar Pound
+        MZN:
+          title: Mozambique Metical
+        KRW:
+          title: 대한민국 원화
+        JOD:
+          title: Jordanian Dinar
+        IQD:
+          title: Iraqi Dinar
+        VUV:
+          title: Vatu
+        XXX:
+          title: The codes assigned for transactions where no currency is involved
+        UZS:
+          title: Uzbekistan Sum
+        BOV:
+          title: Mvdol
+        UAH:
+          title: Hryvnia
+        PEN:
+          title: Sol
+        KMF:
+          title: 'Comorian Franc '
+        DOP:
+          title: Dominican Peso
+        BDT:
+          title: Taka
+        LKR:
+          title: Sri Lanka Rupee
+        FJD:
+          title: Fiji Dollar
+        LSL:
+          title: Loti
+        BSD:
+          title: Bahamian Dollar
+        SRD:
+          title: Surinam Dollar
+        XTS:
+          title: Codes specifically reserved for testing purposes
+        SHP:
+          title: Saint Helena Pound
+        LRD:
+          title: Liberian Dollar
+        QAR:
+          title: Qatari Rial
+        BND:
+          title: Brunei Dollar
+        CDF:
+          title: Congolese Franc
+        SLE:
+          title: Leone
+        USN:
+          title: US Dollar (Next day)
+        VES:
+          title: Bolívar Soberano
+        TMT:
+          title: Turkmenistan New Manat
+        CHW:
+          title: WIR Franc
+        BGN:
+          title: Bulgarian Lev
+        JMD:
+          title: Jamaican Dollar
+        SZL:
+          title: Lilangeni
+        CZK:
+          title: Czech Koruna
+        ZMW:
+          title: Zambian Kwacha
+        UYU:
+          title: Peso Uruguayo
+        NPR:
+          title: Nepalese Rupee
+        EGP:
+          title: Egyptian Pound
+        AZN:
+          title: Azerbaijan Manat
+        CLP:
+          title: Chilean Peso
+        MOP:
+          title: Pataca
+        SCR:
+          title: Seychelles Rupee
+        HTG:
+          title: Gourde
+        VND:
+          title: Dong
+        LAK:
+          title: Lao Kip
+        BTN:
+          title: Ngultrum
+        GBP:
+          title: Pound Sterling
+        SSP:
+          title: South Sudanese Pound
+        XPD:
+          title: Palladium
+        TWD:
+          title: New Taiwan Dollar
+        DZD:
+          title: Algerian Dinar
+        MXN:
+          title: Mexican Peso
+        XDR:
+          title: SDR (Special Drawing Right)
+        ZWL:
+          title: Zimbabwe Dollar
+        AWG:
+          title: Aruban Florin
+        THB:
+          title: Baht
+        ISK:
+          title: Iceland Krona
+        LBP:
+          title: Lebanese Pound
+        SGD:
+          title: Singapore Dollar
+        MWK:
+          title: Malawi Kwacha
+        KZT:
+          title: Tenge
+        CRC:
+          title: Costa Rican Colon
+        WST:
+          title: Tala
+        DJF:
+          title: Djibouti Franc
+        LYD:
+          title: Libyan Dinar
+        NGN:
+          title: Naira
+        BIF:
+          title: Burundi Franc
+        AED:
+          title: UAE Dirham
+        CHF:
+          title: Swiss Franc
+        RWF:
+          title: Rwanda Franc
+        XBD:
+          title: Bond Markets Unit European Unit of Account 17 (E.U.A.-17)
+        INR:
+          title: Indian Rupee
+        CLF:
+          title: Unidad de Fomento
+        XOF:
+          title: CFA Franc BCEAO
+        COU:
+          title: Unidad de Valor Real
+        MXV:
+          title: Mexican Unidad de Inversion (UDI)
+        PGK:
+          title: Kina
+        CNY:
+          title: Yuan Renminbi
+        SYP:
+          title: Syrian Pound
+        VED:
+          title: Bolívar Soberano
+        RON:
+          title: Romanian Leu
+        AFN:
+          title: Afghani
+        PHP:
+          title: Philippine Peso
+        MDL:
+          title: Moldovan Leu
+        KHR:
+          title: Riel
+        XPT:
+          title: Platinum
+        COP:
+          title: Colombian Peso
+        DKK:
+          title: Danish Krone
+        KYD:
+          title: Cayman Islands Dollar
+        XPF:
+          title: CFP Franc
+        GMD:
+          title: Dalasi
+        MVR:
+          title: Rufiyaa
+        STN:
+          title: Dobra
+        TTD:
+          title: Trinidad and Tobago Dollar
+        PAB:
+          title: Balboa
+        XAU:
+          title: Gold
+        XAG:
+          title: Silver
+        JPY:
+          title: 일본 엔화
+        TOP:
+          title: Pa’anga
+        BWP:
+          title: Pula
+        MKD:
+          title: Denar
+        ARS:
+          title: Argentine Peso
+        HUF:
+          title: Forint
+        MYR:
+          title: Malaysian Ringgit
+        USD:
+          title: 미국 달러
+        SLL:
+          title: Leone
+        MAD:
+          title: Moroccan Dirham
+        RUB:
+          title: Russian Ruble
+        MNT:
+          title: Tugrik
+        BOB:
+          title: Boliviano
+        GYD:
+          title: Guyana Dollar
+        SBD:
+          title: Solomon Islands Dollar
+        XBA:
+          title: Bond Markets Unit European Composite Unit (EURCO)
+        BHD:
+          title: Bahraini Dinar
+        HNL:
+          title: Lempira
+        UYW:
+          title: Unidad Previsional
+        NZD:
+          title: New Zealand Dollar
+        XCD:
+          title: East Caribbean Dollar
+        XSU:
+          title: Sucre
+        KGS:
+          title: Som
+        AOA:
+          title: Kwanza
+        BZD:
+          title: Belize Dollar
+        IDR:
+          title: Rupiah
+        SOS:
+          title: Somali Shilling
+        NIO:
+          title: Cordoba Oro
+        GHS:
+          title: Ghana Cedi
+        ANG:
+          title: Netherlands Antillean Guilder
+        RSD:
+          title: Serbian Dinar
+        ILS:
+          title: New Israeli Sheqel
+        NOK:
+          title: Norwegian Krone
+        KWD:
+          title: Kuwaiti Dinar
+        NAD:
+          title: Namibia Dollar
+        ETB:
+          title: Ethiopian Birr
+        BYN:
+          title: Belarusian Ruble
+        KPW:
+          title: North Korean Won
+        EUR:
+          title: Euro
+        CVE:
+          title: Cabo Verde Escudo
+        ZAR:
+          title: Rand
+        IRR:
+          title: Iranian Rial
+        HRK:
+          title: Kuna (Replaced by EUR)
+        BAM:
+          title: Convertible Mark
+    PromotionSpareBudgetAmount:
+      title: PromotionSpareBudgetAmount
+      type: object
+      required:
+      - type
+      - amount
+      properties:
+        type:
+          type: string
+          title: 환불 대비용 프로모션 추가 예산
+        amount:
+          type: integer
+          format: int64
+    InvalidRequestError:
+      title: 요청된 입력 정보가 유효하지 않은 경우
+      description: '요청된 입력 정보가 유효하지 않은 경우
+
+
+        허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.'
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
+      x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
+      x-portone-status-code: 400
+    PromotionSpareBudget:
+      title: PromotionSpareBudget
+      oneOf:
+      - $ref: '#/components/schemas/PromotionSpareBudgetAmount'
+      - $ref: '#/components/schemas/PromotionSpareBudgetPercent'
+      discriminator:
+        propertyName: type
+        mapping:
+          AMOUNT: '#/components/schemas/PromotionSpareBudgetAmount'
+          PERCENT: '#/components/schemas/PromotionSpareBudgetPercent'
+      x-portone-discriminator:
+        PERCENT:
+          title: 추가 예산 비율
+        AMOUNT:
+          title: 추가 예산 금액
+    PromotionCardCompany:
+      title: 프로모션 적용 가능한 카드사
+      description: 프로모션 적용 가능한 카드사
+      type: string
+      enum:
+      - WOORI_CARD
+      - BC_CARD
+      - SAMSUNG_CARD
+      - SHINHAN_CARD
+      - HYUNDAI_CARD
+      - LOTTE_CARD
+      - NH_CARD
+      - HANA_CARD
+      - KOOKMIN_CARD
+      x-portone-title: 프로모션 적용 가능한 카드사
+      x-portone-enum:
+        HANA_CARD:
+          title: 하나카드
+        HYUNDAI_CARD:
+          title: 현대카드
+        BC_CARD:
+          title: BC카드
+        WOORI_CARD:
+          title: 우리카드
+        LOTTE_CARD:
+          title: 롯데카드
+        SAMSUNG_CARD:
+          title: 삼성카드
+        SHINHAN_CARD:
+          title: 신한카드
+        NH_CARD:
+          title: NH카드
+        KOOKMIN_CARD:
+          title: 국민카드
+    PromotionRecoverOptionRecover:
+      title: 결제 취소 시 프로모션 예산 복구
+      description: 결제 취소 시 프로모션 예산 복구
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          title: 결제 취소 시 프로모션 예산 복구 옵션
+      x-portone-title: 결제 취소 시 프로모션 예산 복구
+    UnauthorizedError:
+      title: 인증 정보가 올바르지 않은 경우
+      description: 인증 정보가 올바르지 않은 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 인증 정보가 올바르지 않은 경우
+      x-portone-status-code: 401
+  securitySchemes:
+    bearerJwt:
+      type: http
+      description: 'Authorization: Bearer `엑세스 토큰`'
+      scheme: bearer
+    portOne:
+      type: http
+      description: 'Authorization: PortOne `발급된 API 시크릿`'
+      scheme: portone
+x-portone-categories:
+- id: payment
+  title: 결제 관련 API
+  description: 결제와 관련된 API 기능을 제공합니다.
+  children:
+  - id: payment.paymentSchedule
+    title: 결제 예약 관련 API
+    description: 결제 예약과 관련된 API 기능을 제공합니다.
+  - id: payment.billingKey
+    title: 빌링키 관련 API
+    description: 빌링키와 관련된 API 기능을 제공합니다.
+  - id: payment.cashReceipt
+    title: 현금 영수증 관련 API
+    description: 현금 영수증과 관련된 API 기능을 제공합니다.
+  - id: payment.promotion
+    title: 프로모션 관련 API
+    description: 프로모션과 관련된 API 기능을 제공합니다.
+  - id: payment.additionalFeature
+    title: 결제 부가기능 관련 API
+    description: 결제 부가기능과 관련된 API 기능을 제공합니다.
+- id: identityVerification
+  title: 본인인증 관련 API
+  description: 본인인증과 관련된 API 기능을 제공합니다.
+- id: pgSpecific
+  title: 특정 PG사 관련 API
+  description: 특정 PG사에 국한된 API 기능을 제공합니다.
+- id: reconciliation
+  title: 대사 서비스 API
+  description: 거래 대사 및 정산 대사 관련 API 기능을 제공합니다.
+- id: b2b
+  title: 세금계산서 API
+  description: 세금계산서 API 기능을 제공합니다.
+  children:
+  - id: b2b.counterparty
+    title: 거래처 관련 API
+    description: 거래처 관련 API 기능을 제공합니다.
+  - id: b2b.taxInvoice
+    title: 세금계산서 발행 관련 API
+    description: 세금계산서 발행 관련 API 기능을 제공합니다.
+- id: platform
+  title: 파트너 정산 관련 API
+  description: 파트너 정산 서비스 API 기능을 제공합니다.
+  children:
+  - id: platform.policy
+    title: 정책 관련 API
+    description: 파트너 정산에 적용할 정책에 관한 API 입니다.
+  - id: platform.partner
+    title: 파트너 관련 API
+    description: 파트너 정산에 적용할 파트너에 관한 API 입니다.
+  - id: platform.transfer
+    title: 정산 상세내역 관련 API
+    description: 파트너 정산 서비스의 정산 상세내역과 관련된 API 입니다.
+  - id: platform.account
+    title: 계좌 관련 API
+    description: 파트너 정산 서비스의 계좌와 관련된 API 입니다.
+  - id: platform.partnerSettlement
+    title: 정산 내역 관련 API
+    description: 파트너 정산 서비스의 정산 내역과 관련된 API 입니다.
+  - id: platform.payout
+    title: 지급 내역 관련 API
+    description: 파트너 정산 서비스의 지급 내역과 관련된 API 입니다.
+  - id: platform.bulkPayout
+    title: 일괄 지급 내역 관련 API
+    description: 파트너 정산 서비스의 일괄 지급 내역과 관련된 API 입니다.
+  - id: platform.accountTransfer
+    title: 이체 내역 관련 API
+    description: 파트너 정산 서비스의 이체 내역과 관련된 API 입니다.
+  - id: platform.bulkAccountTransfer
+    title: 일괄 이체 내역 관련 API
+    description: 파트너 정산 서비스의 일괄 이체 내역과 관련된 API 입니다.
+  - id: platform.company
+    title: 사업자 관련 API
+    description: 파트너 정산 서비스의 사업자와 관련된 API 입니다.
+- id: auth
+  title: 인증 관련 API
+  description: '인증과 관련된 API 기능을 제공합니다.
+
+    접근 토큰 방식으로 인증하기를 원하는 경우, API 시크릿을 통해 토큰을 발급받은 후 Authorization 헤더에 `Bearer ACCESS_TOKEN` 형식으로 전달합니다.'
+- id: paymentSession
+  title: 결제 세션 API
+  description: 결제 세션 생성 및 관리 API. 호스티드 체크아웃에 사용됩니다.
+- id: checkoutProfile
+  title: 체크아웃 프로필 API
+  description: 체크아웃 프로필에서 결제 수단 목록을 조회하기 위한 API.
+- id: ap
+  title: AP API
+  description: AP 기능을 제공합니다.
+- id: common
+  title: 공통 API
+  description: 공통 API 기능을 제공합니다.
