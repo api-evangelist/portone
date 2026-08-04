@@ -1,0 +1,327 @@
+{
+  "info": {
+    "_postman_id": "76d71ade-c9b2-4d45-b284-beaf2120e245",
+    "name": "PortOne B2b Promotions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:40:44.000Z",
+    "updatedAt": "2026-07-28T02:40:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-76d71ade-c9b2-4d45-b284-beaf2120e245"
+  },
+  "item": [
+    {
+      "name": "promotions",
+      "item": [
+        {
+          "name": "{promotionId}",
+          "item": [
+            {
+              "name": "\ud504\ub85c\ubaa8\uc158 \ub2e8\uac74 \uc870\ud68c",
+              "id": "3f8e17c6-1d63-4c25-b665-5bab79d10430",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/promotions/:promotionId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "promotions",
+                    ":promotionId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "92292205-61b4-4fed-8aec-1b037c3c25a2",
+                      "key": "promotionId",
+                      "value": "<string>",
+                      "description": "(Required) \uc870\ud68c\ud560 \ud504\ub85c\ubaa8\uc158 \uc544\uc774\ub514"
+                    }
+                  ]
+                },
+                "description": "\ud504\ub85c\ubaa8\uc158 \ub2e8\uac74 \uc870\ud68c\n\n\uc8fc\uc5b4\uc9c4 \uc544\uc774\ub514\uc5d0 \ub300\uc751\ub418\ub294 \ud504\ub85c\ubaa8\uc158\uc744 \uc870\ud68c\ud569\ub2c8\ub2e4."
+              },
+              "response": [
+                {
+                  "id": "95116f02-f0a5-4d88-bef0-f33f4ac08da3",
+                  "name": "\uc131\uacf5 \uc751\ub2f5\uc73c\ub85c \ud504\ub85c\ubaa8\uc158 \uac1d\uccb4\ub97c \ubc18\ud658\ud569\ub2c8\ub2e4.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/promotions/:promotionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "promotions",
+                        ":promotionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "promotionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"id\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"discountPolicy\": {\n    \"partitions\": [\n      {\n        \"amountFrom\": \"<long>\",\n        \"scheme\": {\n          \"type\": \"<string>\",\n          \"amount\": \"<long>\"\n        }\n      },\n      {\n        \"amountFrom\": \"<long>\",\n        \"scheme\": {\n          \"type\": \"<string>\",\n          \"amount\": \"<long>\"\n        }\n      }\n    ]\n  },\n  \"totalBudget\": \"<long>\",\n  \"spentAmount\": \"<long>\",\n  \"currency\": \"XXX\",\n  \"startAt\": \"<dateTime>\",\n  \"endAt\": \"<dateTime>\",\n  \"cardCompany\": \"LOTTE_CARD\",\n  \"status\": \"BUDGET_EXHAUSTED\",\n  \"createdAt\": \"<dateTime>\",\n  \"recoverOption\": {\n    \"type\": \"<string>\",\n    \"spareBudget\": {\n      \"type\": \"<string>\",\n      \"amount\": \"<long>\"\n    }\n  },\n  \"maxDiscountAmount\": \"<long>\",\n  \"terminatedAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T02:40:44.000Z",
+                  "updatedAt": "2026-07-28T02:40:44.000Z",
+                  "uid": "35240-95116f02-f0a5-4d88-bef0-f33f4ac08da3"
+                },
+                {
+                  "id": "bb8f6456-114a-4ebf-ba0c-4a0901975b8d",
+                  "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/promotions/:promotionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "promotions",
+                        ":promotionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "promotionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:40:44.000Z",
+                  "updatedAt": "2026-07-28T02:40:44.000Z",
+                  "uid": "35240-bb8f6456-114a-4ebf-ba0c-4a0901975b8d"
+                },
+                {
+                  "id": "8d255607-8eb7-48c7-85ed-e996bc5b673d",
+                  "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/promotions/:promotionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "promotions",
+                        ":promotionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "promotionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:40:44.000Z",
+                  "updatedAt": "2026-07-28T02:40:44.000Z",
+                  "uid": "35240-8d255607-8eb7-48c7-85ed-e996bc5b673d"
+                },
+                {
+                  "id": "5af0e734-571f-4ed8-9f2b-f599bfb5a085",
+                  "name": "* `ForbiddenError`: \uc694\uccad\uc774 \uac70\uc808\ub41c \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/promotions/:promotionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "promotions",
+                        ":promotionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "promotionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:40:44.000Z",
+                  "updatedAt": "2026-07-28T02:40:44.000Z",
+                  "uid": "35240-5af0e734-571f-4ed8-9f2b-f599bfb5a085"
+                },
+                {
+                  "id": "3ede52d7-9204-4347-8da1-7058f833350f",
+                  "name": "* `PromotionNotFoundError`: \ud504\ub85c\ubaa8\uc158\uc774 \uc874\uc7ac\ud558\uc9c0 \uc54a\ub294 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/promotions/:promotionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "promotions",
+                        ":promotionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "promotionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:40:44.000Z",
+                  "updatedAt": "2026-07-28T02:40:44.000Z",
+                  "uid": "35240-3ede52d7-9204-4347-8da1-7058f833350f"
+                }
+              ],
+              "createdAt": "2026-07-28T02:40:44.000Z",
+              "updatedAt": "2026-07-28T02:40:44.000Z",
+              "uid": "35240-3f8e17c6-1d63-4c25-b665-5bab79d10430"
+            }
+          ],
+          "id": "d743ab56-9f7d-4883-98f3-4e71164adbef",
+          "createdAt": "2026-07-28T02:40:44.000Z",
+          "updatedAt": "2026-07-28T02:40:44.000Z",
+          "uid": "35240-d743ab56-9f7d-4883-98f3-4e71164adbef"
+        }
+      ],
+      "id": "62c72b35-795b-4a59-a9a7-6ea8ab968e9e",
+      "createdAt": "2026-07-28T02:40:44.000Z",
+      "updatedAt": "2026-07-28T02:40:44.000Z",
+      "uid": "35240-62c72b35-795b-4a59-a9a7-6ea8ab968e9e"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.portone.io"
+    }
+  ]
+}

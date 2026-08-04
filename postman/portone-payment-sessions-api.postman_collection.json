@@ -1,0 +1,833 @@
+{
+  "info": {
+    "_postman_id": "2f00350d-6a3d-484d-ace1-8af58d2e957c",
+    "name": "PortOne B2b Payment Sessions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:39:44.000Z",
+    "updatedAt": "2026-07-28T02:39:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2f00350d-6a3d-484d-ace1-8af58d2e957c"
+  },
+  "item": [
+    {
+      "name": "payment-sessions",
+      "item": [
+        {
+          "name": "{sessionId}",
+          "item": [
+            {
+              "name": "close",
+              "item": [
+                {
+                  "name": "\uacb0\uc81c \uc138\uc158 \uc885\ub8cc",
+                  "id": "85628c27-32ef-40ab-a459-ddb5a7ceb3e5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment-sessions/:sessionId/close",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment-sessions",
+                        ":sessionId",
+                        "close"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ad021fa3-379e-4a49-b4e4-5978cd7305cd",
+                          "key": "sessionId",
+                          "value": "<string>",
+                          "description": "(Required) \uacb0\uc81c \uc138\uc158 \uc544\uc774\ub514"
+                        }
+                      ]
+                    },
+                    "description": "\uacb0\uc81c \uc138\uc158 \uc885\ub8cc\n\n\uacb0\uc81c \uc138\uc158\uc744 \uc989\uc2dc \ub9cc\ub8cc\uc2dc\ud0b5\ub2c8\ub2e4. \uc774\ud6c4 \ud574\ub2f9 \uc138\uc158\uc73c\ub85c\ub294 \uacb0\uc81c \ud398\uc774\uc9c0\uc5d0 \uc811\uadfc\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4."
+                  },
+                  "response": [
+                    {
+                      "id": "5420bbea-e6d3-4405-934a-bcc70362f344",
+                      "name": "\uc131\uacf5 \uc751\ub2f5",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payment-sessions/:sessionId/close",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payment-sessions",
+                            ":sessionId",
+                            "close"
+                          ],
+                          "variable": [
+                            {
+                              "key": "sessionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"closedAt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T02:39:45.000Z",
+                      "updatedAt": "2026-07-28T02:39:45.000Z",
+                      "uid": "35240-5420bbea-e6d3-4405-934a-bcc70362f344"
+                    },
+                    {
+                      "id": "210708dd-a50c-45d0-97e7-6705698f2e2d",
+                      "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payment-sessions/:sessionId/close",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payment-sessions",
+                            ":sessionId",
+                            "close"
+                          ],
+                          "variable": [
+                            {
+                              "key": "sessionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:45.000Z",
+                      "updatedAt": "2026-07-28T02:39:45.000Z",
+                      "uid": "35240-210708dd-a50c-45d0-97e7-6705698f2e2d"
+                    },
+                    {
+                      "id": "2f216e45-2e73-490f-b0b2-97b21e5dba10",
+                      "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payment-sessions/:sessionId/close",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payment-sessions",
+                            ":sessionId",
+                            "close"
+                          ],
+                          "variable": [
+                            {
+                              "key": "sessionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:45.000Z",
+                      "updatedAt": "2026-07-28T02:39:45.000Z",
+                      "uid": "35240-2f216e45-2e73-490f-b0b2-97b21e5dba10"
+                    },
+                    {
+                      "id": "96fc7a31-7b6d-4de6-bb97-cd80901a62ce",
+                      "name": "* `ForbiddenError`: \uc694\uccad\uc774 \uac70\uc808\ub41c \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payment-sessions/:sessionId/close",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payment-sessions",
+                            ":sessionId",
+                            "close"
+                          ],
+                          "variable": [
+                            {
+                              "key": "sessionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:45.000Z",
+                      "updatedAt": "2026-07-28T02:39:45.000Z",
+                      "uid": "35240-96fc7a31-7b6d-4de6-bb97-cd80901a62ce"
+                    },
+                    {
+                      "id": "2794f017-a3fa-488a-b7d4-e740464118ad",
+                      "name": "* `SessionNotFoundError`: \uacb0\uc81c \uc138\uc158\uc774 \uc874\uc7ac\ud558\uc9c0 \uc54a\ub294 \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payment-sessions/:sessionId/close",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payment-sessions",
+                            ":sessionId",
+                            "close"
+                          ],
+                          "variable": [
+                            {
+                              "key": "sessionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:45.000Z",
+                      "updatedAt": "2026-07-28T02:39:45.000Z",
+                      "uid": "35240-2794f017-a3fa-488a-b7d4-e740464118ad"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:45.000Z",
+                  "updatedAt": "2026-07-28T02:39:45.000Z",
+                  "uid": "35240-85628c27-32ef-40ab-a459-ddb5a7ceb3e5"
+                }
+              ],
+              "id": "9300bd40-fbc1-49f4-b5a4-3d92a3465e0d",
+              "createdAt": "2026-07-28T02:39:45.000Z",
+              "updatedAt": "2026-07-28T02:39:45.000Z",
+              "uid": "35240-9300bd40-fbc1-49f4-b5a4-3d92a3465e0d"
+            },
+            {
+              "name": "\uacb0\uc81c \uc138\uc158 \uc870\ud68c",
+              "id": "2682b219-147a-469f-aaa4-e458876de60a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payment-sessions/:sessionId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-sessions",
+                    ":sessionId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "7b4fd62d-f2be-4ee9-b416-203c2d629e88",
+                      "key": "sessionId",
+                      "value": "<string>",
+                      "description": "(Required) \uacb0\uc81c \uc138\uc158 \uc544\uc774\ub514"
+                    }
+                  ]
+                },
+                "description": "\uacb0\uc81c \uc138\uc158 \uc870\ud68c\n\n\uacb0\uc81c \uc138\uc158\uc744 \uc870\ud68c\ud569\ub2c8\ub2e4. \uc778\uc99d \ud5e4\ub354 \uc5c6\uc774 \uc6f9 \ud398\uc774\uc9c0\uc5d0\uc11c\ub3c4 \uc811\uadfc \uac00\ub2a5\ud569\ub2c8\ub2e4."
+              },
+              "response": [
+                {
+                  "id": "9b1a0452-b26b-4f0e-8264-f5be5ec25d69",
+                  "name": "\uacb0\uc81c \uc138\uc158 \uc870\ud68c \uc131\uacf5 \uc751\ub2f5",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment-sessions/:sessionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment-sessions",
+                        ":sessionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "sessionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"profileKey\": \"<string>\",\n  \"country\": \"QA\",\n  \"currency\": \"BSD\",\n  \"totalAmount\": \"<long>\",\n  \"orderName\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"expiresAt\": \"<dateTime>\",\n  \"paymentMethod\": \"KAKAO_PAY\",\n  \"redirectUrl\": \"<string>\",\n  \"customerName\": \"<string>\",\n  \"customerEmail\": \"<string>\",\n  \"storeName\": \"<string>\",\n  \"orderImageUrl\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"colors\": {\n    \"primary\": \"<string>\",\n    \"primaryHover\": \"<string>\",\n    \"primaryLight\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:39:45.000Z",
+                  "updatedAt": "2026-07-28T02:39:45.000Z",
+                  "uid": "35240-9b1a0452-b26b-4f0e-8264-f5be5ec25d69"
+                },
+                {
+                  "id": "a90b686c-3a4e-4df3-be76-1b0c3cfb6c1b",
+                  "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment-sessions/:sessionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment-sessions",
+                        ":sessionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "sessionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:45.000Z",
+                  "updatedAt": "2026-07-28T02:39:45.000Z",
+                  "uid": "35240-a90b686c-3a4e-4df3-be76-1b0c3cfb6c1b"
+                },
+                {
+                  "id": "721df636-d53a-4587-a06e-e14459d69f88",
+                  "name": "* `SessionNotFoundError`: \uacb0\uc81c \uc138\uc158\uc774 \uc874\uc7ac\ud558\uc9c0 \uc54a\ub294 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment-sessions/:sessionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment-sessions",
+                        ":sessionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "sessionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:45.000Z",
+                  "updatedAt": "2026-07-28T02:39:45.000Z",
+                  "uid": "35240-721df636-d53a-4587-a06e-e14459d69f88"
+                },
+                {
+                  "id": "c7345bf3-b0e0-4d96-aacf-dd0710682e83",
+                  "name": "* `SessionExpiredError`: \uacb0\uc81c \uc138\uc158\uc774 \ub9cc\ub8cc\ub41c \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment-sessions/:sessionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment-sessions",
+                        ":sessionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "sessionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Gone",
+                  "code": 410,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:45.000Z",
+                  "updatedAt": "2026-07-28T02:39:45.000Z",
+                  "uid": "35240-c7345bf3-b0e0-4d96-aacf-dd0710682e83"
+                }
+              ],
+              "createdAt": "2026-07-28T02:39:45.000Z",
+              "updatedAt": "2026-07-28T02:39:45.000Z",
+              "uid": "35240-2682b219-147a-469f-aaa4-e458876de60a"
+            }
+          ],
+          "id": "d328f0f7-dd49-4560-a8d0-b0a01d15412a",
+          "createdAt": "2026-07-28T02:39:45.000Z",
+          "updatedAt": "2026-07-28T02:39:45.000Z",
+          "uid": "35240-d328f0f7-dd49-4560-a8d0-b0a01d15412a"
+        },
+        {
+          "name": "\uacb0\uc81c \uc138\uc158 \uc0dd\uc131",
+          "id": "e69aef71-7291-478d-bd20-5ecf52ae84a3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"profileKey\": \"<string>\",\n  \"country\": \"MT\",\n  \"currency\": \"TOP\",\n  \"totalAmount\": \"<long>\",\n  \"orderName\": \"<string>\",\n  \"paymentMethod\": \"AMAZON_PAY\",\n  \"redirectUrl\": \"<string>\",\n  \"customerName\": \"<string>\",\n  \"customerEmail\": \"<string>\",\n  \"storeName\": \"<string>\",\n  \"orderImageUrl\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"colors\": {\n    \"primary\": \"<string>\",\n    \"primaryHover\": \"<string>\",\n    \"primaryLight\": \"<string>\"\n  },\n  \"ttlSeconds\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/payment-sessions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payment-sessions"
+              ]
+            },
+            "description": "\uacb0\uc81c \uc138\uc158 \uc0dd\uc131\n\n\uacb0\uc81c \uc138\uc158\uc744 \uc0dd\uc131\ud569\ub2c8\ub2e4. \ud638\uc2a4\ud2f0\ub4dc \uccb4\ud06c\uc544\uc6c3 \ud398\uc774\uc9c0\uac00 \uc0dd\uc131\ub418\uc5b4 URL\uc774 \ubc18\ud658\ub429\ub2c8\ub2e4."
+          },
+          "response": [
+            {
+              "id": "88047364-afa1-4118-8438-997dc2fbf866",
+              "name": "\uc131\uacf5 \uc751\ub2f5",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"profileKey\": \"<string>\",\n  \"country\": \"MT\",\n  \"currency\": \"TOP\",\n  \"totalAmount\": \"<long>\",\n  \"orderName\": \"<string>\",\n  \"paymentMethod\": \"AMAZON_PAY\",\n  \"redirectUrl\": \"<string>\",\n  \"customerName\": \"<string>\",\n  \"customerEmail\": \"<string>\",\n  \"storeName\": \"<string>\",\n  \"orderImageUrl\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"colors\": {\n    \"primary\": \"<string>\",\n    \"primaryHover\": \"<string>\",\n    \"primaryLight\": \"<string>\"\n  },\n  \"ttlSeconds\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payment-sessions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-sessions"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"sessionId\": \"<string>\",\n  \"url\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\"\n}",
+              "createdAt": "2026-07-28T02:39:45.000Z",
+              "updatedAt": "2026-07-28T02:39:45.000Z",
+              "uid": "35240-88047364-afa1-4118-8438-997dc2fbf866"
+            },
+            {
+              "id": "9b422740-c26e-4f46-949b-20943f753d80",
+              "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0\n* `MaxTtlExceededError`: \uc694\uccad\ub41c TTL\uc774 \uc815\ucc45 \uc0c1\ud55c\uc744 \ucd08\uacfc\ud55c \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"profileKey\": \"<string>\",\n  \"country\": \"MT\",\n  \"currency\": \"TOP\",\n  \"totalAmount\": \"<long>\",\n  \"orderName\": \"<string>\",\n  \"paymentMethod\": \"AMAZON_PAY\",\n  \"redirectUrl\": \"<string>\",\n  \"customerName\": \"<string>\",\n  \"customerEmail\": \"<string>\",\n  \"storeName\": \"<string>\",\n  \"orderImageUrl\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"colors\": {\n    \"primary\": \"<string>\",\n    \"primaryHover\": \"<string>\",\n    \"primaryLight\": \"<string>\"\n  },\n  \"ttlSeconds\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payment-sessions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-sessions"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:45.000Z",
+              "updatedAt": "2026-07-28T02:39:45.000Z",
+              "uid": "35240-9b422740-c26e-4f46-949b-20943f753d80"
+            },
+            {
+              "id": "6991676c-c2d0-45bf-b925-b76b98583b80",
+              "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"profileKey\": \"<string>\",\n  \"country\": \"MT\",\n  \"currency\": \"TOP\",\n  \"totalAmount\": \"<long>\",\n  \"orderName\": \"<string>\",\n  \"paymentMethod\": \"AMAZON_PAY\",\n  \"redirectUrl\": \"<string>\",\n  \"customerName\": \"<string>\",\n  \"customerEmail\": \"<string>\",\n  \"storeName\": \"<string>\",\n  \"orderImageUrl\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"colors\": {\n    \"primary\": \"<string>\",\n    \"primaryHover\": \"<string>\",\n    \"primaryLight\": \"<string>\"\n  },\n  \"ttlSeconds\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payment-sessions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-sessions"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:45.000Z",
+              "updatedAt": "2026-07-28T02:39:45.000Z",
+              "uid": "35240-6991676c-c2d0-45bf-b925-b76b98583b80"
+            },
+            {
+              "id": "97d2d870-953d-47f6-b2af-d6f687bc1e58",
+              "name": "* `ForbiddenError`: \uc694\uccad\uc774 \uac70\uc808\ub41c \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"profileKey\": \"<string>\",\n  \"country\": \"MT\",\n  \"currency\": \"TOP\",\n  \"totalAmount\": \"<long>\",\n  \"orderName\": \"<string>\",\n  \"paymentMethod\": \"AMAZON_PAY\",\n  \"redirectUrl\": \"<string>\",\n  \"customerName\": \"<string>\",\n  \"customerEmail\": \"<string>\",\n  \"storeName\": \"<string>\",\n  \"orderImageUrl\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"colors\": {\n    \"primary\": \"<string>\",\n    \"primaryHover\": \"<string>\",\n    \"primaryLight\": \"<string>\"\n  },\n  \"ttlSeconds\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payment-sessions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-sessions"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:45.000Z",
+              "updatedAt": "2026-07-28T02:39:45.000Z",
+              "uid": "35240-97d2d870-953d-47f6-b2af-d6f687bc1e58"
+            }
+          ],
+          "createdAt": "2026-07-28T02:39:45.000Z",
+          "updatedAt": "2026-07-28T02:39:45.000Z",
+          "uid": "35240-e69aef71-7291-478d-bd20-5ecf52ae84a3"
+        }
+      ],
+      "id": "96da6a45-4a61-43d0-a7cb-6f3063f437c8",
+      "createdAt": "2026-07-28T02:39:45.000Z",
+      "updatedAt": "2026-07-28T02:39:45.000Z",
+      "uid": "35240-96da6a45-4a61-43d0-a7cb-6f3063f437c8"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.portone.io"
+    }
+  ]
+}

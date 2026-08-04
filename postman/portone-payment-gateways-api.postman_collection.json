@@ -1,0 +1,396 @@
+{
+  "info": {
+    "_postman_id": "f0c8db7a-95fc-4e48-8988-18c9a9f2f5e4",
+    "name": "PortOne B2b Payment Gateways API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:39:41.000Z",
+    "updatedAt": "2026-07-28T02:39:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f0c8db7a-95fc-4e48-8988-18c9a9f2f5e4"
+  },
+  "item": [
+    {
+      "name": "payment-gateways",
+      "item": [
+        {
+          "name": "card-promotion",
+          "item": [
+            {
+              "name": "PG\uc0ac \uce74\ub4dc \ud504\ub85c\ubaa8\uc158 \uc870\ud68c API",
+              "id": "f927ceeb-1f4e-4d08-ab93-311ab9351870",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payment-gateways/card-promotion?channelKey=<string>&amount=<long>&cardCompany=SUHYUP_CARD",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-gateways",
+                    "card-promotion"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) \ucc44\ub110 \ud0a4\n\n\uc870\ud68c\ud558\uace0\uc790 \ud558\ub294 \ucc44\ub110\uc758 \ud0a4",
+                      "key": "channelKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) \uacb0\uc81c \uae08\uc561\n\n\uacb0\uc81c \uae08\uc561\uc785\ub2c8\ub2e4. \ud574\ub2f9 \uacb0\uc81c \uae08\uc561 \uae30\uc900 \uc774\uc6a9 \uac00\ub2a5\ud55c \ud504\ub85c\ubaa8\uc158 \ubaa9\ub85d\uc774 \uc870\ud68c\ub429\ub2c8\ub2e4.",
+                      "key": "amount",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "\uce74\ub4dc\uc0ac \ud544\ud130\n\n\uc870\ud68c\ud560 \uce74\ub4dc\uc0ac\uc785\ub2c8\ub2e4. \uac12\uc744 \uc785\ub825\ud558\uc9c0 \uc54a\uc73c\uba74 \uce74\ub4dc\uc0ac \ud544\ud130\ub9c1\uc774 \uc801\uc6a9\ub418\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.",
+                      "key": "cardCompany",
+                      "value": "SUHYUP_CARD"
+                    }
+                  ]
+                },
+                "description": "PG\uc0ac \uce74\ub4dc \ud504\ub85c\ubaa8\uc158 \uc870\ud68c API\n\n\uc8fc\uc5b4\uc9c4 \ucc44\ub110\uc5d0 \ub300\ud574 PG\uc0ac\uc5d0\uc11c \uc81c\uacf5\ud558\ub294 \uce74\ub4dc \ud504\ub85c\ubaa8\uc158 \ubaa9\ub85d\uc744 \uc870\ud68c\ud569\ub2c8\ub2e4.\n\ud574\ub2f9 API\ub294 \ud604\uc7ac \ud2b9\uc815 PG\uc0ac(KCP_V2)\uc5d0 \ub300\ud574\uc11c\ub9cc \uc9c0\uc6d0\ub418\uba70, \uc9c0\uc6d0 \uc5ec\ubd80\ub294 \ud3ec\ud2b8\uc6d0 \uae30\uc220\uc9c0\uc6d0\ud300\uc5d0 \ubb38\uc758 \ubd80\ud0c1\ub4dc\ub9bd\ub2c8\ub2e4."
+              },
+              "response": [
+                {
+                  "id": "5723208e-7786-48ce-b99f-d1cca675fb94",
+                  "name": "\uc131\uacf5 \uc751\ub2f5\uc73c\ub85c \uce74\ub4dc \ud504\ub85c\ubaa8\uc158 \ubaa9\ub85d\uc744 \ubc18\ud658\ud569\ub2c8\ub2e4.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment-gateways/card-promotion?channelKey=<string>&amount=<long>&cardCompany=SUHYUP_CARD",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment-gateways",
+                        "card-promotion"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) \ucc44\ub110 \ud0a4\n\n\uc870\ud68c\ud558\uace0\uc790 \ud558\ub294 \ucc44\ub110\uc758 \ud0a4",
+                          "key": "channelKey",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) \uacb0\uc81c \uae08\uc561\n\n\uacb0\uc81c \uae08\uc561\uc785\ub2c8\ub2e4. \ud574\ub2f9 \uacb0\uc81c \uae08\uc561 \uae30\uc900 \uc774\uc6a9 \uac00\ub2a5\ud55c \ud504\ub85c\ubaa8\uc158 \ubaa9\ub85d\uc774 \uc870\ud68c\ub429\ub2c8\ub2e4.",
+                          "key": "amount",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "\uce74\ub4dc\uc0ac \ud544\ud130\n\n\uc870\ud68c\ud560 \uce74\ub4dc\uc0ac\uc785\ub2c8\ub2e4. \uac12\uc744 \uc785\ub825\ud558\uc9c0 \uc54a\uc73c\uba74 \uce74\ub4dc\uc0ac \ud544\ud130\ub9c1\uc774 \uc801\uc6a9\ub418\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.",
+                          "key": "cardCompany",
+                          "value": "SUHYUP_CARD"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T02:39:42.000Z",
+                  "updatedAt": "2026-07-28T02:39:42.000Z",
+                  "uid": "35240-5723208e-7786-48ce-b99f-d1cca675fb94"
+                },
+                {
+                  "id": "7c8ce6a2-52ae-429a-a40a-875dfb8470e3",
+                  "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment-gateways/card-promotion?channelKey=<string>&amount=<long>&cardCompany=SUHYUP_CARD",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment-gateways",
+                        "card-promotion"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) \ucc44\ub110 \ud0a4\n\n\uc870\ud68c\ud558\uace0\uc790 \ud558\ub294 \ucc44\ub110\uc758 \ud0a4",
+                          "key": "channelKey",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) \uacb0\uc81c \uae08\uc561\n\n\uacb0\uc81c \uae08\uc561\uc785\ub2c8\ub2e4. \ud574\ub2f9 \uacb0\uc81c \uae08\uc561 \uae30\uc900 \uc774\uc6a9 \uac00\ub2a5\ud55c \ud504\ub85c\ubaa8\uc158 \ubaa9\ub85d\uc774 \uc870\ud68c\ub429\ub2c8\ub2e4.",
+                          "key": "amount",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "\uce74\ub4dc\uc0ac \ud544\ud130\n\n\uc870\ud68c\ud560 \uce74\ub4dc\uc0ac\uc785\ub2c8\ub2e4. \uac12\uc744 \uc785\ub825\ud558\uc9c0 \uc54a\uc73c\uba74 \uce74\ub4dc\uc0ac \ud544\ud130\ub9c1\uc774 \uc801\uc6a9\ub418\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.",
+                          "key": "cardCompany",
+                          "value": "SUHYUP_CARD"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:42.000Z",
+                  "updatedAt": "2026-07-28T02:39:42.000Z",
+                  "uid": "35240-7c8ce6a2-52ae-429a-a40a-875dfb8470e3"
+                },
+                {
+                  "id": "6dedccf6-baa9-447c-8f5e-bee0b34f855f",
+                  "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment-gateways/card-promotion?channelKey=<string>&amount=<long>&cardCompany=SUHYUP_CARD",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment-gateways",
+                        "card-promotion"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) \ucc44\ub110 \ud0a4\n\n\uc870\ud68c\ud558\uace0\uc790 \ud558\ub294 \ucc44\ub110\uc758 \ud0a4",
+                          "key": "channelKey",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) \uacb0\uc81c \uae08\uc561\n\n\uacb0\uc81c \uae08\uc561\uc785\ub2c8\ub2e4. \ud574\ub2f9 \uacb0\uc81c \uae08\uc561 \uae30\uc900 \uc774\uc6a9 \uac00\ub2a5\ud55c \ud504\ub85c\ubaa8\uc158 \ubaa9\ub85d\uc774 \uc870\ud68c\ub429\ub2c8\ub2e4.",
+                          "key": "amount",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "\uce74\ub4dc\uc0ac \ud544\ud130\n\n\uc870\ud68c\ud560 \uce74\ub4dc\uc0ac\uc785\ub2c8\ub2e4. \uac12\uc744 \uc785\ub825\ud558\uc9c0 \uc54a\uc73c\uba74 \uce74\ub4dc\uc0ac \ud544\ud130\ub9c1\uc774 \uc801\uc6a9\ub418\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.",
+                          "key": "cardCompany",
+                          "value": "SUHYUP_CARD"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:42.000Z",
+                  "updatedAt": "2026-07-28T02:39:42.000Z",
+                  "uid": "35240-6dedccf6-baa9-447c-8f5e-bee0b34f855f"
+                },
+                {
+                  "id": "9285f885-f292-4547-b3b6-faa3f848a2d0",
+                  "name": "* `ChannelNotFoundError`: \uc694\uccad\ub41c \ucc44\ub110\uc774 \uc874\uc7ac\ud558\uc9c0 \uc54a\ub294 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment-gateways/card-promotion?channelKey=<string>&amount=<long>&cardCompany=SUHYUP_CARD",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment-gateways",
+                        "card-promotion"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) \ucc44\ub110 \ud0a4\n\n\uc870\ud68c\ud558\uace0\uc790 \ud558\ub294 \ucc44\ub110\uc758 \ud0a4",
+                          "key": "channelKey",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) \uacb0\uc81c \uae08\uc561\n\n\uacb0\uc81c \uae08\uc561\uc785\ub2c8\ub2e4. \ud574\ub2f9 \uacb0\uc81c \uae08\uc561 \uae30\uc900 \uc774\uc6a9 \uac00\ub2a5\ud55c \ud504\ub85c\ubaa8\uc158 \ubaa9\ub85d\uc774 \uc870\ud68c\ub429\ub2c8\ub2e4.",
+                          "key": "amount",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "\uce74\ub4dc\uc0ac \ud544\ud130\n\n\uc870\ud68c\ud560 \uce74\ub4dc\uc0ac\uc785\ub2c8\ub2e4. \uac12\uc744 \uc785\ub825\ud558\uc9c0 \uc54a\uc73c\uba74 \uce74\ub4dc\uc0ac \ud544\ud130\ub9c1\uc774 \uc801\uc6a9\ub418\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.",
+                          "key": "cardCompany",
+                          "value": "SUHYUP_CARD"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:42.000Z",
+                  "updatedAt": "2026-07-28T02:39:42.000Z",
+                  "uid": "35240-9285f885-f292-4547-b3b6-faa3f848a2d0"
+                },
+                {
+                  "id": "1a0f1c88-2300-4518-8c12-792a101b39c5",
+                  "name": "* `PgProviderError`: PG\uc0ac\uc5d0\uc11c \uc624\ub958\ub97c \uc804\ub2ec\ud55c \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment-gateways/card-promotion?channelKey=<string>&amount=<long>&cardCompany=SUHYUP_CARD",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment-gateways",
+                        "card-promotion"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) \ucc44\ub110 \ud0a4\n\n\uc870\ud68c\ud558\uace0\uc790 \ud558\ub294 \ucc44\ub110\uc758 \ud0a4",
+                          "key": "channelKey",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) \uacb0\uc81c \uae08\uc561\n\n\uacb0\uc81c \uae08\uc561\uc785\ub2c8\ub2e4. \ud574\ub2f9 \uacb0\uc81c \uae08\uc561 \uae30\uc900 \uc774\uc6a9 \uac00\ub2a5\ud55c \ud504\ub85c\ubaa8\uc158 \ubaa9\ub85d\uc774 \uc870\ud68c\ub429\ub2c8\ub2e4.",
+                          "key": "amount",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "\uce74\ub4dc\uc0ac \ud544\ud130\n\n\uc870\ud68c\ud560 \uce74\ub4dc\uc0ac\uc785\ub2c8\ub2e4. \uac12\uc744 \uc785\ub825\ud558\uc9c0 \uc54a\uc73c\uba74 \uce74\ub4dc\uc0ac \ud544\ud130\ub9c1\uc774 \uc801\uc6a9\ub418\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.",
+                          "key": "cardCompany",
+                          "value": "SUHYUP_CARD"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Gateway",
+                  "code": 502,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:42.000Z",
+                  "updatedAt": "2026-07-28T02:39:42.000Z",
+                  "uid": "35240-1a0f1c88-2300-4518-8c12-792a101b39c5"
+                }
+              ],
+              "createdAt": "2026-07-28T02:39:42.000Z",
+              "updatedAt": "2026-07-28T02:39:42.000Z",
+              "uid": "35240-f927ceeb-1f4e-4d08-ab93-311ab9351870"
+            }
+          ],
+          "id": "b9c57760-43b4-4d9a-9816-d2b0cf80b7f5",
+          "createdAt": "2026-07-28T02:39:42.000Z",
+          "updatedAt": "2026-07-28T02:39:42.000Z",
+          "uid": "35240-b9c57760-43b4-4d9a-9816-d2b0cf80b7f5"
+        }
+      ],
+      "id": "aee9853d-4ec0-48d9-a865-6dfd28b98d7d",
+      "createdAt": "2026-07-28T02:39:42.000Z",
+      "updatedAt": "2026-07-28T02:39:42.000Z",
+      "uid": "35240-aee9853d-4ec0-48d9-a865-6dfd28b98d7d"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.portone.io"
+    }
+  ]
+}

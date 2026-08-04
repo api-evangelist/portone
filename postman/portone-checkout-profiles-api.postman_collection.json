@@ -1,0 +1,271 @@
+{
+  "info": {
+    "_postman_id": "383a94b2-1b69-41d7-b2f4-fa9935bbb94f",
+    "name": "PortOne B2b Checkout Profiles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:39:35.000Z",
+    "updatedAt": "2026-07-28T02:39:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-383a94b2-1b69-41d7-b2f4-fa9935bbb94f"
+  },
+  "item": [
+    {
+      "name": "checkout-profiles",
+      "item": [
+        {
+          "name": "evaluate",
+          "item": [
+            {
+              "name": "\uccb4\ud06c\uc544\uc6c3 \ud504\ub85c\ud544\uc5d0\uc11c \uacb0\uc81c \uc218\ub2e8 \ubaa9\ub85d \uc870\ud68c",
+              "id": "db869aa2-a6bc-4aef-80c9-92614f69d77a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/checkout-profiles/evaluate?profileKey=<string>&country=TR&currency=TRY&amount=<long>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "checkout-profiles",
+                    "evaluate"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) \ud504\ub85c\ud544 \ud0a4",
+                      "key": "profileKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) \uad6d\uac00",
+                      "key": "country",
+                      "value": "TR"
+                    },
+                    {
+                      "description": "(Required) \ud1b5\ud654",
+                      "key": "currency",
+                      "value": "TRY"
+                    },
+                    {
+                      "description": "(Required) \uacb0\uc81c \uae08\uc561",
+                      "key": "amount",
+                      "value": "<long>"
+                    }
+                  ]
+                },
+                "description": "\uccb4\ud06c\uc544\uc6c3 \ud504\ub85c\ud544\uc5d0\uc11c \uacb0\uc81c \uc218\ub2e8 \ubaa9\ub85d \uc870\ud68c\n\n\uc8fc\uc5b4\uc9c4 \uae08\uc561 \ubc0f \uad6d\uac00\uc5d0\uc11c \uc0ac\uc6a9 \uac00\ub2a5\ud55c \uacb0\uc81c \uc218\ub2e8 \ubaa9\ub85d\uc744 \ubc18\ud658"
+              },
+              "response": [
+                {
+                  "id": "320b444c-4ec4-42a5-bcec-98374abc4f17",
+                  "name": "\uc131\uacf5 \uc751\ub2f5",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/checkout-profiles/evaluate?profileKey=<string>&country=TR&currency=TRY&amount=<long>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "checkout-profiles",
+                        "evaluate"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) \ud504\ub85c\ud544 \ud0a4",
+                          "key": "profileKey",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) \uad6d\uac00",
+                          "key": "country",
+                          "value": "TR"
+                        },
+                        {
+                          "description": "(Required) \ud1b5\ud654",
+                          "key": "currency",
+                          "value": "TRY"
+                        },
+                        {
+                          "description": "(Required) \uacb0\uc81c \uae08\uc561",
+                          "key": "amount",
+                          "value": "<long>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T02:39:35.000Z",
+                  "updatedAt": "2026-07-28T02:39:35.000Z",
+                  "uid": "35240-320b444c-4ec4-42a5-bcec-98374abc4f17"
+                },
+                {
+                  "id": "96e4dd42-eca8-4589-9f98-1ae132a5bf47",
+                  "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/checkout-profiles/evaluate?profileKey=<string>&country=TR&currency=TRY&amount=<long>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "checkout-profiles",
+                        "evaluate"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) \ud504\ub85c\ud544 \ud0a4",
+                          "key": "profileKey",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) \uad6d\uac00",
+                          "key": "country",
+                          "value": "TR"
+                        },
+                        {
+                          "description": "(Required) \ud1b5\ud654",
+                          "key": "currency",
+                          "value": "TRY"
+                        },
+                        {
+                          "description": "(Required) \uacb0\uc81c \uae08\uc561",
+                          "key": "amount",
+                          "value": "<long>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:35.000Z",
+                  "updatedAt": "2026-07-28T02:39:35.000Z",
+                  "uid": "35240-96e4dd42-eca8-4589-9f98-1ae132a5bf47"
+                },
+                {
+                  "id": "6da69162-c3ae-462f-872e-fa64892efa28",
+                  "name": "* `ProfileSettingsNotFoundError`: \ud504\ub85c\ud544 \uc124\uc815\uc774 \uc874\uc7ac\ud558\uc9c0 \uc54a\ub294 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/checkout-profiles/evaluate?profileKey=<string>&country=TR&currency=TRY&amount=<long>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "checkout-profiles",
+                        "evaluate"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) \ud504\ub85c\ud544 \ud0a4",
+                          "key": "profileKey",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) \uad6d\uac00",
+                          "key": "country",
+                          "value": "TR"
+                        },
+                        {
+                          "description": "(Required) \ud1b5\ud654",
+                          "key": "currency",
+                          "value": "TRY"
+                        },
+                        {
+                          "description": "(Required) \uacb0\uc81c \uae08\uc561",
+                          "key": "amount",
+                          "value": "<long>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:35.000Z",
+                  "updatedAt": "2026-07-28T02:39:35.000Z",
+                  "uid": "35240-6da69162-c3ae-462f-872e-fa64892efa28"
+                }
+              ],
+              "createdAt": "2026-07-28T02:39:35.000Z",
+              "updatedAt": "2026-07-28T02:39:35.000Z",
+              "uid": "35240-db869aa2-a6bc-4aef-80c9-92614f69d77a"
+            }
+          ],
+          "id": "61308509-3976-4a37-b944-98204f50b2f3",
+          "createdAt": "2026-07-28T02:39:35.000Z",
+          "updatedAt": "2026-07-28T02:39:35.000Z",
+          "uid": "35240-61308509-3976-4a37-b944-98204f50b2f3"
+        }
+      ],
+      "id": "f9e2c29d-b9d0-4e0b-b4a9-2129d5dfb13c",
+      "createdAt": "2026-07-28T02:39:35.000Z",
+      "updatedAt": "2026-07-28T02:39:35.000Z",
+      "uid": "35240-f9e2c29d-b9d0-4e0b-b4a9-2129d5dfb13c"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.portone.io"
+    }
+  ]
+}

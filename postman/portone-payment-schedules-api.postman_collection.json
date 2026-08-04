@@ -1,0 +1,950 @@
+{
+  "info": {
+    "_postman_id": "e04d4274-d8e9-4e3e-8c10-35faf6658337",
+    "name": "PortOne B2b Payment Schedules API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:39:43.000Z",
+    "updatedAt": "2026-07-28T02:39:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e04d4274-d8e9-4e3e-8c10-35faf6658337"
+  },
+  "item": [
+    {
+      "name": "payment-schedules",
+      "item": [
+        {
+          "name": "{paymentScheduleId}",
+          "item": [
+            {
+              "name": "\uacb0\uc81c \uc608\uc57d \ub2e8\uac74 \uc870\ud68c",
+              "id": "c7a7f5ec-1eaa-40c8-9e44-3754d8f24b7e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payment-schedules/:paymentScheduleId?storeId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-schedules",
+                    ":paymentScheduleId"
+                  ],
+                  "query": [
+                    {
+                      "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                      "key": "storeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "a96bf4ce-fd57-41c5-9b23-6c4a0f927f97",
+                      "key": "paymentScheduleId",
+                      "value": "<string>",
+                      "description": "(Required) \uc870\ud68c\ud560 \uacb0\uc81c \uc608\uc57d \uac74 \uc544\uc774\ub514"
+                    }
+                  ]
+                },
+                "description": "\uacb0\uc81c \uc608\uc57d \ub2e8\uac74 \uc870\ud68c\n\n\uc8fc\uc5b4\uc9c4 \uc544\uc774\ub514\uc5d0 \ub300\uc751\ub418\ub294 \uacb0\uc81c \uc608\uc57d \uac74\uc744 \uc870\ud68c\ud569\ub2c8\ub2e4."
+              },
+              "response": [
+                {
+                  "id": "5566d316-f89c-4aa5-88e7-d96bbce0e093",
+                  "name": "\uc131\uacf5 \uc751\ub2f5\uc73c\ub85c \uacb0\uc81c \uc608\uc57d \uac74 \uac1d\uccb4\ub97c \ubc18\ud658\ud569\ub2c8\ub2e4.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment-schedules/:paymentScheduleId?storeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment-schedules",
+                        ":paymentScheduleId"
+                      ],
+                      "query": [
+                        {
+                          "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                          "key": "storeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "paymentScheduleId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<string>\",\n  \"id\": \"<string>\",\n  \"merchantId\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"billingKey\": \"<string>\",\n  \"orderName\": \"<string>\",\n  \"isCulturalExpense\": \"<boolean>\",\n  \"isEscrow\": \"<boolean>\",\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"birthYear\": \"<string>\",\n    \"birthMonth\": \"<string>\",\n    \"birthDay\": \"<string>\",\n    \"gender\": \"OTHER\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"address\": {\n      \"type\": \"<string>\",\n      \"oneLine\": \"<string>\"\n    },\n    \"zipcode\": \"<string>\"\n  },\n  \"customData\": \"<string>\",\n  \"totalAmount\": \"<long>\",\n  \"currency\": \"XTS\",\n  \"createdAt\": \"<dateTime>\",\n  \"timeToPay\": \"<dateTime>\",\n  \"startedAt\": \"<dateTime>\",\n  \"completedAt\": \"<dateTime>\",\n  \"taxFreeAmount\": \"<long>\",\n  \"vatAmount\": \"<long>\",\n  \"installmentMonth\": \"<integer>\",\n  \"noticeUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"products\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"amount\": \"<long>\",\n      \"quantity\": \"<integer>\",\n      \"tag\": \"<string>\",\n      \"code\": \"<string>\",\n      \"link\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"amount\": \"<long>\",\n      \"quantity\": \"<integer>\",\n      \"tag\": \"<string>\",\n      \"code\": \"<string>\",\n      \"link\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:39:44.000Z",
+                  "updatedAt": "2026-07-28T02:39:44.000Z",
+                  "uid": "35240-5566d316-f89c-4aa5-88e7-d96bbce0e093"
+                },
+                {
+                  "id": "3d2d17f5-dbb2-4c99-ad4c-83410ba89ae9",
+                  "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment-schedules/:paymentScheduleId?storeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment-schedules",
+                        ":paymentScheduleId"
+                      ],
+                      "query": [
+                        {
+                          "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                          "key": "storeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "paymentScheduleId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:44.000Z",
+                  "updatedAt": "2026-07-28T02:39:44.000Z",
+                  "uid": "35240-3d2d17f5-dbb2-4c99-ad4c-83410ba89ae9"
+                },
+                {
+                  "id": "6492a9ff-99e6-4c3a-9a1c-c633c7bc7433",
+                  "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment-schedules/:paymentScheduleId?storeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment-schedules",
+                        ":paymentScheduleId"
+                      ],
+                      "query": [
+                        {
+                          "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                          "key": "storeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "paymentScheduleId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:44.000Z",
+                  "updatedAt": "2026-07-28T02:39:44.000Z",
+                  "uid": "35240-6492a9ff-99e6-4c3a-9a1c-c633c7bc7433"
+                },
+                {
+                  "id": "b1488833-76bd-4d3f-898b-b69ca3a84597",
+                  "name": "* `ForbiddenError`: \uc694\uccad\uc774 \uac70\uc808\ub41c \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment-schedules/:paymentScheduleId?storeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment-schedules",
+                        ":paymentScheduleId"
+                      ],
+                      "query": [
+                        {
+                          "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                          "key": "storeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "paymentScheduleId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:44.000Z",
+                  "updatedAt": "2026-07-28T02:39:44.000Z",
+                  "uid": "35240-b1488833-76bd-4d3f-898b-b69ca3a84597"
+                },
+                {
+                  "id": "d5124d98-a8bf-4c98-af4b-d9b3d4e96a0a",
+                  "name": "* `PaymentScheduleNotFoundError`: \uacb0\uc81c \uc608\uc57d\uac74\uc774 \uc874\uc7ac\ud558\uc9c0 \uc54a\ub294 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment-schedules/:paymentScheduleId?storeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment-schedules",
+                        ":paymentScheduleId"
+                      ],
+                      "query": [
+                        {
+                          "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                          "key": "storeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "paymentScheduleId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:44.000Z",
+                  "updatedAt": "2026-07-28T02:39:44.000Z",
+                  "uid": "35240-d5124d98-a8bf-4c98-af4b-d9b3d4e96a0a"
+                }
+              ],
+              "createdAt": "2026-07-28T02:39:44.000Z",
+              "updatedAt": "2026-07-28T02:39:44.000Z",
+              "uid": "35240-c7a7f5ec-1eaa-40c8-9e44-3754d8f24b7e"
+            }
+          ],
+          "id": "0526a6a3-f68d-4a94-930b-67cb352fbc2b",
+          "createdAt": "2026-07-28T02:39:44.000Z",
+          "updatedAt": "2026-07-28T02:39:44.000Z",
+          "uid": "35240-0526a6a3-f68d-4a94-930b-67cb352fbc2b"
+        },
+        {
+          "name": "\uacb0\uc81c \uc608\uc57d \ub2e4\uac74 \uc870\ud68c",
+          "id": "63366889-0b9d-41ca-bc35-3b92b4101fd6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payment-schedules?requestBody=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payment-schedules"
+              ],
+              "query": [
+                {
+                  "key": "requestBody",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "\uacb0\uc81c \uc608\uc57d \ub2e4\uac74 \uc870\ud68c\n\n\uc8fc\uc5b4\uc9c4 \uc870\uac74\uc5d0 \ub9de\ub294 \uacb0\uc81c \uc608\uc57d \uac74\ub4e4\uc744 \uc870\ud68c\ud569\ub2c8\ub2e4.\n`filter.from`, `filter.until` \ud30c\ub77c\ubbf8\ud130\uc758 \uae30\ubcf8\uac12\uc774 \uacb0\uc81c \uc2dc\uc810 \uae30\uc900 \uc9c0\ub09c 90\uc77c\uc5d0 \uc18d\ud558\ub294 \uac74\uc744 \uc870\ud68c\ud558\ub3c4\ub85d \ub418\uc5b4 \uc788\uc73c\ub2c8, \ubbf8\ub798 \uc608\uc57d \uc0c1\ud0dc\uc758 \uac74\uc744 \uc870\ud68c\ud558\uae30 \uc704\ud574\uc11c\ub294 \ud574\ub2f9 \ud30c\ub77c\ubbf8\ud130\ub97c \uc9c1\uc811 \uc124\uc815\ud574 \uc8fc\uc154\uc57c \ud569\ub2c8\ub2e4."
+          },
+          "response": [
+            {
+              "id": "3253aee1-11cf-4bc8-8d15-48f575027965",
+              "name": "\uc131\uacf5 \uc751\ub2f5\uc73c\ub85c \uc870\ud68c\ub41c \uc608\uc57d \uacb0\uc81c \uac74 \ub9ac\uc2a4\ud2b8\uac00 \ubc18\ud658\ub429\ub2c8\ub2e4.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payment-schedules?requestBody=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-schedules"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"items\": [\n    {\n      \"status\": \"<string>\",\n      \"id\": \"<string>\",\n      \"merchantId\": \"<string>\",\n      \"storeId\": \"<string>\",\n      \"paymentId\": \"<string>\",\n      \"billingKey\": \"<string>\",\n      \"orderName\": \"<string>\",\n      \"isCulturalExpense\": \"<boolean>\",\n      \"isEscrow\": \"<boolean>\",\n      \"customer\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"birthYear\": \"<string>\",\n        \"birthMonth\": \"<string>\",\n        \"birthDay\": \"<string>\",\n        \"gender\": \"FEMALE\",\n        \"email\": \"<string>\",\n        \"phoneNumber\": \"<string>\",\n        \"address\": {\n          \"type\": \"<string>\",\n          \"oneLine\": \"<string>\"\n        },\n        \"zipcode\": \"<string>\"\n      },\n      \"customData\": \"<string>\",\n      \"totalAmount\": \"<long>\",\n      \"currency\": \"HTG\",\n      \"createdAt\": \"<dateTime>\",\n      \"timeToPay\": \"<dateTime>\",\n      \"startedAt\": \"<dateTime>\",\n      \"completedAt\": \"<dateTime>\",\n      \"taxFreeAmount\": \"<long>\",\n      \"vatAmount\": \"<long>\",\n      \"installmentMonth\": \"<integer>\",\n      \"noticeUrls\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"products\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"amount\": \"<long>\",\n          \"quantity\": \"<integer>\",\n          \"tag\": \"<string>\",\n          \"code\": \"<string>\",\n          \"link\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"amount\": \"<long>\",\n          \"quantity\": \"<integer>\",\n          \"tag\": \"<string>\",\n          \"code\": \"<string>\",\n          \"link\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"status\": \"<string>\",\n      \"id\": \"<string>\",\n      \"merchantId\": \"<string>\",\n      \"storeId\": \"<string>\",\n      \"paymentId\": \"<string>\",\n      \"billingKey\": \"<string>\",\n      \"orderName\": \"<string>\",\n      \"isCulturalExpense\": \"<boolean>\",\n      \"isEscrow\": \"<boolean>\",\n      \"customer\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"birthYear\": \"<string>\",\n        \"birthMonth\": \"<string>\",\n        \"birthDay\": \"<string>\",\n        \"gender\": \"FEMALE\",\n        \"email\": \"<string>\",\n        \"phoneNumber\": \"<string>\",\n        \"address\": {\n          \"type\": \"<string>\",\n          \"oneLine\": \"<string>\"\n        },\n        \"zipcode\": \"<string>\"\n      },\n      \"customData\": \"<string>\",\n      \"totalAmount\": \"<long>\",\n      \"currency\": \"BSD\",\n      \"createdAt\": \"<dateTime>\",\n      \"timeToPay\": \"<dateTime>\",\n      \"startedAt\": \"<dateTime>\",\n      \"completedAt\": \"<dateTime>\",\n      \"taxFreeAmount\": \"<long>\",\n      \"vatAmount\": \"<long>\",\n      \"installmentMonth\": \"<integer>\",\n      \"noticeUrls\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"products\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"amount\": \"<long>\",\n          \"quantity\": \"<integer>\",\n          \"tag\": \"<string>\",\n          \"code\": \"<string>\",\n          \"link\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"amount\": \"<long>\",\n          \"quantity\": \"<integer>\",\n          \"tag\": \"<string>\",\n          \"code\": \"<string>\",\n          \"link\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"page\": {\n    \"number\": \"<integer>\",\n    \"size\": \"<integer>\",\n    \"totalCount\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:39:44.000Z",
+              "updatedAt": "2026-07-28T02:39:44.000Z",
+              "uid": "35240-3253aee1-11cf-4bc8-8d15-48f575027965"
+            },
+            {
+              "id": "0182ed17-9e46-4c91-9d37-93e4ececca56",
+              "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payment-schedules?requestBody=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-schedules"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:44.000Z",
+              "updatedAt": "2026-07-28T02:39:44.000Z",
+              "uid": "35240-0182ed17-9e46-4c91-9d37-93e4ececca56"
+            },
+            {
+              "id": "1de3d7e4-7a8b-4eec-89c5-d99e46c8b25d",
+              "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payment-schedules?requestBody=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-schedules"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:44.000Z",
+              "updatedAt": "2026-07-28T02:39:44.000Z",
+              "uid": "35240-1de3d7e4-7a8b-4eec-89c5-d99e46c8b25d"
+            },
+            {
+              "id": "68514f14-307d-4ce8-9e9b-10b1cf8ce6d5",
+              "name": "* `ForbiddenError`: \uc694\uccad\uc774 \uac70\uc808\ub41c \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payment-schedules?requestBody=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-schedules"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:44.000Z",
+              "updatedAt": "2026-07-28T02:39:44.000Z",
+              "uid": "35240-68514f14-307d-4ce8-9e9b-10b1cf8ce6d5"
+            }
+          ],
+          "createdAt": "2026-07-28T02:39:44.000Z",
+          "updatedAt": "2026-07-28T02:39:44.000Z",
+          "uid": "35240-63366889-0b9d-41ca-bc35-3b92b4101fd6"
+        },
+        {
+          "name": "\uacb0\uc81c \uc608\uc57d \ucde8\uc18c",
+          "id": "6cb1429c-f853-4c43-ab59-baa6e191faaf",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payment-schedules?requestBody=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payment-schedules"
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "requestBody",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "\uacb0\uc81c \uc608\uc57d \ucde8\uc18c\n\n\uacb0\uc81c \uc608\uc57d \uac74\uc744 \ucde8\uc18c\ud569\ub2c8\ub2e4.\nbillingKey, scheduleIds \uc911 \ud558\ub098 \uc774\uc0c1\uc740 \ud544\uc218\ub85c \uc785\ub825\ud569\ub2c8\ub2e4.\nbillingKey \ub9cc \uc785\ub825\ub41c \uacbd\uc6b0 -> \ud574\ub2f9 \ube4c\ub9c1\ud0a4\ub85c \uc608\uc57d\ub41c \ubaa8\ub4e0 \uacb0\uc81c \uc608\uc57d \uac74\ub4e4\uc774 \ucde8\uc18c\ub429\ub2c8\ub2e4.\nscheduleIds \ub9cc \uc785\ub825\ub41c \uacbd\uc6b0 -> \uc785\ub825\ub41c \uacb0\uc81c \uc608\uc57d \uac74 \uc544\uc774\ub514\uc5d0 \ud574\ub2f9\ud558\ub294 \uc608\uc57d \uac74\ub4e4\uc774 \ucde8\uc18c\ub429\ub2c8\ub2e4.\nbillingKey, scheduleIds \ubaa8\ub450 \uc785\ub825\ub41c \uacbd\uc6b0 -> \uc785\ub825\ub41c \uacb0\uc81c \uc608\uc57d \uac74 \uc544\uc774\ub514\uc5d0 \ud574\ub2f9\ud558\ub294 \uc608\uc57d \uac74\ub4e4\uc774 \ucde8\uc18c\ub429\ub2c8\ub2e4. \ub2e8, \uc608\uc57d\ud55c \ube4c\ub9c1\ud0a4\uac00 \uc785\ub825\ub41c \ube4c\ub9c1\ud0a4\uc640 \uc77c\uce58\ud558\uc9c0 \uc54a\uc73c\uba74 \uc2e4\ud328\ud569\ub2c8\ub2e4.\n\uc704 \uc815\ucc45\uc5d0 \ub530\ub77c \uc120\ud0dd\ub41c \uacb0\uc81c \uc608\uc57d \uac74\ub4e4 \uc911 \ud558\ub098\ub77c\ub3c4 \ucde8\uc18c\uc5d0 \uc2e4\ud328\ud560 \uacbd\uc6b0, \ubaa8\ub4e0 \ucde8\uc18c \uc694\uccad\uc774 \uc2e4\ud328\ud569\ub2c8\ub2e4."
+          },
+          "response": [
+            {
+              "id": "92b9117b-7274-497d-ad0d-326e704637bd",
+              "name": "\uc131\uacf5 \uc751\ub2f5",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payment-schedules?requestBody=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-schedules"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"revokedScheduleIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"revokedAt\": \"<dateTime>\"\n}",
+              "createdAt": "2026-07-28T02:39:44.000Z",
+              "updatedAt": "2026-07-28T02:39:44.000Z",
+              "uid": "35240-92b9117b-7274-497d-ad0d-326e704637bd"
+            },
+            {
+              "id": "73b5a1de-67a4-4aff-be54-11acdcf0295d",
+              "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payment-schedules?requestBody=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-schedules"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:44.000Z",
+              "updatedAt": "2026-07-28T02:39:44.000Z",
+              "uid": "35240-73b5a1de-67a4-4aff-be54-11acdcf0295d"
+            },
+            {
+              "id": "2a6b5325-e22d-442c-8dbe-6ef36c580968",
+              "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payment-schedules?requestBody=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-schedules"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:44.000Z",
+              "updatedAt": "2026-07-28T02:39:44.000Z",
+              "uid": "35240-2a6b5325-e22d-442c-8dbe-6ef36c580968"
+            },
+            {
+              "id": "b078c9ad-4e76-4528-8b16-3eb12cb76e75",
+              "name": "* `ForbiddenError`: \uc694\uccad\uc774 \uac70\uc808\ub41c \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payment-schedules?requestBody=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-schedules"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:44.000Z",
+              "updatedAt": "2026-07-28T02:39:44.000Z",
+              "uid": "35240-b078c9ad-4e76-4528-8b16-3eb12cb76e75"
+            },
+            {
+              "id": "49a83061-6774-41eb-82b1-5928e539a6b4",
+              "name": "* `PaymentScheduleNotFoundError`: \uacb0\uc81c \uc608\uc57d\uac74\uc774 \uc874\uc7ac\ud558\uc9c0 \uc54a\ub294 \uacbd\uc6b0\n* `BillingKeyNotFoundError`: \ube4c\ub9c1\ud0a4\uac00 \uc874\uc7ac\ud558\uc9c0 \uc54a\ub294 \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payment-schedules?requestBody=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-schedules"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:44.000Z",
+              "updatedAt": "2026-07-28T02:39:44.000Z",
+              "uid": "35240-49a83061-6774-41eb-82b1-5928e539a6b4"
+            },
+            {
+              "id": "da13f2ce-e7a9-495e-b7ba-acb71ad34f7c",
+              "name": "* `PaymentScheduleAlreadyProcessedError`: \uacb0\uc81c \uc608\uc57d\uac74\uc774 \uc774\ubbf8 \ucc98\ub9ac\ub41c \uacbd\uc6b0\n* `PaymentScheduleAlreadyRevokedError`: \uacb0\uc81c \uc608\uc57d\uac74\uc774 \uc774\ubbf8 \ucde8\uc18c\ub41c \uacbd\uc6b0\n* `BillingKeyAlreadyDeletedError`: \ube4c\ub9c1\ud0a4\uac00 \uc774\ubbf8 \uc0ad\uc81c\ub41c \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payment-schedules?requestBody=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-schedules"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:44.000Z",
+              "updatedAt": "2026-07-28T02:39:44.000Z",
+              "uid": "35240-da13f2ce-e7a9-495e-b7ba-acb71ad34f7c"
+            }
+          ],
+          "createdAt": "2026-07-28T02:39:44.000Z",
+          "updatedAt": "2026-07-28T02:39:44.000Z",
+          "uid": "35240-6cb1429c-f853-4c43-ab59-baa6e191faaf"
+        }
+      ],
+      "id": "6dd2cfc0-a75b-4385-9f4b-36940d6649f1",
+      "createdAt": "2026-07-28T02:39:44.000Z",
+      "updatedAt": "2026-07-28T02:39:44.000Z",
+      "uid": "35240-6dd2cfc0-a75b-4385-9f4b-36940d6649f1"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.portone.io"
+    }
+  ]
+}

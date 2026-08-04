@@ -1,0 +1,267 @@
+{
+  "info": {
+    "_postman_id": "fcae29af-cd00-4246-b4fc-d1b7c8bf8177",
+    "name": "PortOne B2b Payment Events By Cursor API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:39:40.000Z",
+    "updatedAt": "2026-07-28T02:39:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fcae29af-cd00-4246-b4fc-d1b7c8bf8177"
+  },
+  "item": [
+    {
+      "name": "payment-events-by-cursor",
+      "item": [
+        {
+          "name": "\uacb0\uc81c \uc774\ubca4\ud2b8 \ub300\uc6a9\ub7c9 \ub2e4\uac74 \uc870\ud68c(\ucee4\uc11c \uae30\ubc18)",
+          "id": "9cf5987a-47e4-448e-b4ca-766be5c51878",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payment-events-by-cursor?requestBody=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payment-events-by-cursor"
+              ],
+              "query": [
+                {
+                  "key": "requestBody",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "\uacb0\uc81c \uc774\ubca4\ud2b8 \ub300\uc6a9\ub7c9 \ub2e4\uac74 \uc870\ud68c(\ucee4\uc11c \uae30\ubc18)\n\n\uae30\uac04 \ub0b4 \ubaa8\ub4e0 \uacb0\uc81c \uc774\ubca4\ud2b8\ub97c \ucee4\uc11c \uae30\ubc18\uc73c\ub85c \uc870\ud68c\ud569\ub2c8\ub2e4. \uacb0\uc81c \uc774\ubca4\ud2b8\uc758 \uc0dd\uc131\uc77c\uc2dc\ub97c \uae30\uc900\uc73c\ub85c \uc8fc\uc5b4\uc9c4 \uae30\uac04 \ub0b4 \uc874\uc7ac\ud558\ub294 \ubaa8\ub4e0 \uacb0\uc81c \uc774\ubca4\ud2b8\uac00 \uc870\ud68c\ub429\ub2c8\ub2e4."
+          },
+          "response": [
+            {
+              "id": "0fc9a66b-2965-4dbb-bdb6-0df6a19254d8",
+              "name": "\uc131\uacf5 \uc751\ub2f5\uc73c\ub85c \uc870\ud68c\ub41c \uacb0\uc81c \uc774\ubca4\ud2b8 \ub9ac\uc2a4\ud2b8\uc640 \ucee4\uc11c \uc815\ubcf4\uac00 \ubc18\ud658\ub429\ub2c8\ub2e4.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payment-events-by-cursor?requestBody=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-events-by-cursor"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"items\": [\n    {\n      \"paymentEvent\": {\n        \"type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"paymentId\": \"<string>\",\n        \"transactionId\": \"<string>\",\n        \"merchantId\": \"<string>\",\n        \"storeId\": \"<string>\",\n        \"channel\": {\n          \"type\": \"TEST\",\n          \"pgProvider\": \"KPN\",\n          \"pgMerchantId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"key\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        \"version\": \"V2\",\n        \"requestedAt\": \"<dateTime>\",\n        \"createdAt\": \"<dateTime>\",\n        \"orderName\": \"<string>\",\n        \"totalAmount\": {\n          \"total\": \"<long>\",\n          \"taxFree\": \"<long>\",\n          \"discount\": \"<long>\",\n          \"paid\": \"<long>\",\n          \"cancelled\": \"<long>\",\n          \"cancelledTaxFree\": \"<long>\",\n          \"vat\": \"<long>\",\n          \"supply\": \"<long>\"\n        },\n        \"currency\": \"UYI\",\n        \"customer\": {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"birthYear\": \"<string>\",\n          \"birthMonth\": \"<string>\",\n          \"birthDay\": \"<string>\",\n          \"gender\": \"MALE\",\n          \"email\": \"<string>\",\n          \"phoneNumber\": \"<string>\",\n          \"address\": {\n            \"type\": \"<string>\",\n            \"oneLine\": \"<string>\"\n          },\n          \"zipcode\": \"<string>\"\n        },\n        \"eventAmount\": \"<long>\",\n        \"origin\": {\n          \"platformType\": \"PC\",\n          \"ipAddress\": \"<string>\",\n          \"userAgent\": \"<string>\",\n          \"url\": \"<string>\"\n        },\n        \"method\": {\n          \"type\": \"<string>\",\n          \"card\": {\n            \"publisher\": \"<string>\",\n            \"issuer\": \"<string>\",\n            \"brand\": \"VISA\",\n            \"type\": \"DEBIT\",\n            \"ownerType\": \"CORPORATE\",\n            \"bin\": \"<string>\",\n            \"name\": \"<string>\",\n            \"number\": \"<string>\"\n          },\n          \"approvalNumber\": \"<string>\",\n          \"installment\": {\n            \"month\": \"<integer>\",\n            \"isInterestFree\": \"<boolean>\",\n            \"isInterestFreeFromMerchant\": \"<boolean>\"\n          },\n          \"pointUsed\": \"<boolean>\"\n        },\n        \"channelGroup\": {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"isForTest\": \"<boolean>\"\n        },\n        \"scheduleId\": \"<string>\",\n        \"webhooks\": [\n          {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\",\n            \"paymentStatus\": \"PAY_PENDING\",\n            \"status\": \"FAILED_UNEXPECTED_ERROR\",\n            \"isAsync\": \"<boolean>\",\n            \"currentExecutionCount\": \"<integer>\",\n            \"maxExecutionCount\": \"<integer>\",\n            \"trigger\": \"ASYNC_PAY_PENDING\",\n            \"request\": {\n              \"body\": \"<string>\",\n              \"header\": \"<string>\",\n              \"requestedAt\": \"<dateTime>\"\n            },\n            \"response\": {\n              \"code\": \"<string>\",\n              \"header\": \"<string>\",\n              \"body\": \"<string>\",\n              \"respondedAt\": \"<dateTime>\"\n            },\n            \"triggeredAt\": \"<dateTime>\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\",\n            \"paymentStatus\": \"READY\",\n            \"status\": \"SUCCEEDED\",\n            \"isAsync\": \"<boolean>\",\n            \"currentExecutionCount\": \"<integer>\",\n            \"maxExecutionCount\": \"<integer>\",\n            \"trigger\": \"ASYNC_PAY_APPROVED\",\n            \"request\": {\n              \"body\": \"<string>\",\n              \"header\": \"<string>\",\n              \"requestedAt\": \"<dateTime>\"\n            },\n            \"response\": {\n              \"code\": \"<string>\",\n              \"header\": \"<string>\",\n              \"body\": \"<string>\",\n              \"respondedAt\": \"<dateTime>\"\n            },\n            \"triggeredAt\": \"<dateTime>\"\n          }\n        ],\n        \"isCulturalExpense\": \"<boolean>\",\n        \"escrow\": {\n          \"status\": \"<string>\"\n        },\n        \"products\": [\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"amount\": \"<long>\",\n            \"quantity\": \"<integer>\",\n            \"tag\": \"<string>\",\n            \"code\": \"<string>\",\n            \"link\": \"<string>\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"amount\": \"<long>\",\n            \"quantity\": \"<integer>\",\n            \"tag\": \"<string>\",\n            \"code\": \"<string>\",\n            \"link\": \"<string>\"\n          }\n        ],\n        \"productCount\": \"<integer>\",\n        \"customData\": \"<string>\",\n        \"country\": \"NO\",\n        \"pgTxId\": \"<string>\",\n        \"cashReceipt\": {\n          \"status\": \"<string>\",\n          \"issueNumber\": \"<string>\",\n          \"totalAmount\": \"<long>\",\n          \"currency\": \"XAU\",\n          \"issuedAt\": \"<dateTime>\",\n          \"cancelledAt\": \"<dateTime>\",\n          \"type\": \"CORPORATE\",\n          \"pgReceiptId\": \"<string>\",\n          \"taxFreeAmount\": \"<long>\",\n          \"url\": \"<string>\"\n        },\n        \"cashReceiptIssuanceStatus\": \"NOT_ISSUED\",\n        \"receiptUrl\": \"<string>\",\n        \"cancellation\": {\n          \"status\": \"<string>\",\n          \"id\": \"<string>\",\n          \"totalAmount\": \"<long>\",\n          \"taxFreeAmount\": \"<long>\",\n          \"vatAmount\": \"<long>\",\n          \"reason\": \"<string>\",\n          \"requestedAt\": \"<dateTime>\",\n          \"pgCancellationId\": \"<string>\",\n          \"easyPayDiscountAmount\": \"<long>\",\n          \"cancelledAt\": \"<dateTime>\",\n          \"trigger\": \"API\"\n        },\n        \"promotionId\": \"<string>\"\n      },\n      \"cursor\": \"<string>\"\n    },\n    {\n      \"paymentEvent\": {\n        \"type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"paymentId\": \"<string>\",\n        \"transactionId\": \"<string>\",\n        \"merchantId\": \"<string>\",\n        \"storeId\": \"<string>\",\n        \"channel\": {\n          \"type\": \"TEST\",\n          \"pgProvider\": \"SETTLE_ACC\",\n          \"pgMerchantId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"key\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        \"version\": \"V2\",\n        \"requestedAt\": \"<dateTime>\",\n        \"createdAt\": \"<dateTime>\",\n        \"orderName\": \"<string>\",\n        \"totalAmount\": {\n          \"total\": \"<long>\",\n          \"taxFree\": \"<long>\",\n          \"discount\": \"<long>\",\n          \"paid\": \"<long>\",\n          \"cancelled\": \"<long>\",\n          \"cancelledTaxFree\": \"<long>\",\n          \"vat\": \"<long>\",\n          \"supply\": \"<long>\"\n        },\n        \"currency\": \"KYD\",\n        \"customer\": {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"birthYear\": \"<string>\",\n          \"birthMonth\": \"<string>\",\n          \"birthDay\": \"<string>\",\n          \"gender\": \"FEMALE\",\n          \"email\": \"<string>\",\n          \"phoneNumber\": \"<string>\",\n          \"address\": {\n            \"type\": \"<string>\",\n            \"oneLine\": \"<string>\"\n          },\n          \"zipcode\": \"<string>\"\n        },\n        \"eventAmount\": \"<long>\",\n        \"origin\": {\n          \"platformType\": \"API\",\n          \"ipAddress\": \"<string>\",\n          \"userAgent\": \"<string>\",\n          \"url\": \"<string>\"\n        },\n        \"method\": {\n          \"type\": \"<string>\",\n          \"card\": {\n            \"publisher\": \"<string>\",\n            \"issuer\": \"<string>\",\n            \"brand\": \"UNIONPAY\",\n            \"type\": \"CREDIT\",\n            \"ownerType\": \"PERSONAL\",\n            \"bin\": \"<string>\",\n            \"name\": \"<string>\",\n            \"number\": \"<string>\"\n          },\n          \"approvalNumber\": \"<string>\",\n          \"installment\": {\n            \"month\": \"<integer>\",\n            \"isInterestFree\": \"<boolean>\",\n            \"isInterestFreeFromMerchant\": \"<boolean>\"\n          },\n          \"pointUsed\": \"<boolean>\"\n        },\n        \"channelGroup\": {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"isForTest\": \"<boolean>\"\n        },\n        \"scheduleId\": \"<string>\",\n        \"webhooks\": [\n          {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\",\n            \"paymentStatus\": \"FAILED\",\n            \"status\": \"FAILED_UNEXPECTED_ERROR\",\n            \"isAsync\": \"<boolean>\",\n            \"currentExecutionCount\": \"<integer>\",\n            \"maxExecutionCount\": \"<integer>\",\n            \"trigger\": \"VIRTUAL_ACCOUNT_DEPOSIT\",\n            \"request\": {\n              \"body\": \"<string>\",\n              \"header\": \"<string>\",\n              \"requestedAt\": \"<dateTime>\"\n            },\n            \"response\": {\n              \"code\": \"<string>\",\n              \"header\": \"<string>\",\n              \"body\": \"<string>\",\n              \"respondedAt\": \"<dateTime>\"\n            },\n            \"triggeredAt\": \"<dateTime>\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\",\n            \"paymentStatus\": \"PAID\",\n            \"status\": \"FAILED_UNEXPECTED_ERROR\",\n            \"isAsync\": \"<boolean>\",\n            \"currentExecutionCount\": \"<integer>\",\n            \"maxExecutionCount\": \"<integer>\",\n            \"trigger\": \"ASYNC_CANCEL_APPROVED\",\n            \"request\": {\n              \"body\": \"<string>\",\n              \"header\": \"<string>\",\n              \"requestedAt\": \"<dateTime>\"\n            },\n            \"response\": {\n              \"code\": \"<string>\",\n              \"header\": \"<string>\",\n              \"body\": \"<string>\",\n              \"respondedAt\": \"<dateTime>\"\n            },\n            \"triggeredAt\": \"<dateTime>\"\n          }\n        ],\n        \"isCulturalExpense\": \"<boolean>\",\n        \"escrow\": {\n          \"status\": \"<string>\"\n        },\n        \"products\": [\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"amount\": \"<long>\",\n            \"quantity\": \"<integer>\",\n            \"tag\": \"<string>\",\n            \"code\": \"<string>\",\n            \"link\": \"<string>\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"amount\": \"<long>\",\n            \"quantity\": \"<integer>\",\n            \"tag\": \"<string>\",\n            \"code\": \"<string>\",\n            \"link\": \"<string>\"\n          }\n        ],\n        \"productCount\": \"<integer>\",\n        \"customData\": \"<string>\",\n        \"country\": \"KH\",\n        \"pgTxId\": \"<string>\",\n        \"cashReceipt\": {\n          \"status\": \"<string>\",\n          \"issueNumber\": \"<string>\",\n          \"totalAmount\": \"<long>\",\n          \"currency\": \"ARS\",\n          \"issuedAt\": \"<dateTime>\",\n          \"cancelledAt\": \"<dateTime>\",\n          \"type\": \"PERSONAL\",\n          \"pgReceiptId\": \"<string>\",\n          \"taxFreeAmount\": \"<long>\",\n          \"url\": \"<string>\"\n        },\n        \"cashReceiptIssuanceStatus\": \"ISSUED\",\n        \"receiptUrl\": \"<string>\",\n        \"cancellation\": {\n          \"status\": \"<string>\",\n          \"id\": \"<string>\",\n          \"totalAmount\": \"<long>\",\n          \"taxFreeAmount\": \"<long>\",\n          \"vatAmount\": \"<long>\",\n          \"reason\": \"<string>\",\n          \"requestedAt\": \"<dateTime>\",\n          \"pgCancellationId\": \"<string>\",\n          \"easyPayDiscountAmount\": \"<long>\",\n          \"cancelledAt\": \"<dateTime>\",\n          \"trigger\": \"CONSOLE\"\n        },\n        \"promotionId\": \"<string>\"\n      },\n      \"cursor\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:39:41.000Z",
+              "updatedAt": "2026-07-28T02:39:41.000Z",
+              "uid": "35240-0fc9a66b-2965-4dbb-bdb6-0df6a19254d8"
+            },
+            {
+              "id": "81e0903a-ba33-48cd-8f27-ca76e4a7ece2",
+              "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payment-events-by-cursor?requestBody=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-events-by-cursor"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:41.000Z",
+              "updatedAt": "2026-07-28T02:39:41.000Z",
+              "uid": "35240-81e0903a-ba33-48cd-8f27-ca76e4a7ece2"
+            },
+            {
+              "id": "913492e8-77a0-45cd-b7f5-b7eb01b9359b",
+              "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payment-events-by-cursor?requestBody=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-events-by-cursor"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:41.000Z",
+              "updatedAt": "2026-07-28T02:39:41.000Z",
+              "uid": "35240-913492e8-77a0-45cd-b7f5-b7eb01b9359b"
+            },
+            {
+              "id": "b26a64a6-0d51-4731-99f4-57a323ac86af",
+              "name": "* `ForbiddenError`: \uc694\uccad\uc774 \uac70\uc808\ub41c \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payment-events-by-cursor?requestBody=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-events-by-cursor"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:41.000Z",
+              "updatedAt": "2026-07-28T02:39:41.000Z",
+              "uid": "35240-b26a64a6-0d51-4731-99f4-57a323ac86af"
+            }
+          ],
+          "createdAt": "2026-07-28T02:39:41.000Z",
+          "updatedAt": "2026-07-28T02:39:41.000Z",
+          "uid": "35240-9cf5987a-47e4-448e-b4ca-766be5c51878"
+        }
+      ],
+      "id": "4a0b8b85-6c08-4c91-9db5-6219f8d5fb33",
+      "createdAt": "2026-07-28T02:39:41.000Z",
+      "updatedAt": "2026-07-28T02:39:41.000Z",
+      "uid": "35240-4a0b8b85-6c08-4c91-9db5-6219f8d5fb33"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.portone.io"
+    }
+  ]
+}

@@ -1,0 +1,572 @@
+{
+  "info": {
+    "_postman_id": "fdf3ac01-068f-4d80-bd1f-fab802d283f7",
+    "name": "PortOne B2b Payment Reconciliations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:39:42.000Z",
+    "updatedAt": "2026-07-28T02:39:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fdf3ac01-068f-4d80-bd1f-fab802d283f7"
+  },
+  "item": [
+    {
+      "name": "payment-reconciliations",
+      "item": [
+        {
+          "name": "settlements",
+          "item": [
+            {
+              "name": "vat-report",
+              "item": [
+                {
+                  "name": "\uc815\uc0b0\uc77c \uae30\uc900 \ubd80\uac00\uc138 \ub0b4\uc5ed \uc870\ud68c",
+                  "id": "65451cfc-390c-4761-8fed-538a7869fd80",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment-reconciliations/settlements/vat-report?requestBody=",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment-reconciliations",
+                        "settlements",
+                        "vat-report"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "requestBody",
+                          "value": ""
+                        }
+                      ]
+                    },
+                    "description": "\uc815\uc0b0\uc77c \uae30\uc900 \ubd80\uac00\uc138 \ub0b4\uc5ed \uc870\ud68c"
+                  },
+                  "response": [
+                    {
+                      "id": "587ece57-3dbe-442e-a87d-3bab64e0281f",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payment-reconciliations/settlements/vat-report?requestBody=",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payment-reconciliations",
+                            "settlements",
+                            "vat-report"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "requestBody",
+                              "value": ""
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"summary\": {\n    \"totalSupplyAmount\": \"<long>\",\n    \"totalVatAmount\": \"<long>\",\n    \"totalTaxFreeAmount\": \"<long>\",\n    \"totalAmount\": \"<long>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:42.000Z",
+                      "updatedAt": "2026-07-28T02:39:42.000Z",
+                      "uid": "35240-587ece57-3dbe-442e-a87d-3bab64e0281f"
+                    },
+                    {
+                      "id": "734de3c0-3b2a-472b-a4ad-322aa9c10926",
+                      "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payment-reconciliations/settlements/vat-report?requestBody=",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payment-reconciliations",
+                            "settlements",
+                            "vat-report"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "requestBody",
+                              "value": ""
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:42.000Z",
+                      "updatedAt": "2026-07-28T02:39:42.000Z",
+                      "uid": "35240-734de3c0-3b2a-472b-a4ad-322aa9c10926"
+                    },
+                    {
+                      "id": "1d304061-2f17-48f8-bbf5-74b9a65e0b32",
+                      "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payment-reconciliations/settlements/vat-report?requestBody=",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payment-reconciliations",
+                            "settlements",
+                            "vat-report"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "requestBody",
+                              "value": ""
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:42.000Z",
+                      "updatedAt": "2026-07-28T02:39:42.000Z",
+                      "uid": "35240-1d304061-2f17-48f8-bbf5-74b9a65e0b32"
+                    },
+                    {
+                      "id": "bc2f2403-ec19-403c-96e1-888a8d2fa14d",
+                      "name": "* `ForbiddenError`: \uc694\uccad\uc774 \uac70\uc808\ub41c \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payment-reconciliations/settlements/vat-report?requestBody=",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payment-reconciliations",
+                            "settlements",
+                            "vat-report"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "requestBody",
+                              "value": ""
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:42.000Z",
+                      "updatedAt": "2026-07-28T02:39:42.000Z",
+                      "uid": "35240-bc2f2403-ec19-403c-96e1-888a8d2fa14d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:42.000Z",
+                  "updatedAt": "2026-07-28T02:39:42.000Z",
+                  "uid": "35240-65451cfc-390c-4761-8fed-538a7869fd80"
+                }
+              ],
+              "id": "b002dfa5-92df-4d22-8989-226ab9ae3ba7",
+              "createdAt": "2026-07-28T02:39:42.000Z",
+              "updatedAt": "2026-07-28T02:39:42.000Z",
+              "uid": "35240-b002dfa5-92df-4d22-8989-226ab9ae3ba7"
+            }
+          ],
+          "id": "7eaa8f1a-176c-4df2-baa4-408f912a82e3",
+          "createdAt": "2026-07-28T02:39:42.000Z",
+          "updatedAt": "2026-07-28T02:39:42.000Z",
+          "uid": "35240-7eaa8f1a-176c-4df2-baa4-408f912a82e3"
+        },
+        {
+          "name": "transactions",
+          "item": [
+            {
+              "name": "vat-report",
+              "item": [
+                {
+                  "name": "\uac70\ub798\uc77c \uae30\uc900 \ubd80\uac00\uc138 \ub0b4\uc5ed \uc870\ud68c",
+                  "id": "9dc94bba-fa83-4160-94fb-3fb00e170dda",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment-reconciliations/transactions/vat-report?requestBody=",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment-reconciliations",
+                        "transactions",
+                        "vat-report"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "requestBody",
+                          "value": ""
+                        }
+                      ]
+                    },
+                    "description": "\uac70\ub798\uc77c \uae30\uc900 \ubd80\uac00\uc138 \ub0b4\uc5ed \uc870\ud68c"
+                  },
+                  "response": [
+                    {
+                      "id": "3a2ef499-6b16-4fb0-afc9-172b61831ded",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payment-reconciliations/transactions/vat-report?requestBody=",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payment-reconciliations",
+                            "transactions",
+                            "vat-report"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "requestBody",
+                              "value": ""
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"summary\": {\n    \"totalSupplyAmount\": \"<long>\",\n    \"totalVatAmount\": \"<long>\",\n    \"totalTaxFreeAmount\": \"<long>\",\n    \"totalAmount\": \"<long>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:42.000Z",
+                      "updatedAt": "2026-07-28T02:39:42.000Z",
+                      "uid": "35240-3a2ef499-6b16-4fb0-afc9-172b61831ded"
+                    },
+                    {
+                      "id": "4b6028c4-4e94-4826-8e8e-1ffcbda97ea1",
+                      "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payment-reconciliations/transactions/vat-report?requestBody=",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payment-reconciliations",
+                            "transactions",
+                            "vat-report"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "requestBody",
+                              "value": ""
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:42.000Z",
+                      "updatedAt": "2026-07-28T02:39:42.000Z",
+                      "uid": "35240-4b6028c4-4e94-4826-8e8e-1ffcbda97ea1"
+                    },
+                    {
+                      "id": "3f54436d-0670-46ca-85e3-4811ac8203ee",
+                      "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payment-reconciliations/transactions/vat-report?requestBody=",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payment-reconciliations",
+                            "transactions",
+                            "vat-report"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "requestBody",
+                              "value": ""
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:42.000Z",
+                      "updatedAt": "2026-07-28T02:39:42.000Z",
+                      "uid": "35240-3f54436d-0670-46ca-85e3-4811ac8203ee"
+                    },
+                    {
+                      "id": "4c2ecf9c-cf9d-4107-94ae-eb58d6c37f0d",
+                      "name": "* `ForbiddenError`: \uc694\uccad\uc774 \uac70\uc808\ub41c \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payment-reconciliations/transactions/vat-report?requestBody=",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payment-reconciliations",
+                            "transactions",
+                            "vat-report"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "requestBody",
+                              "value": ""
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:42.000Z",
+                      "updatedAt": "2026-07-28T02:39:42.000Z",
+                      "uid": "35240-4c2ecf9c-cf9d-4107-94ae-eb58d6c37f0d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:42.000Z",
+                  "updatedAt": "2026-07-28T02:39:42.000Z",
+                  "uid": "35240-9dc94bba-fa83-4160-94fb-3fb00e170dda"
+                }
+              ],
+              "id": "822650e0-1848-42d9-a803-bc87f2ca6a7e",
+              "createdAt": "2026-07-28T02:39:42.000Z",
+              "updatedAt": "2026-07-28T02:39:42.000Z",
+              "uid": "35240-822650e0-1848-42d9-a803-bc87f2ca6a7e"
+            }
+          ],
+          "id": "d7fbc399-8728-4b62-a046-2dea0f022faa",
+          "createdAt": "2026-07-28T02:39:42.000Z",
+          "updatedAt": "2026-07-28T02:39:42.000Z",
+          "uid": "35240-d7fbc399-8728-4b62-a046-2dea0f022faa"
+        }
+      ],
+      "id": "c064d71e-81f5-4168-a02f-bbc5edb02786",
+      "createdAt": "2026-07-28T02:39:42.000Z",
+      "updatedAt": "2026-07-28T02:39:42.000Z",
+      "uid": "35240-c064d71e-81f5-4168-a02f-bbc5edb02786"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.portone.io"
+    }
+  ]
+}

@@ -1,0 +1,239 @@
+{
+  "info": {
+    "_postman_id": "948e5b4a-bd99-41a5-b25e-83e27abd36e8",
+    "name": "PortOne B2b Login API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:39:39.000Z",
+    "updatedAt": "2026-07-28T02:39:39.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-948e5b4a-bd99-41a5-b25e-83e27abd36e8"
+  },
+  "item": [
+    {
+      "name": "login",
+      "item": [
+        {
+          "name": "api-secret",
+          "item": [
+            {
+              "name": "API secret \ub97c \uc0ac\uc6a9\ud55c \ud1a0\ud070 \ubc1c\uae09",
+              "id": "64474d43-391a-41a7-bf77-6676df5870f7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apiSecret\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/login/api-secret",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "login",
+                    "api-secret"
+                  ]
+                },
+                "description": "API secret \ub97c \uc0ac\uc6a9\ud55c \ud1a0\ud070 \ubc1c\uae09\n\nAPI secret \ub97c \ud1b5\ud574 API \uc778\uc99d\uc5d0 \uc0ac\uc6a9\ud560 \ud1a0\ud070\uc744 \uac00\uc838\uc635\ub2c8\ub2e4."
+              },
+              "response": [
+                {
+                  "id": "f48956b2-c23b-47ee-8685-2741ad57f3cd",
+                  "name": "\uc131\uacf5 \uc751\ub2f5\uc73c\ub85c \ud1a0\ud070\uc744 \ubc18\ud658\ud569\ub2c8\ub2e4.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"apiSecret\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/login/api-secret",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "login",
+                        "api-secret"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"accessToken\": \"<string>\",\n  \"refreshToken\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:39.000Z",
+                  "updatedAt": "2026-07-28T02:39:39.000Z",
+                  "uid": "35240-f48956b2-c23b-47ee-8685-2741ad57f3cd"
+                },
+                {
+                  "id": "f8330e26-4036-494d-bd57-ba4c74d13746",
+                  "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"apiSecret\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/login/api-secret",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "login",
+                        "api-secret"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:39.000Z",
+                  "updatedAt": "2026-07-28T02:39:39.000Z",
+                  "uid": "35240-f8330e26-4036-494d-bd57-ba4c74d13746"
+                },
+                {
+                  "id": "33cbc3f0-d768-4cdc-beef-23eaf8b2aad3",
+                  "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"apiSecret\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/login/api-secret",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "login",
+                        "api-secret"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:39.000Z",
+                  "updatedAt": "2026-07-28T02:39:39.000Z",
+                  "uid": "35240-33cbc3f0-d768-4cdc-beef-23eaf8b2aad3"
+                }
+              ],
+              "createdAt": "2026-07-28T02:39:39.000Z",
+              "updatedAt": "2026-07-28T02:39:39.000Z",
+              "uid": "35240-64474d43-391a-41a7-bf77-6676df5870f7"
+            }
+          ],
+          "id": "77acf0a8-9d23-4e0e-a80d-f3ddeb85c0bc",
+          "createdAt": "2026-07-28T02:39:39.000Z",
+          "updatedAt": "2026-07-28T02:39:39.000Z",
+          "uid": "35240-77acf0a8-9d23-4e0e-a80d-f3ddeb85c0bc"
+        }
+      ],
+      "id": "863bbee8-3f69-4dd1-830e-861e410d45c1",
+      "createdAt": "2026-07-28T02:39:39.000Z",
+      "updatedAt": "2026-07-28T02:39:39.000Z",
+      "uid": "35240-863bbee8-3f69-4dd1-830e-861e410d45c1"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.portone.io"
+    }
+  ]
+}

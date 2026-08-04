@@ -1,0 +1,133 @@
+{
+  "info": {
+    "_postman_id": "3bf63873-a0f0-47a6-957c-1a0ed7346cd1",
+    "name": "PortOne B2b Banks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:39:31.000Z",
+    "updatedAt": "2026-07-28T02:39:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3bf63873-a0f0-47a6-957c-1a0ed7346cd1"
+  },
+  "item": [
+    {
+      "name": "banks",
+      "item": [
+        {
+          "name": "\uc740\ud589 \uc815\ubcf4 \uc870\ud68c",
+          "id": "06153684-704e-4d9e-bfde-5fa000353b62",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/banks",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "banks"
+              ]
+            },
+            "description": "\uc740\ud589 \uc815\ubcf4 \uc870\ud68c\n\n\uc740\ud589\uc758 \uc774\ub984 \ub4f1 \uc815\ubcf4\ub97c \uc870\ud68c\ud569\ub2c8\ub2e4. \uc0ac\uc6a9\uc790\uc5d0\uac8c \ud55c\uad6d\uc5b4 \uba85\uce6d\uc744 \uc81c\uacf5\ud558\ub294 \ub4f1\uc758 \uc6a9\ub3c4\ub85c \uc0ac\uc6a9\ud558\uc2e4 \uc218 \uc788\uc2b5\ub2c8\ub2e4."
+          },
+          "response": [
+            {
+              "id": "22ff2b2e-f2fc-44d2-8cc7-950ce3377b8e",
+              "name": "\uc131\uacf5 \uc751\ub2f5\uc73c\ub85c \uc870\ud68c\ub41c \uc740\ud589 \uc815\ubcf4 \ub9ac\uc2a4\ud2b8\uac00 \ubc18\ud658\ub429\ub2c8\ub2e4.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/banks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "banks"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"items\": [\n    {\n      \"bank\": \"LOCAL_NONGHYUP\",\n      \"name\": {\n        \"ko\": \"<string>\"\n      }\n    },\n    {\n      \"bank\": \"LEADING_SECURITIES\",\n      \"name\": {\n        \"ko\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:39:32.000Z",
+              "updatedAt": "2026-07-28T02:39:32.000Z",
+              "uid": "35240-22ff2b2e-f2fc-44d2-8cc7-950ce3377b8e"
+            },
+            {
+              "id": "e7ddb0cd-8ad2-4565-9e36-e5970289590e",
+              "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/banks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "banks"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:32.000Z",
+              "updatedAt": "2026-07-28T02:39:32.000Z",
+              "uid": "35240-e7ddb0cd-8ad2-4565-9e36-e5970289590e"
+            }
+          ],
+          "createdAt": "2026-07-28T02:39:32.000Z",
+          "updatedAt": "2026-07-28T02:39:32.000Z",
+          "uid": "35240-06153684-704e-4d9e-bfde-5fa000353b62"
+        }
+      ],
+      "id": "ff92e13b-0ef3-45c2-80a2-760a29bb78f1",
+      "createdAt": "2026-07-28T02:39:32.000Z",
+      "updatedAt": "2026-07-28T02:39:32.000Z",
+      "uid": "35240-ff92e13b-0ef3-45c2-80a2-760a29bb78f1"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.portone.io"
+    }
+  ]
+}

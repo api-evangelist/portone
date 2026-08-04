@@ -1,0 +1,269 @@
+{
+  "info": {
+    "_postman_id": "fe0ef361-c5b6-45f6-a5f5-175a1133fb00",
+    "name": "PortOne B2b Kakaopay API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:39:38.000Z",
+    "updatedAt": "2026-07-28T02:39:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fe0ef361-c5b6-45f6-a5f5-175a1133fb00"
+  },
+  "item": [
+    {
+      "name": "kakaopay",
+      "item": [
+        {
+          "name": "payment",
+          "item": [
+            {
+              "name": "order",
+              "item": [
+                {
+                  "name": "\uce74\uce74\uc624\ud398\uc774 \uc8fc\ubb38 \uc870\ud68c API",
+                  "id": "78badd1a-c1d8-4bd9-ae26-1bf2586d287c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/kakaopay/payment/order?pgTxId=<string>&channelKey=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "kakaopay",
+                        "payment",
+                        "order"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) \uce74\uce74\uc624\ud398\uc774 \uc8fc\ubb38 \ubc88\ud638 (tid)",
+                          "key": "pgTxId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) \ucc44\ub110 \ud0a4",
+                          "key": "channelKey",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "\uce74\uce74\uc624\ud398\uc774 \uc8fc\ubb38 \uc870\ud68c API\n\n\uc8fc\uc5b4\uc9c4 \uc544\uc774\ub514\uc5d0 \ub300\uc751\ub418\ub294 \uce74\uce74\uc624\ud398\uc774 \uc8fc\ubb38 \uac74\uc744 \uc870\ud68c\ud569\ub2c8\ub2e4.\n\ud574\ub2f9 API \uc0ac\uc6a9\uc774 \ud544\uc694\ud55c \uacbd\uc6b0 \ud3ec\ud2b8\uc6d0 \uae30\uc220\uc9c0\uc6d0\ud300\uc73c\ub85c \ubb38\uc758 \uc8fc\uc2dc\uae38 \ubc14\ub78d\ub2c8\ub2e4."
+                  },
+                  "response": [
+                    {
+                      "id": "fc61769a-d619-4932-976e-08fa64c24e02",
+                      "name": "\uc131\uacf5 \uc751\ub2f5\uc73c\ub85c \uce74\uce74\uc624\ud398\uc774 \uc8fc\ubb38 \uc870\ud68c \uc751\ub2f5 \uac1d\uccb4\ub97c \ubc18\ud658\ud569\ub2c8\ub2e4.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/kakaopay/payment/order?pgTxId=<string>&channelKey=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "kakaopay",
+                            "payment",
+                            "order"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) \uce74\uce74\uc624\ud398\uc774 \uc8fc\ubb38 \ubc88\ud638 (tid)",
+                              "key": "pgTxId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) \ucc44\ub110 \ud0a4",
+                              "key": "channelKey",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": \"<integer>\",\n  \"body\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:39.000Z",
+                      "updatedAt": "2026-07-28T02:39:39.000Z",
+                      "uid": "35240-fc61769a-d619-4932-976e-08fa64c24e02"
+                    },
+                    {
+                      "id": "63b1d75e-d9ff-4ba5-93ec-1dfc5a2d36e3",
+                      "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/kakaopay/payment/order?pgTxId=<string>&channelKey=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "kakaopay",
+                            "payment",
+                            "order"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) \uce74\uce74\uc624\ud398\uc774 \uc8fc\ubb38 \ubc88\ud638 (tid)",
+                              "key": "pgTxId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) \ucc44\ub110 \ud0a4",
+                              "key": "channelKey",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:39.000Z",
+                      "updatedAt": "2026-07-28T02:39:39.000Z",
+                      "uid": "35240-63b1d75e-d9ff-4ba5-93ec-1dfc5a2d36e3"
+                    },
+                    {
+                      "id": "36e401ef-fb32-4c10-81e8-4a9d0b31fa57",
+                      "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/kakaopay/payment/order?pgTxId=<string>&channelKey=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "kakaopay",
+                            "payment",
+                            "order"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) \uce74\uce74\uc624\ud398\uc774 \uc8fc\ubb38 \ubc88\ud638 (tid)",
+                              "key": "pgTxId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) \ucc44\ub110 \ud0a4",
+                              "key": "channelKey",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:39.000Z",
+                      "updatedAt": "2026-07-28T02:39:39.000Z",
+                      "uid": "35240-36e401ef-fb32-4c10-81e8-4a9d0b31fa57"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:38.000Z",
+                  "updatedAt": "2026-07-28T02:39:38.000Z",
+                  "uid": "35240-78badd1a-c1d8-4bd9-ae26-1bf2586d287c"
+                }
+              ],
+              "id": "556b13cf-2f47-4501-a432-b6d46ba34223",
+              "createdAt": "2026-07-28T02:39:38.000Z",
+              "updatedAt": "2026-07-28T02:39:38.000Z",
+              "uid": "35240-556b13cf-2f47-4501-a432-b6d46ba34223"
+            }
+          ],
+          "id": "1c9ae8a5-9bfe-4938-b4bc-f36f52f50651",
+          "createdAt": "2026-07-28T02:39:38.000Z",
+          "updatedAt": "2026-07-28T02:39:38.000Z",
+          "uid": "35240-1c9ae8a5-9bfe-4938-b4bc-f36f52f50651"
+        }
+      ],
+      "id": "fceeddc7-9094-4594-88e2-c4cd28789d81",
+      "createdAt": "2026-07-28T02:39:38.000Z",
+      "updatedAt": "2026-07-28T02:39:38.000Z",
+      "uid": "35240-fceeddc7-9094-4594-88e2-c4cd28789d81"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.portone.io"
+    }
+  ]
+}

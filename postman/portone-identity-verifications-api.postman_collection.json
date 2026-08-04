@@ -1,0 +1,2097 @@
+{
+  "info": {
+    "_postman_id": "a8e45684-dc9b-41dd-ada8-12aa341b6211",
+    "name": "PortOne B2b Identity Verifications API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:39:36.000Z",
+    "updatedAt": "2026-07-28T02:39:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a8e45684-dc9b-41dd-ada8-12aa341b6211"
+  },
+  "item": [
+    {
+      "name": "identity-verifications",
+      "item": [
+        {
+          "name": "{identityVerificationId}",
+          "item": [
+            {
+              "name": "confirm",
+              "item": [
+                {
+                  "name": "\ubcf8\uc778\uc778\uc99d \ud655\uc778",
+                  "id": "09f725bb-9ae3-430c-8212-fffba842356f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"storeId\": \"<string>\",\n  \"otp\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId/confirm",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "identity-verifications",
+                        ":identityVerificationId",
+                        "confirm"
+                      ],
+                      "variable": [
+                        {
+                          "id": "63660625-12f8-4e49-bdfa-4b7ffe0d5dfe",
+                          "key": "identityVerificationId",
+                          "value": "<string>",
+                          "description": "(Required) \ubcf8\uc778\uc778\uc99d \uc544\uc774\ub514"
+                        }
+                      ]
+                    },
+                    "description": "\ubcf8\uc778\uc778\uc99d \ud655\uc778\n\n\uc694\uccad\ub41c \ubcf8\uc778\uc778\uc99d\uc5d0 \ub300\ud55c \ud655\uc778\uc744 \uc9c4\ud589\ud569\ub2c8\ub2e4."
+                  },
+                  "response": [
+                    {
+                      "id": "29d292e7-5e48-46fd-83c5-b766e60d0643",
+                      "name": "\uc131\uacf5 \uc751\ub2f5",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"storeId\": \"<string>\",\n  \"otp\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId/confirm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identity-verifications",
+                            ":identityVerificationId",
+                            "confirm"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identityVerificationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"identityVerification\": {\n    \"status\": \"<string>\",\n    \"id\": \"<string>\",\n    \"verifiedCustomer\": {\n      \"name\": \"<string>\",\n      \"id\": \"<string>\",\n      \"operator\": \"KT\",\n      \"phoneNumber\": \"<string>\",\n      \"birthDate\": \"<date>\",\n      \"gender\": \"FEMALE\",\n      \"isForeigner\": \"<boolean>\",\n      \"ci\": \"<string>\",\n      \"di\": \"<string>\"\n    },\n    \"requestedAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\",\n    \"statusChangedAt\": \"<dateTime>\",\n    \"verifiedAt\": \"<dateTime>\",\n    \"pgTxId\": \"<string>\",\n    \"pgRawResponse\": \"<string>\",\n    \"version\": \"V2\",\n    \"channel\": {\n      \"type\": \"TEST\",\n      \"pgProvider\": \"TRIPLE_A\",\n      \"pgMerchantId\": \"<string>\",\n      \"id\": \"<string>\",\n      \"key\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    \"customData\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:37.000Z",
+                      "updatedAt": "2026-07-28T02:39:37.000Z",
+                      "uid": "35240-29d292e7-5e48-46fd-83c5-b766e60d0643"
+                    },
+                    {
+                      "id": "af20b478-b78c-4f12-97df-bb2722e47529",
+                      "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"storeId\": \"<string>\",\n  \"otp\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId/confirm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identity-verifications",
+                            ":identityVerificationId",
+                            "confirm"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identityVerificationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:37.000Z",
+                      "updatedAt": "2026-07-28T02:39:37.000Z",
+                      "uid": "35240-af20b478-b78c-4f12-97df-bb2722e47529"
+                    },
+                    {
+                      "id": "18a27df9-2410-4544-8ef4-dbc123214ae5",
+                      "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"storeId\": \"<string>\",\n  \"otp\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId/confirm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identity-verifications",
+                            ":identityVerificationId",
+                            "confirm"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identityVerificationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:37.000Z",
+                      "updatedAt": "2026-07-28T02:39:37.000Z",
+                      "uid": "35240-18a27df9-2410-4544-8ef4-dbc123214ae5"
+                    },
+                    {
+                      "id": "bbad84d8-c90b-44fd-a892-02cc0fbf8dd5",
+                      "name": "* `ForbiddenError`: \uc694\uccad\uc774 \uac70\uc808\ub41c \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"storeId\": \"<string>\",\n  \"otp\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId/confirm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identity-verifications",
+                            ":identityVerificationId",
+                            "confirm"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identityVerificationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:37.000Z",
+                      "updatedAt": "2026-07-28T02:39:37.000Z",
+                      "uid": "35240-bbad84d8-c90b-44fd-a892-02cc0fbf8dd5"
+                    },
+                    {
+                      "id": "2fc4ef78-9d6d-48ab-b964-6428424b13a0",
+                      "name": "* `IdentityVerificationNotFoundError`: \uc694\uccad\ub41c \ubcf8\uc778\uc778\uc99d \uac74\uc774 \uc874\uc7ac\ud558\uc9c0 \uc54a\ub294 \uacbd\uc6b0\n* `IdentityVerificationNotSentError`: \ubcf8\uc778\uc778\uc99d \uac74\uc774 API\ub85c \uc694\uccad\ub41c \uc0c1\ud0dc\uac00 \uc544\ub2cc \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"storeId\": \"<string>\",\n  \"otp\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId/confirm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identity-verifications",
+                            ":identityVerificationId",
+                            "confirm"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identityVerificationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:37.000Z",
+                      "updatedAt": "2026-07-28T02:39:37.000Z",
+                      "uid": "35240-2fc4ef78-9d6d-48ab-b964-6428424b13a0"
+                    },
+                    {
+                      "id": "6d8afdd0-1aa7-4984-8965-712356dd78c9",
+                      "name": "* `IdentityVerificationAlreadyVerifiedError`: \ubcf8\uc778\uc778\uc99d \uac74\uc774 \uc774\ubbf8 \uc778\uc99d \uc644\ub8cc\ub41c \uc0c1\ud0dc\uc778 \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"storeId\": \"<string>\",\n  \"otp\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId/confirm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identity-verifications",
+                            ":identityVerificationId",
+                            "confirm"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identityVerificationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:37.000Z",
+                      "updatedAt": "2026-07-28T02:39:37.000Z",
+                      "uid": "35240-6d8afdd0-1aa7-4984-8965-712356dd78c9"
+                    },
+                    {
+                      "id": "513d7147-9b9e-4af5-8abf-b1638631e560",
+                      "name": "* `PgProviderError`: PG\uc0ac\uc5d0\uc11c \uc624\ub958\ub97c \uc804\ub2ec\ud55c \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"storeId\": \"<string>\",\n  \"otp\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId/confirm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identity-verifications",
+                            ":identityVerificationId",
+                            "confirm"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identityVerificationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Gateway",
+                      "code": 502,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:37.000Z",
+                      "updatedAt": "2026-07-28T02:39:37.000Z",
+                      "uid": "35240-513d7147-9b9e-4af5-8abf-b1638631e560"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:37.000Z",
+                  "updatedAt": "2026-07-28T02:39:37.000Z",
+                  "uid": "35240-09f725bb-9ae3-430c-8212-fffba842356f"
+                }
+              ],
+              "id": "134a0e8c-e40f-4ea4-86ca-5f1acc94bde2",
+              "createdAt": "2026-07-28T02:39:37.000Z",
+              "updatedAt": "2026-07-28T02:39:37.000Z",
+              "uid": "35240-134a0e8c-e40f-4ea4-86ca-5f1acc94bde2"
+            },
+            {
+              "name": "resend",
+              "item": [
+                {
+                  "name": "SMS \ubcf8\uc778\uc778\uc99d \uc694\uccad \uc7ac\uc804\uc1a1",
+                  "id": "54241f82-41ed-4502-b817-d75e9bcfe9f2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId/resend?storeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "identity-verifications",
+                        ":identityVerificationId",
+                        "resend"
+                      ],
+                      "query": [
+                        {
+                          "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                          "key": "storeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "9657bf4b-ea24-4fe4-b791-0baf7fa985be",
+                          "key": "identityVerificationId",
+                          "value": "<string>",
+                          "description": "(Required) \ubcf8\uc778\uc778\uc99d \uc544\uc774\ub514"
+                        }
+                      ]
+                    },
+                    "description": "SMS \ubcf8\uc778\uc778\uc99d \uc694\uccad \uc7ac\uc804\uc1a1\n\nSMS \ubcf8\uc778\uc778\uc99d \uc694\uccad\uc744 \uc7ac\uc804\uc1a1\ud569\ub2c8\ub2e4."
+                  },
+                  "response": [
+                    {
+                      "id": "f21cf62b-4708-40bb-87fc-e8561b0eda89",
+                      "name": "\uc131\uacf5 \uc751\ub2f5",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId/resend?storeId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identity-verifications",
+                            ":identityVerificationId",
+                            "resend"
+                          ],
+                          "query": [
+                            {
+                              "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                              "key": "storeId",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "identityVerificationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T02:39:37.000Z",
+                      "updatedAt": "2026-07-28T02:39:37.000Z",
+                      "uid": "35240-f21cf62b-4708-40bb-87fc-e8561b0eda89"
+                    },
+                    {
+                      "id": "30737125-6f25-42c3-9454-871711cfb8d9",
+                      "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId/resend?storeId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identity-verifications",
+                            ":identityVerificationId",
+                            "resend"
+                          ],
+                          "query": [
+                            {
+                              "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                              "key": "storeId",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "identityVerificationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:37.000Z",
+                      "updatedAt": "2026-07-28T02:39:37.000Z",
+                      "uid": "35240-30737125-6f25-42c3-9454-871711cfb8d9"
+                    },
+                    {
+                      "id": "41142a9b-da80-43f9-b7ab-2489bd328e09",
+                      "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId/resend?storeId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identity-verifications",
+                            ":identityVerificationId",
+                            "resend"
+                          ],
+                          "query": [
+                            {
+                              "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                              "key": "storeId",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "identityVerificationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:37.000Z",
+                      "updatedAt": "2026-07-28T02:39:37.000Z",
+                      "uid": "35240-41142a9b-da80-43f9-b7ab-2489bd328e09"
+                    },
+                    {
+                      "id": "406f797f-1646-481d-a567-3892a87dd1e5",
+                      "name": "* `ForbiddenError`: \uc694\uccad\uc774 \uac70\uc808\ub41c \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId/resend?storeId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identity-verifications",
+                            ":identityVerificationId",
+                            "resend"
+                          ],
+                          "query": [
+                            {
+                              "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                              "key": "storeId",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "identityVerificationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:37.000Z",
+                      "updatedAt": "2026-07-28T02:39:37.000Z",
+                      "uid": "35240-406f797f-1646-481d-a567-3892a87dd1e5"
+                    },
+                    {
+                      "id": "1019b527-181d-4f26-9957-8e12473b6c9a",
+                      "name": "* `IdentityVerificationNotFoundError`: \uc694\uccad\ub41c \ubcf8\uc778\uc778\uc99d \uac74\uc774 \uc874\uc7ac\ud558\uc9c0 \uc54a\ub294 \uacbd\uc6b0\n* `IdentityVerificationNotSentError`: \ubcf8\uc778\uc778\uc99d \uac74\uc774 API\ub85c \uc694\uccad\ub41c \uc0c1\ud0dc\uac00 \uc544\ub2cc \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId/resend?storeId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identity-verifications",
+                            ":identityVerificationId",
+                            "resend"
+                          ],
+                          "query": [
+                            {
+                              "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                              "key": "storeId",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "identityVerificationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:37.000Z",
+                      "updatedAt": "2026-07-28T02:39:37.000Z",
+                      "uid": "35240-1019b527-181d-4f26-9957-8e12473b6c9a"
+                    },
+                    {
+                      "id": "e62cd969-0bbc-4805-9ddf-f7cb0b89511d",
+                      "name": "* `IdentityVerificationAlreadyVerifiedError`: \ubcf8\uc778\uc778\uc99d \uac74\uc774 \uc774\ubbf8 \uc778\uc99d \uc644\ub8cc\ub41c \uc0c1\ud0dc\uc778 \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId/resend?storeId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identity-verifications",
+                            ":identityVerificationId",
+                            "resend"
+                          ],
+                          "query": [
+                            {
+                              "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                              "key": "storeId",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "identityVerificationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:37.000Z",
+                      "updatedAt": "2026-07-28T02:39:37.000Z",
+                      "uid": "35240-e62cd969-0bbc-4805-9ddf-f7cb0b89511d"
+                    },
+                    {
+                      "id": "9916ccc9-6080-40fe-8aeb-1e9588ca6e66",
+                      "name": "* `PgProviderError`: PG\uc0ac\uc5d0\uc11c \uc624\ub958\ub97c \uc804\ub2ec\ud55c \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId/resend?storeId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identity-verifications",
+                            ":identityVerificationId",
+                            "resend"
+                          ],
+                          "query": [
+                            {
+                              "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                              "key": "storeId",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "identityVerificationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Gateway",
+                      "code": 502,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:37.000Z",
+                      "updatedAt": "2026-07-28T02:39:37.000Z",
+                      "uid": "35240-9916ccc9-6080-40fe-8aeb-1e9588ca6e66"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:37.000Z",
+                  "updatedAt": "2026-07-28T02:39:37.000Z",
+                  "uid": "35240-54241f82-41ed-4502-b817-d75e9bcfe9f2"
+                }
+              ],
+              "id": "e4c8b10e-b8b8-4ea3-8d34-f3f0e00be6ef",
+              "createdAt": "2026-07-28T02:39:37.000Z",
+              "updatedAt": "2026-07-28T02:39:37.000Z",
+              "uid": "35240-e4c8b10e-b8b8-4ea3-8d34-f3f0e00be6ef"
+            },
+            {
+              "name": "send",
+              "item": [
+                {
+                  "name": "\ubcf8\uc778\uc778\uc99d \uc694\uccad \uc804\uc1a1",
+                  "id": "97742e7f-ef17-4eac-aff2-781732f979c0",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"channelKey\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"id\": \"<string>\",\n    \"identityNumber\": \"<string>\"\n  },\n  \"operator\": \"SKT_MVNO\",\n  \"method\": \"APP\",\n  \"storeId\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"bypass\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId/send",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "identity-verifications",
+                        ":identityVerificationId",
+                        "send"
+                      ],
+                      "variable": [
+                        {
+                          "id": "40920f35-d869-4483-84e2-8eac914e247c",
+                          "key": "identityVerificationId",
+                          "value": "<string>",
+                          "description": "(Required) \ubcf8\uc778\uc778\uc99d \uc544\uc774\ub514"
+                        }
+                      ]
+                    },
+                    "description": "\ubcf8\uc778\uc778\uc99d \uc694\uccad \uc804\uc1a1\n\nSMS \ub610\ub294 APP \ubc29\uc2dd\uc744 \uc774\uc6a9\ud558\uc5ec \ubcf8\uc778\uc778\uc99d \uc694\uccad\uc744 \uc804\uc1a1\ud569\ub2c8\ub2e4."
+                  },
+                  "response": [
+                    {
+                      "id": "e883ec2c-e56d-4f24-a53d-620a9cc71cbb",
+                      "name": "\uc131\uacf5 \uc751\ub2f5",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"channelKey\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"id\": \"<string>\",\n    \"identityNumber\": \"<string>\"\n  },\n  \"operator\": \"SKT_MVNO\",\n  \"method\": \"APP\",\n  \"storeId\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"bypass\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId/send",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identity-verifications",
+                            ":identityVerificationId",
+                            "send"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identityVerificationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T02:39:37.000Z",
+                      "updatedAt": "2026-07-28T02:39:37.000Z",
+                      "uid": "35240-e883ec2c-e56d-4f24-a53d-620a9cc71cbb"
+                    },
+                    {
+                      "id": "9a5c0fdf-68ac-4a67-9d02-6813be2cc576",
+                      "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0\n* `MaxTransactionCountReachedError`: \uacb0\uc81c \ud639\uc740 \ubcf8\uc778\uc778\uc99d \uc2dc\ub3c4 \ud69f\uc218\uac00 \ucd5c\ub300\uc5d0 \ub3c4\ub2ec\ud55c \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"channelKey\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"id\": \"<string>\",\n    \"identityNumber\": \"<string>\"\n  },\n  \"operator\": \"SKT_MVNO\",\n  \"method\": \"APP\",\n  \"storeId\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"bypass\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId/send",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identity-verifications",
+                            ":identityVerificationId",
+                            "send"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identityVerificationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:37.000Z",
+                      "updatedAt": "2026-07-28T02:39:37.000Z",
+                      "uid": "35240-9a5c0fdf-68ac-4a67-9d02-6813be2cc576"
+                    },
+                    {
+                      "id": "801378f8-e7c2-4984-9e05-1bd9c3a7bf2c",
+                      "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"channelKey\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"id\": \"<string>\",\n    \"identityNumber\": \"<string>\"\n  },\n  \"operator\": \"SKT_MVNO\",\n  \"method\": \"APP\",\n  \"storeId\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"bypass\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId/send",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identity-verifications",
+                            ":identityVerificationId",
+                            "send"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identityVerificationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:37.000Z",
+                      "updatedAt": "2026-07-28T02:39:37.000Z",
+                      "uid": "35240-801378f8-e7c2-4984-9e05-1bd9c3a7bf2c"
+                    },
+                    {
+                      "id": "ca1db13f-ea99-49d6-bc21-868e451572a2",
+                      "name": "* `ForbiddenError`: \uc694\uccad\uc774 \uac70\uc808\ub41c \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"channelKey\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"id\": \"<string>\",\n    \"identityNumber\": \"<string>\"\n  },\n  \"operator\": \"SKT_MVNO\",\n  \"method\": \"APP\",\n  \"storeId\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"bypass\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId/send",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identity-verifications",
+                            ":identityVerificationId",
+                            "send"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identityVerificationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:37.000Z",
+                      "updatedAt": "2026-07-28T02:39:37.000Z",
+                      "uid": "35240-ca1db13f-ea99-49d6-bc21-868e451572a2"
+                    },
+                    {
+                      "id": "65a5bd97-6ef7-4688-bb00-b1a17cfe620d",
+                      "name": "* `IdentityVerificationNotFoundError`: \uc694\uccad\ub41c \ubcf8\uc778\uc778\uc99d \uac74\uc774 \uc874\uc7ac\ud558\uc9c0 \uc54a\ub294 \uacbd\uc6b0\n* `ChannelNotFoundError`: \uc694\uccad\ub41c \ucc44\ub110\uc774 \uc874\uc7ac\ud558\uc9c0 \uc54a\ub294 \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"channelKey\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"id\": \"<string>\",\n    \"identityNumber\": \"<string>\"\n  },\n  \"operator\": \"SKT_MVNO\",\n  \"method\": \"APP\",\n  \"storeId\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"bypass\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId/send",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identity-verifications",
+                            ":identityVerificationId",
+                            "send"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identityVerificationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:37.000Z",
+                      "updatedAt": "2026-07-28T02:39:37.000Z",
+                      "uid": "35240-65a5bd97-6ef7-4688-bb00-b1a17cfe620d"
+                    },
+                    {
+                      "id": "ed1a45e7-d8c5-4eee-a9c4-63bbfef0cef6",
+                      "name": "* `IdentityVerificationAlreadyVerifiedError`: \ubcf8\uc778\uc778\uc99d \uac74\uc774 \uc774\ubbf8 \uc778\uc99d \uc644\ub8cc\ub41c \uc0c1\ud0dc\uc778 \uacbd\uc6b0\n* `IdentityVerificationAlreadySentError`: \ubcf8\uc778\uc778\uc99d \uac74\uc774 \uc774\ubbf8 API\ub85c \uc694\uccad\ub41c \uc0c1\ud0dc\uc778 \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"channelKey\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"id\": \"<string>\",\n    \"identityNumber\": \"<string>\"\n  },\n  \"operator\": \"SKT_MVNO\",\n  \"method\": \"APP\",\n  \"storeId\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"bypass\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId/send",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identity-verifications",
+                            ":identityVerificationId",
+                            "send"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identityVerificationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:37.000Z",
+                      "updatedAt": "2026-07-28T02:39:37.000Z",
+                      "uid": "35240-ed1a45e7-d8c5-4eee-a9c4-63bbfef0cef6"
+                    },
+                    {
+                      "id": "e52d3362-0614-4226-b6e5-8583219b39cc",
+                      "name": "* `PgProviderError`: PG\uc0ac\uc5d0\uc11c \uc624\ub958\ub97c \uc804\ub2ec\ud55c \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"channelKey\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"id\": \"<string>\",\n    \"identityNumber\": \"<string>\"\n  },\n  \"operator\": \"SKT_MVNO\",\n  \"method\": \"APP\",\n  \"storeId\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"bypass\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId/send",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identity-verifications",
+                            ":identityVerificationId",
+                            "send"
+                          ],
+                          "variable": [
+                            {
+                              "key": "identityVerificationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Gateway",
+                      "code": 502,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:37.000Z",
+                      "updatedAt": "2026-07-28T02:39:37.000Z",
+                      "uid": "35240-e52d3362-0614-4226-b6e5-8583219b39cc"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:37.000Z",
+                  "updatedAt": "2026-07-28T02:39:37.000Z",
+                  "uid": "35240-97742e7f-ef17-4eac-aff2-781732f979c0"
+                }
+              ],
+              "id": "98b7f2e4-d0fc-4f9d-b8e2-68d7e6c84d44",
+              "createdAt": "2026-07-28T02:39:37.000Z",
+              "updatedAt": "2026-07-28T02:39:37.000Z",
+              "uid": "35240-98b7f2e4-d0fc-4f9d-b8e2-68d7e6c84d44"
+            },
+            {
+              "name": "\ubcf8\uc778\uc778\uc99d \ub2e8\uac74 \uc870\ud68c",
+              "id": "9b791ffe-b458-4d67-9203-6a73d0cee85b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId?storeId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId"
+                  ],
+                  "query": [
+                    {
+                      "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                      "key": "storeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "85531baa-a40e-4c9c-b4d8-60d83a34ff75",
+                      "key": "identityVerificationId",
+                      "value": "<string>",
+                      "description": "(Required) \uc870\ud68c\ud560 \ubcf8\uc778\uc778\uc99d \uc544\uc774\ub514"
+                    }
+                  ]
+                },
+                "description": "\ubcf8\uc778\uc778\uc99d \ub2e8\uac74 \uc870\ud68c\n\n\uc8fc\uc5b4\uc9c4 \uc544\uc774\ub514\uc5d0 \ub300\uc751\ub418\ub294 \ubcf8\uc778\uc778\uc99d \ub0b4\uc5ed\uc744 \uc870\ud68c\ud569\ub2c8\ub2e4."
+              },
+              "response": [
+                {
+                  "id": "10be6486-51e0-4acd-828a-1e490cc2e0ff",
+                  "name": "\uc131\uacf5 \uc751\ub2f5\uc73c\ub85c \ubcf8\uc778 \uc778\uc99d \uac1d\uccb4\ub97c \ubc18\ud658\ud569\ub2c8\ub2e4.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId?storeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "identity-verifications",
+                        ":identityVerificationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                          "key": "storeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "identityVerificationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<string>\",\n  \"id\": \"<string>\",\n  \"requestedCustomer\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"birthYear\": \"<string>\",\n    \"birthMonth\": \"<string>\",\n    \"birthDay\": \"<string>\"\n  },\n  \"requestedAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"statusChangedAt\": \"<dateTime>\",\n  \"failure\": {\n    \"reason\": \"<string>\",\n    \"pgCode\": \"<string>\",\n    \"pgMessage\": \"<string>\"\n  },\n  \"version\": \"V1\",\n  \"channel\": {\n    \"type\": \"LIVE\",\n    \"pgProvider\": \"DANAL_TPAY\",\n    \"pgMerchantId\": \"<string>\",\n    \"id\": \"<string>\",\n    \"key\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"customData\": \"<string>\",\n  \"pgTxId\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:37.000Z",
+                  "updatedAt": "2026-07-28T02:39:37.000Z",
+                  "uid": "35240-10be6486-51e0-4acd-828a-1e490cc2e0ff"
+                },
+                {
+                  "id": "434f81f9-ca6f-4d4e-b443-108ffc5a7dcb",
+                  "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId?storeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "identity-verifications",
+                        ":identityVerificationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                          "key": "storeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "identityVerificationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:37.000Z",
+                  "updatedAt": "2026-07-28T02:39:37.000Z",
+                  "uid": "35240-434f81f9-ca6f-4d4e-b443-108ffc5a7dcb"
+                },
+                {
+                  "id": "a28429b7-a047-4bb7-a892-e6c702fa6f33",
+                  "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId?storeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "identity-verifications",
+                        ":identityVerificationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                          "key": "storeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "identityVerificationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:37.000Z",
+                  "updatedAt": "2026-07-28T02:39:37.000Z",
+                  "uid": "35240-a28429b7-a047-4bb7-a892-e6c702fa6f33"
+                },
+                {
+                  "id": "517a3816-d91c-4730-86f2-a6dc06d3c4e9",
+                  "name": "* `ForbiddenError`: \uc694\uccad\uc774 \uac70\uc808\ub41c \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId?storeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "identity-verifications",
+                        ":identityVerificationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                          "key": "storeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "identityVerificationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:37.000Z",
+                  "updatedAt": "2026-07-28T02:39:37.000Z",
+                  "uid": "35240-517a3816-d91c-4730-86f2-a6dc06d3c4e9"
+                },
+                {
+                  "id": "2c721080-ce7b-40ee-a34f-eb380aa2429e",
+                  "name": "* `IdentityVerificationNotFoundError`: \uc694\uccad\ub41c \ubcf8\uc778\uc778\uc99d \uac74\uc774 \uc874\uc7ac\ud558\uc9c0 \uc54a\ub294 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/identity-verifications/:identityVerificationId?storeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "identity-verifications",
+                        ":identityVerificationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                          "key": "storeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "identityVerificationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:37.000Z",
+                  "updatedAt": "2026-07-28T02:39:37.000Z",
+                  "uid": "35240-2c721080-ce7b-40ee-a34f-eb380aa2429e"
+                }
+              ],
+              "createdAt": "2026-07-28T02:39:37.000Z",
+              "updatedAt": "2026-07-28T02:39:37.000Z",
+              "uid": "35240-9b791ffe-b458-4d67-9203-6a73d0cee85b"
+            }
+          ],
+          "id": "ea2bd95c-d811-4b67-92d3-0a19412d7c34",
+          "createdAt": "2026-07-28T02:39:37.000Z",
+          "updatedAt": "2026-07-28T02:39:37.000Z",
+          "uid": "35240-ea2bd95c-d811-4b67-92d3-0a19412d7c34"
+        },
+        {
+          "name": "\ubcf8\uc778\uc778\uc99d \ub0b4\uc5ed \ub2e4\uac74 \uc870\ud68c",
+          "id": "7b0c4054-2582-4651-81a4-4c93eb5ba830",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/identity-verifications?requestBody=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "identity-verifications"
+              ],
+              "query": [
+                {
+                  "key": "requestBody",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "\ubcf8\uc778\uc778\uc99d \ub0b4\uc5ed \ub2e4\uac74 \uc870\ud68c\n\n\uc8fc\uc5b4\uc9c4 \uc870\uac74\uc5d0 \ub9de\ub294 \ubcf8\uc778\uc778\uc99d \ub0b4\uc5ed\ub4e4\uc744 \ud398\uc774\uc9c0 \uae30\ubc18\uc73c\ub85c \uc870\ud68c\ud569\ub2c8\ub2e4."
+          },
+          "response": [
+            {
+              "id": "76813f91-1aad-4bf6-85fd-ac3ef6df5d24",
+              "name": "\uc131\uacf5 \uc751\ub2f5\uc73c\ub85c \uc870\ud68c\ub41c \ubcf8\uc778\uc778\uc99d \ub0b4\uc5ed \ub9ac\uc2a4\ud2b8\uc640 \ud398\uc774\uc9c0 \uc815\ubcf4\uac00 \ubc18\ud658\ub429\ub2c8\ub2e4.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/identity-verifications?requestBody=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "identity-verifications"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"items\": [\n    {\n      \"status\": \"<string>\",\n      \"id\": \"<string>\",\n      \"requestedCustomer\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"phoneNumber\": \"<string>\",\n        \"birthYear\": \"<string>\",\n        \"birthMonth\": \"<string>\",\n        \"birthDay\": \"<string>\"\n      },\n      \"requestedAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"statusChangedAt\": \"<dateTime>\",\n      \"failure\": {\n        \"reason\": \"<string>\",\n        \"pgCode\": \"<string>\",\n        \"pgMessage\": \"<string>\"\n      },\n      \"version\": \"V2\",\n      \"channel\": {\n        \"type\": \"LIVE\",\n        \"pgProvider\": \"TOSSPAY_V2\",\n        \"pgMerchantId\": \"<string>\",\n        \"id\": \"<string>\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      \"customData\": \"<string>\",\n      \"pgTxId\": \"<string>\"\n    },\n    {\n      \"status\": \"<string>\",\n      \"id\": \"<string>\",\n      \"requestedCustomer\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"phoneNumber\": \"<string>\",\n        \"birthYear\": \"<string>\",\n        \"birthMonth\": \"<string>\",\n        \"birthDay\": \"<string>\"\n      },\n      \"requestedAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"statusChangedAt\": \"<dateTime>\",\n      \"failure\": {\n        \"reason\": \"<string>\",\n        \"pgCode\": \"<string>\",\n        \"pgMessage\": \"<string>\"\n      },\n      \"version\": \"V1\",\n      \"channel\": {\n        \"type\": \"TEST\",\n        \"pgProvider\": \"SMARTRO_V2\",\n        \"pgMerchantId\": \"<string>\",\n        \"id\": \"<string>\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      \"customData\": \"<string>\",\n      \"pgTxId\": \"<string>\"\n    }\n  ],\n  \"page\": {\n    \"number\": \"<integer>\",\n    \"size\": \"<integer>\",\n    \"totalCount\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:39:37.000Z",
+              "updatedAt": "2026-07-28T02:39:37.000Z",
+              "uid": "35240-76813f91-1aad-4bf6-85fd-ac3ef6df5d24"
+            },
+            {
+              "id": "f8540d5d-1438-4816-9cb8-cd21154836ad",
+              "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/identity-verifications?requestBody=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "identity-verifications"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:37.000Z",
+              "updatedAt": "2026-07-28T02:39:37.000Z",
+              "uid": "35240-f8540d5d-1438-4816-9cb8-cd21154836ad"
+            },
+            {
+              "id": "a956e699-eb48-4ead-a281-2224cb3d1c2c",
+              "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/identity-verifications?requestBody=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "identity-verifications"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:37.000Z",
+              "updatedAt": "2026-07-28T02:39:37.000Z",
+              "uid": "35240-a956e699-eb48-4ead-a281-2224cb3d1c2c"
+            },
+            {
+              "id": "b4c5644f-409d-4cad-bef1-7797586f5773",
+              "name": "* `ForbiddenError`: \uc694\uccad\uc774 \uac70\uc808\ub41c \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/identity-verifications?requestBody=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "identity-verifications"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:37.000Z",
+              "updatedAt": "2026-07-28T02:39:37.000Z",
+              "uid": "35240-b4c5644f-409d-4cad-bef1-7797586f5773"
+            }
+          ],
+          "createdAt": "2026-07-28T02:39:37.000Z",
+          "updatedAt": "2026-07-28T02:39:37.000Z",
+          "uid": "35240-7b0c4054-2582-4651-81a4-4c93eb5ba830"
+        }
+      ],
+      "id": "a991b6ca-7ae1-4a0b-88f9-137972c358b7",
+      "createdAt": "2026-07-28T02:39:37.000Z",
+      "updatedAt": "2026-07-28T02:39:37.000Z",
+      "uid": "35240-a991b6ca-7ae1-4a0b-88f9-137972c358b7"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.portone.io"
+    }
+  ]
+}

@@ -1,0 +1,239 @@
+{
+  "info": {
+    "_postman_id": "52388d85-f8a0-41ee-81de-3f8d364e23e9",
+    "name": "PortOne B2b Token API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:40:45.000Z",
+    "updatedAt": "2026-07-28T02:40:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-52388d85-f8a0-41ee-81de-3f8d364e23e9"
+  },
+  "item": [
+    {
+      "name": "token",
+      "item": [
+        {
+          "name": "refresh",
+          "item": [
+            {
+              "name": "\ud1a0\ud070 \uac31\uc2e0",
+              "id": "4dc83997-1959-418e-bdfe-7c8eba44f3c4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"refreshToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/token/refresh",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "token",
+                    "refresh"
+                  ]
+                },
+                "description": "\ud1a0\ud070 \uac31\uc2e0\n\n\ub9ac\ud504\ub808\uc2dc \ud1a0\ud070\uc744 \uc0ac\uc6a9\ud574 \uc720\ud6a8\uae30\uac04\uc774 \uc5f0\uc7a5\ub41c \uc0c8\ub85c\uc6b4 \ud1a0\ud070\uc744 \uc7ac\ubc1c\uae09\ud569\ub2c8\ub2e4."
+              },
+              "response": [
+                {
+                  "id": "93d197e5-1ccb-4d8d-8a7b-59d92e9c63ca",
+                  "name": "New Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"refreshToken\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/token/refresh",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "token",
+                        "refresh"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"accessToken\": \"<string>\",\n  \"refreshToken\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:40:46.000Z",
+                  "updatedAt": "2026-07-28T02:40:46.000Z",
+                  "uid": "35240-93d197e5-1ccb-4d8d-8a7b-59d92e9c63ca"
+                },
+                {
+                  "id": "02abefd6-a743-44ec-bede-800c67559d7d",
+                  "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"refreshToken\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/token/refresh",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "token",
+                        "refresh"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:40:46.000Z",
+                  "updatedAt": "2026-07-28T02:40:46.000Z",
+                  "uid": "35240-02abefd6-a743-44ec-bede-800c67559d7d"
+                },
+                {
+                  "id": "ba283b87-cf0d-42ce-a2b3-c0c004c4ee01",
+                  "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"refreshToken\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/token/refresh",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "token",
+                        "refresh"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:40:46.000Z",
+                  "updatedAt": "2026-07-28T02:40:46.000Z",
+                  "uid": "35240-ba283b87-cf0d-42ce-a2b3-c0c004c4ee01"
+                }
+              ],
+              "createdAt": "2026-07-28T02:40:46.000Z",
+              "updatedAt": "2026-07-28T02:40:46.000Z",
+              "uid": "35240-4dc83997-1959-418e-bdfe-7c8eba44f3c4"
+            }
+          ],
+          "id": "fb7be35f-f1a4-4bf2-bb8b-d2bedfd1199c",
+          "createdAt": "2026-07-28T02:40:46.000Z",
+          "updatedAt": "2026-07-28T02:40:46.000Z",
+          "uid": "35240-fb7be35f-f1a4-4bf2-bb8b-d2bedfd1199c"
+        }
+      ],
+      "id": "f533ed73-7635-4ee2-b61e-ecb6fc3b9f5f",
+      "createdAt": "2026-07-28T02:40:46.000Z",
+      "updatedAt": "2026-07-28T02:40:46.000Z",
+      "uid": "35240-f533ed73-7635-4ee2-b61e-ecb6fc3b9f5f"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.portone.io"
+    }
+  ]
+}

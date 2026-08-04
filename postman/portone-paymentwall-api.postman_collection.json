@@ -1,0 +1,335 @@
+{
+  "info": {
+    "_postman_id": "c14b6d03-58e6-4f23-a0d0-9d57347c09d3",
+    "name": "PortOne B2b Paymentwall API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:40:38.000Z",
+    "updatedAt": "2026-07-28T02:40:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c14b6d03-58e6-4f23-a0d0-9d57347c09d3"
+  },
+  "item": [
+    {
+      "name": "paymentwall",
+      "item": [
+        {
+          "name": "delivery",
+          "item": [
+            {
+              "name": "confirm",
+              "item": [
+                {
+                  "name": "\ud398\uc774\uba3c\ud2b8\uc6d4 \ubc30\uc1a1 \uc815\ubcf4 \ub4f1\ub85d",
+                  "id": "ee3de94c-be85-41d5-b7e9-67189010e796",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"transactionId\": \"<string>\",\n  \"deliveryType\": \"PHYSICAL\",\n  \"deliveryStatus\": \"ORDER_PLACED\",\n  \"estimatedDeliveryDatetime\": \"<dateTime>\",\n  \"estimatedUpdateDatetime\": \"<dateTime>\",\n  \"refundable\": \"<boolean>\",\n  \"details\": \"<string>\",\n  \"shippingAddressEmail\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"carrierTrackingId\": \"<string>\",\n  \"carrierType\": \"<string>\",\n  \"shippingAddressCountry\": \"SB\",\n  \"shippingAddressCity\": \"<string>\",\n  \"shippingAddressZip\": \"<string>\",\n  \"shippingAddressState\": \"<string>\",\n  \"shippingAddressStreet\": \"<string>\",\n  \"shippingAddressPhone\": \"<string>\",\n  \"shippingAddressFirstname\": \"<string>\",\n  \"shippingAddressLastname\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/paymentwall/delivery/confirm",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "paymentwall",
+                        "delivery",
+                        "confirm"
+                      ]
+                    },
+                    "description": "\ud398\uc774\uba3c\ud2b8\uc6d4 \ubc30\uc1a1 \uc815\ubcf4 \ub4f1\ub85d\n\n\ubc30\uc1a1 \uc815\ubcf4\ub97c \ud398\uc774\uba3c\ud2b8\uc6d4\uc5d0 \ub4f1\ub85d\ud569\ub2c8\ub2e4.\n\ub4f1\ub85d\ub41c \ubc30\uc1a1 \uc815\ubcf4\ub294 \ucc28\uc9c0\ubc31 \ubc1c\uc0dd \uc2dc \uace0\uac1d\uc0ac\uc758 \uc0c1\ud488 \ubc30\uc1a1 \uc644\ub8cc \uc99d\ube59 \uc790\ub8cc\ub85c \ud65c\uc6a9\ub418\ubbc0\ub85c, \ubc18\ub4dc\uc2dc \uc5f0\ub3d9\ud574\uc57c \ud569\ub2c8\ub2e4."
+                  },
+                  "response": [
+                    {
+                      "id": "dd916459-686c-49b0-9189-79e7f37eae5d",
+                      "name": "\uc131\uacf5 \uc751\ub2f5",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"transactionId\": \"<string>\",\n  \"deliveryType\": \"PHYSICAL\",\n  \"deliveryStatus\": \"ORDER_PLACED\",\n  \"estimatedDeliveryDatetime\": \"<dateTime>\",\n  \"estimatedUpdateDatetime\": \"<dateTime>\",\n  \"refundable\": \"<boolean>\",\n  \"details\": \"<string>\",\n  \"shippingAddressEmail\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"carrierTrackingId\": \"<string>\",\n  \"carrierType\": \"<string>\",\n  \"shippingAddressCountry\": \"SB\",\n  \"shippingAddressCity\": \"<string>\",\n  \"shippingAddressZip\": \"<string>\",\n  \"shippingAddressState\": \"<string>\",\n  \"shippingAddressStreet\": \"<string>\",\n  \"shippingAddressPhone\": \"<string>\",\n  \"shippingAddressFirstname\": \"<string>\",\n  \"shippingAddressLastname\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/paymentwall/delivery/confirm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "paymentwall",
+                            "delivery",
+                            "confirm"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T02:40:39.000Z",
+                      "updatedAt": "2026-07-28T02:40:39.000Z",
+                      "uid": "35240-dd916459-686c-49b0-9189-79e7f37eae5d"
+                    },
+                    {
+                      "id": "8c23dca3-2b8b-47d3-b837-7aff06f0fcca",
+                      "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"transactionId\": \"<string>\",\n  \"deliveryType\": \"PHYSICAL\",\n  \"deliveryStatus\": \"ORDER_PLACED\",\n  \"estimatedDeliveryDatetime\": \"<dateTime>\",\n  \"estimatedUpdateDatetime\": \"<dateTime>\",\n  \"refundable\": \"<boolean>\",\n  \"details\": \"<string>\",\n  \"shippingAddressEmail\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"carrierTrackingId\": \"<string>\",\n  \"carrierType\": \"<string>\",\n  \"shippingAddressCountry\": \"SB\",\n  \"shippingAddressCity\": \"<string>\",\n  \"shippingAddressZip\": \"<string>\",\n  \"shippingAddressState\": \"<string>\",\n  \"shippingAddressStreet\": \"<string>\",\n  \"shippingAddressPhone\": \"<string>\",\n  \"shippingAddressFirstname\": \"<string>\",\n  \"shippingAddressLastname\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/paymentwall/delivery/confirm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "paymentwall",
+                            "delivery",
+                            "confirm"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:40:39.000Z",
+                      "updatedAt": "2026-07-28T02:40:39.000Z",
+                      "uid": "35240-8c23dca3-2b8b-47d3-b837-7aff06f0fcca"
+                    },
+                    {
+                      "id": "89d21464-f7c9-497b-be32-c29eff5d0d7b",
+                      "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"transactionId\": \"<string>\",\n  \"deliveryType\": \"PHYSICAL\",\n  \"deliveryStatus\": \"ORDER_PLACED\",\n  \"estimatedDeliveryDatetime\": \"<dateTime>\",\n  \"estimatedUpdateDatetime\": \"<dateTime>\",\n  \"refundable\": \"<boolean>\",\n  \"details\": \"<string>\",\n  \"shippingAddressEmail\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"carrierTrackingId\": \"<string>\",\n  \"carrierType\": \"<string>\",\n  \"shippingAddressCountry\": \"SB\",\n  \"shippingAddressCity\": \"<string>\",\n  \"shippingAddressZip\": \"<string>\",\n  \"shippingAddressState\": \"<string>\",\n  \"shippingAddressStreet\": \"<string>\",\n  \"shippingAddressPhone\": \"<string>\",\n  \"shippingAddressFirstname\": \"<string>\",\n  \"shippingAddressLastname\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/paymentwall/delivery/confirm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "paymentwall",
+                            "delivery",
+                            "confirm"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:40:39.000Z",
+                      "updatedAt": "2026-07-28T02:40:39.000Z",
+                      "uid": "35240-89d21464-f7c9-497b-be32-c29eff5d0d7b"
+                    },
+                    {
+                      "id": "31ed5028-2393-4584-a96a-d57834c29abd",
+                      "name": "* `PaymentNotFoundError`: \uacb0\uc81c \uac74\uc774 \uc874\uc7ac\ud558\uc9c0 \uc54a\ub294 \uacbd\uc6b0",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"transactionId\": \"<string>\",\n  \"deliveryType\": \"PHYSICAL\",\n  \"deliveryStatus\": \"ORDER_PLACED\",\n  \"estimatedDeliveryDatetime\": \"<dateTime>\",\n  \"estimatedUpdateDatetime\": \"<dateTime>\",\n  \"refundable\": \"<boolean>\",\n  \"details\": \"<string>\",\n  \"shippingAddressEmail\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"carrierTrackingId\": \"<string>\",\n  \"carrierType\": \"<string>\",\n  \"shippingAddressCountry\": \"SB\",\n  \"shippingAddressCity\": \"<string>\",\n  \"shippingAddressZip\": \"<string>\",\n  \"shippingAddressState\": \"<string>\",\n  \"shippingAddressStreet\": \"<string>\",\n  \"shippingAddressPhone\": \"<string>\",\n  \"shippingAddressFirstname\": \"<string>\",\n  \"shippingAddressLastname\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/paymentwall/delivery/confirm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "paymentwall",
+                            "delivery",
+                            "confirm"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:40:39.000Z",
+                      "updatedAt": "2026-07-28T02:40:39.000Z",
+                      "uid": "35240-31ed5028-2393-4584-a96a-d57834c29abd"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:40:39.000Z",
+                  "updatedAt": "2026-07-28T02:40:39.000Z",
+                  "uid": "35240-ee3de94c-be85-41d5-b7e9-67189010e796"
+                }
+              ],
+              "id": "bd47f3b2-0f54-49fa-bc88-e9526b8e105e",
+              "createdAt": "2026-07-28T02:40:39.000Z",
+              "updatedAt": "2026-07-28T02:40:39.000Z",
+              "uid": "35240-bd47f3b2-0f54-49fa-bc88-e9526b8e105e"
+            }
+          ],
+          "id": "be44f392-aab8-43a0-8028-a6895e394f3c",
+          "createdAt": "2026-07-28T02:40:39.000Z",
+          "updatedAt": "2026-07-28T02:40:39.000Z",
+          "uid": "35240-be44f392-aab8-43a0-8028-a6895e394f3c"
+        }
+      ],
+      "id": "2fa57293-5651-4d0a-8192-c2b327221e92",
+      "createdAt": "2026-07-28T02:40:39.000Z",
+      "updatedAt": "2026-07-28T02:40:39.000Z",
+      "uid": "35240-2fa57293-5651-4d0a-8192-c2b327221e92"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.portone.io"
+    }
+  ]
+}

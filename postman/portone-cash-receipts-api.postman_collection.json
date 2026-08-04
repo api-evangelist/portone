@@ -1,0 +1,714 @@
+{
+  "info": {
+    "_postman_id": "a5a93e6f-3b7f-4a30-9046-4f73f8af7895",
+    "name": "PortOne B2b Cash Receipts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:39:34.000Z",
+    "updatedAt": "2026-07-28T02:39:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a5a93e6f-3b7f-4a30-9046-4f73f8af7895"
+  },
+  "item": [
+    {
+      "name": "cash-receipts",
+      "item": [
+        {
+          "name": "\ud604\uae08\uc601\uc218\uc99d \ub2e4\uac74 \uc870\ud68c",
+          "id": "386128e5-6cfe-4c1a-b895-52cc6119b17f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cash-receipts?requestBody=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cash-receipts"
+              ],
+              "query": [
+                {
+                  "key": "requestBody",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "\ud604\uae08\uc601\uc218\uc99d \ub2e4\uac74 \uc870\ud68c\n\n\uc8fc\uc5b4\uc9c4 \uc870\uac74\uc5d0 \ub9de\ub294 \ud604\uae08\uc601\uc218\uc99d\ub4e4\uc744 \ud398\uc774\uc9c0 \uae30\ubc18\uc73c\ub85c \uc870\ud68c\ud569\ub2c8\ub2e4."
+          },
+          "response": [
+            {
+              "id": "202789b0-546b-4ae0-9dd2-ae1b343ed455",
+              "name": "\uc131\uacf5 \uc751\ub2f5\uc73c\ub85c \uc870\ud68c\ub41c \ud604\uae08\uc601\uc218\uc99d \ub9ac\uc2a4\ud2b8\uc640 \ud398\uc774\uc9c0 \uc815\ubcf4\uac00 \ubc18\ud658\ub429\ub2c8\ub2e4.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/cash-receipts?requestBody=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cash-receipts"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"items\": [\n    {\n      \"status\": \"<string>\",\n      \"merchantId\": \"<string>\",\n      \"storeId\": \"<string>\",\n      \"paymentId\": \"<string>\",\n      \"channel\": {\n        \"type\": \"TEST\",\n        \"pgProvider\": \"SMARTRO\",\n        \"pgMerchantId\": \"<string>\",\n        \"id\": \"<string>\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      \"amount\": \"<long>\",\n      \"currency\": \"EGP\",\n      \"orderName\": \"<string>\",\n      \"isManual\": \"<boolean>\",\n      \"issueNumber\": \"<string>\",\n      \"issuedAt\": \"<dateTime>\",\n      \"cancelledAt\": \"<dateTime>\",\n      \"taxFreeAmount\": \"<long>\",\n      \"vatAmount\": \"<long>\",\n      \"type\": \"PERSONAL\",\n      \"pgReceiptId\": \"<string>\",\n      \"url\": \"<string>\",\n      \"statusUpdatedAt\": \"<dateTime>\"\n    },\n    {\n      \"status\": \"<string>\",\n      \"merchantId\": \"<string>\",\n      \"storeId\": \"<string>\",\n      \"paymentId\": \"<string>\",\n      \"channel\": {\n        \"type\": \"TEST\",\n        \"pgProvider\": \"INNOPAY\",\n        \"pgMerchantId\": \"<string>\",\n        \"id\": \"<string>\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      \"amount\": \"<long>\",\n      \"currency\": \"RWF\",\n      \"orderName\": \"<string>\",\n      \"isManual\": \"<boolean>\",\n      \"issueNumber\": \"<string>\",\n      \"issuedAt\": \"<dateTime>\",\n      \"cancelledAt\": \"<dateTime>\",\n      \"taxFreeAmount\": \"<long>\",\n      \"vatAmount\": \"<long>\",\n      \"type\": \"CORPORATE\",\n      \"pgReceiptId\": \"<string>\",\n      \"url\": \"<string>\",\n      \"statusUpdatedAt\": \"<dateTime>\"\n    }\n  ],\n  \"page\": {\n    \"number\": \"<integer>\",\n    \"size\": \"<integer>\",\n    \"totalCount\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:39:34.000Z",
+              "updatedAt": "2026-07-28T02:39:34.000Z",
+              "uid": "35240-202789b0-546b-4ae0-9dd2-ae1b343ed455"
+            },
+            {
+              "id": "5eb2171d-87d6-41a1-b3f7-1e3233985a1d",
+              "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/cash-receipts?requestBody=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cash-receipts"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:34.000Z",
+              "updatedAt": "2026-07-28T02:39:34.000Z",
+              "uid": "35240-5eb2171d-87d6-41a1-b3f7-1e3233985a1d"
+            },
+            {
+              "id": "a089c65c-296d-44b9-92b6-fa33ac140710",
+              "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/cash-receipts?requestBody=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cash-receipts"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:34.000Z",
+              "updatedAt": "2026-07-28T02:39:34.000Z",
+              "uid": "35240-a089c65c-296d-44b9-92b6-fa33ac140710"
+            },
+            {
+              "id": "5690f482-ac2b-4b0b-8f27-0366fd2d77b9",
+              "name": "* `ForbiddenError`: \uc694\uccad\uc774 \uac70\uc808\ub41c \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/cash-receipts?requestBody=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cash-receipts"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:34.000Z",
+              "updatedAt": "2026-07-28T02:39:34.000Z",
+              "uid": "35240-5690f482-ac2b-4b0b-8f27-0366fd2d77b9"
+            }
+          ],
+          "createdAt": "2026-07-28T02:39:34.000Z",
+          "updatedAt": "2026-07-28T02:39:34.000Z",
+          "uid": "35240-386128e5-6cfe-4c1a-b895-52cc6119b17f"
+        },
+        {
+          "name": "\ud604\uae08 \uc601\uc218\uc99d \uc218\ub3d9 \ubc1c\uae09",
+          "id": "f164043a-c5d0-4db5-b5ed-7a11abbf2c2c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"paymentId\": \"<string>\",\n  \"channelKey\": \"<string>\",\n  \"type\": \"CORPORATE\",\n  \"orderName\": \"<string>\",\n  \"currency\": \"PYG\",\n  \"amount\": {\n    \"total\": \"<long>\",\n    \"taxFree\": \"<long>\",\n    \"vat\": \"<long>\"\n  },\n  \"customer\": {\n    \"identityNumber\": \"<string>\",\n    \"identityNumberType\": \"PHONE\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"storeId\": \"<string>\",\n  \"productType\": \"DIGITAL\",\n  \"paidAt\": \"<dateTime>\",\n  \"businessRegistrationNumber\": \"<string>\",\n  \"paymentMethod\": \"TRANSFER\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/cash-receipts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cash-receipts"
+              ]
+            },
+            "description": "\ud604\uae08 \uc601\uc218\uc99d \uc218\ub3d9 \ubc1c\uae09\n\n\ud604\uae08 \uc601\uc218\uc99d \ubc1c\uae09\uc744 \uc694\uccad\ud569\ub2c8\ub2e4."
+          },
+          "response": [
+            {
+              "id": "9c43807d-7199-4207-a2b4-03be4fcae48e",
+              "name": "\uc131\uacf5 \uc751\ub2f5",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"paymentId\": \"<string>\",\n  \"channelKey\": \"<string>\",\n  \"type\": \"CORPORATE\",\n  \"orderName\": \"<string>\",\n  \"currency\": \"PYG\",\n  \"amount\": {\n    \"total\": \"<long>\",\n    \"taxFree\": \"<long>\",\n    \"vat\": \"<long>\"\n  },\n  \"customer\": {\n    \"identityNumber\": \"<string>\",\n    \"identityNumberType\": \"PHONE\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"storeId\": \"<string>\",\n  \"productType\": \"DIGITAL\",\n  \"paidAt\": \"<dateTime>\",\n  \"businessRegistrationNumber\": \"<string>\",\n  \"paymentMethod\": \"TRANSFER\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cash-receipts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cash-receipts"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"cashReceipt\": {\n    \"issueNumber\": \"<string>\",\n    \"url\": \"<string>\",\n    \"pgReceiptId\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:39:34.000Z",
+              "updatedAt": "2026-07-28T02:39:34.000Z",
+              "uid": "35240-9c43807d-7199-4207-a2b4-03be4fcae48e"
+            },
+            {
+              "id": "3c6f778c-91ae-4774-b93d-92e1efbff960",
+              "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"paymentId\": \"<string>\",\n  \"channelKey\": \"<string>\",\n  \"type\": \"CORPORATE\",\n  \"orderName\": \"<string>\",\n  \"currency\": \"PYG\",\n  \"amount\": {\n    \"total\": \"<long>\",\n    \"taxFree\": \"<long>\",\n    \"vat\": \"<long>\"\n  },\n  \"customer\": {\n    \"identityNumber\": \"<string>\",\n    \"identityNumberType\": \"PHONE\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"storeId\": \"<string>\",\n  \"productType\": \"DIGITAL\",\n  \"paidAt\": \"<dateTime>\",\n  \"businessRegistrationNumber\": \"<string>\",\n  \"paymentMethod\": \"TRANSFER\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cash-receipts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cash-receipts"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:34.000Z",
+              "updatedAt": "2026-07-28T02:39:34.000Z",
+              "uid": "35240-3c6f778c-91ae-4774-b93d-92e1efbff960"
+            },
+            {
+              "id": "66e04c61-c483-48f6-bb23-3268a496749e",
+              "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"paymentId\": \"<string>\",\n  \"channelKey\": \"<string>\",\n  \"type\": \"CORPORATE\",\n  \"orderName\": \"<string>\",\n  \"currency\": \"PYG\",\n  \"amount\": {\n    \"total\": \"<long>\",\n    \"taxFree\": \"<long>\",\n    \"vat\": \"<long>\"\n  },\n  \"customer\": {\n    \"identityNumber\": \"<string>\",\n    \"identityNumberType\": \"PHONE\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"storeId\": \"<string>\",\n  \"productType\": \"DIGITAL\",\n  \"paidAt\": \"<dateTime>\",\n  \"businessRegistrationNumber\": \"<string>\",\n  \"paymentMethod\": \"TRANSFER\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cash-receipts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cash-receipts"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:34.000Z",
+              "updatedAt": "2026-07-28T02:39:34.000Z",
+              "uid": "35240-66e04c61-c483-48f6-bb23-3268a496749e"
+            },
+            {
+              "id": "280772da-0d7f-466f-bc07-b3dcee197a42",
+              "name": "* `ForbiddenError`: \uc694\uccad\uc774 \uac70\uc808\ub41c \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"paymentId\": \"<string>\",\n  \"channelKey\": \"<string>\",\n  \"type\": \"CORPORATE\",\n  \"orderName\": \"<string>\",\n  \"currency\": \"PYG\",\n  \"amount\": {\n    \"total\": \"<long>\",\n    \"taxFree\": \"<long>\",\n    \"vat\": \"<long>\"\n  },\n  \"customer\": {\n    \"identityNumber\": \"<string>\",\n    \"identityNumberType\": \"PHONE\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"storeId\": \"<string>\",\n  \"productType\": \"DIGITAL\",\n  \"paidAt\": \"<dateTime>\",\n  \"businessRegistrationNumber\": \"<string>\",\n  \"paymentMethod\": \"TRANSFER\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cash-receipts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cash-receipts"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:34.000Z",
+              "updatedAt": "2026-07-28T02:39:34.000Z",
+              "uid": "35240-280772da-0d7f-466f-bc07-b3dcee197a42"
+            },
+            {
+              "id": "308d3eb0-6fae-41f0-a917-7cf2de0286c0",
+              "name": "* `ChannelNotFoundError`: \uc694\uccad\ub41c \ucc44\ub110\uc774 \uc874\uc7ac\ud558\uc9c0 \uc54a\ub294 \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"paymentId\": \"<string>\",\n  \"channelKey\": \"<string>\",\n  \"type\": \"CORPORATE\",\n  \"orderName\": \"<string>\",\n  \"currency\": \"PYG\",\n  \"amount\": {\n    \"total\": \"<long>\",\n    \"taxFree\": \"<long>\",\n    \"vat\": \"<long>\"\n  },\n  \"customer\": {\n    \"identityNumber\": \"<string>\",\n    \"identityNumberType\": \"PHONE\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"storeId\": \"<string>\",\n  \"productType\": \"DIGITAL\",\n  \"paidAt\": \"<dateTime>\",\n  \"businessRegistrationNumber\": \"<string>\",\n  \"paymentMethod\": \"TRANSFER\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cash-receipts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cash-receipts"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:34.000Z",
+              "updatedAt": "2026-07-28T02:39:34.000Z",
+              "uid": "35240-308d3eb0-6fae-41f0-a917-7cf2de0286c0"
+            },
+            {
+              "id": "35ac0a23-347c-4a70-8a00-bafe36551339",
+              "name": "* `CashReceiptAlreadyIssuedError`: \ud604\uae08\uc601\uc218\uc99d\uc774 \uc774\ubbf8 \ubc1c\uae09\ub41c \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"paymentId\": \"<string>\",\n  \"channelKey\": \"<string>\",\n  \"type\": \"CORPORATE\",\n  \"orderName\": \"<string>\",\n  \"currency\": \"PYG\",\n  \"amount\": {\n    \"total\": \"<long>\",\n    \"taxFree\": \"<long>\",\n    \"vat\": \"<long>\"\n  },\n  \"customer\": {\n    \"identityNumber\": \"<string>\",\n    \"identityNumberType\": \"PHONE\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"storeId\": \"<string>\",\n  \"productType\": \"DIGITAL\",\n  \"paidAt\": \"<dateTime>\",\n  \"businessRegistrationNumber\": \"<string>\",\n  \"paymentMethod\": \"TRANSFER\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cash-receipts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cash-receipts"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:34.000Z",
+              "updatedAt": "2026-07-28T02:39:34.000Z",
+              "uid": "35240-35ac0a23-347c-4a70-8a00-bafe36551339"
+            },
+            {
+              "id": "fae10326-c36b-4297-a8fd-d945c24a8161",
+              "name": "* `PgProviderError`: PG\uc0ac\uc5d0\uc11c \uc624\ub958\ub97c \uc804\ub2ec\ud55c \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"paymentId\": \"<string>\",\n  \"channelKey\": \"<string>\",\n  \"type\": \"CORPORATE\",\n  \"orderName\": \"<string>\",\n  \"currency\": \"PYG\",\n  \"amount\": {\n    \"total\": \"<long>\",\n    \"taxFree\": \"<long>\",\n    \"vat\": \"<long>\"\n  },\n  \"customer\": {\n    \"identityNumber\": \"<string>\",\n    \"identityNumberType\": \"PHONE\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"storeId\": \"<string>\",\n  \"productType\": \"DIGITAL\",\n  \"paidAt\": \"<dateTime>\",\n  \"businessRegistrationNumber\": \"<string>\",\n  \"paymentMethod\": \"TRANSFER\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cash-receipts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cash-receipts"
+                  ]
+                }
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:34.000Z",
+              "updatedAt": "2026-07-28T02:39:34.000Z",
+              "uid": "35240-fae10326-c36b-4297-a8fd-d945c24a8161"
+            }
+          ],
+          "createdAt": "2026-07-28T02:39:34.000Z",
+          "updatedAt": "2026-07-28T02:39:34.000Z",
+          "uid": "35240-f164043a-c5d0-4db5-b5ed-7a11abbf2c2c"
+        }
+      ],
+      "id": "778fbc8b-0fd9-4c72-86c1-09058bce2df4",
+      "createdAt": "2026-07-28T02:39:34.000Z",
+      "updatedAt": "2026-07-28T02:39:34.000Z",
+      "uid": "35240-778fbc8b-0fd9-4c72-86c1-09058bce2df4"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.portone.io"
+    }
+  ]
+}

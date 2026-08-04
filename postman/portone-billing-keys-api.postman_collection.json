@@ -1,0 +1,2489 @@
+{
+  "info": {
+    "_postman_id": "45e91318-dc96-40e4-bbd0-fa84d253ffe8",
+    "name": "PortOne B2b Billing Keys API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:39:32.000Z",
+    "updatedAt": "2026-07-28T02:39:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-45e91318-dc96-40e4-bbd0-fa84d253ffe8"
+  },
+  "item": [
+    {
+      "name": "billing-keys",
+      "item": [
+        {
+          "name": "confirm",
+          "item": [
+            {
+              "name": "\ube4c\ub9c1\ud0a4 \ubc1c\uae09 \uc218\ub3d9 \uc2b9\uc778",
+              "id": "ece205be-2d14-4d07-b87a-5bb3d592a5ef",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/billing-keys/confirm",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "billing-keys",
+                    "confirm"
+                  ]
+                },
+                "description": "\ube4c\ub9c1\ud0a4 \ubc1c\uae09 \uc218\ub3d9 \uc2b9\uc778\n\n\uc218\ub3d9 \uc2b9\uc778\uc73c\ub85c \uc124\uc815\ub41c \ube4c\ub9c1\ud0a4 \ubc1c\uae09\uc5d0 \ub300\ud574, \ube4c\ub9c1\ud0a4 \ubc1c\uae09\uc744 \uc644\ub8cc \ucc98\ub9ac\ud569\ub2c8\ub2e4."
+              },
+              "response": [
+                {
+                  "id": "83be7546-7548-4bf8-a3b3-931976d6206d",
+                  "name": "\uc131\uacf5 \uc751\ub2f5\uc73c\ub85c \ube4c\ub9c1\ud0a4 \ubc1c\uae09 \uc2b9\uc778 \uacb0\uacfc\ub97c \ubc18\ud658\ud569\ub2c8\ub2e4.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/billing-keys/confirm",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billing-keys",
+                        "confirm"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"billingKey\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:33.000Z",
+                  "updatedAt": "2026-07-28T02:39:33.000Z",
+                  "uid": "35240-83be7546-7548-4bf8-a3b3-931976d6206d"
+                },
+                {
+                  "id": "ba6d28f4-3df2-4f90-b2ad-dff1506852c2",
+                  "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/billing-keys/confirm",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billing-keys",
+                        "confirm"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:33.000Z",
+                  "updatedAt": "2026-07-28T02:39:33.000Z",
+                  "uid": "35240-ba6d28f4-3df2-4f90-b2ad-dff1506852c2"
+                },
+                {
+                  "id": "68852b0b-c3aa-4de1-9b24-b491d29ac245",
+                  "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/billing-keys/confirm",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billing-keys",
+                        "confirm"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:33.000Z",
+                  "updatedAt": "2026-07-28T02:39:33.000Z",
+                  "uid": "35240-68852b0b-c3aa-4de1-9b24-b491d29ac245"
+                },
+                {
+                  "id": "c7cc40ea-e40c-4d4d-b9d5-c0e31a5899cb",
+                  "name": "* `ForbiddenError`: \uc694\uccad\uc774 \uac70\uc808\ub41c \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/billing-keys/confirm",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billing-keys",
+                        "confirm"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:33.000Z",
+                  "updatedAt": "2026-07-28T02:39:33.000Z",
+                  "uid": "35240-c7cc40ea-e40c-4d4d-b9d5-c0e31a5899cb"
+                },
+                {
+                  "id": "4750359c-223c-4b8b-bf10-9d8cc5f818b2",
+                  "name": "* `BillingKeyNotFoundError`: \ube4c\ub9c1\ud0a4\uac00 \uc874\uc7ac\ud558\uc9c0 \uc54a\ub294 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/billing-keys/confirm",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billing-keys",
+                        "confirm"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:33.000Z",
+                  "updatedAt": "2026-07-28T02:39:33.000Z",
+                  "uid": "35240-4750359c-223c-4b8b-bf10-9d8cc5f818b2"
+                },
+                {
+                  "id": "9841a915-289b-45fa-bdd5-107cf30a1d27",
+                  "name": "* `BillingKeyAlreadyIssuedError`\n* `InformationMismatchError`: \uc815\ubcf4\uac00 \uc77c\uce58\ud558\uc9c0 \uc54a\ub294 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/billing-keys/confirm",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billing-keys",
+                        "confirm"
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:33.000Z",
+                  "updatedAt": "2026-07-28T02:39:33.000Z",
+                  "uid": "35240-9841a915-289b-45fa-bdd5-107cf30a1d27"
+                },
+                {
+                  "id": "7d75a08a-abad-4d64-9fde-69c75e75a867",
+                  "name": "* `PgProviderError`: PG\uc0ac\uc5d0\uc11c \uc624\ub958\ub97c \uc804\ub2ec\ud55c \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/billing-keys/confirm",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billing-keys",
+                        "confirm"
+                      ]
+                    }
+                  },
+                  "status": "Bad Gateway",
+                  "code": 502,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:33.000Z",
+                  "updatedAt": "2026-07-28T02:39:33.000Z",
+                  "uid": "35240-7d75a08a-abad-4d64-9fde-69c75e75a867"
+                }
+              ],
+              "createdAt": "2026-07-28T02:39:33.000Z",
+              "updatedAt": "2026-07-28T02:39:33.000Z",
+              "uid": "35240-ece205be-2d14-4d07-b87a-5bb3d592a5ef"
+            }
+          ],
+          "id": "eb62eb80-24e9-4107-b853-0fe5f69ed321",
+          "createdAt": "2026-07-28T02:39:33.000Z",
+          "updatedAt": "2026-07-28T02:39:33.000Z",
+          "uid": "35240-eb62eb80-24e9-4107-b853-0fe5f69ed321"
+        },
+        {
+          "name": "confirm-issue-and-pay",
+          "item": [
+            {
+              "name": "\ube4c\ub9c1\ud0a4 \ubc1c\uae09 \ubc0f \ucd08\ud68c \uacb0\uc81c \uc218\ub3d9 \uc2b9\uc778",
+              "id": "974f5b2b-3b99-4f18-9d71-79ea4b06f7ed",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"currency\": \"MGA\",\n  \"totalAmount\": \"<long>\",\n  \"taxFreeAmount\": \"<long>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/billing-keys/confirm-issue-and-pay",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "billing-keys",
+                    "confirm-issue-and-pay"
+                  ]
+                },
+                "description": "\ube4c\ub9c1\ud0a4 \ubc1c\uae09 \ubc0f \ucd08\ud68c \uacb0\uc81c \uc218\ub3d9 \uc2b9\uc778\n\n\uc218\ub3d9 \uc2b9\uc778\uc73c\ub85c \uc124\uc815\ub41c \ube4c\ub9c1\ud0a4 \ubc1c\uae09 \ubc0f \ucd08\ud68c \uacb0\uc81c\uc5d0 \ub300\ud574, \ube4c\ub9c1\ud0a4 \ubc1c\uae09\uacfc \uacb0\uc81c\ub97c \uc644\ub8cc \ucc98\ub9ac\ud569\ub2c8\ub2e4."
+              },
+              "response": [
+                {
+                  "id": "ca9b044a-bfba-4e34-9b5c-3419dc6b9bb6",
+                  "name": "\uc131\uacf5 \uc751\ub2f5\uc73c\ub85c \ube4c\ub9c1\ud0a4 \ubc1c\uae09 \ubc0f \ucd08\ud68c \uacb0\uc81c \uc2b9\uc778 \uacb0\uacfc\ub97c \ubc18\ud658\ud569\ub2c8\ub2e4.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"currency\": \"MGA\",\n  \"totalAmount\": \"<long>\",\n  \"taxFreeAmount\": \"<long>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/billing-keys/confirm-issue-and-pay",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billing-keys",
+                        "confirm-issue-and-pay"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"billingKey\": \"<string>\",\n  \"paymentId\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:33.000Z",
+                  "updatedAt": "2026-07-28T02:39:33.000Z",
+                  "uid": "35240-ca9b044a-bfba-4e34-9b5c-3419dc6b9bb6"
+                },
+                {
+                  "id": "c0272ad7-6bf1-4fcd-8cc3-243e0223524d",
+                  "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"currency\": \"MGA\",\n  \"totalAmount\": \"<long>\",\n  \"taxFreeAmount\": \"<long>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/billing-keys/confirm-issue-and-pay",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billing-keys",
+                        "confirm-issue-and-pay"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:33.000Z",
+                  "updatedAt": "2026-07-28T02:39:33.000Z",
+                  "uid": "35240-c0272ad7-6bf1-4fcd-8cc3-243e0223524d"
+                },
+                {
+                  "id": "b4228594-f7d4-4999-968a-700da06c4356",
+                  "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"currency\": \"MGA\",\n  \"totalAmount\": \"<long>\",\n  \"taxFreeAmount\": \"<long>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/billing-keys/confirm-issue-and-pay",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billing-keys",
+                        "confirm-issue-and-pay"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:33.000Z",
+                  "updatedAt": "2026-07-28T02:39:33.000Z",
+                  "uid": "35240-b4228594-f7d4-4999-968a-700da06c4356"
+                },
+                {
+                  "id": "afcb948d-3a0c-4bc0-b791-d269b3d24036",
+                  "name": "* `ForbiddenError`: \uc694\uccad\uc774 \uac70\uc808\ub41c \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"currency\": \"MGA\",\n  \"totalAmount\": \"<long>\",\n  \"taxFreeAmount\": \"<long>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/billing-keys/confirm-issue-and-pay",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billing-keys",
+                        "confirm-issue-and-pay"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:33.000Z",
+                  "updatedAt": "2026-07-28T02:39:33.000Z",
+                  "uid": "35240-afcb948d-3a0c-4bc0-b791-d269b3d24036"
+                },
+                {
+                  "id": "2212c20a-1d2f-4c54-89e5-183424800b7f",
+                  "name": "* `BillingKeyNotFoundError`: \ube4c\ub9c1\ud0a4\uac00 \uc874\uc7ac\ud558\uc9c0 \uc54a\ub294 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"currency\": \"MGA\",\n  \"totalAmount\": \"<long>\",\n  \"taxFreeAmount\": \"<long>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/billing-keys/confirm-issue-and-pay",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billing-keys",
+                        "confirm-issue-and-pay"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:33.000Z",
+                  "updatedAt": "2026-07-28T02:39:33.000Z",
+                  "uid": "35240-2212c20a-1d2f-4c54-89e5-183424800b7f"
+                },
+                {
+                  "id": "f3878995-a96b-40a0-9667-bcbbd1cb1ff9",
+                  "name": "* `BillingKeyAlreadyIssuedError`\n* `InformationMismatchError`: \uc815\ubcf4\uac00 \uc77c\uce58\ud558\uc9c0 \uc54a\ub294 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"currency\": \"MGA\",\n  \"totalAmount\": \"<long>\",\n  \"taxFreeAmount\": \"<long>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/billing-keys/confirm-issue-and-pay",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billing-keys",
+                        "confirm-issue-and-pay"
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:33.000Z",
+                  "updatedAt": "2026-07-28T02:39:33.000Z",
+                  "uid": "35240-f3878995-a96b-40a0-9667-bcbbd1cb1ff9"
+                },
+                {
+                  "id": "e7b4cea8-d85c-488e-bf6e-ca3897a0d377",
+                  "name": "* `PgProviderError`: PG\uc0ac\uc5d0\uc11c \uc624\ub958\ub97c \uc804\ub2ec\ud55c \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"currency\": \"MGA\",\n  \"totalAmount\": \"<long>\",\n  \"taxFreeAmount\": \"<long>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/billing-keys/confirm-issue-and-pay",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billing-keys",
+                        "confirm-issue-and-pay"
+                      ]
+                    }
+                  },
+                  "status": "Bad Gateway",
+                  "code": 502,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:33.000Z",
+                  "updatedAt": "2026-07-28T02:39:33.000Z",
+                  "uid": "35240-e7b4cea8-d85c-488e-bf6e-ca3897a0d377"
+                }
+              ],
+              "createdAt": "2026-07-28T02:39:33.000Z",
+              "updatedAt": "2026-07-28T02:39:33.000Z",
+              "uid": "35240-974f5b2b-3b99-4f18-9d71-79ea4b06f7ed"
+            }
+          ],
+          "id": "fbd6adb9-ed1b-476f-a3fa-694abad3da74",
+          "createdAt": "2026-07-28T02:39:33.000Z",
+          "updatedAt": "2026-07-28T02:39:33.000Z",
+          "uid": "35240-fbd6adb9-ed1b-476f-a3fa-694abad3da74"
+        },
+        {
+          "name": "{billingKey}",
+          "item": [
+            {
+              "name": "\ube4c\ub9c1\ud0a4 \ub2e8\uac74 \uc870\ud68c",
+              "id": "8e3e3e02-2d8f-4168-80bc-422cb286fdad",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/billing-keys/:billingKey?storeId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "billing-keys",
+                    ":billingKey"
+                  ],
+                  "query": [
+                    {
+                      "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                      "key": "storeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "5665473a-6074-44ce-b1ea-a9eb17024bcf",
+                      "key": "billingKey",
+                      "value": "<string>",
+                      "description": "(Required) \uc870\ud68c\ud560 \ube4c\ub9c1\ud0a4"
+                    }
+                  ]
+                },
+                "description": "\ube4c\ub9c1\ud0a4 \ub2e8\uac74 \uc870\ud68c\n\n\uc8fc\uc5b4\uc9c4 \ube4c\ub9c1\ud0a4\uc5d0 \ub300\uc751\ub418\ub294 \ube4c\ub9c1\ud0a4 \uc815\ubcf4\ub97c \uc870\ud68c\ud569\ub2c8\ub2e4."
+              },
+              "response": [
+                {
+                  "id": "00c90615-3f76-4c97-b5c7-475dfeac87e1",
+                  "name": "\uc131\uacf5 \uc751\ub2f5\uc73c\ub85c \ube4c\ub9c1\ud0a4 \uc815\ubcf4\ub97c \ubc18\ud658\ud569\ub2c8\ub2e4.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/billing-keys/:billingKey?storeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billing-keys",
+                        ":billingKey"
+                      ],
+                      "query": [
+                        {
+                          "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                          "key": "storeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "billingKey"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<string>\",\n  \"billingKey\": \"<string>\",\n  \"merchantId\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"channels\": [\n    {\n      \"type\": \"LIVE\",\n      \"pgProvider\": \"SETTLE_FIRM\",\n      \"pgMerchantId\": \"<string>\",\n      \"id\": \"<string>\",\n      \"key\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"type\": \"LIVE\",\n      \"pgProvider\": \"TOSS_BRANDPAY\",\n      \"pgMerchantId\": \"<string>\",\n      \"id\": \"<string>\",\n      \"key\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"birthYear\": \"<string>\",\n    \"birthMonth\": \"<string>\",\n    \"birthDay\": \"<string>\",\n    \"gender\": \"FEMALE\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"address\": {\n      \"type\": \"<string>\",\n      \"oneLine\": \"<string>\"\n    },\n    \"zipcode\": \"<string>\"\n  },\n  \"issuedAt\": \"<dateTime>\",\n  \"deletedAt\": \"<dateTime>\",\n  \"methods\": [\n    {\n      \"type\": \"<string>\",\n      \"card\": {\n        \"publisher\": \"<string>\",\n        \"issuer\": \"<string>\",\n        \"brand\": \"DINERS\",\n        \"type\": \"CREDIT\",\n        \"ownerType\": \"PERSONAL\",\n        \"bin\": \"<string>\",\n        \"name\": \"<string>\",\n        \"number\": \"<string>\"\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"card\": {\n        \"publisher\": \"<string>\",\n        \"issuer\": \"<string>\",\n        \"brand\": \"MASTER\",\n        \"type\": \"GIFT\",\n        \"ownerType\": \"PERSONAL\",\n        \"bin\": \"<string>\",\n        \"name\": \"<string>\",\n        \"number\": \"<string>\"\n      }\n    }\n  ],\n  \"customData\": \"<string>\",\n  \"issueId\": \"<string>\",\n  \"issueName\": \"<string>\",\n  \"requestedAt\": \"<dateTime>\",\n  \"channelGroup\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"isForTest\": \"<boolean>\"\n  },\n  \"pgBillingKeyIssueResponses\": [\n    {\n      \"type\": \"<string>\",\n      \"channel\": {\n        \"type\": \"TEST\",\n        \"pgProvider\": \"PAYLETTER_GLOBAL\",\n        \"pgMerchantId\": \"<string>\",\n        \"id\": \"<string>\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      \"failure\": {\n        \"failedAt\": \"<dateTime>\",\n        \"message\": \"<string>\",\n        \"pgCode\": \"<string>\",\n        \"pgMessage\": \"<string>\"\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"channel\": {\n        \"type\": \"TEST\",\n        \"pgProvider\": \"KAKAO\",\n        \"pgMerchantId\": \"<string>\",\n        \"id\": \"<string>\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      \"failure\": {\n        \"failedAt\": \"<dateTime>\",\n        \"message\": \"<string>\",\n        \"pgCode\": \"<string>\",\n        \"pgMessage\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:39:33.000Z",
+                  "updatedAt": "2026-07-28T02:39:33.000Z",
+                  "uid": "35240-00c90615-3f76-4c97-b5c7-475dfeac87e1"
+                },
+                {
+                  "id": "0f38cc19-1e18-4fb0-86af-8a290c650bee",
+                  "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/billing-keys/:billingKey?storeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billing-keys",
+                        ":billingKey"
+                      ],
+                      "query": [
+                        {
+                          "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                          "key": "storeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "billingKey"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:33.000Z",
+                  "updatedAt": "2026-07-28T02:39:33.000Z",
+                  "uid": "35240-0f38cc19-1e18-4fb0-86af-8a290c650bee"
+                },
+                {
+                  "id": "dfc4af5d-8b06-4c51-a4be-ae9ee1307943",
+                  "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/billing-keys/:billingKey?storeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billing-keys",
+                        ":billingKey"
+                      ],
+                      "query": [
+                        {
+                          "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                          "key": "storeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "billingKey"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:33.000Z",
+                  "updatedAt": "2026-07-28T02:39:33.000Z",
+                  "uid": "35240-dfc4af5d-8b06-4c51-a4be-ae9ee1307943"
+                },
+                {
+                  "id": "13d89d21-0db7-4b26-a0b4-e8d821a3958f",
+                  "name": "* `ForbiddenError`: \uc694\uccad\uc774 \uac70\uc808\ub41c \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/billing-keys/:billingKey?storeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billing-keys",
+                        ":billingKey"
+                      ],
+                      "query": [
+                        {
+                          "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                          "key": "storeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "billingKey"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:33.000Z",
+                  "updatedAt": "2026-07-28T02:39:33.000Z",
+                  "uid": "35240-13d89d21-0db7-4b26-a0b4-e8d821a3958f"
+                },
+                {
+                  "id": "91d182a7-a06b-46c9-b759-dda32e415b4a",
+                  "name": "* `BillingKeyNotFoundError`: \ube4c\ub9c1\ud0a4\uac00 \uc874\uc7ac\ud558\uc9c0 \uc54a\ub294 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/billing-keys/:billingKey?storeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billing-keys",
+                        ":billingKey"
+                      ],
+                      "query": [
+                        {
+                          "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                          "key": "storeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "billingKey"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:33.000Z",
+                  "updatedAt": "2026-07-28T02:39:33.000Z",
+                  "uid": "35240-91d182a7-a06b-46c9-b759-dda32e415b4a"
+                }
+              ],
+              "createdAt": "2026-07-28T02:39:33.000Z",
+              "updatedAt": "2026-07-28T02:39:33.000Z",
+              "uid": "35240-8e3e3e02-2d8f-4168-80bc-422cb286fdad"
+            },
+            {
+              "name": "\ube4c\ub9c1\ud0a4 \uc0ad\uc81c",
+              "id": "b2893839-c72a-4fff-b708-45763b47347a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/billing-keys/:billingKey?storeId=<string>&reason=<string>&requester=CUSTOMER&skipWebhook=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "billing-keys",
+                    ":billingKey"
+                  ],
+                  "query": [
+                    {
+                      "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                      "key": "storeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "\uc0ac\uc720\n\n\ub124\uc774\ubc84\ud398\uc774: \uc790\ub3d9\uacb0\uc81c \ud574\uc9c0 \uc0ac\uc720\uc785\ub2c8\ub2e4. \uba85\uc2dc\uac00 \ud544\uc694\ud569\ub2c8\ub2e4.",
+                      "key": "reason",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "\uc694\uccad \uc8fc\uccb4\n\n\ub124\uc774\ubc84\ud398\uc774: \uc790\ub3d9\uacb0\uc81c \ud574\uc9c0 \uc694\uccad \uc8fc\uccb4\uc785\ub2c8\ub2e4. \uba85\uc2dc\uac00 \ud544\uc694\ud569\ub2c8\ub2e4.",
+                      "key": "requester",
+                      "value": "CUSTOMER"
+                    },
+                    {
+                      "description": "\uc6f9\ud6c5 \uc0dd\ub7b5 \uc5ec\ubd80\n\n\ube4c\ub9c1\ud0a4 \uc0ad\uc81c\uac00 \uc131\uacf5\ud588\uc744 \ub54c \uc6f9\ud6c5\uc744 \uc804\uc1a1\ud558\uc9c0 \uc54a\uc73c\ub824\uba74 true\ub85c \uc124\uc815\ud569\ub2c8\ub2e4.",
+                      "key": "skipWebhook",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "72ebd3cf-c4aa-4fc2-8fdd-b4c991804e58",
+                      "key": "billingKey",
+                      "value": "<string>",
+                      "description": "(Required) \uc0ad\uc81c\ud560 \ube4c\ub9c1\ud0a4"
+                    }
+                  ]
+                },
+                "description": "\ube4c\ub9c1\ud0a4 \uc0ad\uc81c\n\n\ube4c\ub9c1\ud0a4\ub97c \uc0ad\uc81c\ud569\ub2c8\ub2e4."
+              },
+              "response": [
+                {
+                  "id": "0af473e9-84a1-4e5e-b810-36afd236e6d3",
+                  "name": "\uc131\uacf5 \uc751\ub2f5",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/billing-keys/:billingKey?storeId=<string>&reason=<string>&requester=CUSTOMER&skipWebhook=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billing-keys",
+                        ":billingKey"
+                      ],
+                      "query": [
+                        {
+                          "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                          "key": "storeId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "\uc0ac\uc720\n\n\ub124\uc774\ubc84\ud398\uc774: \uc790\ub3d9\uacb0\uc81c \ud574\uc9c0 \uc0ac\uc720\uc785\ub2c8\ub2e4. \uba85\uc2dc\uac00 \ud544\uc694\ud569\ub2c8\ub2e4.",
+                          "key": "reason",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "\uc694\uccad \uc8fc\uccb4\n\n\ub124\uc774\ubc84\ud398\uc774: \uc790\ub3d9\uacb0\uc81c \ud574\uc9c0 \uc694\uccad \uc8fc\uccb4\uc785\ub2c8\ub2e4. \uba85\uc2dc\uac00 \ud544\uc694\ud569\ub2c8\ub2e4.",
+                          "key": "requester",
+                          "value": "CUSTOMER"
+                        },
+                        {
+                          "description": "\uc6f9\ud6c5 \uc0dd\ub7b5 \uc5ec\ubd80\n\n\ube4c\ub9c1\ud0a4 \uc0ad\uc81c\uac00 \uc131\uacf5\ud588\uc744 \ub54c \uc6f9\ud6c5\uc744 \uc804\uc1a1\ud558\uc9c0 \uc54a\uc73c\ub824\uba74 true\ub85c \uc124\uc815\ud569\ub2c8\ub2e4.",
+                          "key": "skipWebhook",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "billingKey"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"deletedAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T02:39:33.000Z",
+                  "updatedAt": "2026-07-28T02:39:33.000Z",
+                  "uid": "35240-0af473e9-84a1-4e5e-b810-36afd236e6d3"
+                },
+                {
+                  "id": "f5b0e7b7-fb47-41b4-ae8c-f9bfcab77d5e",
+                  "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/billing-keys/:billingKey?storeId=<string>&reason=<string>&requester=CUSTOMER&skipWebhook=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billing-keys",
+                        ":billingKey"
+                      ],
+                      "query": [
+                        {
+                          "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                          "key": "storeId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "\uc0ac\uc720\n\n\ub124\uc774\ubc84\ud398\uc774: \uc790\ub3d9\uacb0\uc81c \ud574\uc9c0 \uc0ac\uc720\uc785\ub2c8\ub2e4. \uba85\uc2dc\uac00 \ud544\uc694\ud569\ub2c8\ub2e4.",
+                          "key": "reason",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "\uc694\uccad \uc8fc\uccb4\n\n\ub124\uc774\ubc84\ud398\uc774: \uc790\ub3d9\uacb0\uc81c \ud574\uc9c0 \uc694\uccad \uc8fc\uccb4\uc785\ub2c8\ub2e4. \uba85\uc2dc\uac00 \ud544\uc694\ud569\ub2c8\ub2e4.",
+                          "key": "requester",
+                          "value": "CUSTOMER"
+                        },
+                        {
+                          "description": "\uc6f9\ud6c5 \uc0dd\ub7b5 \uc5ec\ubd80\n\n\ube4c\ub9c1\ud0a4 \uc0ad\uc81c\uac00 \uc131\uacf5\ud588\uc744 \ub54c \uc6f9\ud6c5\uc744 \uc804\uc1a1\ud558\uc9c0 \uc54a\uc73c\ub824\uba74 true\ub85c \uc124\uc815\ud569\ub2c8\ub2e4.",
+                          "key": "skipWebhook",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "billingKey"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:33.000Z",
+                  "updatedAt": "2026-07-28T02:39:33.000Z",
+                  "uid": "35240-f5b0e7b7-fb47-41b4-ae8c-f9bfcab77d5e"
+                },
+                {
+                  "id": "3a269872-014d-4725-b41f-08ce1b197d42",
+                  "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/billing-keys/:billingKey?storeId=<string>&reason=<string>&requester=CUSTOMER&skipWebhook=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billing-keys",
+                        ":billingKey"
+                      ],
+                      "query": [
+                        {
+                          "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                          "key": "storeId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "\uc0ac\uc720\n\n\ub124\uc774\ubc84\ud398\uc774: \uc790\ub3d9\uacb0\uc81c \ud574\uc9c0 \uc0ac\uc720\uc785\ub2c8\ub2e4. \uba85\uc2dc\uac00 \ud544\uc694\ud569\ub2c8\ub2e4.",
+                          "key": "reason",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "\uc694\uccad \uc8fc\uccb4\n\n\ub124\uc774\ubc84\ud398\uc774: \uc790\ub3d9\uacb0\uc81c \ud574\uc9c0 \uc694\uccad \uc8fc\uccb4\uc785\ub2c8\ub2e4. \uba85\uc2dc\uac00 \ud544\uc694\ud569\ub2c8\ub2e4.",
+                          "key": "requester",
+                          "value": "CUSTOMER"
+                        },
+                        {
+                          "description": "\uc6f9\ud6c5 \uc0dd\ub7b5 \uc5ec\ubd80\n\n\ube4c\ub9c1\ud0a4 \uc0ad\uc81c\uac00 \uc131\uacf5\ud588\uc744 \ub54c \uc6f9\ud6c5\uc744 \uc804\uc1a1\ud558\uc9c0 \uc54a\uc73c\ub824\uba74 true\ub85c \uc124\uc815\ud569\ub2c8\ub2e4.",
+                          "key": "skipWebhook",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "billingKey"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:33.000Z",
+                  "updatedAt": "2026-07-28T02:39:33.000Z",
+                  "uid": "35240-3a269872-014d-4725-b41f-08ce1b197d42"
+                },
+                {
+                  "id": "e12a222b-758e-4be2-8f97-fdb66381281d",
+                  "name": "* `ForbiddenError`: \uc694\uccad\uc774 \uac70\uc808\ub41c \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/billing-keys/:billingKey?storeId=<string>&reason=<string>&requester=CUSTOMER&skipWebhook=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billing-keys",
+                        ":billingKey"
+                      ],
+                      "query": [
+                        {
+                          "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                          "key": "storeId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "\uc0ac\uc720\n\n\ub124\uc774\ubc84\ud398\uc774: \uc790\ub3d9\uacb0\uc81c \ud574\uc9c0 \uc0ac\uc720\uc785\ub2c8\ub2e4. \uba85\uc2dc\uac00 \ud544\uc694\ud569\ub2c8\ub2e4.",
+                          "key": "reason",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "\uc694\uccad \uc8fc\uccb4\n\n\ub124\uc774\ubc84\ud398\uc774: \uc790\ub3d9\uacb0\uc81c \ud574\uc9c0 \uc694\uccad \uc8fc\uccb4\uc785\ub2c8\ub2e4. \uba85\uc2dc\uac00 \ud544\uc694\ud569\ub2c8\ub2e4.",
+                          "key": "requester",
+                          "value": "CUSTOMER"
+                        },
+                        {
+                          "description": "\uc6f9\ud6c5 \uc0dd\ub7b5 \uc5ec\ubd80\n\n\ube4c\ub9c1\ud0a4 \uc0ad\uc81c\uac00 \uc131\uacf5\ud588\uc744 \ub54c \uc6f9\ud6c5\uc744 \uc804\uc1a1\ud558\uc9c0 \uc54a\uc73c\ub824\uba74 true\ub85c \uc124\uc815\ud569\ub2c8\ub2e4.",
+                          "key": "skipWebhook",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "billingKey"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:33.000Z",
+                  "updatedAt": "2026-07-28T02:39:33.000Z",
+                  "uid": "35240-e12a222b-758e-4be2-8f97-fdb66381281d"
+                },
+                {
+                  "id": "75ab4b6a-14ff-4ce0-bdbd-ecf11adf693d",
+                  "name": "* `BillingKeyNotIssuedError`\n* `BillingKeyNotFoundError`: \ube4c\ub9c1\ud0a4\uac00 \uc874\uc7ac\ud558\uc9c0 \uc54a\ub294 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/billing-keys/:billingKey?storeId=<string>&reason=<string>&requester=CUSTOMER&skipWebhook=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billing-keys",
+                        ":billingKey"
+                      ],
+                      "query": [
+                        {
+                          "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                          "key": "storeId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "\uc0ac\uc720\n\n\ub124\uc774\ubc84\ud398\uc774: \uc790\ub3d9\uacb0\uc81c \ud574\uc9c0 \uc0ac\uc720\uc785\ub2c8\ub2e4. \uba85\uc2dc\uac00 \ud544\uc694\ud569\ub2c8\ub2e4.",
+                          "key": "reason",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "\uc694\uccad \uc8fc\uccb4\n\n\ub124\uc774\ubc84\ud398\uc774: \uc790\ub3d9\uacb0\uc81c \ud574\uc9c0 \uc694\uccad \uc8fc\uccb4\uc785\ub2c8\ub2e4. \uba85\uc2dc\uac00 \ud544\uc694\ud569\ub2c8\ub2e4.",
+                          "key": "requester",
+                          "value": "CUSTOMER"
+                        },
+                        {
+                          "description": "\uc6f9\ud6c5 \uc0dd\ub7b5 \uc5ec\ubd80\n\n\ube4c\ub9c1\ud0a4 \uc0ad\uc81c\uac00 \uc131\uacf5\ud588\uc744 \ub54c \uc6f9\ud6c5\uc744 \uc804\uc1a1\ud558\uc9c0 \uc54a\uc73c\ub824\uba74 true\ub85c \uc124\uc815\ud569\ub2c8\ub2e4.",
+                          "key": "skipWebhook",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "billingKey"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:33.000Z",
+                  "updatedAt": "2026-07-28T02:39:33.000Z",
+                  "uid": "35240-75ab4b6a-14ff-4ce0-bdbd-ecf11adf693d"
+                },
+                {
+                  "id": "6c5f6829-92d8-42ed-9a76-753dadc4760f",
+                  "name": "* `BillingKeyAlreadyDeletedError`: \ube4c\ub9c1\ud0a4\uac00 \uc774\ubbf8 \uc0ad\uc81c\ub41c \uacbd\uc6b0\n* `PaymentScheduleAlreadyExistsError`: \uacb0\uc81c \uc608\uc57d\uac74\uc774 \uc774\ubbf8 \uc874\uc7ac\ud558\ub294 \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/billing-keys/:billingKey?storeId=<string>&reason=<string>&requester=CUSTOMER&skipWebhook=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billing-keys",
+                        ":billingKey"
+                      ],
+                      "query": [
+                        {
+                          "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                          "key": "storeId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "\uc0ac\uc720\n\n\ub124\uc774\ubc84\ud398\uc774: \uc790\ub3d9\uacb0\uc81c \ud574\uc9c0 \uc0ac\uc720\uc785\ub2c8\ub2e4. \uba85\uc2dc\uac00 \ud544\uc694\ud569\ub2c8\ub2e4.",
+                          "key": "reason",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "\uc694\uccad \uc8fc\uccb4\n\n\ub124\uc774\ubc84\ud398\uc774: \uc790\ub3d9\uacb0\uc81c \ud574\uc9c0 \uc694\uccad \uc8fc\uccb4\uc785\ub2c8\ub2e4. \uba85\uc2dc\uac00 \ud544\uc694\ud569\ub2c8\ub2e4.",
+                          "key": "requester",
+                          "value": "CUSTOMER"
+                        },
+                        {
+                          "description": "\uc6f9\ud6c5 \uc0dd\ub7b5 \uc5ec\ubd80\n\n\ube4c\ub9c1\ud0a4 \uc0ad\uc81c\uac00 \uc131\uacf5\ud588\uc744 \ub54c \uc6f9\ud6c5\uc744 \uc804\uc1a1\ud558\uc9c0 \uc54a\uc73c\ub824\uba74 true\ub85c \uc124\uc815\ud569\ub2c8\ub2e4.",
+                          "key": "skipWebhook",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "billingKey"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:33.000Z",
+                  "updatedAt": "2026-07-28T02:39:33.000Z",
+                  "uid": "35240-6c5f6829-92d8-42ed-9a76-753dadc4760f"
+                },
+                {
+                  "id": "960a669f-f53a-4b6a-9276-f730ee3926d8",
+                  "name": "* `PgProviderError`: PG\uc0ac\uc5d0\uc11c \uc624\ub958\ub97c \uc804\ub2ec\ud55c \uacbd\uc6b0\n* `ChannelSpecificError`: \uc5ec\ub7ec \ucc44\ub110\uc744 \uc9c0\uc815\ud55c \uc694\uccad\uc5d0\uc11c, \ucc44\ub110 \uac01\uac01\uc5d0\uc11c \uc624\ub958\uac00 \ubc1c\uc0dd\ud55c \uacbd\uc6b0",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/billing-keys/:billingKey?storeId=<string>&reason=<string>&requester=CUSTOMER&skipWebhook=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billing-keys",
+                        ":billingKey"
+                      ],
+                      "query": [
+                        {
+                          "description": "\uc0c1\uc810 \uc544\uc774\ub514\n\n\uc811\uadfc \uad8c\ud55c\uc774 \uc788\ub294 \uc0c1\uc810 \uc544\uc774\ub514\ub9cc \uc785\ub825 \uac00\ub2a5\ud558\uba70, \ubbf8\uc785\ub825\uc2dc \uc778\uc99d \uc815\ubcf4\uc758 \uc0c1\uc810 \uc544\uc774\ub514\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.",
+                          "key": "storeId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "\uc0ac\uc720\n\n\ub124\uc774\ubc84\ud398\uc774: \uc790\ub3d9\uacb0\uc81c \ud574\uc9c0 \uc0ac\uc720\uc785\ub2c8\ub2e4. \uba85\uc2dc\uac00 \ud544\uc694\ud569\ub2c8\ub2e4.",
+                          "key": "reason",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "\uc694\uccad \uc8fc\uccb4\n\n\ub124\uc774\ubc84\ud398\uc774: \uc790\ub3d9\uacb0\uc81c \ud574\uc9c0 \uc694\uccad \uc8fc\uccb4\uc785\ub2c8\ub2e4. \uba85\uc2dc\uac00 \ud544\uc694\ud569\ub2c8\ub2e4.",
+                          "key": "requester",
+                          "value": "CUSTOMER"
+                        },
+                        {
+                          "description": "\uc6f9\ud6c5 \uc0dd\ub7b5 \uc5ec\ubd80\n\n\ube4c\ub9c1\ud0a4 \uc0ad\uc81c\uac00 \uc131\uacf5\ud588\uc744 \ub54c \uc6f9\ud6c5\uc744 \uc804\uc1a1\ud558\uc9c0 \uc54a\uc73c\ub824\uba74 true\ub85c \uc124\uc815\ud569\ub2c8\ub2e4.",
+                          "key": "skipWebhook",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "billingKey"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Gateway",
+                  "code": 502,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:33.000Z",
+                  "updatedAt": "2026-07-28T02:39:33.000Z",
+                  "uid": "35240-960a669f-f53a-4b6a-9276-f730ee3926d8"
+                }
+              ],
+              "createdAt": "2026-07-28T02:39:33.000Z",
+              "updatedAt": "2026-07-28T02:39:33.000Z",
+              "uid": "35240-b2893839-c72a-4fff-b708-45763b47347a"
+            }
+          ],
+          "id": "59b6db09-a0fc-498c-b1e7-4b8176122ae5",
+          "createdAt": "2026-07-28T02:39:33.000Z",
+          "updatedAt": "2026-07-28T02:39:33.000Z",
+          "uid": "35240-59b6db09-a0fc-498c-b1e7-4b8176122ae5"
+        },
+        {
+          "name": "\ube4c\ub9c1\ud0a4 \ub2e4\uac74 \uc870\ud68c",
+          "id": "5c9fb4fd-6d31-4299-ab74-53d99128a8a6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/billing-keys?requestBody=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "billing-keys"
+              ],
+              "query": [
+                {
+                  "key": "requestBody",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "\ube4c\ub9c1\ud0a4 \ub2e4\uac74 \uc870\ud68c\n\n\uc8fc\uc5b4\uc9c4 \uc870\uac74\uc5d0 \ub9de\ub294 \ube4c\ub9c1\ud0a4\ub4e4\uc744 \ud398\uc774\uc9c0 \uae30\ubc18\uc73c\ub85c \uc870\ud68c\ud569\ub2c8\ub2e4."
+          },
+          "response": [
+            {
+              "id": "f37347e0-c4f2-4655-b6dc-d5be7999c6fd",
+              "name": "\uc131\uacf5 \uc751\ub2f5\uc73c\ub85c \uc870\ud68c\ub41c \ube4c\ub9c1\ud0a4 \ub9ac\uc2a4\ud2b8\uc640 \ud398\uc774\uc9c0 \uc815\ubcf4\uac00 \ubc18\ud658\ub429\ub2c8\ub2e4.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/billing-keys?requestBody=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "billing-keys"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"items\": [\n    {\n      \"status\": \"<string>\",\n      \"billingKey\": \"<string>\",\n      \"merchantId\": \"<string>\",\n      \"storeId\": \"<string>\",\n      \"channels\": [\n        {\n          \"type\": \"LIVE\",\n          \"pgProvider\": \"DANAL\",\n          \"pgMerchantId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"key\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"type\": \"LIVE\",\n          \"pgProvider\": \"PAYPLE\",\n          \"pgMerchantId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"key\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"customer\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"birthYear\": \"<string>\",\n        \"birthMonth\": \"<string>\",\n        \"birthDay\": \"<string>\",\n        \"gender\": \"OTHER\",\n        \"email\": \"<string>\",\n        \"phoneNumber\": \"<string>\",\n        \"address\": {\n          \"type\": \"<string>\",\n          \"oneLine\": \"<string>\"\n        },\n        \"zipcode\": \"<string>\"\n      },\n      \"issuedAt\": \"<dateTime>\",\n      \"deletedAt\": \"<dateTime>\",\n      \"methods\": [\n        {\n          \"type\": \"<string>\",\n          \"card\": {\n            \"publisher\": \"<string>\",\n            \"issuer\": \"<string>\",\n            \"brand\": \"VISA\",\n            \"type\": \"GIFT\",\n            \"ownerType\": \"CORPORATE\",\n            \"bin\": \"<string>\",\n            \"name\": \"<string>\",\n            \"number\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"card\": {\n            \"publisher\": \"<string>\",\n            \"issuer\": \"<string>\",\n            \"brand\": \"MASTER\",\n            \"type\": \"CREDIT\",\n            \"ownerType\": \"PERSONAL\",\n            \"bin\": \"<string>\",\n            \"name\": \"<string>\",\n            \"number\": \"<string>\"\n          }\n        }\n      ],\n      \"customData\": \"<string>\",\n      \"issueId\": \"<string>\",\n      \"issueName\": \"<string>\",\n      \"requestedAt\": \"<dateTime>\",\n      \"channelGroup\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"isForTest\": \"<boolean>\"\n      },\n      \"pgBillingKeyIssueResponses\": [\n        {\n          \"type\": \"<string>\",\n          \"channel\": {\n            \"type\": \"TEST\",\n            \"pgProvider\": \"INICIS_V2\",\n            \"pgMerchantId\": \"<string>\",\n            \"id\": \"<string>\",\n            \"key\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"failure\": {\n            \"failedAt\": \"<dateTime>\",\n            \"message\": \"<string>\",\n            \"pgCode\": \"<string>\",\n            \"pgMessage\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"channel\": {\n            \"type\": \"LIVE\",\n            \"pgProvider\": \"SETTLE\",\n            \"pgMerchantId\": \"<string>\",\n            \"id\": \"<string>\",\n            \"key\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"failure\": {\n            \"failedAt\": \"<dateTime>\",\n            \"message\": \"<string>\",\n            \"pgCode\": \"<string>\",\n            \"pgMessage\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"status\": \"<string>\",\n      \"billingKey\": \"<string>\",\n      \"merchantId\": \"<string>\",\n      \"storeId\": \"<string>\",\n      \"channels\": [\n        {\n          \"type\": \"LIVE\",\n          \"pgProvider\": \"UPLUS\",\n          \"pgMerchantId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"key\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"type\": \"TEST\",\n          \"pgProvider\": \"PAYLETTER_GLOBAL\",\n          \"pgMerchantId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"key\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"customer\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"birthYear\": \"<string>\",\n        \"birthMonth\": \"<string>\",\n        \"birthDay\": \"<string>\",\n        \"gender\": \"OTHER\",\n        \"email\": \"<string>\",\n        \"phoneNumber\": \"<string>\",\n        \"address\": {\n          \"type\": \"<string>\",\n          \"oneLine\": \"<string>\"\n        },\n        \"zipcode\": \"<string>\"\n      },\n      \"issuedAt\": \"<dateTime>\",\n      \"deletedAt\": \"<dateTime>\",\n      \"methods\": [\n        {\n          \"type\": \"<string>\",\n          \"card\": {\n            \"publisher\": \"<string>\",\n            \"issuer\": \"<string>\",\n            \"brand\": \"LOCAL\",\n            \"type\": \"DEBIT\",\n            \"ownerType\": \"PERSONAL\",\n            \"bin\": \"<string>\",\n            \"name\": \"<string>\",\n            \"number\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"card\": {\n            \"publisher\": \"<string>\",\n            \"issuer\": \"<string>\",\n            \"brand\": \"JCB\",\n            \"type\": \"GIFT\",\n            \"ownerType\": \"PERSONAL\",\n            \"bin\": \"<string>\",\n            \"name\": \"<string>\",\n            \"number\": \"<string>\"\n          }\n        }\n      ],\n      \"customData\": \"<string>\",\n      \"issueId\": \"<string>\",\n      \"issueName\": \"<string>\",\n      \"requestedAt\": \"<dateTime>\",\n      \"channelGroup\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"isForTest\": \"<boolean>\"\n      },\n      \"pgBillingKeyIssueResponses\": [\n        {\n          \"type\": \"<string>\",\n          \"channel\": {\n            \"type\": \"LIVE\",\n            \"pgProvider\": \"PAYCO\",\n            \"pgMerchantId\": \"<string>\",\n            \"id\": \"<string>\",\n            \"key\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"failure\": {\n            \"failedAt\": \"<dateTime>\",\n            \"message\": \"<string>\",\n            \"pgCode\": \"<string>\",\n            \"pgMessage\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"channel\": {\n            \"type\": \"TEST\",\n            \"pgProvider\": \"KICC\",\n            \"pgMerchantId\": \"<string>\",\n            \"id\": \"<string>\",\n            \"key\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"failure\": {\n            \"failedAt\": \"<dateTime>\",\n            \"message\": \"<string>\",\n            \"pgCode\": \"<string>\",\n            \"pgMessage\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"page\": {\n    \"number\": \"<integer>\",\n    \"size\": \"<integer>\",\n    \"totalCount\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:39:33.000Z",
+              "updatedAt": "2026-07-28T02:39:33.000Z",
+              "uid": "35240-f37347e0-c4f2-4655-b6dc-d5be7999c6fd"
+            },
+            {
+              "id": "18bfdde0-b244-415b-a5a4-cc878a050f28",
+              "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/billing-keys?requestBody=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "billing-keys"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:33.000Z",
+              "updatedAt": "2026-07-28T02:39:33.000Z",
+              "uid": "35240-18bfdde0-b244-415b-a5a4-cc878a050f28"
+            },
+            {
+              "id": "81aecb3f-33a9-4e69-9871-d66ae35a2ecf",
+              "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/billing-keys?requestBody=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "billing-keys"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:33.000Z",
+              "updatedAt": "2026-07-28T02:39:33.000Z",
+              "uid": "35240-81aecb3f-33a9-4e69-9871-d66ae35a2ecf"
+            },
+            {
+              "id": "71ae8f0b-843a-4b64-8ca3-5c8c0ae2aa16",
+              "name": "* `ForbiddenError`: \uc694\uccad\uc774 \uac70\uc808\ub41c \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/billing-keys?requestBody=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "billing-keys"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:33.000Z",
+              "updatedAt": "2026-07-28T02:39:33.000Z",
+              "uid": "35240-71ae8f0b-843a-4b64-8ca3-5c8c0ae2aa16"
+            }
+          ],
+          "createdAt": "2026-07-28T02:39:33.000Z",
+          "updatedAt": "2026-07-28T02:39:33.000Z",
+          "uid": "35240-5c9fb4fd-6d31-4299-ab74-53d99128a8a6"
+        },
+        {
+          "name": "\ube4c\ub9c1\ud0a4 \ubc1c\uae09",
+          "id": "8cbdda04-7a9f-4408-909c-3b6dfd4d2823",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": {\n    \"card\": {\n      \"credential\": {\n        \"number\": \"<string>\",\n        \"expiryYear\": \"<string>\",\n        \"expiryMonth\": \"<string>\",\n        \"birthOrBusinessRegistrationNumber\": \"<string>\",\n        \"passwordTwoDigits\": \"<string>\"\n      }\n    }\n  },\n  \"storeId\": \"<string>\",\n  \"channelKey\": \"<string>\",\n  \"channelGroupId\": \"<string>\",\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"name\": {\n      \"full\": \"<string>\",\n      \"separated\": {\n        \"first\": \"<string>\",\n        \"last\": \"<string>\"\n      }\n    },\n    \"birthYear\": \"<string>\",\n    \"birthMonth\": \"<string>\",\n    \"birthDay\": \"<string>\",\n    \"country\": \"PS\",\n    \"gender\": \"MALE\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"province\": \"<string>\",\n      \"country\": \"TF\"\n    },\n    \"zipcode\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\"\n  },\n  \"customData\": \"<string>\",\n  \"bypass\": {},\n  \"noticeUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skipWebhook\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/billing-keys",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "billing-keys"
+              ]
+            },
+            "description": "\ube4c\ub9c1\ud0a4 \ubc1c\uae09\n\n\ube4c\ub9c1\ud0a4 \ubc1c\uae09\uc744 \uc694\uccad\ud569\ub2c8\ub2e4."
+          },
+          "response": [
+            {
+              "id": "2e4b303e-aa20-4263-bf4b-bee18783d1c3",
+              "name": "\uc131\uacf5 \uc751\ub2f5",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": {\n    \"card\": {\n      \"credential\": {\n        \"number\": \"<string>\",\n        \"expiryYear\": \"<string>\",\n        \"expiryMonth\": \"<string>\",\n        \"birthOrBusinessRegistrationNumber\": \"<string>\",\n        \"passwordTwoDigits\": \"<string>\"\n      }\n    }\n  },\n  \"storeId\": \"<string>\",\n  \"channelKey\": \"<string>\",\n  \"channelGroupId\": \"<string>\",\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"name\": {\n      \"full\": \"<string>\",\n      \"separated\": {\n        \"first\": \"<string>\",\n        \"last\": \"<string>\"\n      }\n    },\n    \"birthYear\": \"<string>\",\n    \"birthMonth\": \"<string>\",\n    \"birthDay\": \"<string>\",\n    \"country\": \"PS\",\n    \"gender\": \"MALE\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"province\": \"<string>\",\n      \"country\": \"TF\"\n    },\n    \"zipcode\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\"\n  },\n  \"customData\": \"<string>\",\n  \"bypass\": {},\n  \"noticeUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/billing-keys",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "billing-keys"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"billingKeyInfo\": {\n    \"billingKey\": \"<string>\",\n    \"issuedAt\": \"<dateTime>\"\n  },\n  \"channelSpecificFailures\": [\n    {\n      \"type\": \"<string>\",\n      \"channel\": {\n        \"type\": \"TEST\",\n        \"pgProvider\": \"NAVERPAY\",\n        \"pgMerchantId\": \"<string>\",\n        \"id\": \"<string>\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      \"message\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"channel\": {\n        \"type\": \"TEST\",\n        \"pgProvider\": \"KAKAO\",\n        \"pgMerchantId\": \"<string>\",\n        \"id\": \"<string>\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:39:33.000Z",
+              "updatedAt": "2026-07-28T02:39:33.000Z",
+              "uid": "35240-2e4b303e-aa20-4263-bf4b-bee18783d1c3"
+            },
+            {
+              "id": "0abc60cb-be85-4b9f-812d-a38ea53486ac",
+              "name": "* `InvalidRequestError`: \uc694\uccad\ub41c \uc785\ub825 \uc815\ubcf4\uac00 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": {\n    \"card\": {\n      \"credential\": {\n        \"number\": \"<string>\",\n        \"expiryYear\": \"<string>\",\n        \"expiryMonth\": \"<string>\",\n        \"birthOrBusinessRegistrationNumber\": \"<string>\",\n        \"passwordTwoDigits\": \"<string>\"\n      }\n    }\n  },\n  \"storeId\": \"<string>\",\n  \"channelKey\": \"<string>\",\n  \"channelGroupId\": \"<string>\",\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"name\": {\n      \"full\": \"<string>\",\n      \"separated\": {\n        \"first\": \"<string>\",\n        \"last\": \"<string>\"\n      }\n    },\n    \"birthYear\": \"<string>\",\n    \"birthMonth\": \"<string>\",\n    \"birthDay\": \"<string>\",\n    \"country\": \"PS\",\n    \"gender\": \"MALE\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"province\": \"<string>\",\n      \"country\": \"TF\"\n    },\n    \"zipcode\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\"\n  },\n  \"customData\": \"<string>\",\n  \"bypass\": {},\n  \"noticeUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/billing-keys",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "billing-keys"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:33.000Z",
+              "updatedAt": "2026-07-28T02:39:33.000Z",
+              "uid": "35240-0abc60cb-be85-4b9f-812d-a38ea53486ac"
+            },
+            {
+              "id": "6bf4f5de-60aa-4411-8e65-fdd16f7dfe0d",
+              "name": "* `UnauthorizedError`: \uc778\uc99d \uc815\ubcf4\uac00 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": {\n    \"card\": {\n      \"credential\": {\n        \"number\": \"<string>\",\n        \"expiryYear\": \"<string>\",\n        \"expiryMonth\": \"<string>\",\n        \"birthOrBusinessRegistrationNumber\": \"<string>\",\n        \"passwordTwoDigits\": \"<string>\"\n      }\n    }\n  },\n  \"storeId\": \"<string>\",\n  \"channelKey\": \"<string>\",\n  \"channelGroupId\": \"<string>\",\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"name\": {\n      \"full\": \"<string>\",\n      \"separated\": {\n        \"first\": \"<string>\",\n        \"last\": \"<string>\"\n      }\n    },\n    \"birthYear\": \"<string>\",\n    \"birthMonth\": \"<string>\",\n    \"birthDay\": \"<string>\",\n    \"country\": \"PS\",\n    \"gender\": \"MALE\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"province\": \"<string>\",\n      \"country\": \"TF\"\n    },\n    \"zipcode\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\"\n  },\n  \"customData\": \"<string>\",\n  \"bypass\": {},\n  \"noticeUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/billing-keys",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "billing-keys"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:33.000Z",
+              "updatedAt": "2026-07-28T02:39:33.000Z",
+              "uid": "35240-6bf4f5de-60aa-4411-8e65-fdd16f7dfe0d"
+            },
+            {
+              "id": "4911c58f-f071-4d71-b8a6-23e8d25b8200",
+              "name": "* `ForbiddenError`: \uc694\uccad\uc774 \uac70\uc808\ub41c \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": {\n    \"card\": {\n      \"credential\": {\n        \"number\": \"<string>\",\n        \"expiryYear\": \"<string>\",\n        \"expiryMonth\": \"<string>\",\n        \"birthOrBusinessRegistrationNumber\": \"<string>\",\n        \"passwordTwoDigits\": \"<string>\"\n      }\n    }\n  },\n  \"storeId\": \"<string>\",\n  \"channelKey\": \"<string>\",\n  \"channelGroupId\": \"<string>\",\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"name\": {\n      \"full\": \"<string>\",\n      \"separated\": {\n        \"first\": \"<string>\",\n        \"last\": \"<string>\"\n      }\n    },\n    \"birthYear\": \"<string>\",\n    \"birthMonth\": \"<string>\",\n    \"birthDay\": \"<string>\",\n    \"country\": \"PS\",\n    \"gender\": \"MALE\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"province\": \"<string>\",\n      \"country\": \"TF\"\n    },\n    \"zipcode\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\"\n  },\n  \"customData\": \"<string>\",\n  \"bypass\": {},\n  \"noticeUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/billing-keys",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "billing-keys"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:33.000Z",
+              "updatedAt": "2026-07-28T02:39:33.000Z",
+              "uid": "35240-4911c58f-f071-4d71-b8a6-23e8d25b8200"
+            },
+            {
+              "id": "4b4f370a-2a53-499e-9f26-24bce4bd4129",
+              "name": "* `ChannelNotFoundError`: \uc694\uccad\ub41c \ucc44\ub110\uc774 \uc874\uc7ac\ud558\uc9c0 \uc54a\ub294 \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": {\n    \"card\": {\n      \"credential\": {\n        \"number\": \"<string>\",\n        \"expiryYear\": \"<string>\",\n        \"expiryMonth\": \"<string>\",\n        \"birthOrBusinessRegistrationNumber\": \"<string>\",\n        \"passwordTwoDigits\": \"<string>\"\n      }\n    }\n  },\n  \"storeId\": \"<string>\",\n  \"channelKey\": \"<string>\",\n  \"channelGroupId\": \"<string>\",\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"name\": {\n      \"full\": \"<string>\",\n      \"separated\": {\n        \"first\": \"<string>\",\n        \"last\": \"<string>\"\n      }\n    },\n    \"birthYear\": \"<string>\",\n    \"birthMonth\": \"<string>\",\n    \"birthDay\": \"<string>\",\n    \"country\": \"PS\",\n    \"gender\": \"MALE\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"province\": \"<string>\",\n      \"country\": \"TF\"\n    },\n    \"zipcode\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\"\n  },\n  \"customData\": \"<string>\",\n  \"bypass\": {},\n  \"noticeUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/billing-keys",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "billing-keys"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:33.000Z",
+              "updatedAt": "2026-07-28T02:39:33.000Z",
+              "uid": "35240-4b4f370a-2a53-499e-9f26-24bce4bd4129"
+            },
+            {
+              "id": "555d75e8-779d-4c09-a701-20a053315515",
+              "name": "* `PgProviderError`: PG\uc0ac\uc5d0\uc11c \uc624\ub958\ub97c \uc804\ub2ec\ud55c \uacbd\uc6b0\n* `ChannelSpecificError`: \uc5ec\ub7ec \ucc44\ub110\uc744 \uc9c0\uc815\ud55c \uc694\uccad\uc5d0\uc11c, \ucc44\ub110 \uac01\uac01\uc5d0\uc11c \uc624\ub958\uac00 \ubc1c\uc0dd\ud55c \uacbd\uc6b0",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": {\n    \"card\": {\n      \"credential\": {\n        \"number\": \"<string>\",\n        \"expiryYear\": \"<string>\",\n        \"expiryMonth\": \"<string>\",\n        \"birthOrBusinessRegistrationNumber\": \"<string>\",\n        \"passwordTwoDigits\": \"<string>\"\n      }\n    }\n  },\n  \"storeId\": \"<string>\",\n  \"channelKey\": \"<string>\",\n  \"channelGroupId\": \"<string>\",\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"name\": {\n      \"full\": \"<string>\",\n      \"separated\": {\n        \"first\": \"<string>\",\n        \"last\": \"<string>\"\n      }\n    },\n    \"birthYear\": \"<string>\",\n    \"birthMonth\": \"<string>\",\n    \"birthDay\": \"<string>\",\n    \"country\": \"PS\",\n    \"gender\": \"MALE\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"province\": \"<string>\",\n      \"country\": \"TF\"\n    },\n    \"zipcode\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\"\n  },\n  \"customData\": \"<string>\",\n  \"bypass\": {},\n  \"noticeUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/billing-keys",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "billing-keys"
+                  ]
+                }
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:33.000Z",
+              "updatedAt": "2026-07-28T02:39:33.000Z",
+              "uid": "35240-555d75e8-779d-4c09-a701-20a053315515"
+            }
+          ],
+          "createdAt": "2026-07-28T02:39:33.000Z",
+          "updatedAt": "2026-07-28T02:39:33.000Z",
+          "uid": "35240-8cbdda04-7a9f-4408-909c-3b6dfd4d2823"
+        }
+      ],
+      "id": "d902e066-c054-4d5c-aa59-4e71b7c8b52d",
+      "createdAt": "2026-07-28T02:39:33.000Z",
+      "updatedAt": "2026-07-28T02:39:33.000Z",
+      "uid": "35240-d902e066-c054-4d5c-aa59-4e71b7c8b52d"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.portone.io"
+    }
+  ]
+}
