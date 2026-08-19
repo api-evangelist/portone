@@ -1,0 +1,344 @@
+{
+  "item": [
+    {
+      "id": "d012d55d-2ca9-48f3-aa0b-8ece1c6db70e",
+      "name": "Promotions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7b592fe2-6f3e-412a-a29d-b4ff296d707f",
+          "name": "프로모션 단건 조회",
+          "request": {
+            "name": "프로모션 단건 조회",
+            "description": {
+              "content": "프로모션 단건 조회\n\n주어진 아이디에 대응되는 프로모션을 조회합니다.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "promotions",
+                ":promotionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "promotionId",
+                  "description": "(Required) 조회할 프로모션 아이디"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "65559efc-1a46-4925-9049-c1b49b36d571",
+              "name": "성공 응답으로 프로모션 객체를 반환합니다.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "promotions",
+                    ":promotionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "promotionId",
+                      "description": "(Required) 조회할 프로모션 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"id\": \"string\",\n  \"storeId\": \"string\",\n  \"name\": \"string\",\n  \"discountPolicy\": {\n    \"partitions\": [\n      {\n        \"amountFrom\": 7254,\n        \"scheme\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"amountFrom\": 2882,\n        \"scheme\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ]\n  },\n  \"totalBudget\": 24,\n  \"spentAmount\": 5881,\n  \"currency\": \"AFN\",\n  \"startAt\": \"1963-04-19T14:54:58.732Z\",\n  \"endAt\": \"2011-02-22T10:42:44.461Z\",\n  \"cardCompany\": \"SHINHAN_CARD\",\n  \"status\": \"SCHEDULED\",\n  \"createdAt\": \"1995-09-28T03:29:59.658Z\",\n  \"recoverOption\": {\n    \"type\": \"string\",\n    \"spareBudget\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    }\n  },\n  \"maxDiscountAmount\": 8421,\n  \"terminatedAt\": \"2008-12-30T15:45:39.986Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3893351b-c4a7-49aa-913d-9e744a989c72",
+              "name": "* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "promotions",
+                    ":promotionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "promotionId",
+                      "description": "(Required) 조회할 프로모션 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5953d7ff-193f-40b3-b588-10639a6d49a4",
+              "name": "* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "promotions",
+                    ":promotionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "promotionId",
+                      "description": "(Required) 조회할 프로모션 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9bd688a3-fcb4-40bc-b007-ac27100ebdfc",
+              "name": "* `ForbiddenError`: 요청이 거절된 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "promotions",
+                    ":promotionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "promotionId",
+                      "description": "(Required) 조회할 프로모션 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7649a603-8307-4a46-92b6-5fa4a4ecf5de",
+              "name": "* `PromotionNotFoundError`: 프로모션이 존재하지 않는 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "promotions",
+                    ":promotionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "promotionId",
+                      "description": "(Required) 조회할 프로모션 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.portone.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f3086a76-58ec-4611-a5e7-35ab1186e76a",
+    "name": "PortOne B2b Promotions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,302 @@
+{
+  "item": [
+    {
+      "id": "9407617a-96a8-4080-9c7e-441cd800fe2d",
+      "name": "Paymentwall",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "20aec2bc-57eb-4dac-99ea-ce575c1bf156",
+          "name": "페이먼트월 배송 정보 등록",
+          "request": {
+            "name": "페이먼트월 배송 정보 등록",
+            "description": {
+              "content": "페이먼트월 배송 정보 등록\n\n배송 정보를 페이먼트월에 등록합니다.\n등록된 배송 정보는 차지백 발생 시 고객사의 상품 배송 완료 증빙 자료로 활용되므로, 반드시 연동해야 합니다.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "paymentwall",
+                "delivery",
+                "confirm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transactionId\": \"<string>\",\n  \"deliveryType\": \"<string>\",\n  \"deliveryStatus\": \"<string>\",\n  \"estimatedDeliveryDatetime\": \"<dateTime>\",\n  \"estimatedUpdateDatetime\": \"<dateTime>\",\n  \"refundable\": \"<boolean>\",\n  \"details\": \"<string>\",\n  \"shippingAddressEmail\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"carrierTrackingId\": \"<string>\",\n  \"carrierType\": \"<string>\",\n  \"shippingAddressCountry\": \"<string>\",\n  \"shippingAddressCity\": \"<string>\",\n  \"shippingAddressZip\": \"<string>\",\n  \"shippingAddressState\": \"<string>\",\n  \"shippingAddressStreet\": \"<string>\",\n  \"shippingAddressPhone\": \"<string>\",\n  \"shippingAddressFirstname\": \"<string>\",\n  \"shippingAddressLastname\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "75f4c735-9b2f-4221-a0bf-97ec5f21de29",
+              "name": "성공 응답",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paymentwall",
+                    "delivery",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transactionId\": \"<string>\",\n  \"deliveryType\": \"<string>\",\n  \"deliveryStatus\": \"<string>\",\n  \"estimatedDeliveryDatetime\": \"<dateTime>\",\n  \"estimatedUpdateDatetime\": \"<dateTime>\",\n  \"refundable\": \"<boolean>\",\n  \"details\": \"<string>\",\n  \"shippingAddressEmail\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"carrierTrackingId\": \"<string>\",\n  \"carrierType\": \"<string>\",\n  \"shippingAddressCountry\": \"<string>\",\n  \"shippingAddressCity\": \"<string>\",\n  \"shippingAddressZip\": \"<string>\",\n  \"shippingAddressState\": \"<string>\",\n  \"shippingAddressStreet\": \"<string>\",\n  \"shippingAddressPhone\": \"<string>\",\n  \"shippingAddressFirstname\": \"<string>\",\n  \"shippingAddressLastname\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "059840e2-bca3-4901-9089-dbd69668e77d",
+              "name": "* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paymentwall",
+                    "delivery",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transactionId\": \"<string>\",\n  \"deliveryType\": \"<string>\",\n  \"deliveryStatus\": \"<string>\",\n  \"estimatedDeliveryDatetime\": \"<dateTime>\",\n  \"estimatedUpdateDatetime\": \"<dateTime>\",\n  \"refundable\": \"<boolean>\",\n  \"details\": \"<string>\",\n  \"shippingAddressEmail\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"carrierTrackingId\": \"<string>\",\n  \"carrierType\": \"<string>\",\n  \"shippingAddressCountry\": \"<string>\",\n  \"shippingAddressCity\": \"<string>\",\n  \"shippingAddressZip\": \"<string>\",\n  \"shippingAddressState\": \"<string>\",\n  \"shippingAddressStreet\": \"<string>\",\n  \"shippingAddressPhone\": \"<string>\",\n  \"shippingAddressFirstname\": \"<string>\",\n  \"shippingAddressLastname\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fb83187b-b2e4-4d3d-99de-0d7cd9fddd09",
+              "name": "* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paymentwall",
+                    "delivery",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transactionId\": \"<string>\",\n  \"deliveryType\": \"<string>\",\n  \"deliveryStatus\": \"<string>\",\n  \"estimatedDeliveryDatetime\": \"<dateTime>\",\n  \"estimatedUpdateDatetime\": \"<dateTime>\",\n  \"refundable\": \"<boolean>\",\n  \"details\": \"<string>\",\n  \"shippingAddressEmail\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"carrierTrackingId\": \"<string>\",\n  \"carrierType\": \"<string>\",\n  \"shippingAddressCountry\": \"<string>\",\n  \"shippingAddressCity\": \"<string>\",\n  \"shippingAddressZip\": \"<string>\",\n  \"shippingAddressState\": \"<string>\",\n  \"shippingAddressStreet\": \"<string>\",\n  \"shippingAddressPhone\": \"<string>\",\n  \"shippingAddressFirstname\": \"<string>\",\n  \"shippingAddressLastname\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1bda1000-62b0-4a0d-8f72-bffa902754c0",
+              "name": "* `PaymentNotFoundError`: 결제 건이 존재하지 않는 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paymentwall",
+                    "delivery",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transactionId\": \"<string>\",\n  \"deliveryType\": \"<string>\",\n  \"deliveryStatus\": \"<string>\",\n  \"estimatedDeliveryDatetime\": \"<dateTime>\",\n  \"estimatedUpdateDatetime\": \"<dateTime>\",\n  \"refundable\": \"<boolean>\",\n  \"details\": \"<string>\",\n  \"shippingAddressEmail\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"carrierTrackingId\": \"<string>\",\n  \"carrierType\": \"<string>\",\n  \"shippingAddressCountry\": \"<string>\",\n  \"shippingAddressCity\": \"<string>\",\n  \"shippingAddressZip\": \"<string>\",\n  \"shippingAddressState\": \"<string>\",\n  \"shippingAddressStreet\": \"<string>\",\n  \"shippingAddressPhone\": \"<string>\",\n  \"shippingAddressFirstname\": \"<string>\",\n  \"shippingAddressLastname\": \"<string>\",\n  \"attachments\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.portone.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "32a4f1f4-5f9c-40a7-9c94-191cc60ff6fb",
+    "name": "PortOne B2b Paymentwall API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PortOne B2b Token API",
+    "version": "1.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Token",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "토큰 갱신",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.portone.io/token/refresh",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "토큰 갱신\n\n리프레시 토큰을 사용해 유효기간이 연장된 새로운 토큰을 재발급합니다."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

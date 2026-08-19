@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PortOne B2b Payments By Cursor API",
+    "version": "1.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payments By Cursor",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "결제 대용량 다건 조회(커서 기반)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.portone.io/payments-by-cursor",
+            "params": [
+              {
+                "name": "requestBody",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "결제 대용량 다건 조회(커서 기반)\n\n기간 내 모든 결제 건을 커서 기반으로 조회합니다. 결제 건의 생성일시를 기준으로 주어진 기간 내 존재하는 모든 결제 건이 조회됩니다."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

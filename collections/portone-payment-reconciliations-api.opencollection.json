@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PortOne B2b Payment Reconciliations API",
+    "version": "1.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payment Reconciliations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "정산일 기준 부가세 내역 조회",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.portone.io/payment-reconciliations/settlements/vat-report",
+            "params": [
+              {
+                "name": "requestBody",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "정산일 기준 부가세 내역 조회"
+        },
+        {
+          "info": {
+            "name": "거래일 기준 부가세 내역 조회",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.portone.io/payment-reconciliations/transactions/vat-report",
+            "params": [
+              {
+                "name": "requestBody",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "거래일 기준 부가세 내역 조회"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

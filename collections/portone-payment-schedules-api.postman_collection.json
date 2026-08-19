@@ -1,0 +1,960 @@
+{
+  "item": [
+    {
+      "id": "295dd574-9e2b-482b-aa53-54afa77dbeed",
+      "name": "Payment Schedules",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "161e8443-d5e4-408b-b474-8da128ad13c4",
+          "name": "결제 예약 단건 조회",
+          "request": {
+            "name": "결제 예약 단건 조회",
+            "description": {
+              "content": "결제 예약 단건 조회\n\n주어진 아이디에 대응되는 결제 예약 건을 조회합니다.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payment-schedules",
+                ":paymentScheduleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "storeId",
+                  "value": "<string>",
+                  "description": "상점 아이디\n\n접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 인증 정보의 상점 아이디를 사용합니다."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "paymentScheduleId",
+                  "description": "(Required) 조회할 결제 예약 건 아이디"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "828a7b57-cd66-48f6-82e8-db3ecdbb520e",
+              "name": "성공 응답으로 결제 예약 건 객체를 반환합니다.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-schedules",
+                    ":paymentScheduleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "paymentScheduleId",
+                      "description": "(Required) 조회할 결제 예약 건 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"id\": \"string\",\n  \"merchantId\": \"string\",\n  \"storeId\": \"string\",\n  \"paymentId\": \"string\",\n  \"billingKey\": \"string\",\n  \"orderName\": \"string\",\n  \"isCulturalExpense\": false,\n  \"isEscrow\": true,\n  \"customer\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"birthYear\": \"string\",\n    \"birthMonth\": \"string\",\n    \"birthDay\": \"string\",\n    \"gender\": \"FEMALE\",\n    \"email\": \"string\",\n    \"phoneNumber\": \"string\",\n    \"address\": {\n      \"type\": \"string\",\n      \"oneLine\": \"string\"\n    },\n    \"zipcode\": \"string\"\n  },\n  \"customData\": \"string\",\n  \"totalAmount\": 7865,\n  \"currency\": \"TMT\",\n  \"createdAt\": \"1951-08-24T17:38:14.288Z\",\n  \"timeToPay\": \"2017-06-03T07:30:47.269Z\",\n  \"startedAt\": \"2003-03-18T10:49:06.332Z\",\n  \"completedAt\": \"1947-12-20T01:22:17.009Z\",\n  \"taxFreeAmount\": 3171,\n  \"vatAmount\": 2582,\n  \"installmentMonth\": 9096,\n  \"noticeUrls\": [\n    \"string\",\n    \"string\"\n  ],\n  \"products\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"amount\": 4454,\n      \"quantity\": 3030,\n      \"tag\": \"string\",\n      \"code\": \"string\",\n      \"link\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"amount\": 3433,\n      \"quantity\": 1767,\n      \"tag\": \"string\",\n      \"code\": \"string\",\n      \"link\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9119fd88-ecfc-4859-bb32-a5bd2bf3e139",
+              "name": "* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-schedules",
+                    ":paymentScheduleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "paymentScheduleId",
+                      "description": "(Required) 조회할 결제 예약 건 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9576e0e2-192e-4277-8f80-ed8a07e1f75f",
+              "name": "* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-schedules",
+                    ":paymentScheduleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "paymentScheduleId",
+                      "description": "(Required) 조회할 결제 예약 건 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "16cd07f0-0336-4d4e-a613-2f9ddd71550d",
+              "name": "* `ForbiddenError`: 요청이 거절된 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-schedules",
+                    ":paymentScheduleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "paymentScheduleId",
+                      "description": "(Required) 조회할 결제 예약 건 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9709c580-ee49-4659-af98-b1955f98af47",
+              "name": "* `PaymentScheduleNotFoundError`: 결제 예약건이 존재하지 않는 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-schedules",
+                    ":paymentScheduleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "paymentScheduleId",
+                      "description": "(Required) 조회할 결제 예약 건 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "59937da5-51b9-45dc-b315-83e36f7283ed",
+          "name": "결제 예약 다건 조회",
+          "request": {
+            "name": "결제 예약 다건 조회",
+            "description": {
+              "content": "결제 예약 다건 조회\n\n주어진 조건에 맞는 결제 예약 건들을 조회합니다.\n`filter.from`, `filter.until` 파라미터의 기본값이 결제 시점 기준 지난 90일에 속하는 건을 조회하도록 되어 있으니, 미래 예약 상태의 건을 조회하기 위해서는 해당 파라미터를 직접 설정해 주셔야 합니다.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payment-schedules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "key": "requestBody",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5957de83-0ce4-4905-93db-ad68f1707403",
+              "name": "성공 응답으로 조회된 예약 결제 건 리스트가 반환됩니다.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"status\": \"string\",\n      \"id\": \"string\",\n      \"merchantId\": \"string\",\n      \"storeId\": \"string\",\n      \"paymentId\": \"string\",\n      \"billingKey\": \"string\",\n      \"orderName\": \"string\",\n      \"isCulturalExpense\": true,\n      \"isEscrow\": true,\n      \"customer\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"birthYear\": \"string\",\n        \"birthMonth\": \"string\",\n        \"birthDay\": \"string\",\n        \"gender\": \"FEMALE\",\n        \"email\": \"string\",\n        \"phoneNumber\": \"string\",\n        \"address\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"zipcode\": \"string\"\n      },\n      \"customData\": \"string\",\n      \"totalAmount\": 9425,\n      \"currency\": \"CHE\",\n      \"createdAt\": \"1956-12-28T09:27:12.818Z\",\n      \"timeToPay\": \"1980-06-01T12:06:33.008Z\",\n      \"startedAt\": \"1989-07-31T23:43:57.381Z\",\n      \"completedAt\": \"1961-11-14T16:49:43.727Z\",\n      \"taxFreeAmount\": 1592,\n      \"vatAmount\": 2089,\n      \"installmentMonth\": 8625,\n      \"noticeUrls\": [\n        \"string\",\n        \"string\"\n      ],\n      \"products\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"amount\": 5824,\n          \"quantity\": 1615,\n          \"tag\": \"string\",\n          \"code\": \"string\",\n          \"link\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"amount\": 6275,\n          \"quantity\": 7430,\n          \"tag\": \"string\",\n          \"code\": \"string\",\n          \"link\": \"string\"\n        }\n      ]\n    },\n    {\n      \"status\": \"string\",\n      \"id\": \"string\",\n      \"merchantId\": \"string\",\n      \"storeId\": \"string\",\n      \"paymentId\": \"string\",\n      \"billingKey\": \"string\",\n      \"orderName\": \"string\",\n      \"isCulturalExpense\": true,\n      \"isEscrow\": false,\n      \"customer\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"birthYear\": \"string\",\n        \"birthMonth\": \"string\",\n        \"birthDay\": \"string\",\n        \"gender\": \"MALE\",\n        \"email\": \"string\",\n        \"phoneNumber\": \"string\",\n        \"address\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"zipcode\": \"string\"\n      },\n      \"customData\": \"string\",\n      \"totalAmount\": 5509,\n      \"currency\": \"BND\",\n      \"createdAt\": \"1972-01-08T19:20:52.722Z\",\n      \"timeToPay\": \"1946-08-21T11:24:49.588Z\",\n      \"startedAt\": \"2007-12-29T15:17:47.641Z\",\n      \"completedAt\": \"1995-03-01T16:30:47.529Z\",\n      \"taxFreeAmount\": 2854,\n      \"vatAmount\": 9794,\n      \"installmentMonth\": 8822,\n      \"noticeUrls\": [\n        \"string\",\n        \"string\"\n      ],\n      \"products\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"amount\": 6997,\n          \"quantity\": 3625,\n          \"tag\": \"string\",\n          \"code\": \"string\",\n          \"link\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"amount\": 4143,\n          \"quantity\": 1241,\n          \"tag\": \"string\",\n          \"code\": \"string\",\n          \"link\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"page\": {\n    \"number\": 8785,\n    \"size\": 9420,\n    \"totalCount\": 3098\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80322c36-8848-4d82-bac5-cf17fd3efecb",
+              "name": "* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a13ff453-2c22-4312-a2f0-bd598dbf8869",
+              "name": "* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "407da85e-d6de-4586-88a4-f29c03e45762",
+              "name": "* `ForbiddenError`: 요청이 거절된 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0221fd7-5a54-46af-b412-9fda7d0851d7",
+          "name": "결제 예약 취소",
+          "request": {
+            "name": "결제 예약 취소",
+            "description": {
+              "content": "결제 예약 취소\n\n결제 예약 건을 취소합니다.\nbillingKey, scheduleIds 중 하나 이상은 필수로 입력합니다.\nbillingKey 만 입력된 경우 -> 해당 빌링키로 예약된 모든 결제 예약 건들이 취소됩니다.\nscheduleIds 만 입력된 경우 -> 입력된 결제 예약 건 아이디에 해당하는 예약 건들이 취소됩니다.\nbillingKey, scheduleIds 모두 입력된 경우 -> 입력된 결제 예약 건 아이디에 해당하는 예약 건들이 취소됩니다. 단, 예약한 빌링키가 입력된 빌링키와 일치하지 않으면 실패합니다.\n위 정책에 따라 선택된 결제 예약 건들 중 하나라도 취소에 실패할 경우, 모든 취소 요청이 실패합니다.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payment-schedules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "(Required) ",
+                    "type": "text/plain"
+                  },
+                  "key": "requestBody",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5dfa474e-d3e7-4e0d-a3ed-eecf9aa2ea63",
+              "name": "성공 응답",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"revokedScheduleIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"revokedAt\": \"1984-05-21T04:19:22.566Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "683937e2-9281-4945-956d-afcca2f3129f",
+              "name": "* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc1fce07-8526-45f3-a064-fe4d642626f4",
+              "name": "* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b53e772-6220-404a-a709-2905995a2f8a",
+              "name": "* `ForbiddenError`: 요청이 거절된 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87628e7c-451a-4695-a49a-bb8d9ee6b0f0",
+              "name": "* `PaymentScheduleNotFoundError`: 결제 예약건이 존재하지 않는 경우\n* `BillingKeyNotFoundError`: 빌링키가 존재하지 않는 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4821722f-b1b5-44cd-a2f2-812f42baf125",
+              "name": "* `PaymentScheduleAlreadyProcessedError`: 결제 예약건이 이미 처리된 경우\n* `PaymentScheduleAlreadyRevokedError`: 결제 예약건이 이미 취소된 경우\n* `BillingKeyAlreadyDeletedError`: 빌링키가 이미 삭제된 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.portone.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0f5a5200-f424-4f84-8199-ccc35c39fde3",
+    "name": "PortOne B2b Payment Schedules API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

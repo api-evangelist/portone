@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PortOne B2b Paymentwall API",
+    "version": "1.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Paymentwall",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "페이먼트월 배송 정보 등록",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.portone.io/paymentwall/delivery/confirm",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "페이먼트월 배송 정보 등록\n\n배송 정보를 페이먼트월에 등록합니다.\n등록된 배송 정보는 차지백 발생 시 고객사의 상품 배송 완료 증빙 자료로 활용되므로, 반드시 연동해야 합니다."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

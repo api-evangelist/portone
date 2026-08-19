@@ -1,0 +1,137 @@
+{
+  "item": [
+    {
+      "id": "2590a2e0-3b7e-4876-b848-18745407fdda",
+      "name": "Banks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4544d30a-731d-4531-8439-0617af106d23",
+          "name": "은행 정보 조회",
+          "request": {
+            "name": "은행 정보 조회",
+            "description": {
+              "content": "은행 정보 조회\n\n은행의 이름 등 정보를 조회합니다. 사용자에게 한국어 명칭을 제공하는 등의 용도로 사용하실 수 있습니다.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "banks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9176f6c9-5d69-445a-b789-3bc2e340c43d",
+              "name": "성공 응답으로 조회된 은행 정보 리스트가 반환됩니다.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "banks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"bank\": \"KOREA_SECURITIES\",\n      \"name\": {\n        \"ko\": \"string\"\n      }\n    },\n    {\n      \"bank\": \"KODIT\",\n      \"name\": {\n        \"ko\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb9f8b1a-f55f-4327-aefc-c380fc4b8a70",
+              "name": "* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "banks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.portone.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7b1c11bc-e1c4-4ab9-8ab7-ac6d879189f7",
+    "name": "PortOne B2b Banks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

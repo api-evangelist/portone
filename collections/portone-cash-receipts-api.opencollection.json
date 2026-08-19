@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PortOne B2b Cash Receipts API",
+    "version": "1.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cash Receipts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "현금영수증 다건 조회",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.portone.io/cash-receipts",
+            "params": [
+              {
+                "name": "requestBody",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "현금영수증 다건 조회\n\n주어진 조건에 맞는 현금영수증들을 페이지 기반으로 조회합니다."
+        },
+        {
+          "info": {
+            "name": "현금 영수증 수동 발급",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.portone.io/cash-receipts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "현금 영수증 수동 발급\n\n현금 영수증 발급을 요청합니다."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

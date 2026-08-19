@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PortOne B2b Checkout Profiles API",
+    "version": "1.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Checkout Profiles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "체크아웃 프로필에서 결제 수단 목록 조회",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.portone.io/checkout-profiles/evaluate",
+            "params": [
+              {
+                "name": "profileKey",
+                "value": "",
+                "type": "query",
+                "description": "프로필 키"
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "국가"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "통화"
+              },
+              {
+                "name": "amount",
+                "value": "",
+                "type": "query",
+                "description": "결제 금액"
+              }
+            ]
+          },
+          "docs": "체크아웃 프로필에서 결제 수단 목록 조회\n\n주어진 금액 및 국가에서 사용 가능한 결제 수단 목록을 반환"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,2384 @@
+{
+  "item": [
+    {
+      "id": "5fe1d704-256c-4617-8488-3410d13e240e",
+      "name": "Billing Keys",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a7c4d359-10c8-4150-80ce-e08944365a2d",
+          "name": "빌링키 다건 조회",
+          "request": {
+            "name": "빌링키 다건 조회",
+            "description": {
+              "content": "빌링키 다건 조회\n\n주어진 조건에 맞는 빌링키들을 페이지 기반으로 조회합니다.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "billing-keys"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "key": "requestBody",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c659b37d-7997-497f-9e7d-54c402e5629b",
+              "name": "성공 응답으로 조회된 빌링키 리스트와 페이지 정보가 반환됩니다.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"status\": \"string\",\n      \"billingKey\": \"string\",\n      \"merchantId\": \"string\",\n      \"storeId\": \"string\",\n      \"channels\": [\n        {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"pgProvider\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"pgMerchantId\": \"string\",\n          \"id\": \"string\",\n          \"key\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"pgProvider\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"pgMerchantId\": \"string\",\n          \"id\": \"string\",\n          \"key\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"customer\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"birthYear\": \"string\",\n        \"birthMonth\": \"string\",\n        \"birthDay\": \"string\",\n        \"gender\": \"OTHER\",\n        \"email\": \"string\",\n        \"phoneNumber\": \"string\",\n        \"address\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"zipcode\": \"string\"\n      },\n      \"issuedAt\": \"1982-09-10T10:22:52.346Z\",\n      \"deletedAt\": \"1990-03-31T00:33:35.576Z\",\n      \"methods\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"customData\": \"string\",\n      \"issueId\": \"string\",\n      \"issueName\": \"string\",\n      \"requestedAt\": \"1978-03-22T02:30:44.421Z\",\n      \"channelGroup\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"isForTest\": true\n      },\n      \"pgBillingKeyIssueResponses\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    },\n    {\n      \"status\": \"string\",\n      \"billingKey\": \"string\",\n      \"merchantId\": \"string\",\n      \"storeId\": \"string\",\n      \"channels\": [\n        {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"pgProvider\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"pgMerchantId\": \"string\",\n          \"id\": \"string\",\n          \"key\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"pgProvider\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"pgMerchantId\": \"string\",\n          \"id\": \"string\",\n          \"key\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"customer\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"birthYear\": \"string\",\n        \"birthMonth\": \"string\",\n        \"birthDay\": \"string\",\n        \"gender\": \"OTHER\",\n        \"email\": \"string\",\n        \"phoneNumber\": \"string\",\n        \"address\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"zipcode\": \"string\"\n      },\n      \"issuedAt\": \"2010-10-20T09:41:27.268Z\",\n      \"deletedAt\": \"1993-08-01T23:41:03.292Z\",\n      \"methods\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"customData\": \"string\",\n      \"issueId\": \"string\",\n      \"issueName\": \"string\",\n      \"requestedAt\": \"1968-07-26T03:34:25.482Z\",\n      \"channelGroup\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"isForTest\": true\n      },\n      \"pgBillingKeyIssueResponses\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    }\n  ],\n  \"page\": {\n    \"number\": 6750,\n    \"size\": 8559,\n    \"totalCount\": 93\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a55ea6f-b476-4f3a-a5e4-e9170ded5ae2",
+              "name": "* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71c4626a-5991-4d5e-a65e-8cd7d8f5aced",
+              "name": "* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1586348-64e9-4878-a42d-1b3da347c286",
+              "name": "* `ForbiddenError`: 요청이 거절된 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac7c30a4-9576-4750-9de7-d146d79e8bdc",
+          "name": "빌링키 발급",
+          "request": {
+            "name": "빌링키 발급",
+            "description": {
+              "content": "빌링키 발급\n\n빌링키 발급을 요청합니다.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "billing-keys"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": {\n    \"card\": {\n      \"credential\": {\n        \"number\": \"<string>\",\n        \"expiryYear\": \"<string>\",\n        \"expiryMonth\": \"<string>\",\n        \"birthOrBusinessRegistrationNumber\": \"<string>\",\n        \"passwordTwoDigits\": \"<string>\"\n      }\n    }\n  },\n  \"storeId\": \"<string>\",\n  \"channelKey\": \"<string>\",\n  \"channelGroupId\": \"<string>\",\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"name\": {\n      \"full\": \"<string>\",\n      \"separated\": {\n        \"first\": \"<string>\",\n        \"last\": \"<string>\"\n      }\n    },\n    \"birthYear\": \"<string>\",\n    \"birthMonth\": \"<string>\",\n    \"birthDay\": \"<string>\",\n    \"country\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"province\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"zipcode\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\"\n  },\n  \"customData\": \"<string>\",\n  \"bypass\": \"<object>\",\n  \"noticeUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skipWebhook\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a2d2d20e-0861-40cf-9605-e20d77b8f171",
+              "name": "성공 응답",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": {\n    \"card\": {\n      \"credential\": {\n        \"number\": \"<string>\",\n        \"expiryYear\": \"<string>\",\n        \"expiryMonth\": \"<string>\",\n        \"birthOrBusinessRegistrationNumber\": \"<string>\",\n        \"passwordTwoDigits\": \"<string>\"\n      }\n    }\n  },\n  \"storeId\": \"<string>\",\n  \"channelKey\": \"<string>\",\n  \"channelGroupId\": \"<string>\",\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"name\": {\n      \"full\": \"<string>\",\n      \"separated\": {\n        \"first\": \"<string>\",\n        \"last\": \"<string>\"\n      }\n    },\n    \"birthYear\": \"<string>\",\n    \"birthMonth\": \"<string>\",\n    \"birthDay\": \"<string>\",\n    \"country\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"province\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"zipcode\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\"\n  },\n  \"customData\": \"<string>\",\n  \"bypass\": \"<object>\",\n  \"noticeUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"billingKeyInfo\": {\n    \"billingKey\": \"string\",\n    \"issuedAt\": \"1968-04-24T00:38:33.346Z\",\n    \"channels\": {\n      \"name\": {},\n      \"key\": {},\n      \"id\": {},\n      \"pgProvider\": {},\n      \"pgMerchantId\": {},\n      \"type\": {}\n    }\n  },\n  \"channelSpecificFailures\": [\n    {\n      \"type\": \"string\",\n      \"channel\": {\n        \"type\": \"LIVE\",\n        \"pgProvider\": \"UPLUS\",\n        \"pgMerchantId\": \"string\",\n        \"id\": \"string\",\n        \"key\": \"string\",\n        \"name\": \"string\"\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"type\": \"string\",\n      \"channel\": {\n        \"type\": \"TEST\",\n        \"pgProvider\": \"TOSSPAY\",\n        \"pgMerchantId\": \"string\",\n        \"id\": \"string\",\n        \"key\": \"string\",\n        \"name\": \"string\"\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5bd0bda9-70ab-4b49-8ef4-1ca4bbd3f204",
+              "name": "* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": {\n    \"card\": {\n      \"credential\": {\n        \"number\": \"<string>\",\n        \"expiryYear\": \"<string>\",\n        \"expiryMonth\": \"<string>\",\n        \"birthOrBusinessRegistrationNumber\": \"<string>\",\n        \"passwordTwoDigits\": \"<string>\"\n      }\n    }\n  },\n  \"storeId\": \"<string>\",\n  \"channelKey\": \"<string>\",\n  \"channelGroupId\": \"<string>\",\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"name\": {\n      \"full\": \"<string>\",\n      \"separated\": {\n        \"first\": \"<string>\",\n        \"last\": \"<string>\"\n      }\n    },\n    \"birthYear\": \"<string>\",\n    \"birthMonth\": \"<string>\",\n    \"birthDay\": \"<string>\",\n    \"country\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"province\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"zipcode\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\"\n  },\n  \"customData\": \"<string>\",\n  \"bypass\": \"<object>\",\n  \"noticeUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9beecf33-8175-4c89-a7f1-92523d14c77b",
+              "name": "* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": {\n    \"card\": {\n      \"credential\": {\n        \"number\": \"<string>\",\n        \"expiryYear\": \"<string>\",\n        \"expiryMonth\": \"<string>\",\n        \"birthOrBusinessRegistrationNumber\": \"<string>\",\n        \"passwordTwoDigits\": \"<string>\"\n      }\n    }\n  },\n  \"storeId\": \"<string>\",\n  \"channelKey\": \"<string>\",\n  \"channelGroupId\": \"<string>\",\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"name\": {\n      \"full\": \"<string>\",\n      \"separated\": {\n        \"first\": \"<string>\",\n        \"last\": \"<string>\"\n      }\n    },\n    \"birthYear\": \"<string>\",\n    \"birthMonth\": \"<string>\",\n    \"birthDay\": \"<string>\",\n    \"country\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"province\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"zipcode\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\"\n  },\n  \"customData\": \"<string>\",\n  \"bypass\": \"<object>\",\n  \"noticeUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e6e19070-c176-477b-82ae-061855b07a36",
+              "name": "* `ForbiddenError`: 요청이 거절된 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": {\n    \"card\": {\n      \"credential\": {\n        \"number\": \"<string>\",\n        \"expiryYear\": \"<string>\",\n        \"expiryMonth\": \"<string>\",\n        \"birthOrBusinessRegistrationNumber\": \"<string>\",\n        \"passwordTwoDigits\": \"<string>\"\n      }\n    }\n  },\n  \"storeId\": \"<string>\",\n  \"channelKey\": \"<string>\",\n  \"channelGroupId\": \"<string>\",\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"name\": {\n      \"full\": \"<string>\",\n      \"separated\": {\n        \"first\": \"<string>\",\n        \"last\": \"<string>\"\n      }\n    },\n    \"birthYear\": \"<string>\",\n    \"birthMonth\": \"<string>\",\n    \"birthDay\": \"<string>\",\n    \"country\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"province\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"zipcode\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\"\n  },\n  \"customData\": \"<string>\",\n  \"bypass\": \"<object>\",\n  \"noticeUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4034aace-b12f-4255-a5d0-21a7c88df65b",
+              "name": "* `ChannelNotFoundError`: 요청된 채널이 존재하지 않는 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": {\n    \"card\": {\n      \"credential\": {\n        \"number\": \"<string>\",\n        \"expiryYear\": \"<string>\",\n        \"expiryMonth\": \"<string>\",\n        \"birthOrBusinessRegistrationNumber\": \"<string>\",\n        \"passwordTwoDigits\": \"<string>\"\n      }\n    }\n  },\n  \"storeId\": \"<string>\",\n  \"channelKey\": \"<string>\",\n  \"channelGroupId\": \"<string>\",\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"name\": {\n      \"full\": \"<string>\",\n      \"separated\": {\n        \"first\": \"<string>\",\n        \"last\": \"<string>\"\n      }\n    },\n    \"birthYear\": \"<string>\",\n    \"birthMonth\": \"<string>\",\n    \"birthDay\": \"<string>\",\n    \"country\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"province\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"zipcode\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\"\n  },\n  \"customData\": \"<string>\",\n  \"bypass\": \"<object>\",\n  \"noticeUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c5ddbaa-e028-4868-a0b1-fe2a559b6d7f",
+              "name": "* `PgProviderError`: PG사에서 오류를 전달한 경우\n* `ChannelSpecificError`: 여러 채널을 지정한 요청에서, 채널 각각에서 오류가 발생한 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": {\n    \"card\": {\n      \"credential\": {\n        \"number\": \"<string>\",\n        \"expiryYear\": \"<string>\",\n        \"expiryMonth\": \"<string>\",\n        \"birthOrBusinessRegistrationNumber\": \"<string>\",\n        \"passwordTwoDigits\": \"<string>\"\n      }\n    }\n  },\n  \"storeId\": \"<string>\",\n  \"channelKey\": \"<string>\",\n  \"channelGroupId\": \"<string>\",\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"name\": {\n      \"full\": \"<string>\",\n      \"separated\": {\n        \"first\": \"<string>\",\n        \"last\": \"<string>\"\n      }\n    },\n    \"birthYear\": \"<string>\",\n    \"birthMonth\": \"<string>\",\n    \"birthDay\": \"<string>\",\n    \"country\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"province\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"zipcode\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\"\n  },\n  \"customData\": \"<string>\",\n  \"bypass\": \"<object>\",\n  \"noticeUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82ef9fe5-daec-465e-a4ff-bd05bd45022a",
+          "name": "빌링키 발급 수동 승인",
+          "request": {
+            "name": "빌링키 발급 수동 승인",
+            "description": {
+              "content": "빌링키 발급 수동 승인\n\n수동 승인으로 설정된 빌링키 발급에 대해, 빌링키 발급을 완료 처리합니다.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "billing-keys",
+                "confirm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eabfd11f-4200-463e-8aff-ed849e591854",
+              "name": "성공 응답으로 빌링키 발급 승인 결과를 반환합니다.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"billingKey\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7eca759f-2f7f-4c52-9287-ab9a8037d4e6",
+              "name": "* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c13bd38-3ff2-4b39-9853-427dfa3b1f1c",
+              "name": "* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "749a482b-3310-4841-b97d-ac7df7282583",
+              "name": "* `ForbiddenError`: 요청이 거절된 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fb45c1a4-823b-465d-aaeb-124cbe6f4418",
+              "name": "* `BillingKeyNotFoundError`: 빌링키가 존재하지 않는 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "15796ab1-ea76-4c52-ab1d-1383bb62cd51",
+              "name": "* `BillingKeyAlreadyIssuedError`\n* `InformationMismatchError`: 정보가 일치하지 않는 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3dd0250e-53a3-4e08-a885-59c95ecccba0",
+              "name": "* `PgProviderError`: PG사에서 오류를 전달한 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "558627fb-5a29-49d7-b277-6a953de900ed",
+          "name": "빌링키 발급 및 초회 결제 수동 승인",
+          "request": {
+            "name": "빌링키 발급 및 초회 결제 수동 승인",
+            "description": {
+              "content": "빌링키 발급 및 초회 결제 수동 승인\n\n수동 승인으로 설정된 빌링키 발급 및 초회 결제에 대해, 빌링키 발급과 결제를 완료 처리합니다.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "billing-keys",
+                "confirm-issue-and-pay"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"totalAmount\": \"<long>\",\n  \"taxFreeAmount\": \"<long>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7226a2f5-6319-45f4-820e-6c66fd8b489c",
+              "name": "성공 응답으로 빌링키 발급 및 초회 결제 승인 결과를 반환합니다.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys",
+                    "confirm-issue-and-pay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"totalAmount\": \"<long>\",\n  \"taxFreeAmount\": \"<long>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"billingKey\": \"string\",\n  \"paymentId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d5125ef-2aa5-43c0-99a8-c50bbf098a6e",
+              "name": "* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys",
+                    "confirm-issue-and-pay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"totalAmount\": \"<long>\",\n  \"taxFreeAmount\": \"<long>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6fb98db3-41e6-4152-a39f-7546d0728d79",
+              "name": "* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys",
+                    "confirm-issue-and-pay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"totalAmount\": \"<long>\",\n  \"taxFreeAmount\": \"<long>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc0f45b2-7265-46aa-89fe-094a3f075d06",
+              "name": "* `ForbiddenError`: 요청이 거절된 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys",
+                    "confirm-issue-and-pay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"totalAmount\": \"<long>\",\n  \"taxFreeAmount\": \"<long>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d775160-f0d7-4ffd-bc6a-e1ecb03e3f67",
+              "name": "* `BillingKeyNotFoundError`: 빌링키가 존재하지 않는 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys",
+                    "confirm-issue-and-pay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"totalAmount\": \"<long>\",\n  \"taxFreeAmount\": \"<long>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "533132ec-c13d-4611-8159-d8a7e16755b6",
+              "name": "* `BillingKeyAlreadyIssuedError`\n* `InformationMismatchError`: 정보가 일치하지 않는 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys",
+                    "confirm-issue-and-pay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"totalAmount\": \"<long>\",\n  \"taxFreeAmount\": \"<long>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e772867a-ac22-41fd-8e79-e14b50fe0653",
+              "name": "* `PgProviderError`: PG사에서 오류를 전달한 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys",
+                    "confirm-issue-and-pay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billingIssueToken\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"totalAmount\": \"<long>\",\n  \"taxFreeAmount\": \"<long>\",\n  \"isTest\": \"<boolean>\",\n  \"skipWebhook\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "18c5725c-fbd4-4fd3-b85d-136d3708efb7",
+          "name": "빌링키 단건 조회",
+          "request": {
+            "name": "빌링키 단건 조회",
+            "description": {
+              "content": "빌링키 단건 조회\n\n주어진 빌링키에 대응되는 빌링키 정보를 조회합니다.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "billing-keys",
+                ":billingKey"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "storeId",
+                  "value": "<string>",
+                  "description": "상점 아이디\n\n접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 인증 정보의 상점 아이디를 사용합니다."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "billingKey",
+                  "description": "(Required) 조회할 빌링키"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b397f4ac-dca7-4aed-9c39-f0e20c6184d5",
+              "name": "성공 응답으로 빌링키 정보를 반환합니다.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys",
+                    ":billingKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "billingKey",
+                      "description": "(Required) 조회할 빌링키"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"billingKey\": \"string\",\n  \"merchantId\": \"string\",\n  \"storeId\": \"string\",\n  \"channels\": [\n    {\n      \"type\": \"LIVE\",\n      \"pgProvider\": \"KAKAO\",\n      \"pgMerchantId\": \"string\",\n      \"id\": \"string\",\n      \"key\": \"string\",\n      \"name\": \"string\"\n    },\n    {\n      \"type\": \"LIVE\",\n      \"pgProvider\": \"MOBILIANS_V2\",\n      \"pgMerchantId\": \"string\",\n      \"id\": \"string\",\n      \"key\": \"string\",\n      \"name\": \"string\"\n    }\n  ],\n  \"customer\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"birthYear\": \"string\",\n    \"birthMonth\": \"string\",\n    \"birthDay\": \"string\",\n    \"gender\": \"<string>\",\n    \"email\": \"string\",\n    \"phoneNumber\": \"string\",\n    \"address\": {\n      \"type\": \"string\",\n      \"oneLine\": \"string\"\n    },\n    \"zipcode\": \"string\"\n  },\n  \"issuedAt\": \"1982-04-09T17:21:34.889Z\",\n  \"deletedAt\": \"1994-02-07T08:23:42.218Z\",\n  \"methods\": [\n    {\n      \"type\": \"string\",\n      \"card\": {\n        \"publisher\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"issuer\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"brand\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"ownerType\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"bin\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"number\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"card\": {\n        \"publisher\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"issuer\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"brand\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"ownerType\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"bin\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"number\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    }\n  ],\n  \"customData\": \"string\",\n  \"issueId\": \"string\",\n  \"issueName\": \"string\",\n  \"requestedAt\": \"1972-09-19T12:04:50.958Z\",\n  \"channelGroup\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"isForTest\": false\n  },\n  \"pgBillingKeyIssueResponses\": [\n    {\n      \"type\": \"string\",\n      \"channel\": {\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"pgProvider\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"pgMerchantId\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"key\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"failure\": {\n        \"failedAt\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"message\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"pgCode\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"pgMessage\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"channel\": {\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"pgProvider\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"pgMerchantId\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"key\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"failure\": {\n        \"failedAt\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"message\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"pgCode\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"pgMessage\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e9ce3feb-77cb-4ebc-a394-8b644e55aaa8",
+              "name": "* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys",
+                    ":billingKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "billingKey",
+                      "description": "(Required) 조회할 빌링키"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df92621a-8f52-4ec2-91d4-8b198726d6a7",
+              "name": "* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys",
+                    ":billingKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "billingKey",
+                      "description": "(Required) 조회할 빌링키"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea47ac59-7d95-4358-ba40-fad0c18bf7b5",
+              "name": "* `ForbiddenError`: 요청이 거절된 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys",
+                    ":billingKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "billingKey",
+                      "description": "(Required) 조회할 빌링키"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "21df61be-d5ff-4f9c-b384-dd2a5d52962d",
+              "name": "* `BillingKeyNotFoundError`: 빌링키가 존재하지 않는 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys",
+                    ":billingKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "billingKey",
+                      "description": "(Required) 조회할 빌링키"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ebdf487-777b-4687-b026-ac6e7d58b905",
+          "name": "빌링키 삭제",
+          "request": {
+            "name": "빌링키 삭제",
+            "description": {
+              "content": "빌링키 삭제\n\n빌링키를 삭제합니다.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "billing-keys",
+                ":billingKey"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "storeId",
+                  "value": "<string>",
+                  "description": "상점 아이디\n\n접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 인증 정보의 상점 아이디를 사용합니다."
+                },
+                {
+                  "disabled": false,
+                  "key": "reason",
+                  "value": "<string>",
+                  "description": "사유\n\n네이버페이: 자동결제 해지 사유입니다. 명시가 필요합니다."
+                },
+                {
+                  "disabled": false,
+                  "key": "requester",
+                  "value": "<string>",
+                  "description": "요청 주체\n\n네이버페이: 자동결제 해지 요청 주체입니다. 명시가 필요합니다."
+                },
+                {
+                  "disabled": false,
+                  "key": "skipWebhook",
+                  "value": "<boolean>",
+                  "description": "웹훅 생략 여부\n\n빌링키 삭제가 성공했을 때 웹훅을 전송하지 않으려면 true로 설정합니다."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "billingKey",
+                  "description": "(Required) 삭제할 빌링키"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "51e9182a-18ff-4b0e-8dab-3c5c606d4445",
+              "name": "성공 응답",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys",
+                    ":billingKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reason",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requester",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "skipWebhook",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "billingKey",
+                      "description": "(Required) 삭제할 빌링키"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deletedAt\": \"2022-12-01T08:10:06.696Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a2dbf7d9-040e-469a-9566-f17aa3ab79d6",
+              "name": "* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys",
+                    ":billingKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reason",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requester",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "skipWebhook",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "billingKey",
+                      "description": "(Required) 삭제할 빌링키"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4cb5023f-4445-493d-bda9-f92ffa978239",
+              "name": "* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys",
+                    ":billingKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reason",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requester",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "skipWebhook",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "billingKey",
+                      "description": "(Required) 삭제할 빌링키"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "22dcb668-8690-4193-af7b-99d82497dcef",
+              "name": "* `ForbiddenError`: 요청이 거절된 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys",
+                    ":billingKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reason",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requester",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "skipWebhook",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "billingKey",
+                      "description": "(Required) 삭제할 빌링키"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6be8f76-5853-4d01-a59a-b371d06f3837",
+              "name": "* `BillingKeyNotIssuedError`\n* `BillingKeyNotFoundError`: 빌링키가 존재하지 않는 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys",
+                    ":billingKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reason",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requester",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "skipWebhook",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "billingKey",
+                      "description": "(Required) 삭제할 빌링키"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "896c8a94-aebe-4453-82d1-e37fddba02c7",
+              "name": "* `BillingKeyAlreadyDeletedError`: 빌링키가 이미 삭제된 경우\n* `PaymentScheduleAlreadyExistsError`: 결제 예약건이 이미 존재하는 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys",
+                    ":billingKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reason",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requester",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "skipWebhook",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "billingKey",
+                      "description": "(Required) 삭제할 빌링키"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "15ffa211-64f6-4bd9-8863-08f22400496c",
+              "name": "* `PgProviderError`: PG사에서 오류를 전달한 경우\n* `ChannelSpecificError`: 여러 채널을 지정한 요청에서, 채널 각각에서 오류가 발생한 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing-keys",
+                    ":billingKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reason",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requester",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "skipWebhook",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "billingKey",
+                      "description": "(Required) 삭제할 빌링키"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.portone.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d5535c62-7c05-44bb-8201-3e17a24ecbbe",
+    "name": "PortOne B2b Billing Keys API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

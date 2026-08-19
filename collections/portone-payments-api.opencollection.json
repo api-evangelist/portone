@@ -1,0 +1,542 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PortOne B2b Payments API",
+    "version": "1.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "빌링키 결제",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.portone.io/payments/:paymentId/billing-key",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "결제 건 아이디"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "빌링키 결제\n\n빌링키로 결제를 진행합니다."
+        },
+        {
+          "info": {
+            "name": "결제 취소",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.portone.io/payments/:paymentId/cancel",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "결제 건 아이디"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "결제 취소\n\n결제 취소를 요청합니다."
+        },
+        {
+          "info": {
+            "name": "결제 취소 요청 취소",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.portone.io/payments/:paymentId/cancellations/:cancellationId/stop",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "결제 건 아이디"
+              },
+              {
+                "name": "cancellationId",
+                "value": "",
+                "type": "path",
+                "description": "취소 요청 아이디"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "결제 취소 요청 취소\n\n비동기적으로 수행되는 결제 취소 요청을 취소합니다.\nTriple-A에서만 사용됩니다."
+        },
+        {
+          "info": {
+            "name": "수동 매입",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.portone.io/payments/:paymentId/capture",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "결제 건 아이디"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "수동 매입\n\n수동 매입을 요청합니다. PG 및 포트원과의 사전 협의가 필요합니다."
+        },
+        {
+          "info": {
+            "name": "현금 영수증 취소",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.portone.io/payments/:paymentId/cash-receipt/cancel",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "결제 건 아이디"
+              },
+              {
+                "name": "storeId",
+                "value": "",
+                "type": "query",
+                "description": "상점 아이디\n\n접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 인증 정보의 상점 아이디를 사용합니다."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "현금 영수증 취소\n\n현금 영수증 취소를 요청합니다."
+        },
+        {
+          "info": {
+            "name": "현금 영수증 단건 조회",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.portone.io/payments/:paymentId/cash-receipt",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "결제 건 아이디"
+              },
+              {
+                "name": "storeId",
+                "value": "",
+                "type": "query",
+                "description": "상점 아이디\n\n접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 인증 정보의 상점 아이디를 사용합니다."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "현금 영수증 단건 조회\n\n주어진 결제 아이디에 대응되는 현금 영수증 내역을 조회합니다."
+        },
+        {
+          "info": {
+            "name": "인증 결제 수동 승인",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.portone.io/payments/:paymentId/confirm",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "결제 아이디"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "인증 결제 수동 승인\n\n수동 승인으로 설정된 인증 결제에 대해, 결제를 완료 처리합니다."
+        },
+        {
+          "info": {
+            "name": "에스크로 구매 확정",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.portone.io/payments/:paymentId/escrow/complete",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "결제 건 아이디"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "에스크로 구매 확정\n\n에스크로 결제를 구매 확정 처리합니다"
+        },
+        {
+          "info": {
+            "name": "에스크로 배송 정보 등록",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.portone.io/payments/:paymentId/escrow/logistics",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "결제 건 아이디"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "에스크로 배송 정보 등록\n\n에스크로 배송 정보를 등록합니다."
+        },
+        {
+          "info": {
+            "name": "에스크로 배송 정보 수정",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.portone.io/payments/:paymentId/escrow/logistics",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "결제 건 아이디"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "에스크로 배송 정보 수정\n\n에스크로 배송 정보를 수정합니다."
+        },
+        {
+          "info": {
+            "name": "수기 결제",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.portone.io/payments/:paymentId/instant",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "결제 건 아이디"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "수기 결제\n\n카드 비인증 결제 또는 가상 계좌 발급을 API로 요청합니다."
+        },
+        {
+          "info": {
+            "name": "결제 정보 사전 등록",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.portone.io/payments/:paymentId/pre-register",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "결제 건 아이디"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "결제 정보 사전 등록\n\n결제 정보를 사전 등록합니다."
+        },
+        {
+          "info": {
+            "name": "영수증 내 하위 상점 거래 등록",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.portone.io/payments/:paymentId/register-store-receipt",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "등록할 하위 상점 결제 건 아이디"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "영수증 내 하위 상점 거래 등록\n\n결제 내역 매출전표에 하위 상점의 거래를 등록합니다.\n지원되는 PG사:\nKG이니시스(이용 전 콘솔 -> 결제연동 탭에서 INIApi Key 등록 필요)"
+        },
+        {
+          "info": {
+            "name": "웹훅 재발송",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.portone.io/payments/:paymentId/resend-webhook",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "결제 건 아이디"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "웹훅 재발송\n\n웹훅을 재발송합니다."
+        },
+        {
+          "info": {
+            "name": "결제 예약",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.portone.io/payments/:paymentId/schedule",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "결제 건 아이디"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "결제 예약\n\n결제를 예약합니다."
+        },
+        {
+          "info": {
+            "name": "결제 시도 내역 조회",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.portone.io/payments/:paymentId/transactions",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "조회할 결제 아이디"
+              },
+              {
+                "name": "storeId",
+                "value": "",
+                "type": "query",
+                "description": "상점 아이디"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "결제 시도 내역 조회\n\n주어진 아이디에 대응되는 결제 건의 결제 시도 내역을 조회합니다."
+        },
+        {
+          "info": {
+            "name": "가상계좌 말소",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.portone.io/payments/:paymentId/virtual-account/close",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "결제 건 아이디"
+              },
+              {
+                "name": "storeId",
+                "value": "",
+                "type": "query",
+                "description": "상점 아이디\n\n접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 인증 정보의 상점 아이디를 사용합니다."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "가상계좌 말소\n\n발급된 가상계좌를 말소합니다."
+        },
+        {
+          "info": {
+            "name": "결제 단건 조회",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.portone.io/payments/:paymentId",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "조회할 결제 아이디"
+              },
+              {
+                "name": "storeId",
+                "value": "",
+                "type": "query",
+                "description": "상점 아이디\n\n접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 인증 정보의 상점 아이디를 사용합니다."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "결제 단건 조회\n\n주어진 아이디에 대응되는 결제 건을 조회합니다."
+        },
+        {
+          "info": {
+            "name": "결제 다건 조회(페이지 기반)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.portone.io/payments",
+            "params": [
+              {
+                "name": "requestBody",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "결제 다건 조회(페이지 기반)\n\n주어진 조건에 맞는 결제 건들을 페이지 기반으로 조회합니다."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

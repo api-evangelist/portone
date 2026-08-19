@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PortOne B2b Payment Sessions API",
+    "version": "1.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payment Sessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "결제 세션 생성",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.portone.io/payment-sessions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "결제 세션 생성\n\n결제 세션을 생성합니다. 호스티드 체크아웃 페이지가 생성되어 URL이 반환됩니다."
+        },
+        {
+          "info": {
+            "name": "결제 세션 조회",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.portone.io/payment-sessions/:sessionId",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "path",
+                "description": "결제 세션 아이디"
+              }
+            ]
+          },
+          "docs": "결제 세션 조회\n\n결제 세션을 조회합니다. 인증 헤더 없이 웹 페이지에서도 접근 가능합니다."
+        },
+        {
+          "info": {
+            "name": "결제 세션 종료",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.portone.io/payment-sessions/:sessionId/close",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "path",
+                "description": "결제 세션 아이디"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "결제 세션 종료\n\n결제 세션을 즉시 만료시킵니다. 이후 해당 세션으로는 결제 페이지에 접근할 수 없습니다."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,152 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PortOne B2b Identity Verifications API",
+    "version": "1.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Identity Verifications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "본인인증 확인",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.portone.io/identity-verifications/:identityVerificationId/confirm",
+            "params": [
+              {
+                "name": "identityVerificationId",
+                "value": "",
+                "type": "path",
+                "description": "본인인증 아이디"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "본인인증 확인\n\n요청된 본인인증에 대한 확인을 진행합니다."
+        },
+        {
+          "info": {
+            "name": "SMS 본인인증 요청 재전송",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.portone.io/identity-verifications/:identityVerificationId/resend",
+            "params": [
+              {
+                "name": "identityVerificationId",
+                "value": "",
+                "type": "path",
+                "description": "본인인증 아이디"
+              },
+              {
+                "name": "storeId",
+                "value": "",
+                "type": "query",
+                "description": "상점 아이디\n\n접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 인증 정보의 상점 아이디를 사용합니다."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "SMS 본인인증 요청 재전송\n\nSMS 본인인증 요청을 재전송합니다."
+        },
+        {
+          "info": {
+            "name": "본인인증 요청 전송",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.portone.io/identity-verifications/:identityVerificationId/send",
+            "params": [
+              {
+                "name": "identityVerificationId",
+                "value": "",
+                "type": "path",
+                "description": "본인인증 아이디"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "본인인증 요청 전송\n\nSMS 또는 APP 방식을 이용하여 본인인증 요청을 전송합니다."
+        },
+        {
+          "info": {
+            "name": "본인인증 단건 조회",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.portone.io/identity-verifications/:identityVerificationId",
+            "params": [
+              {
+                "name": "identityVerificationId",
+                "value": "your-identity-verification-id",
+                "type": "path",
+                "description": "조회할 본인인증 아이디"
+              },
+              {
+                "name": "storeId",
+                "value": "your-store-id",
+                "type": "query",
+                "description": "상점 아이디\n\n접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 인증 정보의 상점 아이디를 사용합니다."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "본인인증 단건 조회\n\n주어진 아이디에 대응되는 본인인증 내역을 조회합니다."
+        },
+        {
+          "info": {
+            "name": "본인인증 내역 다건 조회",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.portone.io/identity-verifications",
+            "params": [
+              {
+                "name": "requestBody",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "본인인증 내역 다건 조회\n\n주어진 조건에 맞는 본인인증 내역들을 페이지 기반으로 조회합니다."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,173 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PortOne B2b Billing Keys API",
+    "version": "1.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Billing Keys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "빌링키 다건 조회",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.portone.io/billing-keys",
+            "params": [
+              {
+                "name": "requestBody",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "빌링키 다건 조회\n\n주어진 조건에 맞는 빌링키들을 페이지 기반으로 조회합니다."
+        },
+        {
+          "info": {
+            "name": "빌링키 발급",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.portone.io/billing-keys",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "빌링키 발급\n\n빌링키 발급을 요청합니다."
+        },
+        {
+          "info": {
+            "name": "빌링키 발급 수동 승인",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.portone.io/billing-keys/confirm",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "빌링키 발급 수동 승인\n\n수동 승인으로 설정된 빌링키 발급에 대해, 빌링키 발급을 완료 처리합니다."
+        },
+        {
+          "info": {
+            "name": "빌링키 발급 및 초회 결제 수동 승인",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.portone.io/billing-keys/confirm-issue-and-pay",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "빌링키 발급 및 초회 결제 수동 승인\n\n수동 승인으로 설정된 빌링키 발급 및 초회 결제에 대해, 빌링키 발급과 결제를 완료 처리합니다."
+        },
+        {
+          "info": {
+            "name": "빌링키 단건 조회",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.portone.io/billing-keys/:billingKey",
+            "params": [
+              {
+                "name": "billingKey",
+                "value": "",
+                "type": "path",
+                "description": "조회할 빌링키"
+              },
+              {
+                "name": "storeId",
+                "value": "",
+                "type": "query",
+                "description": "상점 아이디\n\n접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 인증 정보의 상점 아이디를 사용합니다."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "빌링키 단건 조회\n\n주어진 빌링키에 대응되는 빌링키 정보를 조회합니다."
+        },
+        {
+          "info": {
+            "name": "빌링키 삭제",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.portone.io/billing-keys/:billingKey",
+            "params": [
+              {
+                "name": "billingKey",
+                "value": "",
+                "type": "path",
+                "description": "삭제할 빌링키"
+              },
+              {
+                "name": "storeId",
+                "value": "",
+                "type": "query",
+                "description": "상점 아이디\n\n접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 인증 정보의 상점 아이디를 사용합니다."
+              },
+              {
+                "name": "reason",
+                "value": "",
+                "type": "query",
+                "description": "사유\n\n네이버페이: 자동결제 해지 사유입니다. 명시가 필요합니다."
+              },
+              {
+                "name": "requester",
+                "value": "",
+                "type": "query",
+                "description": "요청 주체\n\n네이버페이: 자동결제 해지 요청 주체입니다. 명시가 필요합니다."
+              },
+              {
+                "name": "skipWebhook",
+                "value": "",
+                "type": "query",
+                "description": "웹훅 생략 여부\n\n빌링키 삭제가 성공했을 때 웹훅을 전송하지 않으려면 true로 설정합니다."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "빌링키 삭제\n\n빌링키를 삭제합니다."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

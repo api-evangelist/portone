@@ -1,0 +1,2072 @@
+{
+  "item": [
+    {
+      "id": "81005748-3ecb-4f65-98be-e7f862f55673",
+      "name": "Identity Verifications",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a76d65b4-d5df-4133-8c07-38993d07e6f9",
+          "name": "본인인증 확인",
+          "request": {
+            "name": "본인인증 확인",
+            "description": {
+              "content": "본인인증 확인\n\n요청된 본인인증에 대한 확인을 진행합니다.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "identity-verifications",
+                ":identityVerificationId",
+                "confirm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identityVerificationId",
+                  "description": "(Required) 본인인증 아이디"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"storeId\": \"<string>\",\n  \"otp\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ddcda26e-4002-4302-8cbf-aae2c3c2f607",
+              "name": "성공 응답",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identityVerificationId",
+                      "description": "(Required) 본인인증 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"storeId\": \"<string>\",\n  \"otp\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"identityVerification\": {\n    \"status\": \"string\",\n    \"id\": \"string\",\n    \"verifiedCustomer\": {\n      \"name\": \"string\",\n      \"id\": \"string\",\n      \"operator\": \"KT\",\n      \"phoneNumber\": \"string\",\n      \"birthDate\": \"2005-07-01\",\n      \"gender\": \"MALE\",\n      \"isForeigner\": false,\n      \"ci\": \"string\",\n      \"di\": \"string\"\n    },\n    \"requestedAt\": \"1982-03-25T10:43:32.369Z\",\n    \"updatedAt\": \"1984-09-23T04:08:26.977Z\",\n    \"statusChangedAt\": \"1978-01-04T18:33:06.652Z\",\n    \"verifiedAt\": \"1977-10-12T15:42:53.649Z\",\n    \"pgTxId\": \"string\",\n    \"pgRawResponse\": \"string\",\n    \"version\": \"V1\",\n    \"channel\": {\n      \"type\": \"TEST\",\n      \"pgProvider\": \"SYRUP\",\n      \"pgMerchantId\": \"string\",\n      \"id\": \"string\",\n      \"key\": \"string\",\n      \"name\": \"string\"\n    },\n    \"customData\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df1158a7-15a0-4fac-ae1b-8718dc83fa54",
+              "name": "* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identityVerificationId",
+                      "description": "(Required) 본인인증 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"storeId\": \"<string>\",\n  \"otp\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4fb271f6-4130-4917-91d0-02b4b693cd84",
+              "name": "* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identityVerificationId",
+                      "description": "(Required) 본인인증 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"storeId\": \"<string>\",\n  \"otp\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf58238f-9d55-48ee-8cf5-b05d86a9f33f",
+              "name": "* `ForbiddenError`: 요청이 거절된 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identityVerificationId",
+                      "description": "(Required) 본인인증 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"storeId\": \"<string>\",\n  \"otp\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3125d418-3ee9-4d25-b447-5a9fc370d5df",
+              "name": "* `IdentityVerificationNotFoundError`: 요청된 본인인증 건이 존재하지 않는 경우\n* `IdentityVerificationNotSentError`: 본인인증 건이 API로 요청된 상태가 아닌 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identityVerificationId",
+                      "description": "(Required) 본인인증 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"storeId\": \"<string>\",\n  \"otp\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5e3748bb-f5d1-4f6c-be6a-0dd64575f7ff",
+              "name": "* `IdentityVerificationAlreadyVerifiedError`: 본인인증 건이 이미 인증 완료된 상태인 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identityVerificationId",
+                      "description": "(Required) 본인인증 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"storeId\": \"<string>\",\n  \"otp\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2115f951-0928-4ca1-ac9b-fc7df42d7bb9",
+              "name": "* `PgProviderError`: PG사에서 오류를 전달한 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identityVerificationId",
+                      "description": "(Required) 본인인증 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"storeId\": \"<string>\",\n  \"otp\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ba65aeb-86ac-4caa-8210-2bbb58e7073d",
+          "name": "SMS 본인인증 요청 재전송",
+          "request": {
+            "name": "SMS 본인인증 요청 재전송",
+            "description": {
+              "content": "SMS 본인인증 요청 재전송\n\nSMS 본인인증 요청을 재전송합니다.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "identity-verifications",
+                ":identityVerificationId",
+                "resend"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "storeId",
+                  "value": "<string>",
+                  "description": "상점 아이디\n\n접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 인증 정보의 상점 아이디를 사용합니다."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identityVerificationId",
+                  "description": "(Required) 본인인증 아이디"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "582c8f8c-0df3-49c6-b48a-94645608df93",
+              "name": "성공 응답",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId",
+                    "resend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identityVerificationId",
+                      "description": "(Required) 본인인증 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "691de776-9dbb-47d0-bec9-1628b64f8a1f",
+              "name": "* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId",
+                    "resend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identityVerificationId",
+                      "description": "(Required) 본인인증 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "160b5f72-8d32-479d-aeff-6dde126f5f89",
+              "name": "* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId",
+                    "resend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identityVerificationId",
+                      "description": "(Required) 본인인증 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd94ed4e-3e81-4788-8369-b3129d7c85e6",
+              "name": "* `ForbiddenError`: 요청이 거절된 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId",
+                    "resend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identityVerificationId",
+                      "description": "(Required) 본인인증 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b0a8a85e-d2d1-4771-92d6-655461ef1517",
+              "name": "* `IdentityVerificationNotFoundError`: 요청된 본인인증 건이 존재하지 않는 경우\n* `IdentityVerificationNotSentError`: 본인인증 건이 API로 요청된 상태가 아닌 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId",
+                    "resend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identityVerificationId",
+                      "description": "(Required) 본인인증 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb4195af-b98c-48e9-9358-cc87a78ecc00",
+              "name": "* `IdentityVerificationAlreadyVerifiedError`: 본인인증 건이 이미 인증 완료된 상태인 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId",
+                    "resend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identityVerificationId",
+                      "description": "(Required) 본인인증 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e45819a3-d13b-4d1a-b56b-2d64c66b275e",
+              "name": "* `PgProviderError`: PG사에서 오류를 전달한 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId",
+                    "resend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identityVerificationId",
+                      "description": "(Required) 본인인증 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "29c66853-b3c9-4047-80b5-9613742303f0",
+          "name": "본인인증 요청 전송",
+          "request": {
+            "name": "본인인증 요청 전송",
+            "description": {
+              "content": "본인인증 요청 전송\n\nSMS 또는 APP 방식을 이용하여 본인인증 요청을 전송합니다.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "identity-verifications",
+                ":identityVerificationId",
+                "send"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identityVerificationId",
+                  "description": "(Required) 본인인증 아이디"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channelKey\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"id\": \"<string>\",\n    \"identityNumber\": \"<string>\"\n  },\n  \"operator\": \"<string>\",\n  \"method\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"bypass\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5d2cc0c0-f74c-4134-a95e-517567288ada",
+              "name": "성공 응답",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identityVerificationId",
+                      "description": "(Required) 본인인증 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channelKey\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"id\": \"<string>\",\n    \"identityNumber\": \"<string>\"\n  },\n  \"operator\": \"<string>\",\n  \"method\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"bypass\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "447875db-6338-4561-a560-99b250ccbf6b",
+              "name": "* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우\n* `MaxTransactionCountReachedError`: 결제 혹은 본인인증 시도 횟수가 최대에 도달한 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identityVerificationId",
+                      "description": "(Required) 본인인증 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channelKey\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"id\": \"<string>\",\n    \"identityNumber\": \"<string>\"\n  },\n  \"operator\": \"<string>\",\n  \"method\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"bypass\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d6b7418-03bf-43d8-b47d-4115e1f38e11",
+              "name": "* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identityVerificationId",
+                      "description": "(Required) 본인인증 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channelKey\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"id\": \"<string>\",\n    \"identityNumber\": \"<string>\"\n  },\n  \"operator\": \"<string>\",\n  \"method\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"bypass\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "505a3822-5e1e-49c0-8f88-013ce553b41c",
+              "name": "* `ForbiddenError`: 요청이 거절된 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identityVerificationId",
+                      "description": "(Required) 본인인증 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channelKey\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"id\": \"<string>\",\n    \"identityNumber\": \"<string>\"\n  },\n  \"operator\": \"<string>\",\n  \"method\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"bypass\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e9c3faa5-db09-414a-b8fc-1f2f9c5d930a",
+              "name": "* `IdentityVerificationNotFoundError`: 요청된 본인인증 건이 존재하지 않는 경우\n* `ChannelNotFoundError`: 요청된 채널이 존재하지 않는 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identityVerificationId",
+                      "description": "(Required) 본인인증 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channelKey\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"id\": \"<string>\",\n    \"identityNumber\": \"<string>\"\n  },\n  \"operator\": \"<string>\",\n  \"method\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"bypass\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c433968-af6f-46fe-997a-a4ac7145806d",
+              "name": "* `IdentityVerificationAlreadyVerifiedError`: 본인인증 건이 이미 인증 완료된 상태인 경우\n* `IdentityVerificationAlreadySentError`: 본인인증 건이 이미 API로 요청된 상태인 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identityVerificationId",
+                      "description": "(Required) 본인인증 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channelKey\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"id\": \"<string>\",\n    \"identityNumber\": \"<string>\"\n  },\n  \"operator\": \"<string>\",\n  \"method\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"bypass\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "78804148-615c-4f49-99c7-5513bcd181a1",
+              "name": "* `PgProviderError`: PG사에서 오류를 전달한 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identityVerificationId",
+                      "description": "(Required) 본인인증 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channelKey\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"id\": \"<string>\",\n    \"identityNumber\": \"<string>\"\n  },\n  \"operator\": \"<string>\",\n  \"method\": \"<string>\",\n  \"storeId\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"bypass\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "77a3d0ac-fb7e-4d25-a518-76cc4dd3d342",
+          "name": "본인인증 단건 조회",
+          "request": {
+            "name": "본인인증 단건 조회",
+            "description": {
+              "content": "본인인증 단건 조회\n\n주어진 아이디에 대응되는 본인인증 내역을 조회합니다.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "identity-verifications",
+                ":identityVerificationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "storeId",
+                  "value": "<string>",
+                  "description": "상점 아이디\n\n접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 인증 정보의 상점 아이디를 사용합니다."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identityVerificationId",
+                  "description": "(Required) 조회할 본인인증 아이디"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e73afb69-1925-496d-b0a7-08ec03366b06",
+              "name": "성공 응답으로 본인 인증 객체를 반환합니다.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "your-store-id"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identityVerificationId",
+                      "description": "(Required) 조회할 본인인증 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"id\": \"string\",\n  \"requestedCustomer\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"phoneNumber\": \"string\",\n    \"birthYear\": \"string\",\n    \"birthMonth\": \"string\",\n    \"birthDay\": \"string\"\n  },\n  \"requestedAt\": \"1999-10-12T06:48:33.930Z\",\n  \"updatedAt\": \"1978-01-06T05:49:33.260Z\",\n  \"statusChangedAt\": \"1986-10-09T11:35:28.391Z\",\n  \"failure\": {\n    \"reason\": \"string\",\n    \"pgCode\": \"string\",\n    \"pgMessage\": \"string\"\n  },\n  \"version\": \"V1\",\n  \"channel\": {\n    \"type\": \"LIVE\",\n    \"pgProvider\": \"SMARTRO_V2\",\n    \"pgMerchantId\": \"string\",\n    \"id\": \"string\",\n    \"key\": \"string\",\n    \"name\": \"string\"\n  },\n  \"customData\": \"string\",\n  \"pgTxId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96a16f10-d1eb-4c6b-becb-7411e786e023",
+              "name": "* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "your-store-id"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identityVerificationId",
+                      "description": "(Required) 조회할 본인인증 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd2b5eaa-d4c8-4cec-bbd9-c464fb452cc5",
+              "name": "* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "your-store-id"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identityVerificationId",
+                      "description": "(Required) 조회할 본인인증 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f876ff3b-8846-440d-88a3-f622292da6c0",
+              "name": "* `ForbiddenError`: 요청이 거절된 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "your-store-id"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identityVerificationId",
+                      "description": "(Required) 조회할 본인인증 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b26dcc7-8e29-423e-beba-a05666ac76da",
+              "name": "* `IdentityVerificationNotFoundError`: 요청된 본인인증 건이 존재하지 않는 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications",
+                    ":identityVerificationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "your-store-id"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identityVerificationId",
+                      "description": "(Required) 조회할 본인인증 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "85627ef0-5837-4ebe-bf36-b8e33973a2ec",
+          "name": "본인인증 내역 다건 조회",
+          "request": {
+            "name": "본인인증 내역 다건 조회",
+            "description": {
+              "content": "본인인증 내역 다건 조회\n\n주어진 조건에 맞는 본인인증 내역들을 페이지 기반으로 조회합니다.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "identity-verifications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "key": "requestBody",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5da0f537-c12c-40bb-9dc1-886f9506342c",
+              "name": "성공 응답으로 조회된 본인인증 내역 리스트와 페이지 정보가 반환됩니다.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"status\": \"string\",\n      \"id\": \"string\",\n      \"requestedCustomer\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"phoneNumber\": \"string\",\n        \"birthYear\": \"string\",\n        \"birthMonth\": \"string\",\n        \"birthDay\": \"string\"\n      },\n      \"requestedAt\": \"1954-09-01T19:08:38.919Z\",\n      \"updatedAt\": \"1986-05-20T03:18:47.123Z\",\n      \"statusChangedAt\": \"1985-09-09T19:24:40.290Z\",\n      \"failure\": {\n        \"reason\": \"string\",\n        \"pgCode\": \"string\",\n        \"pgMessage\": \"string\"\n      },\n      \"version\": \"V1\",\n      \"channel\": {\n        \"type\": \"LIVE\",\n        \"pgProvider\": \"KPN\",\n        \"pgMerchantId\": \"string\",\n        \"id\": \"string\",\n        \"key\": \"string\",\n        \"name\": \"string\"\n      },\n      \"customData\": \"string\",\n      \"pgTxId\": \"string\"\n    },\n    {\n      \"status\": \"string\",\n      \"id\": \"string\",\n      \"requestedCustomer\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"phoneNumber\": \"string\",\n        \"birthYear\": \"string\",\n        \"birthMonth\": \"string\",\n        \"birthDay\": \"string\"\n      },\n      \"requestedAt\": \"2005-09-30T20:01:19.996Z\",\n      \"updatedAt\": \"1962-10-07T07:08:18.217Z\",\n      \"statusChangedAt\": \"1972-02-26T15:19:28.434Z\",\n      \"failure\": {\n        \"reason\": \"string\",\n        \"pgCode\": \"string\",\n        \"pgMessage\": \"string\"\n      },\n      \"version\": \"V1\",\n      \"channel\": {\n        \"type\": \"TEST\",\n        \"pgProvider\": \"HECTO_GLOBAL\",\n        \"pgMerchantId\": \"string\",\n        \"id\": \"string\",\n        \"key\": \"string\",\n        \"name\": \"string\"\n      },\n      \"customData\": \"string\",\n      \"pgTxId\": \"string\"\n    }\n  ],\n  \"page\": {\n    \"number\": 545,\n    \"size\": 12,\n    \"totalCount\": 4470\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b5dbf28-3956-441d-beda-4d8715b2ed70",
+              "name": "* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "985bd089-1770-4620-8318-df34f7538f0a",
+              "name": "* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f28a859e-1cd0-4b72-9927-c7894f62b3f7",
+              "name": "* `ForbiddenError`: 요청이 거절된 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity-verifications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "requestBody",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.portone.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3b0089c1-0422-412e-8bda-124dba6d0b3c",
+    "name": "PortOne B2b Identity Verifications API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

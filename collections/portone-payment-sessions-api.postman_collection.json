@@ -1,0 +1,830 @@
+{
+  "item": [
+    {
+      "id": "a3147b85-05c3-462a-81e3-24c2347a58a0",
+      "name": "Payment Sessions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0500f0ab-f69b-45c7-b59a-834e4bd76cc7",
+          "name": "결제 세션 생성",
+          "request": {
+            "name": "결제 세션 생성",
+            "description": {
+              "content": "결제 세션 생성\n\n결제 세션을 생성합니다. 호스티드 체크아웃 페이지가 생성되어 URL이 반환됩니다.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payment-sessions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"profileKey\": \"<string>\",\n  \"country\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"totalAmount\": \"<long>\",\n  \"orderName\": \"<string>\",\n  \"paymentMethod\": \"<string>\",\n  \"redirectUrl\": \"<string>\",\n  \"products\": {\n    \"url\": {},\n    \"id\": {},\n    \"nPayUid\": {},\n    \"unitPrice\": {},\n    \"startDate\": {},\n    \"name\": {},\n    \"quantity\": {},\n    \"endDate\": {},\n    \"nPayCategoryId\": {},\n    \"code\": {},\n    \"nPayCategoryType\": {}\n  },\n  \"customerName\": \"<string>\",\n  \"customerEmail\": \"<string>\",\n  \"storeName\": \"<string>\",\n  \"agreements\": {\n    \"name\": {},\n    \"url\": {}\n  },\n  \"orderImageUrl\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"colors\": {\n    \"primary\": \"<string>\",\n    \"primaryHover\": \"<string>\",\n    \"primaryLight\": \"<string>\"\n  },\n  \"ttlSeconds\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bf133f28-871a-4c4e-bd50-e5740bb59693",
+              "name": "성공 응답",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"profileKey\": \"<string>\",\n  \"country\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"totalAmount\": \"<long>\",\n  \"orderName\": \"<string>\",\n  \"paymentMethod\": \"<string>\",\n  \"redirectUrl\": \"<string>\",\n  \"products\": {\n    \"url\": {},\n    \"id\": {},\n    \"nPayUid\": {},\n    \"unitPrice\": {},\n    \"startDate\": {},\n    \"name\": {},\n    \"quantity\": {},\n    \"endDate\": {},\n    \"nPayCategoryId\": {},\n    \"code\": {},\n    \"nPayCategoryType\": {}\n  },\n  \"customerName\": \"<string>\",\n  \"customerEmail\": \"<string>\",\n  \"storeName\": \"<string>\",\n  \"agreements\": {\n    \"name\": {},\n    \"url\": {}\n  },\n  \"orderImageUrl\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"colors\": {\n    \"primary\": \"<string>\",\n    \"primaryHover\": \"<string>\",\n    \"primaryLight\": \"<string>\"\n  },\n  \"ttlSeconds\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sessionId\": \"string\",\n  \"url\": \"string\",\n  \"expiresAt\": \"2006-05-09T07:58:48.616Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "481c488f-e8cd-4f38-8050-a1839215551c",
+              "name": "* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우\n* `MaxTtlExceededError`: 요청된 TTL이 정책 상한을 초과한 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"profileKey\": \"<string>\",\n  \"country\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"totalAmount\": \"<long>\",\n  \"orderName\": \"<string>\",\n  \"paymentMethod\": \"<string>\",\n  \"redirectUrl\": \"<string>\",\n  \"products\": {\n    \"url\": {},\n    \"id\": {},\n    \"nPayUid\": {},\n    \"unitPrice\": {},\n    \"startDate\": {},\n    \"name\": {},\n    \"quantity\": {},\n    \"endDate\": {},\n    \"nPayCategoryId\": {},\n    \"code\": {},\n    \"nPayCategoryType\": {}\n  },\n  \"customerName\": \"<string>\",\n  \"customerEmail\": \"<string>\",\n  \"storeName\": \"<string>\",\n  \"agreements\": {\n    \"name\": {},\n    \"url\": {}\n  },\n  \"orderImageUrl\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"colors\": {\n    \"primary\": \"<string>\",\n    \"primaryHover\": \"<string>\",\n    \"primaryLight\": \"<string>\"\n  },\n  \"ttlSeconds\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9febf27e-db87-4031-a596-d6baffaa6c43",
+              "name": "* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"profileKey\": \"<string>\",\n  \"country\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"totalAmount\": \"<long>\",\n  \"orderName\": \"<string>\",\n  \"paymentMethod\": \"<string>\",\n  \"redirectUrl\": \"<string>\",\n  \"products\": {\n    \"url\": {},\n    \"id\": {},\n    \"nPayUid\": {},\n    \"unitPrice\": {},\n    \"startDate\": {},\n    \"name\": {},\n    \"quantity\": {},\n    \"endDate\": {},\n    \"nPayCategoryId\": {},\n    \"code\": {},\n    \"nPayCategoryType\": {}\n  },\n  \"customerName\": \"<string>\",\n  \"customerEmail\": \"<string>\",\n  \"storeName\": \"<string>\",\n  \"agreements\": {\n    \"name\": {},\n    \"url\": {}\n  },\n  \"orderImageUrl\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"colors\": {\n    \"primary\": \"<string>\",\n    \"primaryHover\": \"<string>\",\n    \"primaryLight\": \"<string>\"\n  },\n  \"ttlSeconds\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d97f89cf-6305-48ab-a56d-b85d850835e3",
+              "name": "* `ForbiddenError`: 요청이 거절된 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"storeId\": \"<string>\",\n  \"paymentId\": \"<string>\",\n  \"profileKey\": \"<string>\",\n  \"country\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"totalAmount\": \"<long>\",\n  \"orderName\": \"<string>\",\n  \"paymentMethod\": \"<string>\",\n  \"redirectUrl\": \"<string>\",\n  \"products\": {\n    \"url\": {},\n    \"id\": {},\n    \"nPayUid\": {},\n    \"unitPrice\": {},\n    \"startDate\": {},\n    \"name\": {},\n    \"quantity\": {},\n    \"endDate\": {},\n    \"nPayCategoryId\": {},\n    \"code\": {},\n    \"nPayCategoryType\": {}\n  },\n  \"customerName\": \"<string>\",\n  \"customerEmail\": \"<string>\",\n  \"storeName\": \"<string>\",\n  \"agreements\": {\n    \"name\": {},\n    \"url\": {}\n  },\n  \"orderImageUrl\": \"<string>\",\n  \"customData\": \"<string>\",\n  \"colors\": {\n    \"primary\": \"<string>\",\n    \"primaryHover\": \"<string>\",\n    \"primaryLight\": \"<string>\"\n  },\n  \"ttlSeconds\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "703ec221-eda3-4d24-9f63-9b533dbc4bcc",
+          "name": "결제 세션 조회",
+          "request": {
+            "name": "결제 세션 조회",
+            "description": {
+              "content": "결제 세션 조회\n\n결제 세션을 조회합니다. 인증 헤더 없이 웹 페이지에서도 접근 가능합니다.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payment-sessions",
+                ":sessionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sessionId",
+                  "description": "(Required) 결제 세션 아이디"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7ab224a6-e930-4c6a-a34d-e45c7aa97f16",
+              "name": "결제 세션 조회 성공 응답",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-sessions",
+                    ":sessionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) 결제 세션 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"storeId\": \"string\",\n  \"paymentId\": \"string\",\n  \"profileKey\": \"string\",\n  \"country\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"totalAmount\": 592,\n  \"orderName\": \"string\",\n  \"createdAt\": \"1977-10-17T18:31:04.087Z\",\n  \"expiresAt\": \"1982-01-20T20:49:03.296Z\",\n  \"paymentMethod\": \"<string>\",\n  \"redirectUrl\": \"string\",\n  \"products\": {\n    \"url\": {},\n    \"id\": {},\n    \"nPayUid\": {},\n    \"unitPrice\": {},\n    \"startDate\": {},\n    \"name\": {},\n    \"quantity\": {},\n    \"endDate\": {},\n    \"nPayCategoryId\": {},\n    \"code\": {},\n    \"nPayCategoryType\": {}\n  },\n  \"customerName\": \"string\",\n  \"customerEmail\": \"string\",\n  \"storeName\": \"string\",\n  \"agreements\": {\n    \"name\": {},\n    \"url\": {}\n  },\n  \"orderImageUrl\": \"string\",\n  \"customData\": \"string\",\n  \"colors\": {\n    \"primary\": \"<string>\",\n    \"primaryHover\": \"<string>\",\n    \"primaryLight\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "255f2522-4276-40b6-ae37-9865b5a90c5c",
+              "name": "* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-sessions",
+                    ":sessionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) 결제 세션 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "863a6541-0ec9-4fb0-ac76-04bd01d1dfaf",
+              "name": "* `SessionNotFoundError`: 결제 세션이 존재하지 않는 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-sessions",
+                    ":sessionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) 결제 세션 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "14953294-8360-43f4-a3a5-38c0e46d40f7",
+              "name": "* `SessionExpiredError`: 결제 세션이 만료된 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-sessions",
+                    ":sessionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) 결제 세션 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "68402e8f-b193-48fd-b075-e170e90d0b75",
+          "name": "결제 세션 종료",
+          "request": {
+            "name": "결제 세션 종료",
+            "description": {
+              "content": "결제 세션 종료\n\n결제 세션을 즉시 만료시킵니다. 이후 해당 세션으로는 결제 페이지에 접근할 수 없습니다.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payment-sessions",
+                ":sessionId",
+                "close"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sessionId",
+                  "description": "(Required) 결제 세션 아이디"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "65c043b1-262b-444f-b747-b8f95f8665b5",
+              "name": "성공 응답",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-sessions",
+                    ":sessionId",
+                    "close"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) 결제 세션 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"closedAt\": \"1950-06-01T12:16:12.701Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b1f51a96-27b3-4260-a246-36212ce8ac65",
+              "name": "* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-sessions",
+                    ":sessionId",
+                    "close"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) 결제 세션 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5bc6f22-8c08-4c97-b19d-1f93fb4feca3",
+              "name": "* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-sessions",
+                    ":sessionId",
+                    "close"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) 결제 세션 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb865d32-7dec-4332-be53-da62ba8ec227",
+              "name": "* `ForbiddenError`: 요청이 거절된 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-sessions",
+                    ":sessionId",
+                    "close"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) 결제 세션 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "efa9eca1-8270-474c-a4b5-882fb7e4b0bb",
+              "name": "* `SessionNotFoundError`: 결제 세션이 존재하지 않는 경우",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-sessions",
+                    ":sessionId",
+                    "close"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) 결제 세션 아이디"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.portone.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d235d4b5-2fdf-4adb-aca1-784741908e1a",
+    "name": "PortOne B2b Payment Sessions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

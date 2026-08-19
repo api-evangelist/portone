@@ -3,37 +3,42 @@ method: searched
 status: published
 source: https://github.com/portone-io/mcp-server
 docs: https://developers.portone.io/opi/ko/integration/using-ai-tools
-notes: >-
-  Official PortOne MCP server. Runs locally over stdio via npx (no hosted remote
-  endpoint). Surfaces PortOne developer-center documentation and help-center
-  content to the LLM, and performs a subset of admin-console actions — those
-  console tools open a browser for PortOne OAuth login, or accept a static token
-  via the PORTONE_ACCESS_TOKEN environment variable for headless servers.
-  Requires Node.js 22.6.0+.
+notes: Official PortOne MCP server. Runs locally over stdio via npx (no hosted remote endpoint). Surfaces
+  PortOne developer-center documentation and help-center content to the LLM, and performs a subset of
+  admin-console actions — those console tools open a browser for PortOne OAuth login, or accept a static
+  token via the PORTONE_ACCESS_TOKEN environment variable for headless servers. Requires Node.js 22.6.0+.
 server:
   name: portone-mcp-server
-  package: "@portone/mcp-server"
+  package: '@portone/mcp-server'
   transport: stdio
   install:
     command: npx
-    args: ["-y", "@portone/mcp-server@latest"]
+    args:
+    - -y
+    - '@portone/mcp-server@latest'
   auth:
     console_tools: OAuth (browser login) or PORTONE_ACCESS_TOKEN env var
     doc_tools: none
 tools:
-  - name: documentation_search
-    description: Retrieve PortOne developer-center docs and help-center content for integration guidance.
-  - name: list_channels
-    description: Inquire the list of configured payment channels (채널 목록 조회).
-  - name: add_test_channel
-    description: Add a test payment channel (테스트 채널 추가).
-  - name: list_subsidiary_stores
-    description: Look up subsidiary / sub-merchant stores (하위 상점 조회).
-  - name: get_payment_history
-    description: Retrieve payment history (결제 내역 조회).
-  - name: get_reconciliation_details
-    description: Transaction reconciliation details including settlement and discrepancy analysis.
-  - name: get_reconciliation_settlement_summary
-    description: Transaction reconciliation settlement summary.
-  - name: get_reconciliation_statistics
-    description: Settlement reconciliation statistics.
+- name: documentation_search
+  description: Retrieve PortOne developer-center docs and help-center content for integration guidance.
+- name: list_channels
+  description: Inquire the list of configured payment channels (채널 목록 조회).
+- name: add_test_channel
+  description: Add a test payment channel (테스트 채널 추가).
+- name: list_subsidiary_stores
+  description: Look up subsidiary / sub-merchant stores (하위 상점 조회).
+- name: get_payment_history
+  description: Retrieve payment history (결제 내역 조회).
+- name: get_reconciliation_details
+  description: Transaction reconciliation details including settlement and discrepancy analysis.
+- name: get_reconciliation_settlement_summary
+  description: Transaction reconciliation settlement summary.
+- name: get_reconciliation_statistics
+  description: Settlement reconciliation statistics.
+deployment:
+  mode: local-stdio
+  verified: searched
+  tools: 8
+  checked: '2026-08-12'
+  source: catalog MCP census
