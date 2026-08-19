@@ -30,7 +30,7 @@ tags:
 - Identity Verification
 created: '2026-07-17'
 modified: '2026-07-17'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: portone:portone-rest-api-v1
   name: PortOne REST API (V1, legacy Iamport)
