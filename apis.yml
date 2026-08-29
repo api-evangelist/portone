@@ -7,6 +7,18 @@ description: PortOne (formerly Iamport) is a Korea-based payment orchestration p
   methods and PSPs. The V2 REST API (api.portone.io) covers payments, billing keys,
   scheduled/recurring payments, identity verification, cash receipts, B2B tax invoices,
   and partner settlement, with the legacy V1 API still served at api.iamport.kr.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
