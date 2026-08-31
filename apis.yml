@@ -68,7 +68,7 @@ apis:
   humanURL: https://developers.portone.io/api/rest-v2/payment
   baseURL: https://api.portone.io
   tags:
-  - B2B
+  - B2b
   tags_raw:
   - B2b
   properties:
@@ -250,7 +250,7 @@ apis:
   humanURL: https://developers.portone.io/api/rest-v2/payment
   baseURL: https://api.portone.io
   tags:
-  - KakaoPay
+  - Kakaopay
   tags_raw:
   - Kakaopay
   properties:
