@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: PortOne B2b Promotions API
+  title: PortOne Promotions API
   version: 1.16.0
 servers:
 - url: https://api.portone.io
@@ -68,267 +68,6 @@ paths:
       - Promotions
 components:
   schemas:
-    PromotionDiscountPartition:
-      title: 금액 구간별 프로모션 할인 정책
-      description: 금액 구간별 프로모션 할인 정책
-      type: object
-      required:
-      - amountFrom
-      - scheme
-      properties:
-        amountFrom:
-          type: integer
-          format: int64
-        scheme:
-          $ref: '#/components/schemas/PromotionDiscountScheme'
-      x-portone-title: 금액 구간별 프로모션 할인 정책
-    PromotionAmountDiscountScheme:
-      title: PromotionAmountDiscountScheme
-      type: object
-      required:
-      - type
-      - amount
-      properties:
-        type:
-          type: string
-          title: 프로모션 할인 유형
-        amount:
-          type: integer
-          format: int64
-    PromotionNotFoundError:
-      title: 프로모션이 존재하지 않는 경우
-      description: 프로모션이 존재하지 않는 경우
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 프로모션이 존재하지 않는 경우
-      x-portone-status-code: 404
-    PromotionSpareBudgetPercent:
-      title: PromotionSpareBudgetPercent
-      type: object
-      required:
-      - type
-      - percent
-      properties:
-        type:
-          type: string
-          title: 환불 대비용 프로모션 추가 예산
-        percent:
-          type: integer
-          format: int32
-    PromotionStatus:
-      title: PromotionStatus
-      type: string
-      enum:
-      - SCHEDULED
-      - IN_PROGRESS
-      - PAUSED
-      - BUDGET_EXHAUSTED
-      - TERMINATED
-      - COMPLETED
-      x-portone-enum:
-        IN_PROGRESS:
-          title: 진행중
-        TERMINATED:
-          title: 중단됨
-        COMPLETED:
-          title: 완료됨
-        SCHEDULED:
-          title: 예정됨
-        PAUSED:
-          title: 일시 중지됨
-        BUDGET_EXHAUSTED:
-          title: 예산 소진됨
-    PromotionPercentDiscountScheme:
-      title: PromotionPercentDiscountScheme
-      type: object
-      required:
-      - type
-      - percent
-      properties:
-        type:
-          type: string
-          title: 프로모션 할인 유형
-        percent:
-          type: integer
-          format: int32
-    PromotionDiscountPolicy:
-      title: 프로모션 할인 정책
-      description: 프로모션 할인 정책
-      type: object
-      required:
-      - partitions
-      properties:
-        partitions:
-          title: 금액 구간별 프로모션 할인 정책
-          type: array
-          items:
-            $ref: '#/components/schemas/PromotionDiscountPartition'
-      x-portone-title: 프로모션 할인 정책
-    PromotionRecoverOption:
-      title: PromotionRecoverOption
-      oneOf:
-      - $ref: '#/components/schemas/PromotionRecoverOptionNoRecover'
-      - $ref: '#/components/schemas/PromotionRecoverOptionRecover'
-      discriminator:
-        propertyName: type
-        mapping:
-          NO_RECOVER: '#/components/schemas/PromotionRecoverOptionNoRecover'
-          RECOVER: '#/components/schemas/PromotionRecoverOptionRecover'
-      x-portone-discriminator:
-        RECOVER:
-          title: 결제 취소 시 프로모션 예산 복구
-        NO_RECOVER:
-          title: 결제 취소 시 프로모션 예산 미복구
-    CardPromotion:
-      title: 카드 프로모션
-      description: 카드 프로모션
-      type: object
-      required:
-      - type
-      - id
-      - storeId
-      - name
-      - discountPolicy
-      - totalBudget
-      - spentAmount
-      - currency
-      - startAt
-      - endAt
-      - cardCompany
-      - status
-      - createdAt
-      - recoverOption
-      properties:
-        type:
-          type: string
-          title: 프로모션 유형
-        id:
-          type: string
-          title: 프로모션 아이디
-        storeId:
-          type: string
-          title: 상점 아이디
-        name:
-          type: string
-          title: 프로모션 이름
-        discountPolicy:
-          $ref: '#/components/schemas/PromotionDiscountPolicy'
-          title: 할인 정책
-        totalBudget:
-          type: integer
-          format: int64
-          title: 총 예산
-        maxDiscountAmount:
-          type: integer
-          format: int64
-          title: 최대 할인 금액
-        spentAmount:
-          type: integer
-          format: int64
-          title: 소진 금액
-        currency:
-          $ref: '#/components/schemas/Currency'
-          title: 금액 화폐
-        startAt:
-          type: string
-          format: date-time
-          title: 프로모션 시작 시각
-        endAt:
-          type: string
-          format: date-time
-          title: 프로모션 종료 시각
-        terminatedAt:
-          type: string
-          format: date-time
-          title: 프로모션 중단 시각
-        cardCompany:
-          $ref: '#/components/schemas/PromotionCardCompany'
-          title: 프로모션 카드사
-        status:
-          $ref: '#/components/schemas/PromotionStatus'
-          title: 프로모션 상태
-        createdAt:
-          type: string
-          format: date-time
-          title: 프로모션 생성 시각
-        recoverOption:
-          $ref: '#/components/schemas/PromotionRecoverOption'
-          title: 결제 취소 시 프로모션 예산 복구 옵션
-      x-portone-title: 카드 프로모션
-    GetPromotionError:
-      title: GetPromotionError
-      oneOf:
-      - $ref: '#/components/schemas/ForbiddenError'
-      - $ref: '#/components/schemas/InvalidRequestError'
-      - $ref: '#/components/schemas/PromotionNotFoundError'
-      - $ref: '#/components/schemas/UnauthorizedError'
-      discriminator:
-        propertyName: type
-        mapping:
-          FORBIDDEN: '#/components/schemas/ForbiddenError'
-          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
-          PROMOTION_NOT_FOUND: '#/components/schemas/PromotionNotFoundError'
-          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
-    PromotionDiscountScheme:
-      title: PromotionDiscountScheme
-      oneOf:
-      - $ref: '#/components/schemas/PromotionAmountDiscountScheme'
-      - $ref: '#/components/schemas/PromotionPercentDiscountScheme'
-      discriminator:
-        propertyName: type
-        mapping:
-          AMOUNT: '#/components/schemas/PromotionAmountDiscountScheme'
-          PERCENT: '#/components/schemas/PromotionPercentDiscountScheme'
-      x-portone-discriminator:
-        PERCENT:
-          title: 정률 할인
-        AMOUNT:
-          title: 정액 할인
-    Promotion:
-      title: 프로모션
-      description: 프로모션
-      oneOf:
-      - $ref: '#/components/schemas/CardPromotion'
-      discriminator:
-        propertyName: type
-        mapping:
-          CARD: '#/components/schemas/CardPromotion'
-      x-portone-title: 프로모션
-      x-portone-discriminator:
-        CARD:
-          title: 카드 프로모션
-    PromotionRecoverOptionNoRecover:
-      title: 결제 취소 시 프로모션 예산 미복구
-      description: 결제 취소 시 프로모션 예산 미복구
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-          title: 결제 취소 시 프로모션 예산 복구 옵션
-        spareBudget:
-          $ref: '#/components/schemas/PromotionSpareBudget'
-      x-portone-title: 결제 취소 시 프로모션 예산 미복구
-    ForbiddenError:
-      title: 요청이 거절된 경우
-      description: 요청이 거절된 경우
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 요청이 거절된 경우
-      x-portone-status-code: 403
     Currency:
       title: 통화
       description: 통화
@@ -879,19 +618,146 @@ components:
           title: Kuna (Replaced by EUR)
         BAM:
           title: Convertible Mark
-    PromotionSpareBudgetAmount:
-      title: PromotionSpareBudgetAmount
+    PromotionNotFoundError:
+      title: 프로모션이 존재하지 않는 경우
+      description: 프로모션이 존재하지 않는 경우
       type: object
       required:
       - type
-      - amount
       properties:
         type:
           type: string
-          title: 환불 대비용 프로모션 추가 예산
-        amount:
+        message:
+          type: string
+      x-portone-title: 프로모션이 존재하지 않는 경우
+      x-portone-status-code: 404
+    PromotionStatus:
+      title: PromotionStatus
+      type: string
+      enum:
+      - SCHEDULED
+      - IN_PROGRESS
+      - PAUSED
+      - BUDGET_EXHAUSTED
+      - TERMINATED
+      - COMPLETED
+      x-portone-enum:
+        IN_PROGRESS:
+          title: 진행중
+        TERMINATED:
+          title: 중단됨
+        COMPLETED:
+          title: 완료됨
+        SCHEDULED:
+          title: 예정됨
+        PAUSED:
+          title: 일시 중지됨
+        BUDGET_EXHAUSTED:
+          title: 예산 소진됨
+    ForbiddenError:
+      title: 요청이 거절된 경우
+      description: 요청이 거절된 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 요청이 거절된 경우
+      x-portone-status-code: 403
+    PromotionDiscountScheme:
+      title: PromotionDiscountScheme
+      oneOf:
+      - $ref: '#/components/schemas/PromotionAmountDiscountScheme'
+      - $ref: '#/components/schemas/PromotionPercentDiscountScheme'
+      discriminator:
+        propertyName: type
+        mapping:
+          AMOUNT: '#/components/schemas/PromotionAmountDiscountScheme'
+          PERCENT: '#/components/schemas/PromotionPercentDiscountScheme'
+      x-portone-discriminator:
+        PERCENT:
+          title: 정률 할인
+        AMOUNT:
+          title: 정액 할인
+    CardPromotion:
+      title: 카드 프로모션
+      description: 카드 프로모션
+      type: object
+      required:
+      - type
+      - id
+      - storeId
+      - name
+      - discountPolicy
+      - totalBudget
+      - spentAmount
+      - currency
+      - startAt
+      - endAt
+      - cardCompany
+      - status
+      - createdAt
+      - recoverOption
+      properties:
+        type:
+          type: string
+          title: 프로모션 유형
+        id:
+          type: string
+          title: 프로모션 아이디
+        storeId:
+          type: string
+          title: 상점 아이디
+        name:
+          type: string
+          title: 프로모션 이름
+        discountPolicy:
+          $ref: '#/components/schemas/PromotionDiscountPolicy'
+          title: 할인 정책
+        totalBudget:
           type: integer
           format: int64
+          title: 총 예산
+        maxDiscountAmount:
+          type: integer
+          format: int64
+          title: 최대 할인 금액
+        spentAmount:
+          type: integer
+          format: int64
+          title: 소진 금액
+        currency:
+          $ref: '#/components/schemas/Currency'
+          title: 금액 화폐
+        startAt:
+          type: string
+          format: date-time
+          title: 프로모션 시작 시각
+        endAt:
+          type: string
+          format: date-time
+          title: 프로모션 종료 시각
+        terminatedAt:
+          type: string
+          format: date-time
+          title: 프로모션 중단 시각
+        cardCompany:
+          $ref: '#/components/schemas/PromotionCardCompany'
+          title: 프로모션 카드사
+        status:
+          $ref: '#/components/schemas/PromotionStatus'
+          title: 프로모션 상태
+        createdAt:
+          type: string
+          format: date-time
+          title: 프로모션 생성 시각
+        recoverOption:
+          $ref: '#/components/schemas/PromotionRecoverOption'
+          title: 결제 취소 시 프로모션 예산 복구 옵션
+      x-portone-title: 카드 프로모션
     InvalidRequestError:
       title: 요청된 입력 정보가 유효하지 않은 경우
       description: '요청된 입력 정보가 유효하지 않은 경우
@@ -909,21 +775,137 @@ components:
       x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
       x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
       x-portone-status-code: 400
-    PromotionSpareBudget:
-      title: PromotionSpareBudget
+    PromotionRecoverOptionNoRecover:
+      title: 결제 취소 시 프로모션 예산 미복구
+      description: 결제 취소 시 프로모션 예산 미복구
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          title: 결제 취소 시 프로모션 예산 복구 옵션
+        spareBudget:
+          $ref: '#/components/schemas/PromotionSpareBudget'
+      x-portone-title: 결제 취소 시 프로모션 예산 미복구
+    PromotionDiscountPolicy:
+      title: 프로모션 할인 정책
+      description: 프로모션 할인 정책
+      type: object
+      required:
+      - partitions
+      properties:
+        partitions:
+          title: 금액 구간별 프로모션 할인 정책
+          type: array
+          items:
+            $ref: '#/components/schemas/PromotionDiscountPartition'
+      x-portone-title: 프로모션 할인 정책
+    PromotionAmountDiscountScheme:
+      title: PromotionAmountDiscountScheme
+      type: object
+      required:
+      - type
+      - amount
+      properties:
+        type:
+          type: string
+          title: 프로모션 할인 유형
+        amount:
+          type: integer
+          format: int64
+    Promotion:
+      title: 프로모션
+      description: 프로모션
       oneOf:
-      - $ref: '#/components/schemas/PromotionSpareBudgetAmount'
-      - $ref: '#/components/schemas/PromotionSpareBudgetPercent'
+      - $ref: '#/components/schemas/CardPromotion'
       discriminator:
         propertyName: type
         mapping:
-          AMOUNT: '#/components/schemas/PromotionSpareBudgetAmount'
-          PERCENT: '#/components/schemas/PromotionSpareBudgetPercent'
+          CARD: '#/components/schemas/CardPromotion'
+      x-portone-title: 프로모션
       x-portone-discriminator:
-        PERCENT:
-          title: 추가 예산 비율
-        AMOUNT:
-          title: 추가 예산 금액
+        CARD:
+          title: 카드 프로모션
+    PromotionSpareBudgetAmount:
+      title: PromotionSpareBudgetAmount
+      type: object
+      required:
+      - type
+      - amount
+      properties:
+        type:
+          type: string
+          title: 환불 대비용 프로모션 추가 예산
+        amount:
+          type: integer
+          format: int64
+    PromotionRecoverOptionRecover:
+      title: 결제 취소 시 프로모션 예산 복구
+      description: 결제 취소 시 프로모션 예산 복구
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          title: 결제 취소 시 프로모션 예산 복구 옵션
+      x-portone-title: 결제 취소 시 프로모션 예산 복구
+    PromotionSpareBudgetPercent:
+      title: PromotionSpareBudgetPercent
+      type: object
+      required:
+      - type
+      - percent
+      properties:
+        type:
+          type: string
+          title: 환불 대비용 프로모션 추가 예산
+        percent:
+          type: integer
+          format: int32
+    PromotionPercentDiscountScheme:
+      title: PromotionPercentDiscountScheme
+      type: object
+      required:
+      - type
+      - percent
+      properties:
+        type:
+          type: string
+          title: 프로모션 할인 유형
+        percent:
+          type: integer
+          format: int32
+    GetPromotionError:
+      title: GetPromotionError
+      oneOf:
+      - $ref: '#/components/schemas/ForbiddenError'
+      - $ref: '#/components/schemas/InvalidRequestError'
+      - $ref: '#/components/schemas/PromotionNotFoundError'
+      - $ref: '#/components/schemas/UnauthorizedError'
+      discriminator:
+        propertyName: type
+        mapping:
+          FORBIDDEN: '#/components/schemas/ForbiddenError'
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          PROMOTION_NOT_FOUND: '#/components/schemas/PromotionNotFoundError'
+          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
+    PromotionRecoverOption:
+      title: PromotionRecoverOption
+      oneOf:
+      - $ref: '#/components/schemas/PromotionRecoverOptionNoRecover'
+      - $ref: '#/components/schemas/PromotionRecoverOptionRecover'
+      discriminator:
+        propertyName: type
+        mapping:
+          NO_RECOVER: '#/components/schemas/PromotionRecoverOptionNoRecover'
+          RECOVER: '#/components/schemas/PromotionRecoverOptionRecover'
+      x-portone-discriminator:
+        RECOVER:
+          title: 결제 취소 시 프로모션 예산 복구
+        NO_RECOVER:
+          title: 결제 취소 시 프로모션 예산 미복구
     PromotionCardCompany:
       title: 프로모션 적용 가능한 카드사
       description: 프로모션 적용 가능한 카드사
@@ -958,17 +940,20 @@ components:
           title: NH카드
         KOOKMIN_CARD:
           title: 국민카드
-    PromotionRecoverOptionRecover:
-      title: 결제 취소 시 프로모션 예산 복구
-      description: 결제 취소 시 프로모션 예산 복구
+    PromotionDiscountPartition:
+      title: 금액 구간별 프로모션 할인 정책
+      description: 금액 구간별 프로모션 할인 정책
       type: object
       required:
-      - type
+      - amountFrom
+      - scheme
       properties:
-        type:
-          type: string
-          title: 결제 취소 시 프로모션 예산 복구 옵션
-      x-portone-title: 결제 취소 시 프로모션 예산 복구
+        amountFrom:
+          type: integer
+          format: int64
+        scheme:
+          $ref: '#/components/schemas/PromotionDiscountScheme'
+      x-portone-title: 금액 구간별 프로모션 할인 정책
     UnauthorizedError:
       title: 인증 정보가 올바르지 않은 경우
       description: 인증 정보가 올바르지 않은 경우
@@ -982,6 +967,21 @@ components:
           type: string
       x-portone-title: 인증 정보가 올바르지 않은 경우
       x-portone-status-code: 401
+    PromotionSpareBudget:
+      title: PromotionSpareBudget
+      oneOf:
+      - $ref: '#/components/schemas/PromotionSpareBudgetAmount'
+      - $ref: '#/components/schemas/PromotionSpareBudgetPercent'
+      discriminator:
+        propertyName: type
+        mapping:
+          AMOUNT: '#/components/schemas/PromotionSpareBudgetAmount'
+          PERCENT: '#/components/schemas/PromotionSpareBudgetPercent'
+      x-portone-discriminator:
+        PERCENT:
+          title: 추가 예산 비율
+        AMOUNT:
+          title: 추가 예산 금액
   securitySchemes:
     bearerJwt:
       type: http

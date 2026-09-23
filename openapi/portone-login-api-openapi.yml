@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: PortOne B2b Login API
+  title: PortOne Login API
   version: 1.16.0
 servers:
 - url: https://api.portone.io
@@ -73,6 +73,29 @@ components:
       x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
       x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
       x-portone-status-code: 400
+    LoginViaApiSecretError:
+      title: LoginViaApiSecretError
+      oneOf:
+      - $ref: '#/components/schemas/InvalidRequestError'
+      - $ref: '#/components/schemas/UnauthorizedError'
+      discriminator:
+        propertyName: type
+        mapping:
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
+    UnauthorizedError:
+      title: 인증 정보가 올바르지 않은 경우
+      description: 인증 정보가 올바르지 않은 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 인증 정보가 올바르지 않은 경우
+      x-portone-status-code: 401
     LoginViaApiSecretResponse:
       title: API key 로그인 성공 응답
       description: API key 로그인 성공 응답
@@ -103,29 +126,6 @@ components:
           type: string
           title: 발급받은 API secret
       x-portone-title: API Secret 로그인을 위한 입력 정보
-    UnauthorizedError:
-      title: 인증 정보가 올바르지 않은 경우
-      description: 인증 정보가 올바르지 않은 경우
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 인증 정보가 올바르지 않은 경우
-      x-portone-status-code: 401
-    LoginViaApiSecretError:
-      title: LoginViaApiSecretError
-      oneOf:
-      - $ref: '#/components/schemas/InvalidRequestError'
-      - $ref: '#/components/schemas/UnauthorizedError'
-      discriminator:
-        propertyName: type
-        mapping:
-          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
-          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
   securitySchemes:
     bearerJwt:
       type: http

@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: PortOne B2b Checkout Profiles API
+  title: PortOne Checkout Profiles API
   version: 1.16.0
 servers:
 - url: https://api.portone.io
@@ -75,33 +75,6 @@ paths:
       - Checkout Profiles
 components:
   schemas:
-    EvaluateCheckoutProfileError:
-      title: EvaluateCheckoutProfileError
-      oneOf:
-      - $ref: '#/components/schemas/InvalidRequestError'
-      - $ref: '#/components/schemas/ProfileSettingsNotFoundError'
-      discriminator:
-        propertyName: type
-        mapping:
-          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
-          PROFILE_SETTINGS_NOT_FOUND: '#/components/schemas/ProfileSettingsNotFoundError'
-    InvalidRequestError:
-      title: 요청된 입력 정보가 유효하지 않은 경우
-      description: '요청된 입력 정보가 유효하지 않은 경우
-
-
-        허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.'
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
-      x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
-      x-portone-status-code: 400
     Country:
       title: 국가
       description: 국가
@@ -856,101 +829,36 @@ components:
           title: Germany
         SR:
           title: Suriname
-    EvaluateCheckoutProfileResponse:
-      title: 체크아웃 프로필 평가 성공 응답
-      description: 체크아웃 프로필 평가 성공 응답
-      type: object
-      properties:
-        methods:
-          title: 사용 가능한 결제수단 목록
-          type: array
-          items:
-            $ref: '#/components/schemas/EvaluatedCheckoutMethod'
-          x-portone-title: 결제 수단
-          properties:
-            paymentMethod:
-              title: 결제수단
-            channelKey:
-              title: 채널 키
-      x-portone-title: 체크아웃 프로필 평가 성공 응답
-    CheckoutPaymentMethod:
-      title: 결제 수단
-      description: 결제 수단
-      type: string
-      enum:
-      - CARD_KR
-      - N_PAY
-      - KAKAO_PAY
-      - TOSS_PAY
-      - CARD_INTERNATIONAL
-      - PAY_PAL
-      - UNION_PAY
-      - ALIPAY_CN
-      - ALIPAY_HK
-      - TRUE_MONEY
-      - DANA
-      - TOUCH_N_GO
-      - G_CASH
-      - WE_CHAT_PAY
-      - KLARNA
-      - E_CONTEXT
-      - GRAB_PAY_MY
-      - GRAB_PAY_SG
-      - SHOPEE_PAY_TH
-      - PAY_PAY
-      - BPI
-      - RABBIT_LINE_PAY
-      - CONVENIENCE_STORE_JP
-      - AMAZON_PAY
-      - RAKUTEN_PAY
-      - D_BARAI
-      - AU_PAY
-      - MERPAY
-      x-portone-title: 결제 수단
-      x-portone-enum:
-        PAY_PAY: {}
-        ALIPAY_HK: {}
-        PAY_PAL: {}
-        WE_CHAT_PAY: {}
-        UNION_PAY: {}
-        MERPAY: {}
-        E_CONTEXT: {}
-        G_CASH: {}
-        CARD_KR: {}
-        AU_PAY: {}
-        SHOPEE_PAY_TH: {}
-        N_PAY: {}
-        AMAZON_PAY: {}
-        CARD_INTERNATIONAL: {}
-        GRAB_PAY_SG: {}
-        GRAB_PAY_MY: {}
-        KLARNA: {}
-        RABBIT_LINE_PAY: {}
-        KAKAO_PAY: {}
-        RAKUTEN_PAY: {}
-        TOSS_PAY: {}
-        CONVENIENCE_STORE_JP: {}
-        D_BARAI: {}
-        DANA: {}
-        TOUCH_N_GO: {}
-        BPI: {}
-        ALIPAY_CN: {}
-        TRUE_MONEY: {}
-    EvaluatedCheckoutMethod:
-      title: 결제 수단
-      description: 결제 수단
+    InvalidRequestError:
+      title: 요청된 입력 정보가 유효하지 않은 경우
+      description: '요청된 입력 정보가 유효하지 않은 경우
+
+
+        허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.'
       type: object
       required:
-      - paymentMethod
-      - channelKey
+      - type
       properties:
-        paymentMethod:
-          $ref: '#/components/schemas/CheckoutPaymentMethod'
-          title: 결제수단
-        channelKey:
+        type:
           type: string
-          title: 채널 키
-      x-portone-title: 결제 수단
+        message:
+          type: string
+      x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
+      x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
+      x-portone-status-code: 400
+    ProfileSettingsNotFoundError:
+      title: 프로필 설정이 존재하지 않는 경우
+      description: 프로필 설정이 존재하지 않는 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 프로필 설정이 존재하지 않는 경우
+      x-portone-status-code: 404
     Currency:
       title: 통화
       description: 통화
@@ -1501,19 +1409,111 @@ components:
           title: Kuna (Replaced by EUR)
         BAM:
           title: Convertible Mark
-    ProfileSettingsNotFoundError:
-      title: 프로필 설정이 존재하지 않는 경우
-      description: 프로필 설정이 존재하지 않는 경우
+    CheckoutPaymentMethod:
+      title: 결제 수단
+      description: 결제 수단
+      type: string
+      enum:
+      - CARD_KR
+      - N_PAY
+      - KAKAO_PAY
+      - TOSS_PAY
+      - CARD_INTERNATIONAL
+      - PAY_PAL
+      - UNION_PAY
+      - ALIPAY_CN
+      - ALIPAY_HK
+      - TRUE_MONEY
+      - DANA
+      - TOUCH_N_GO
+      - G_CASH
+      - WE_CHAT_PAY
+      - KLARNA
+      - E_CONTEXT
+      - GRAB_PAY_MY
+      - GRAB_PAY_SG
+      - SHOPEE_PAY_TH
+      - PAY_PAY
+      - BPI
+      - RABBIT_LINE_PAY
+      - CONVENIENCE_STORE_JP
+      - AMAZON_PAY
+      - RAKUTEN_PAY
+      - D_BARAI
+      - AU_PAY
+      - MERPAY
+      x-portone-title: 결제 수단
+      x-portone-enum:
+        PAY_PAY: {}
+        ALIPAY_HK: {}
+        PAY_PAL: {}
+        WE_CHAT_PAY: {}
+        UNION_PAY: {}
+        MERPAY: {}
+        E_CONTEXT: {}
+        G_CASH: {}
+        CARD_KR: {}
+        AU_PAY: {}
+        SHOPEE_PAY_TH: {}
+        N_PAY: {}
+        AMAZON_PAY: {}
+        CARD_INTERNATIONAL: {}
+        GRAB_PAY_SG: {}
+        GRAB_PAY_MY: {}
+        KLARNA: {}
+        RABBIT_LINE_PAY: {}
+        KAKAO_PAY: {}
+        RAKUTEN_PAY: {}
+        TOSS_PAY: {}
+        CONVENIENCE_STORE_JP: {}
+        D_BARAI: {}
+        DANA: {}
+        TOUCH_N_GO: {}
+        BPI: {}
+        ALIPAY_CN: {}
+        TRUE_MONEY: {}
+    EvaluatedCheckoutMethod:
+      title: 결제 수단
+      description: 결제 수단
       type: object
       required:
-      - type
+      - paymentMethod
+      - channelKey
       properties:
-        type:
+        paymentMethod:
+          $ref: '#/components/schemas/CheckoutPaymentMethod'
+          title: 결제수단
+        channelKey:
           type: string
-        message:
-          type: string
-      x-portone-title: 프로필 설정이 존재하지 않는 경우
-      x-portone-status-code: 404
+          title: 채널 키
+      x-portone-title: 결제 수단
+    EvaluateCheckoutProfileError:
+      title: EvaluateCheckoutProfileError
+      oneOf:
+      - $ref: '#/components/schemas/InvalidRequestError'
+      - $ref: '#/components/schemas/ProfileSettingsNotFoundError'
+      discriminator:
+        propertyName: type
+        mapping:
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          PROFILE_SETTINGS_NOT_FOUND: '#/components/schemas/ProfileSettingsNotFoundError'
+    EvaluateCheckoutProfileResponse:
+      title: 체크아웃 프로필 평가 성공 응답
+      description: 체크아웃 프로필 평가 성공 응답
+      type: object
+      properties:
+        methods:
+          title: 사용 가능한 결제수단 목록
+          type: array
+          items:
+            $ref: '#/components/schemas/EvaluatedCheckoutMethod'
+          x-portone-title: 결제 수단
+          properties:
+            paymentMethod:
+              title: 결제수단
+            channelKey:
+              title: 채널 키
+      x-portone-title: 체크아웃 프로필 평가 성공 응답
   securitySchemes:
     bearerJwt:
       type: http

@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: PortOne B2b Token API
+  title: PortOne Token API
   version: 1.16.0
 servers:
 - url: https://api.portone.io
@@ -82,19 +82,6 @@ components:
         mapping:
           INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
           UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
-    UnauthorizedError:
-      title: 인증 정보가 올바르지 않은 경우
-      description: 인증 정보가 올바르지 않은 경우
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 인증 정보가 올바르지 않은 경우
-      x-portone-status-code: 401
     RefreshTokenResponse:
       title: 토큰 재발급 성공 응답
       description: 토큰 재발급 성공 응답
@@ -114,6 +101,19 @@ components:
 
             동일한 유저가 로그인 또는 토큰 재발급을 진행할 때마다 기존에 발급된 리프레시 토큰은 즉시 만료되므로 API 사용에 유의해주세요.'
       x-portone-title: 토큰 재발급 성공 응답
+    UnauthorizedError:
+      title: 인증 정보가 올바르지 않은 경우
+      description: 인증 정보가 올바르지 않은 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 인증 정보가 올바르지 않은 경우
+      x-portone-status-code: 401
     RefreshTokenBody:
       title: 토큰 재발급을 위한 입력 정보
       description: 토큰 재발급을 위한 입력 정보

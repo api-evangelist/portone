@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: PortOne B2b Paymentwall API
+  title: PortOne Paymentwall API
   version: 1.16.0
 servers:
 - url: https://api.portone.io
@@ -64,69 +64,6 @@ paths:
       - Paymentwall
 components:
   schemas:
-    PaymentwallDeliveryType:
-      title: 페이먼트월 배송 유형
-      description: 페이먼트월 배송 유형
-      type: string
-      enum:
-      - DIGITAL
-      - PHYSICAL
-      x-portone-title: 페이먼트월 배송 유형
-      x-portone-enum:
-        DIGITAL:
-          title: 디지털
-        PHYSICAL:
-          title: 실물
-    ConfirmPaymentwallDeliveryError:
-      title: ConfirmPaymentwallDeliveryError
-      oneOf:
-      - $ref: '#/components/schemas/InvalidRequestError'
-      - $ref: '#/components/schemas/PaymentNotFoundError'
-      - $ref: '#/components/schemas/UnauthorizedError'
-      discriminator:
-        propertyName: type
-        mapping:
-          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
-          PAYMENT_NOT_FOUND: '#/components/schemas/PaymentNotFoundError'
-          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
-    InvalidRequestError:
-      title: 요청된 입력 정보가 유효하지 않은 경우
-      description: '요청된 입력 정보가 유효하지 않은 경우
-
-
-        허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.'
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
-      x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
-      x-portone-status-code: 400
-    ConfirmPaymentwallDeliveryResponse:
-      title: 페이먼트월 배송 정보 등록 성공 응답
-      description: 페이먼트월 배송 정보 등록 성공 응답
-      type: object
-      x-portone-title: 페이먼트월 배송 정보 등록 성공 응답
-    PaymentwallDeliveryStatus:
-      title: 페이먼트월 배송 상태
-      description: 페이먼트월 배송 상태
-      type: string
-      enum:
-      - ORDER_PLACED
-      - ORDER_SHIPPED
-      - DELIVERED
-      x-portone-title: 페이먼트월 배송 상태
-      x-portone-enum:
-        ORDER_PLACED:
-          title: 주문 접수
-        ORDER_SHIPPED:
-          title: 배송 중
-        DELIVERED:
-          title: 배송 완료
     Country:
       title: 국가
       description: 국가
@@ -881,6 +818,36 @@ components:
           title: Germany
         SR:
           title: Suriname
+    PaymentwallDeliveryType:
+      title: 페이먼트월 배송 유형
+      description: 페이먼트월 배송 유형
+      type: string
+      enum:
+      - DIGITAL
+      - PHYSICAL
+      x-portone-title: 페이먼트월 배송 유형
+      x-portone-enum:
+        DIGITAL:
+          title: 디지털
+        PHYSICAL:
+          title: 실물
+    InvalidRequestError:
+      title: 요청된 입력 정보가 유효하지 않은 경우
+      description: '요청된 입력 정보가 유효하지 않은 경우
+
+
+        허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.'
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
+      x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
+      x-portone-status-code: 400
     UnauthorizedError:
       title: 인증 정보가 올바르지 않은 경우
       description: 인증 정보가 올바르지 않은 경우
@@ -894,6 +861,34 @@ components:
           type: string
       x-portone-title: 인증 정보가 올바르지 않은 경우
       x-portone-status-code: 401
+    PaymentwallDeliveryStatus:
+      title: 페이먼트월 배송 상태
+      description: 페이먼트월 배송 상태
+      type: string
+      enum:
+      - ORDER_PLACED
+      - ORDER_SHIPPED
+      - DELIVERED
+      x-portone-title: 페이먼트월 배송 상태
+      x-portone-enum:
+        ORDER_PLACED:
+          title: 주문 접수
+        ORDER_SHIPPED:
+          title: 배송 중
+        DELIVERED:
+          title: 배송 완료
+    ConfirmPaymentwallDeliveryError:
+      title: ConfirmPaymentwallDeliveryError
+      oneOf:
+      - $ref: '#/components/schemas/InvalidRequestError'
+      - $ref: '#/components/schemas/PaymentNotFoundError'
+      - $ref: '#/components/schemas/UnauthorizedError'
+      discriminator:
+        propertyName: type
+        mapping:
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          PAYMENT_NOT_FOUND: '#/components/schemas/PaymentNotFoundError'
+          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
     ConfirmPaymentwallDeliveryBody:
       title: 페이먼트월 배송 정보 등록 입력 정보
       description: 페이먼트월 배송 정보 등록 입력 정보
@@ -986,6 +981,11 @@ components:
           title: 배송 증빙 첨부 파일 URL 목록
           description: 배송 증빙 자료의 URL(이미지 등)을 입력합니다. 증빙 자료를 제공하기 어려운 경우 생략할 수 있습니다.
       x-portone-title: 페이먼트월 배송 정보 등록 입력 정보
+    ConfirmPaymentwallDeliveryResponse:
+      title: 페이먼트월 배송 정보 등록 성공 응답
+      description: 페이먼트월 배송 정보 등록 성공 응답
+      type: object
+      x-portone-title: 페이먼트월 배송 정보 등록 성공 응답
     PaymentNotFoundError:
       title: 결제 건이 존재하지 않는 경우
       description: 결제 건이 존재하지 않는 경우

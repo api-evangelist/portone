@@ -1,0 +1,25 @@
+# Front Door AI Index — portone — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: portone
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: portone.io
+  final_host: www.portone.io
+  ownership: own
+  owner: portone
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 6
+  host_score: 6
+  density: 3.92
+  words: 1532
+  tiers:
+    agentic: 0
+    core: 6
+    model: 0
+  ambiguous: 0
+  top_terms:
+    AI: 6

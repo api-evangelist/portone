@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: PortOne B2b Kakaopay API
+  title: PortOne Kakaopay API
   version: 1.16.0
 servers:
 - url: https://api.portone.io
@@ -67,16 +67,22 @@ paths:
       - Kakaopay
 components:
   schemas:
-    GetKakaopayPaymentOrderError:
-      title: GetKakaopayPaymentOrderError
-      oneOf:
-      - $ref: '#/components/schemas/InvalidRequestError'
-      - $ref: '#/components/schemas/UnauthorizedError'
-      discriminator:
-        propertyName: type
-        mapping:
-          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
-          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
+    GetKakaopayPaymentOrderResponse:
+      title: 카카오페이 주문 조회 응답
+      description: 카카오페이 주문 조회 응답
+      type: object
+      required:
+      - statusCode
+      - body
+      properties:
+        statusCode:
+          type: integer
+          format: int32
+          title: HTTP 상태 코드
+        body:
+          type: string
+          title: HTTP 응답 본문 (JSON)
+      x-portone-title: 카카오페이 주문 조회 응답
     InvalidRequestError:
       title: 요청된 입력 정보가 유효하지 않은 경우
       description: '요청된 입력 정보가 유효하지 않은 경우
@@ -107,22 +113,16 @@ components:
           type: string
       x-portone-title: 인증 정보가 올바르지 않은 경우
       x-portone-status-code: 401
-    GetKakaopayPaymentOrderResponse:
-      title: 카카오페이 주문 조회 응답
-      description: 카카오페이 주문 조회 응답
-      type: object
-      required:
-      - statusCode
-      - body
-      properties:
-        statusCode:
-          type: integer
-          format: int32
-          title: HTTP 상태 코드
-        body:
-          type: string
-          title: HTTP 응답 본문 (JSON)
-      x-portone-title: 카카오페이 주문 조회 응답
+    GetKakaopayPaymentOrderError:
+      title: GetKakaopayPaymentOrderError
+      oneOf:
+      - $ref: '#/components/schemas/InvalidRequestError'
+      - $ref: '#/components/schemas/UnauthorizedError'
+      discriminator:
+        propertyName: type
+        mapping:
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
   securitySchemes:
     bearerJwt:
       type: http
