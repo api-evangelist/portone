@@ -623,8 +623,6 @@ apis:
   humanURL: https://developers.portone.io/api/rest-v1
   baseURL: https://api.iamport.kr
   tags:
-  - B2B
-  tags_raw:
   - B2 B
   properties:
   - type: OpenAPI

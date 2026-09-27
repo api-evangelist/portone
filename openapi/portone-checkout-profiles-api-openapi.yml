@@ -75,6 +75,629 @@ paths:
       - Checkout Profiles
 components:
   schemas:
+    CheckoutPaymentMethod:
+      title: 결제 수단
+      description: 결제 수단
+      type: string
+      enum:
+      - CARD_KR
+      - N_PAY
+      - KAKAO_PAY
+      - TOSS_PAY
+      - CARD_INTERNATIONAL
+      - PAY_PAL
+      - UNION_PAY
+      - ALIPAY_CN
+      - ALIPAY_HK
+      - TRUE_MONEY
+      - DANA
+      - TOUCH_N_GO
+      - G_CASH
+      - WE_CHAT_PAY
+      - KLARNA
+      - E_CONTEXT
+      - GRAB_PAY_MY
+      - GRAB_PAY_SG
+      - SHOPEE_PAY_TH
+      - PAY_PAY
+      - BPI
+      - RABBIT_LINE_PAY
+      - CONVENIENCE_STORE_JP
+      - AMAZON_PAY
+      - RAKUTEN_PAY
+      - D_BARAI
+      - AU_PAY
+      - MERPAY
+      x-portone-title: 결제 수단
+      x-portone-enum:
+        PAY_PAY: {}
+        ALIPAY_HK: {}
+        PAY_PAL: {}
+        WE_CHAT_PAY: {}
+        UNION_PAY: {}
+        MERPAY: {}
+        E_CONTEXT: {}
+        G_CASH: {}
+        CARD_KR: {}
+        AU_PAY: {}
+        SHOPEE_PAY_TH: {}
+        N_PAY: {}
+        AMAZON_PAY: {}
+        CARD_INTERNATIONAL: {}
+        GRAB_PAY_SG: {}
+        GRAB_PAY_MY: {}
+        KLARNA: {}
+        RABBIT_LINE_PAY: {}
+        KAKAO_PAY: {}
+        RAKUTEN_PAY: {}
+        TOSS_PAY: {}
+        CONVENIENCE_STORE_JP: {}
+        D_BARAI: {}
+        DANA: {}
+        TOUCH_N_GO: {}
+        BPI: {}
+        ALIPAY_CN: {}
+        TRUE_MONEY: {}
+    Currency:
+      title: 통화
+      description: 통화
+      type: string
+      enum:
+      - KRW
+      - USD
+      - JPY
+      - AED
+      - AFN
+      - ALL
+      - AMD
+      - ANG
+      - AOA
+      - ARS
+      - AUD
+      - AWG
+      - AZN
+      - BAM
+      - BBD
+      - BDT
+      - BGN
+      - BHD
+      - BIF
+      - BMD
+      - BND
+      - BOB
+      - BOV
+      - BRL
+      - BSD
+      - BTN
+      - BWP
+      - BYN
+      - BZD
+      - CAD
+      - CDF
+      - CHE
+      - CHF
+      - CHW
+      - CLF
+      - CLP
+      - CNY
+      - COP
+      - COU
+      - CRC
+      - CUC
+      - CUP
+      - CVE
+      - CZK
+      - DJF
+      - DKK
+      - DOP
+      - DZD
+      - EGP
+      - ERN
+      - ETB
+      - EUR
+      - FJD
+      - FKP
+      - GBP
+      - GEL
+      - GHS
+      - GIP
+      - GMD
+      - GNF
+      - GTQ
+      - GYD
+      - HKD
+      - HNL
+      - HRK
+      - HTG
+      - HUF
+      - IDR
+      - ILS
+      - INR
+      - IQD
+      - IRR
+      - ISK
+      - JMD
+      - JOD
+      - KES
+      - KGS
+      - KHR
+      - KMF
+      - KPW
+      - KWD
+      - KYD
+      - KZT
+      - LAK
+      - LBP
+      - LKR
+      - LRD
+      - LSL
+      - LYD
+      - MAD
+      - MDL
+      - MGA
+      - MKD
+      - MMK
+      - MNT
+      - MOP
+      - MRU
+      - MUR
+      - MVR
+      - MWK
+      - MXN
+      - MXV
+      - MYR
+      - MZN
+      - NAD
+      - NGN
+      - NIO
+      - NOK
+      - NPR
+      - NZD
+      - OMR
+      - PAB
+      - PEN
+      - PGK
+      - PHP
+      - PKR
+      - PLN
+      - PYG
+      - QAR
+      - RON
+      - RSD
+      - RUB
+      - RWF
+      - SAR
+      - SBD
+      - SCR
+      - SDG
+      - SEK
+      - SGD
+      - SHP
+      - SLE
+      - SLL
+      - SOS
+      - SRD
+      - SSP
+      - STN
+      - SVC
+      - SYP
+      - SZL
+      - THB
+      - TJS
+      - TMT
+      - TND
+      - TOP
+      - TRY
+      - TTD
+      - TWD
+      - TZS
+      - UAH
+      - UGX
+      - USN
+      - UYI
+      - UYU
+      - UYW
+      - UZS
+      - VED
+      - VES
+      - VND
+      - VUV
+      - WST
+      - XAF
+      - XAG
+      - XAU
+      - XBA
+      - XBB
+      - XBC
+      - XBD
+      - XCD
+      - XDR
+      - XOF
+      - XPD
+      - XPF
+      - XPT
+      - XSU
+      - XTS
+      - XUA
+      - XXX
+      - YER
+      - ZAR
+      - ZMW
+      - ZWL
+      x-portone-title: 통화
+      x-portone-enum:
+        OMR:
+          title: Rial Omani
+        CUC:
+          title: Peso Convertible
+        BBD:
+          title: Barbados Dollar
+        PLN:
+          title: Zloty
+        SVC:
+          title: El Salvador Colon
+        BMD:
+          title: Bermudian Dollar
+        TJS:
+          title: Somoni
+        TND:
+          title: Tunisian Dinar
+        GNF:
+          title: Guinean Franc
+        SDG:
+          title: Sudanese Pound
+        MRU:
+          title: Ouguiya
+        XBB:
+          title: Bond Markets Unit European Monetary Unit (E.M.U.-6)
+        PKR:
+          title: Pakistan Rupee
+        FKP:
+          title: Falkland Islands Pound
+        MUR:
+          title: Mauritius Rupee
+        XAF:
+          title: CFA Franc BEAC
+        SAR:
+          title: Saudi Riyal
+        CAD:
+          title: Canadian Dollar
+        HKD:
+          title: Hong Kong Dollar
+        PYG:
+          title: Guarani
+        MGA:
+          title: Malagasy Ariary
+        UYI:
+          title: Uruguay Peso en Unidades Indexadas (UI)
+        AUD:
+          title: Australian Dollar
+        AMD:
+          title: Armenian Dram
+        YER:
+          title: Yemeni Rial
+        CHE:
+          title: WIR Euro
+        MMK:
+          title: Kyat
+        SEK:
+          title: Swedish Krona
+        TRY:
+          title: Turkish Lira
+        XBC:
+          title: Bond Markets Unit European Unit of Account 9 (E.U.A.-9)
+        KES:
+          title: Kenyan Shilling
+        GEL:
+          title: Lari
+        GTQ:
+          title: Quetzal
+        TZS:
+          title: Tanzanian Shilling
+        CUP:
+          title: Cuban Peso
+        ALL:
+          title: Lek
+        ERN:
+          title: Nakfa
+        BRL:
+          title: Brazilian Real
+        UGX:
+          title: Uganda Shilling
+        XUA:
+          title: ADB Unit of Account
+        GIP:
+          title: Gibraltar Pound
+        MZN:
+          title: Mozambique Metical
+        KRW:
+          title: 대한민국 원화
+        JOD:
+          title: Jordanian Dinar
+        IQD:
+          title: Iraqi Dinar
+        VUV:
+          title: Vatu
+        XXX:
+          title: The codes assigned for transactions where no currency is involved
+        UZS:
+          title: Uzbekistan Sum
+        BOV:
+          title: Mvdol
+        UAH:
+          title: Hryvnia
+        PEN:
+          title: Sol
+        KMF:
+          title: 'Comorian Franc '
+        DOP:
+          title: Dominican Peso
+        BDT:
+          title: Taka
+        LKR:
+          title: Sri Lanka Rupee
+        FJD:
+          title: Fiji Dollar
+        LSL:
+          title: Loti
+        BSD:
+          title: Bahamian Dollar
+        SRD:
+          title: Surinam Dollar
+        XTS:
+          title: Codes specifically reserved for testing purposes
+        SHP:
+          title: Saint Helena Pound
+        LRD:
+          title: Liberian Dollar
+        QAR:
+          title: Qatari Rial
+        BND:
+          title: Brunei Dollar
+        CDF:
+          title: Congolese Franc
+        SLE:
+          title: Leone
+        USN:
+          title: US Dollar (Next day)
+        VES:
+          title: Bolívar Soberano
+        TMT:
+          title: Turkmenistan New Manat
+        CHW:
+          title: WIR Franc
+        BGN:
+          title: Bulgarian Lev
+        JMD:
+          title: Jamaican Dollar
+        SZL:
+          title: Lilangeni
+        CZK:
+          title: Czech Koruna
+        ZMW:
+          title: Zambian Kwacha
+        UYU:
+          title: Peso Uruguayo
+        NPR:
+          title: Nepalese Rupee
+        EGP:
+          title: Egyptian Pound
+        AZN:
+          title: Azerbaijan Manat
+        CLP:
+          title: Chilean Peso
+        MOP:
+          title: Pataca
+        SCR:
+          title: Seychelles Rupee
+        HTG:
+          title: Gourde
+        VND:
+          title: Dong
+        LAK:
+          title: Lao Kip
+        BTN:
+          title: Ngultrum
+        GBP:
+          title: Pound Sterling
+        SSP:
+          title: South Sudanese Pound
+        XPD:
+          title: Palladium
+        TWD:
+          title: New Taiwan Dollar
+        DZD:
+          title: Algerian Dinar
+        MXN:
+          title: Mexican Peso
+        XDR:
+          title: SDR (Special Drawing Right)
+        ZWL:
+          title: Zimbabwe Dollar
+        AWG:
+          title: Aruban Florin
+        THB:
+          title: Baht
+        ISK:
+          title: Iceland Krona
+        LBP:
+          title: Lebanese Pound
+        SGD:
+          title: Singapore Dollar
+        MWK:
+          title: Malawi Kwacha
+        KZT:
+          title: Tenge
+        CRC:
+          title: Costa Rican Colon
+        WST:
+          title: Tala
+        DJF:
+          title: Djibouti Franc
+        LYD:
+          title: Libyan Dinar
+        NGN:
+          title: Naira
+        BIF:
+          title: Burundi Franc
+        AED:
+          title: UAE Dirham
+        CHF:
+          title: Swiss Franc
+        RWF:
+          title: Rwanda Franc
+        XBD:
+          title: Bond Markets Unit European Unit of Account 17 (E.U.A.-17)
+        INR:
+          title: Indian Rupee
+        CLF:
+          title: Unidad de Fomento
+        XOF:
+          title: CFA Franc BCEAO
+        COU:
+          title: Unidad de Valor Real
+        MXV:
+          title: Mexican Unidad de Inversion (UDI)
+        PGK:
+          title: Kina
+        CNY:
+          title: Yuan Renminbi
+        SYP:
+          title: Syrian Pound
+        VED:
+          title: Bolívar Soberano
+        RON:
+          title: Romanian Leu
+        AFN:
+          title: Afghani
+        PHP:
+          title: Philippine Peso
+        MDL:
+          title: Moldovan Leu
+        KHR:
+          title: Riel
+        XPT:
+          title: Platinum
+        COP:
+          title: Colombian Peso
+        DKK:
+          title: Danish Krone
+        KYD:
+          title: Cayman Islands Dollar
+        XPF:
+          title: CFP Franc
+        GMD:
+          title: Dalasi
+        MVR:
+          title: Rufiyaa
+        STN:
+          title: Dobra
+        TTD:
+          title: Trinidad and Tobago Dollar
+        PAB:
+          title: Balboa
+        XAU:
+          title: Gold
+        XAG:
+          title: Silver
+        JPY:
+          title: 일본 엔화
+        TOP:
+          title: Pa’anga
+        BWP:
+          title: Pula
+        MKD:
+          title: Denar
+        ARS:
+          title: Argentine Peso
+        HUF:
+          title: Forint
+        MYR:
+          title: Malaysian Ringgit
+        USD:
+          title: 미국 달러
+        SLL:
+          title: Leone
+        MAD:
+          title: Moroccan Dirham
+        RUB:
+          title: Russian Ruble
+        MNT:
+          title: Tugrik
+        BOB:
+          title: Boliviano
+        GYD:
+          title: Guyana Dollar
+        SBD:
+          title: Solomon Islands Dollar
+        XBA:
+          title: Bond Markets Unit European Composite Unit (EURCO)
+        BHD:
+          title: Bahraini Dinar
+        HNL:
+          title: Lempira
+        UYW:
+          title: Unidad Previsional
+        NZD:
+          title: New Zealand Dollar
+        XCD:
+          title: East Caribbean Dollar
+        XSU:
+          title: Sucre
+        KGS:
+          title: Som
+        AOA:
+          title: Kwanza
+        BZD:
+          title: Belize Dollar
+        IDR:
+          title: Rupiah
+        SOS:
+          title: Somali Shilling
+        NIO:
+          title: Cordoba Oro
+        GHS:
+          title: Ghana Cedi
+        ANG:
+          title: Netherlands Antillean Guilder
+        RSD:
+          title: Serbian Dinar
+        ILS:
+          title: New Israeli Sheqel
+        NOK:
+          title: Norwegian Krone
+        KWD:
+          title: Kuwaiti Dinar
+        NAD:
+          title: Namibia Dollar
+        ETB:
+          title: Ethiopian Birr
+        BYN:
+          title: Belarusian Ruble
+        KPW:
+          title: North Korean Won
+        EUR:
+          title: Euro
+        CVE:
+          title: Cabo Verde Escudo
+        ZAR:
+          title: Rand
+        IRR:
+          title: Iranian Rial
+        HRK:
+          title: Kuna (Replaced by EUR)
+        BAM:
+          title: Convertible Mark
+    EvaluateCheckoutProfileError:
+      title: EvaluateCheckoutProfileError
+      oneOf:
+      - $ref: '#/components/schemas/InvalidRequestError'
+      - $ref: '#/components/schemas/ProfileSettingsNotFoundError'
+      discriminator:
+        propertyName: type
+        mapping:
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          PROFILE_SETTINGS_NOT_FOUND: '#/components/schemas/ProfileSettingsNotFoundError'
     Country:
       title: 국가
       description: 국가
@@ -859,619 +1482,6 @@ components:
           type: string
       x-portone-title: 프로필 설정이 존재하지 않는 경우
       x-portone-status-code: 404
-    Currency:
-      title: 통화
-      description: 통화
-      type: string
-      enum:
-      - KRW
-      - USD
-      - JPY
-      - AED
-      - AFN
-      - ALL
-      - AMD
-      - ANG
-      - AOA
-      - ARS
-      - AUD
-      - AWG
-      - AZN
-      - BAM
-      - BBD
-      - BDT
-      - BGN
-      - BHD
-      - BIF
-      - BMD
-      - BND
-      - BOB
-      - BOV
-      - BRL
-      - BSD
-      - BTN
-      - BWP
-      - BYN
-      - BZD
-      - CAD
-      - CDF
-      - CHE
-      - CHF
-      - CHW
-      - CLF
-      - CLP
-      - CNY
-      - COP
-      - COU
-      - CRC
-      - CUC
-      - CUP
-      - CVE
-      - CZK
-      - DJF
-      - DKK
-      - DOP
-      - DZD
-      - EGP
-      - ERN
-      - ETB
-      - EUR
-      - FJD
-      - FKP
-      - GBP
-      - GEL
-      - GHS
-      - GIP
-      - GMD
-      - GNF
-      - GTQ
-      - GYD
-      - HKD
-      - HNL
-      - HRK
-      - HTG
-      - HUF
-      - IDR
-      - ILS
-      - INR
-      - IQD
-      - IRR
-      - ISK
-      - JMD
-      - JOD
-      - KES
-      - KGS
-      - KHR
-      - KMF
-      - KPW
-      - KWD
-      - KYD
-      - KZT
-      - LAK
-      - LBP
-      - LKR
-      - LRD
-      - LSL
-      - LYD
-      - MAD
-      - MDL
-      - MGA
-      - MKD
-      - MMK
-      - MNT
-      - MOP
-      - MRU
-      - MUR
-      - MVR
-      - MWK
-      - MXN
-      - MXV
-      - MYR
-      - MZN
-      - NAD
-      - NGN
-      - NIO
-      - NOK
-      - NPR
-      - NZD
-      - OMR
-      - PAB
-      - PEN
-      - PGK
-      - PHP
-      - PKR
-      - PLN
-      - PYG
-      - QAR
-      - RON
-      - RSD
-      - RUB
-      - RWF
-      - SAR
-      - SBD
-      - SCR
-      - SDG
-      - SEK
-      - SGD
-      - SHP
-      - SLE
-      - SLL
-      - SOS
-      - SRD
-      - SSP
-      - STN
-      - SVC
-      - SYP
-      - SZL
-      - THB
-      - TJS
-      - TMT
-      - TND
-      - TOP
-      - TRY
-      - TTD
-      - TWD
-      - TZS
-      - UAH
-      - UGX
-      - USN
-      - UYI
-      - UYU
-      - UYW
-      - UZS
-      - VED
-      - VES
-      - VND
-      - VUV
-      - WST
-      - XAF
-      - XAG
-      - XAU
-      - XBA
-      - XBB
-      - XBC
-      - XBD
-      - XCD
-      - XDR
-      - XOF
-      - XPD
-      - XPF
-      - XPT
-      - XSU
-      - XTS
-      - XUA
-      - XXX
-      - YER
-      - ZAR
-      - ZMW
-      - ZWL
-      x-portone-title: 통화
-      x-portone-enum:
-        OMR:
-          title: Rial Omani
-        CUC:
-          title: Peso Convertible
-        BBD:
-          title: Barbados Dollar
-        PLN:
-          title: Zloty
-        SVC:
-          title: El Salvador Colon
-        BMD:
-          title: Bermudian Dollar
-        TJS:
-          title: Somoni
-        TND:
-          title: Tunisian Dinar
-        GNF:
-          title: Guinean Franc
-        SDG:
-          title: Sudanese Pound
-        MRU:
-          title: Ouguiya
-        XBB:
-          title: Bond Markets Unit European Monetary Unit (E.M.U.-6)
-        PKR:
-          title: Pakistan Rupee
-        FKP:
-          title: Falkland Islands Pound
-        MUR:
-          title: Mauritius Rupee
-        XAF:
-          title: CFA Franc BEAC
-        SAR:
-          title: Saudi Riyal
-        CAD:
-          title: Canadian Dollar
-        HKD:
-          title: Hong Kong Dollar
-        PYG:
-          title: Guarani
-        MGA:
-          title: Malagasy Ariary
-        UYI:
-          title: Uruguay Peso en Unidades Indexadas (UI)
-        AUD:
-          title: Australian Dollar
-        AMD:
-          title: Armenian Dram
-        YER:
-          title: Yemeni Rial
-        CHE:
-          title: WIR Euro
-        MMK:
-          title: Kyat
-        SEK:
-          title: Swedish Krona
-        TRY:
-          title: Turkish Lira
-        XBC:
-          title: Bond Markets Unit European Unit of Account 9 (E.U.A.-9)
-        KES:
-          title: Kenyan Shilling
-        GEL:
-          title: Lari
-        GTQ:
-          title: Quetzal
-        TZS:
-          title: Tanzanian Shilling
-        CUP:
-          title: Cuban Peso
-        ALL:
-          title: Lek
-        ERN:
-          title: Nakfa
-        BRL:
-          title: Brazilian Real
-        UGX:
-          title: Uganda Shilling
-        XUA:
-          title: ADB Unit of Account
-        GIP:
-          title: Gibraltar Pound
-        MZN:
-          title: Mozambique Metical
-        KRW:
-          title: 대한민국 원화
-        JOD:
-          title: Jordanian Dinar
-        IQD:
-          title: Iraqi Dinar
-        VUV:
-          title: Vatu
-        XXX:
-          title: The codes assigned for transactions where no currency is involved
-        UZS:
-          title: Uzbekistan Sum
-        BOV:
-          title: Mvdol
-        UAH:
-          title: Hryvnia
-        PEN:
-          title: Sol
-        KMF:
-          title: 'Comorian Franc '
-        DOP:
-          title: Dominican Peso
-        BDT:
-          title: Taka
-        LKR:
-          title: Sri Lanka Rupee
-        FJD:
-          title: Fiji Dollar
-        LSL:
-          title: Loti
-        BSD:
-          title: Bahamian Dollar
-        SRD:
-          title: Surinam Dollar
-        XTS:
-          title: Codes specifically reserved for testing purposes
-        SHP:
-          title: Saint Helena Pound
-        LRD:
-          title: Liberian Dollar
-        QAR:
-          title: Qatari Rial
-        BND:
-          title: Brunei Dollar
-        CDF:
-          title: Congolese Franc
-        SLE:
-          title: Leone
-        USN:
-          title: US Dollar (Next day)
-        VES:
-          title: Bolívar Soberano
-        TMT:
-          title: Turkmenistan New Manat
-        CHW:
-          title: WIR Franc
-        BGN:
-          title: Bulgarian Lev
-        JMD:
-          title: Jamaican Dollar
-        SZL:
-          title: Lilangeni
-        CZK:
-          title: Czech Koruna
-        ZMW:
-          title: Zambian Kwacha
-        UYU:
-          title: Peso Uruguayo
-        NPR:
-          title: Nepalese Rupee
-        EGP:
-          title: Egyptian Pound
-        AZN:
-          title: Azerbaijan Manat
-        CLP:
-          title: Chilean Peso
-        MOP:
-          title: Pataca
-        SCR:
-          title: Seychelles Rupee
-        HTG:
-          title: Gourde
-        VND:
-          title: Dong
-        LAK:
-          title: Lao Kip
-        BTN:
-          title: Ngultrum
-        GBP:
-          title: Pound Sterling
-        SSP:
-          title: South Sudanese Pound
-        XPD:
-          title: Palladium
-        TWD:
-          title: New Taiwan Dollar
-        DZD:
-          title: Algerian Dinar
-        MXN:
-          title: Mexican Peso
-        XDR:
-          title: SDR (Special Drawing Right)
-        ZWL:
-          title: Zimbabwe Dollar
-        AWG:
-          title: Aruban Florin
-        THB:
-          title: Baht
-        ISK:
-          title: Iceland Krona
-        LBP:
-          title: Lebanese Pound
-        SGD:
-          title: Singapore Dollar
-        MWK:
-          title: Malawi Kwacha
-        KZT:
-          title: Tenge
-        CRC:
-          title: Costa Rican Colon
-        WST:
-          title: Tala
-        DJF:
-          title: Djibouti Franc
-        LYD:
-          title: Libyan Dinar
-        NGN:
-          title: Naira
-        BIF:
-          title: Burundi Franc
-        AED:
-          title: UAE Dirham
-        CHF:
-          title: Swiss Franc
-        RWF:
-          title: Rwanda Franc
-        XBD:
-          title: Bond Markets Unit European Unit of Account 17 (E.U.A.-17)
-        INR:
-          title: Indian Rupee
-        CLF:
-          title: Unidad de Fomento
-        XOF:
-          title: CFA Franc BCEAO
-        COU:
-          title: Unidad de Valor Real
-        MXV:
-          title: Mexican Unidad de Inversion (UDI)
-        PGK:
-          title: Kina
-        CNY:
-          title: Yuan Renminbi
-        SYP:
-          title: Syrian Pound
-        VED:
-          title: Bolívar Soberano
-        RON:
-          title: Romanian Leu
-        AFN:
-          title: Afghani
-        PHP:
-          title: Philippine Peso
-        MDL:
-          title: Moldovan Leu
-        KHR:
-          title: Riel
-        XPT:
-          title: Platinum
-        COP:
-          title: Colombian Peso
-        DKK:
-          title: Danish Krone
-        KYD:
-          title: Cayman Islands Dollar
-        XPF:
-          title: CFP Franc
-        GMD:
-          title: Dalasi
-        MVR:
-          title: Rufiyaa
-        STN:
-          title: Dobra
-        TTD:
-          title: Trinidad and Tobago Dollar
-        PAB:
-          title: Balboa
-        XAU:
-          title: Gold
-        XAG:
-          title: Silver
-        JPY:
-          title: 일본 엔화
-        TOP:
-          title: Pa’anga
-        BWP:
-          title: Pula
-        MKD:
-          title: Denar
-        ARS:
-          title: Argentine Peso
-        HUF:
-          title: Forint
-        MYR:
-          title: Malaysian Ringgit
-        USD:
-          title: 미국 달러
-        SLL:
-          title: Leone
-        MAD:
-          title: Moroccan Dirham
-        RUB:
-          title: Russian Ruble
-        MNT:
-          title: Tugrik
-        BOB:
-          title: Boliviano
-        GYD:
-          title: Guyana Dollar
-        SBD:
-          title: Solomon Islands Dollar
-        XBA:
-          title: Bond Markets Unit European Composite Unit (EURCO)
-        BHD:
-          title: Bahraini Dinar
-        HNL:
-          title: Lempira
-        UYW:
-          title: Unidad Previsional
-        NZD:
-          title: New Zealand Dollar
-        XCD:
-          title: East Caribbean Dollar
-        XSU:
-          title: Sucre
-        KGS:
-          title: Som
-        AOA:
-          title: Kwanza
-        BZD:
-          title: Belize Dollar
-        IDR:
-          title: Rupiah
-        SOS:
-          title: Somali Shilling
-        NIO:
-          title: Cordoba Oro
-        GHS:
-          title: Ghana Cedi
-        ANG:
-          title: Netherlands Antillean Guilder
-        RSD:
-          title: Serbian Dinar
-        ILS:
-          title: New Israeli Sheqel
-        NOK:
-          title: Norwegian Krone
-        KWD:
-          title: Kuwaiti Dinar
-        NAD:
-          title: Namibia Dollar
-        ETB:
-          title: Ethiopian Birr
-        BYN:
-          title: Belarusian Ruble
-        KPW:
-          title: North Korean Won
-        EUR:
-          title: Euro
-        CVE:
-          title: Cabo Verde Escudo
-        ZAR:
-          title: Rand
-        IRR:
-          title: Iranian Rial
-        HRK:
-          title: Kuna (Replaced by EUR)
-        BAM:
-          title: Convertible Mark
-    CheckoutPaymentMethod:
-      title: 결제 수단
-      description: 결제 수단
-      type: string
-      enum:
-      - CARD_KR
-      - N_PAY
-      - KAKAO_PAY
-      - TOSS_PAY
-      - CARD_INTERNATIONAL
-      - PAY_PAL
-      - UNION_PAY
-      - ALIPAY_CN
-      - ALIPAY_HK
-      - TRUE_MONEY
-      - DANA
-      - TOUCH_N_GO
-      - G_CASH
-      - WE_CHAT_PAY
-      - KLARNA
-      - E_CONTEXT
-      - GRAB_PAY_MY
-      - GRAB_PAY_SG
-      - SHOPEE_PAY_TH
-      - PAY_PAY
-      - BPI
-      - RABBIT_LINE_PAY
-      - CONVENIENCE_STORE_JP
-      - AMAZON_PAY
-      - RAKUTEN_PAY
-      - D_BARAI
-      - AU_PAY
-      - MERPAY
-      x-portone-title: 결제 수단
-      x-portone-enum:
-        PAY_PAY: {}
-        ALIPAY_HK: {}
-        PAY_PAL: {}
-        WE_CHAT_PAY: {}
-        UNION_PAY: {}
-        MERPAY: {}
-        E_CONTEXT: {}
-        G_CASH: {}
-        CARD_KR: {}
-        AU_PAY: {}
-        SHOPEE_PAY_TH: {}
-        N_PAY: {}
-        AMAZON_PAY: {}
-        CARD_INTERNATIONAL: {}
-        GRAB_PAY_SG: {}
-        GRAB_PAY_MY: {}
-        KLARNA: {}
-        RABBIT_LINE_PAY: {}
-        KAKAO_PAY: {}
-        RAKUTEN_PAY: {}
-        TOSS_PAY: {}
-        CONVENIENCE_STORE_JP: {}
-        D_BARAI: {}
-        DANA: {}
-        TOUCH_N_GO: {}
-        BPI: {}
-        ALIPAY_CN: {}
-        TRUE_MONEY: {}
     EvaluatedCheckoutMethod:
       title: 결제 수단
       description: 결제 수단
@@ -1487,16 +1497,6 @@ components:
           type: string
           title: 채널 키
       x-portone-title: 결제 수단
-    EvaluateCheckoutProfileError:
-      title: EvaluateCheckoutProfileError
-      oneOf:
-      - $ref: '#/components/schemas/InvalidRequestError'
-      - $ref: '#/components/schemas/ProfileSettingsNotFoundError'
-      discriminator:
-        propertyName: type
-        mapping:
-          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
-          PROFILE_SETTINGS_NOT_FOUND: '#/components/schemas/ProfileSettingsNotFoundError'
     EvaluateCheckoutProfileResponse:
       title: 체크아웃 프로필 평가 성공 응답
       description: 체크아웃 프로필 평가 성공 응답

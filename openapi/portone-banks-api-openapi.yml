@@ -39,46 +39,6 @@ paths:
       - Banks
 components:
   schemas:
-    InvalidRequestError:
-      title: 요청된 입력 정보가 유효하지 않은 경우
-      description: '요청된 입력 정보가 유효하지 않은 경우
-
-
-        허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.'
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
-      x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
-      x-portone-status-code: 400
-    BankInfo:
-      title: 은행 정보
-      description: 은행 정보
-      type: object
-      required:
-      - bank
-      - name
-      properties:
-        bank:
-          $ref: '#/components/schemas/Bank'
-          title: 은행
-        name:
-          $ref: '#/components/schemas/BankInfoName'
-          title: 언어별 명칭
-      x-portone-title: 은행 정보
-    GetBankInfosError:
-      title: GetBankInfosError
-      oneOf:
-      - $ref: '#/components/schemas/InvalidRequestError'
-      discriminator:
-        propertyName: type
-        mapping:
-          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
     Bank:
       title: 은행
       description: 은행
@@ -323,6 +283,23 @@ components:
           title: 제이피모간체이스은행
         KYOBO_SECURITIES:
           title: 교보증권
+    InvalidRequestError:
+      title: 요청된 입력 정보가 유효하지 않은 경우
+      description: '요청된 입력 정보가 유효하지 않은 경우
+
+
+        허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.'
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
+      x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
+      x-portone-status-code: 400
     BankInfoName:
       title: 은행 명칭
       description: 은행 명칭
@@ -347,6 +324,29 @@ components:
           items:
             $ref: '#/components/schemas/BankInfo'
       x-portone-title: 은행 정보 조회 성공 응답 정보
+    BankInfo:
+      title: 은행 정보
+      description: 은행 정보
+      type: object
+      required:
+      - bank
+      - name
+      properties:
+        bank:
+          $ref: '#/components/schemas/Bank'
+          title: 은행
+        name:
+          $ref: '#/components/schemas/BankInfoName'
+          title: 언어별 명칭
+      x-portone-title: 은행 정보
+    GetBankInfosError:
+      title: GetBankInfosError
+      oneOf:
+      - $ref: '#/components/schemas/InvalidRequestError'
+      discriminator:
+        propertyName: type
+        mapping:
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
   securitySchemes:
     bearerJwt:
       type: http
