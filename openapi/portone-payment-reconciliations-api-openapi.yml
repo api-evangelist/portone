@@ -104,6 +104,99 @@ paths:
       - Payment Reconciliations
 components:
   schemas:
+    GetPaymentReconciliationSettlementVatReportBody:
+      title: GetPaymentReconciliationSettlementVatReportBody
+      type: object
+      required:
+      - dateRange
+      properties:
+        dateRange:
+          $ref: '#/components/schemas/DateRange'
+          title: 정산일 범위
+        filter:
+          $ref: '#/components/schemas/PaymentReconciliationSettlementSummaryFilterInput'
+    GetPaymentReconciliationSettlementVatReportError:
+      title: GetPaymentReconciliationSettlementVatReportError
+      oneOf:
+      - $ref: '#/components/schemas/ForbiddenError'
+      - $ref: '#/components/schemas/InvalidRequestError'
+      - $ref: '#/components/schemas/UnauthorizedError'
+      discriminator:
+        propertyName: type
+        mapping:
+          FORBIDDEN: '#/components/schemas/ForbiddenError'
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
+    PaymentReconciliationSettlementSummaryFilterInput:
+      title: 거래대사 정산 요약 내역 필터
+      description: 거래대사 정산 요약 내역 필터
+      type: object
+      properties:
+        pgSpecifiers:
+          title: PG사 가맹점 식별자 필터
+          type: array
+          items:
+            $ref: '#/components/schemas/ReconciliationPgSpecifier'
+        storeIds:
+          type: array
+          items:
+            type: string
+          title: 하위 상점 아이디 필터
+      x-portone-title: 거래대사 정산 요약 내역 필터
+    GetPaymentReconciliationTransactionVatReportError:
+      title: GetPaymentReconciliationTransactionVatReportError
+      oneOf:
+      - $ref: '#/components/schemas/ForbiddenError'
+      - $ref: '#/components/schemas/InvalidRequestError'
+      - $ref: '#/components/schemas/UnauthorizedError'
+      discriminator:
+        propertyName: type
+        mapping:
+          FORBIDDEN: '#/components/schemas/ForbiddenError'
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
+    PaymentReconciliationVatReportSummary:
+      title: PaymentReconciliationVatReportSummary
+      type: object
+      required:
+      - totalSupplyAmount
+      - totalVatAmount
+      - totalTaxFreeAmount
+      - totalAmount
+      properties:
+        totalSupplyAmount:
+          type: integer
+          format: int64
+          title: 총 공급가액
+        totalVatAmount:
+          type: integer
+          format: int64
+          title: 총 부가세 금액
+        totalTaxFreeAmount:
+          type: integer
+          format: int64
+          title: 총 면세 금액
+        totalAmount:
+          type: integer
+          format: int64
+          title: 총 금액
+    InvalidRequestError:
+      title: 요청된 입력 정보가 유효하지 않은 경우
+      description: '요청된 입력 정보가 유효하지 않은 경우
+
+
+        허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.'
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
+      x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
+      x-portone-status-code: 400
     PaymentReconciliationTransactionSummaryFilterInput:
       title: 거래대사 거래내역 필터
       description: 거래대사 거래내역 필터
@@ -125,49 +218,6 @@ components:
             type: string
           title: 하위 상점 아이디 필터
       x-portone-title: 거래대사 거래내역 필터
-    ReconciliationPgSpecifier:
-      title: 대사용 PG사 가맹점 식별자
-      description: 대사용 PG사 가맹점 식별자
-      type: object
-      required:
-      - pgMerchantId
-      - pgProvider
-      properties:
-        pgMerchantId:
-          type: string
-          title: PG사 가맹점 식별 아이디
-        pgProvider:
-          $ref: '#/components/schemas/ReconciliationPgProvider'
-          title: PG사
-      x-portone-title: 대사용 PG사 가맹점 식별자
-    PaymentReconciliationSettlementSummaryFilterInput:
-      title: 거래대사 정산 요약 내역 필터
-      description: 거래대사 정산 요약 내역 필터
-      type: object
-      properties:
-        pgSpecifiers:
-          title: PG사 가맹점 식별자 필터
-          type: array
-          items:
-            $ref: '#/components/schemas/ReconciliationPgSpecifier'
-        storeIds:
-          type: array
-          items:
-            type: string
-          title: 하위 상점 아이디 필터
-      x-portone-title: 거래대사 정산 요약 내역 필터
-    GetPaymentReconciliationSettlementVatReportError:
-      title: GetPaymentReconciliationSettlementVatReportError
-      oneOf:
-      - $ref: '#/components/schemas/ForbiddenError'
-      - $ref: '#/components/schemas/InvalidRequestError'
-      - $ref: '#/components/schemas/UnauthorizedError'
-      discriminator:
-        propertyName: type
-        mapping:
-          FORBIDDEN: '#/components/schemas/ForbiddenError'
-          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
-          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
     GetPaymentReconciliationTransactionVatReportResponse:
       title: GetPaymentReconciliationTransactionVatReportResponse
       type: object
@@ -204,70 +254,32 @@ components:
               title: PG사 가맹점 식별 아이디
             pgProvider:
               title: PG사
-    SimplifiedPaymentMethodType:
-      title: 간소화된 결제수단 목록
-      description: 간소화된 결제수단 목록
-      type: string
-      enum:
-      - CARD
-      - VIRTUAL_ACCOUNT
-      - TRANSFER
-      - CHARGE
-      - MOBILE
-      - POINT
-      - ETC
-      x-portone-title: 간소화된 결제수단 목록
-      x-portone-enum:
-        TRANSFER:
-          title: 계좌이체
-        VIRTUAL_ACCOUNT:
-          title: 가상계좌
-        CHARGE:
-          title: 머니
-        POINT:
-          title: 포인트
-        ETC:
-          title: 기타
-        MOBILE:
-          title: 모바일
-        CARD:
-          title: 신용카드/체크카드
-    PaymentReconciliationStatus:
-      title: 결제 건의 대사 상태
-      description: 결제 건의 대사 상태
-      type: string
-      enum:
-      - MATCHED
-      - NOT_MATCHED
-      - INCOMPARABLE
-      - NOT_COLLECTED
-      x-portone-title: 결제 건의 대사 상태
-      x-portone-enum:
-        MATCHED:
-          title: 대사 매칭 성공 상태
-        NOT_MATCHED:
-          title: 대사 매칭 실패 상태
-        INCOMPARABLE:
-          title: 대사 불가능 상태
-        NOT_COLLECTED:
-          title: PG사 결제 정보가 수집되지 않은 상태
-    InvalidRequestError:
-      title: 요청된 입력 정보가 유효하지 않은 경우
-      description: '요청된 입력 정보가 유효하지 않은 경우
-
-
-        허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.'
+    ReconciliationPgSpecifier:
+      title: 대사용 PG사 가맹점 식별자
+      description: 대사용 PG사 가맹점 식별자
       type: object
       required:
-      - type
+      - pgMerchantId
+      - pgProvider
       properties:
-        type:
+        pgMerchantId:
           type: string
-        message:
-          type: string
-      x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
-      x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
-      x-portone-status-code: 400
+          title: PG사 가맹점 식별 아이디
+        pgProvider:
+          $ref: '#/components/schemas/ReconciliationPgProvider'
+          title: PG사
+      x-portone-title: 대사용 PG사 가맹점 식별자
+    GetPaymentReconciliationTransactionVatReportBody:
+      title: GetPaymentReconciliationTransactionVatReportBody
+      type: object
+      required:
+      - dateRange
+      properties:
+        dateRange:
+          $ref: '#/components/schemas/DateRange'
+          title: 거래일 범위
+        filter:
+          $ref: '#/components/schemas/PaymentReconciliationTransactionSummaryFilterInput'
     GetPaymentReconciliationSettlementVatReportResponse:
       title: GetPaymentReconciliationSettlementVatReportResponse
       type: object
@@ -304,6 +316,78 @@ components:
               title: PG사 가맹점 식별 아이디
             pgProvider:
               title: PG사
+    DateRange:
+      title: DateRange
+      type: object
+      required:
+      - from
+      - until
+      properties:
+        from:
+          description: 날짜를 나타내는 문자열로, `yyyy-MM-dd` 형식을 따릅니다.
+          type: string
+          format: date
+          x-portone-description: 날짜를 나타내는 문자열로, `yyyy-MM-dd` 형식을 따릅니다.
+        until:
+          description: 날짜를 나타내는 문자열로, `yyyy-MM-dd` 형식을 따릅니다.
+          type: string
+          format: date
+          x-portone-description: 날짜를 나타내는 문자열로, `yyyy-MM-dd` 형식을 따릅니다.
+    UnauthorizedError:
+      title: 인증 정보가 올바르지 않은 경우
+      description: 인증 정보가 올바르지 않은 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 인증 정보가 올바르지 않은 경우
+      x-portone-status-code: 401
+    ForbiddenError:
+      title: 요청이 거절된 경우
+      description: 요청이 거절된 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 요청이 거절된 경우
+      x-portone-status-code: 403
+    PaymentReconciliationVatReportItem:
+      title: PaymentReconciliationVatReportItem
+      type: object
+      required:
+      - paymentMethod
+      - supplyAmount
+      - vatAmount
+      - taxFreeAmount
+      - totalAmount
+      properties:
+        paymentMethod:
+          $ref: '#/components/schemas/SimplifiedPaymentMethodType'
+          title: 결제수단
+        supplyAmount:
+          type: integer
+          format: int64
+          title: 공급가액
+        vatAmount:
+          type: integer
+          format: int64
+          title: 부가세 금액
+        taxFreeAmount:
+          type: integer
+          format: int64
+          title: 면세 금액
+        totalAmount:
+          type: integer
+          format: int64
+          title: 총 금액
     ReconciliationPgProvider:
       title: ReconciliationPgProvider
       type: string
@@ -355,137 +439,53 @@ components:
         KAKAOPAY: {}
         KSNET: {}
         KCP: {}
-    PaymentReconciliationVatReportSummary:
-      title: PaymentReconciliationVatReportSummary
-      type: object
-      required:
-      - totalSupplyAmount
-      - totalVatAmount
-      - totalTaxFreeAmount
-      - totalAmount
-      properties:
-        totalSupplyAmount:
-          type: integer
-          format: int64
-          title: 총 공급가액
-        totalVatAmount:
-          type: integer
-          format: int64
-          title: 총 부가세 금액
-        totalTaxFreeAmount:
-          type: integer
-          format: int64
-          title: 총 면세 금액
-        totalAmount:
-          type: integer
-          format: int64
-          title: 총 금액
-    ForbiddenError:
-      title: 요청이 거절된 경우
-      description: 요청이 거절된 경우
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 요청이 거절된 경우
-      x-portone-status-code: 403
-    GetPaymentReconciliationTransactionVatReportBody:
-      title: GetPaymentReconciliationTransactionVatReportBody
-      type: object
-      required:
-      - dateRange
-      properties:
-        dateRange:
-          $ref: '#/components/schemas/DateRange'
-          title: 거래일 범위
-        filter:
-          $ref: '#/components/schemas/PaymentReconciliationTransactionSummaryFilterInput'
-    DateRange:
-      title: DateRange
-      type: object
-      required:
-      - from
-      - until
-      properties:
-        from:
-          description: 날짜를 나타내는 문자열로, `yyyy-MM-dd` 형식을 따릅니다.
-          type: string
-          format: date
-          x-portone-description: 날짜를 나타내는 문자열로, `yyyy-MM-dd` 형식을 따릅니다.
-        until:
-          description: 날짜를 나타내는 문자열로, `yyyy-MM-dd` 형식을 따릅니다.
-          type: string
-          format: date
-          x-portone-description: 날짜를 나타내는 문자열로, `yyyy-MM-dd` 형식을 따릅니다.
-    GetPaymentReconciliationTransactionVatReportError:
-      title: GetPaymentReconciliationTransactionVatReportError
-      oneOf:
-      - $ref: '#/components/schemas/ForbiddenError'
-      - $ref: '#/components/schemas/InvalidRequestError'
-      - $ref: '#/components/schemas/UnauthorizedError'
-      discriminator:
-        propertyName: type
-        mapping:
-          FORBIDDEN: '#/components/schemas/ForbiddenError'
-          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
-          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
-    GetPaymentReconciliationSettlementVatReportBody:
-      title: GetPaymentReconciliationSettlementVatReportBody
-      type: object
-      required:
-      - dateRange
-      properties:
-        dateRange:
-          $ref: '#/components/schemas/DateRange'
-          title: 정산일 범위
-        filter:
-          $ref: '#/components/schemas/PaymentReconciliationSettlementSummaryFilterInput'
-    UnauthorizedError:
-      title: 인증 정보가 올바르지 않은 경우
-      description: 인증 정보가 올바르지 않은 경우
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 인증 정보가 올바르지 않은 경우
-      x-portone-status-code: 401
-    PaymentReconciliationVatReportItem:
-      title: PaymentReconciliationVatReportItem
-      type: object
-      required:
-      - paymentMethod
-      - supplyAmount
-      - vatAmount
-      - taxFreeAmount
-      - totalAmount
-      properties:
-        paymentMethod:
-          $ref: '#/components/schemas/SimplifiedPaymentMethodType'
-          title: 결제수단
-        supplyAmount:
-          type: integer
-          format: int64
-          title: 공급가액
-        vatAmount:
-          type: integer
-          format: int64
-          title: 부가세 금액
-        taxFreeAmount:
-          type: integer
-          format: int64
-          title: 면세 금액
-        totalAmount:
-          type: integer
-          format: int64
-          title: 총 금액
+    PaymentReconciliationStatus:
+      title: 결제 건의 대사 상태
+      description: 결제 건의 대사 상태
+      type: string
+      enum:
+      - MATCHED
+      - NOT_MATCHED
+      - INCOMPARABLE
+      - NOT_COLLECTED
+      x-portone-title: 결제 건의 대사 상태
+      x-portone-enum:
+        MATCHED:
+          title: 대사 매칭 성공 상태
+        NOT_MATCHED:
+          title: 대사 매칭 실패 상태
+        INCOMPARABLE:
+          title: 대사 불가능 상태
+        NOT_COLLECTED:
+          title: PG사 결제 정보가 수집되지 않은 상태
+    SimplifiedPaymentMethodType:
+      title: 간소화된 결제수단 목록
+      description: 간소화된 결제수단 목록
+      type: string
+      enum:
+      - CARD
+      - VIRTUAL_ACCOUNT
+      - TRANSFER
+      - CHARGE
+      - MOBILE
+      - POINT
+      - ETC
+      x-portone-title: 간소화된 결제수단 목록
+      x-portone-enum:
+        TRANSFER:
+          title: 계좌이체
+        VIRTUAL_ACCOUNT:
+          title: 가상계좌
+        CHARGE:
+          title: 머니
+        POINT:
+          title: 포인트
+        ETC:
+          title: 기타
+        MOBILE:
+          title: 모바일
+        CARD:
+          title: 신용카드/체크카드
   securitySchemes:
     bearerJwt:
       type: http

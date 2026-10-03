@@ -224,1140 +224,6 @@ paths:
       - Payment Schedules
 components:
   schemas:
-    OneLineAddress:
-      title: 한 줄 형식 주소
-      description: '한 줄 형식 주소
-
-
-        한 줄 형식 주소만 존재합니다.'
-      type: object
-      required:
-      - type
-      - oneLine
-      properties:
-        type:
-          type: string
-        oneLine:
-          type: string
-          title: 주소 (한 줄)
-      x-portone-title: 한 줄 형식 주소
-      x-portone-description: 한 줄 형식 주소만 존재합니다.
-    Gender:
-      title: 성별
-      description: 성별
-      type: string
-      enum:
-      - MALE
-      - FEMALE
-      - OTHER
-      x-portone-title: 성별
-      x-portone-enum:
-        MALE:
-          title: 남성
-        FEMALE:
-          title: 여성
-        OTHER:
-          title: 그 외 성별
-    StartedPaymentSchedule:
-      title: 결제 시작 상태
-      description: 결제 시작 상태
-      type: object
-      required:
-      - status
-      - id
-      - merchantId
-      - storeId
-      - paymentId
-      - billingKey
-      - orderName
-      - isCulturalExpense
-      - isEscrow
-      - customer
-      - customData
-      - totalAmount
-      - currency
-      - createdAt
-      - timeToPay
-      - startedAt
-      properties:
-        status:
-          type: string
-          title: 결제 예약 건 상태
-        id:
-          type: string
-          title: 결제 예약 건 아이디
-        merchantId:
-          type: string
-          title: 고객사 아이디
-        storeId:
-          type: string
-          title: 상점 아이디
-        paymentId:
-          type: string
-          title: 결제 건 아이디
-        billingKey:
-          type: string
-          title: 빌링키
-        orderName:
-          type: string
-          title: 주문명
-        isCulturalExpense:
-          type: boolean
-          title: 문화비 지출 여부
-        isEscrow:
-          type: boolean
-          title: 에스크로 결제 여부
-        customer:
-          $ref: '#/components/schemas/Customer'
-          title: 고객 정보
-        customData:
-          type: string
-          title: 사용자 지정 데이터
-        totalAmount:
-          type: integer
-          format: int64
-          title: 결제 총 금액
-        taxFreeAmount:
-          type: integer
-          format: int64
-          title: 면세액
-        vatAmount:
-          type: integer
-          format: int64
-          title: 부가세
-        currency:
-          $ref: '#/components/schemas/Currency'
-          title: 통화
-        installmentMonth:
-          type: integer
-          format: int32
-          title: 할부 개월 수
-        noticeUrls:
-          type: array
-          items:
-            type: string
-          title: 웹훅 주소
-        products:
-          title: 상품 정보
-          type: array
-          items:
-            $ref: '#/components/schemas/PaymentProduct'
-        createdAt:
-          type: string
-          format: date-time
-          title: 결제 예약 등록 시점
-        timeToPay:
-          type: string
-          format: date-time
-          title: 결제 예정 시점
-        startedAt:
-          type: string
-          format: date-time
-          title: 결제 시작 시점
-      x-portone-title: 결제 시작 상태
-    InvalidRequestError:
-      title: 요청된 입력 정보가 유효하지 않은 경우
-      description: '요청된 입력 정보가 유효하지 않은 경우
-
-
-        허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.'
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
-      x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
-      x-portone-status-code: 400
-    ForbiddenError:
-      title: 요청이 거절된 경우
-      description: 요청이 거절된 경우
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 요청이 거절된 경우
-      x-portone-status-code: 403
-    FailedPaymentSchedule:
-      title: 결제 실패 상태
-      description: 결제 실패 상태
-      type: object
-      required:
-      - status
-      - id
-      - merchantId
-      - storeId
-      - paymentId
-      - billingKey
-      - orderName
-      - isCulturalExpense
-      - isEscrow
-      - customer
-      - customData
-      - totalAmount
-      - currency
-      - createdAt
-      - timeToPay
-      - startedAt
-      - completedAt
-      properties:
-        status:
-          type: string
-          title: 결제 예약 건 상태
-        id:
-          type: string
-          title: 결제 예약 건 아이디
-        merchantId:
-          type: string
-          title: 고객사 아이디
-        storeId:
-          type: string
-          title: 상점 아이디
-        paymentId:
-          type: string
-          title: 결제 건 아이디
-        billingKey:
-          type: string
-          title: 빌링키
-        orderName:
-          type: string
-          title: 주문명
-        isCulturalExpense:
-          type: boolean
-          title: 문화비 지출 여부
-        isEscrow:
-          type: boolean
-          title: 에스크로 결제 여부
-        customer:
-          $ref: '#/components/schemas/Customer'
-          title: 고객 정보
-        customData:
-          type: string
-          title: 사용자 지정 데이터
-        totalAmount:
-          type: integer
-          format: int64
-          title: 결제 총 금액
-        taxFreeAmount:
-          type: integer
-          format: int64
-          title: 면세액
-        vatAmount:
-          type: integer
-          format: int64
-          title: 부가세
-        currency:
-          $ref: '#/components/schemas/Currency'
-          title: 통화
-        installmentMonth:
-          type: integer
-          format: int32
-          title: 할부 개월 수
-        noticeUrls:
-          type: array
-          items:
-            type: string
-          title: 웹훅 주소
-        products:
-          title: 상품 정보
-          type: array
-          items:
-            $ref: '#/components/schemas/PaymentProduct'
-        createdAt:
-          type: string
-          format: date-time
-          title: 결제 예약 등록 시점
-        timeToPay:
-          type: string
-          format: date-time
-          title: 결제 예정 시점
-        startedAt:
-          type: string
-          format: date-time
-          title: 결제 시작 시점
-        completedAt:
-          type: string
-          format: date-time
-          title: 결제 완료 시점
-      x-portone-title: 결제 실패 상태
-    RevokedPaymentSchedule:
-      title: 결제 예약 취소 상태
-      description: 결제 예약 취소 상태
-      type: object
-      required:
-      - status
-      - id
-      - merchantId
-      - storeId
-      - paymentId
-      - billingKey
-      - orderName
-      - isCulturalExpense
-      - isEscrow
-      - customer
-      - customData
-      - totalAmount
-      - currency
-      - createdAt
-      - timeToPay
-      - revokedAt
-      properties:
-        status:
-          type: string
-          title: 결제 예약 건 상태
-        id:
-          type: string
-          title: 결제 예약 건 아이디
-        merchantId:
-          type: string
-          title: 고객사 아이디
-        storeId:
-          type: string
-          title: 상점 아이디
-        paymentId:
-          type: string
-          title: 결제 건 아이디
-        billingKey:
-          type: string
-          title: 빌링키
-        orderName:
-          type: string
-          title: 주문명
-        isCulturalExpense:
-          type: boolean
-          title: 문화비 지출 여부
-        isEscrow:
-          type: boolean
-          title: 에스크로 결제 여부
-        customer:
-          $ref: '#/components/schemas/Customer'
-          title: 고객 정보
-        customData:
-          type: string
-          title: 사용자 지정 데이터
-        totalAmount:
-          type: integer
-          format: int64
-          title: 결제 총 금액
-        taxFreeAmount:
-          type: integer
-          format: int64
-          title: 면세액
-        vatAmount:
-          type: integer
-          format: int64
-          title: 부가세
-        currency:
-          $ref: '#/components/schemas/Currency'
-          title: 통화
-        installmentMonth:
-          type: integer
-          format: int32
-          title: 할부 개월 수
-        noticeUrls:
-          type: array
-          items:
-            type: string
-          title: 웹훅 주소
-        products:
-          title: 상품 정보
-          type: array
-          items:
-            $ref: '#/components/schemas/PaymentProduct'
-        createdAt:
-          type: string
-          format: date-time
-          title: 결제 예약 등록 시점
-        timeToPay:
-          type: string
-          format: date-time
-          title: 결제 예정 시점
-        revokedAt:
-          type: string
-          format: date-time
-          title: 결제 취소 시점
-      x-portone-title: 결제 예약 취소 상태
-    SortOrder:
-      title: 정렬 방식
-      description: 정렬 방식
-      type: string
-      enum:
-      - DESC
-      - ASC
-      x-portone-title: 정렬 방식
-      x-portone-enum:
-        DESC:
-          title: 내림차순
-        ASC:
-          title: 오름차순
-    PaymentScheduleSortInput:
-      title: 결제 예약 건 다건 조회 시 정렬 조건
-      description: 결제 예약 건 다건 조회 시 정렬 조건
-      type: object
-      properties:
-        by:
-          $ref: '#/components/schemas/PaymentScheduleSortBy'
-          title: 정렬 기준 필드
-          description: 어떤 필드를 기준으로 정렬할 지 결정합니다. 비워서 보낼 경우, TIME_TO_PAY가 기본값으로 설정됩니다.
-        order:
-          $ref: '#/components/schemas/SortOrder'
-          title: 정렬 순서
-          description: 어떤 순서로 정렬할 지 결정합니다. 비워서 보낼 경우, DESC(내림차순)가 기본값으로 설정됩니다.
-      x-portone-title: 결제 예약 건 다건 조회 시 정렬 조건
-    BillingKeyAlreadyDeletedError:
-      title: 빌링키가 이미 삭제된 경우
-      description: 빌링키가 이미 삭제된 경우
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 빌링키가 이미 삭제된 경우
-      x-portone-status-code: 409
-    Currency:
-      title: 통화
-      description: 통화
-      type: string
-      enum:
-      - KRW
-      - USD
-      - JPY
-      - AED
-      - AFN
-      - ALL
-      - AMD
-      - ANG
-      - AOA
-      - ARS
-      - AUD
-      - AWG
-      - AZN
-      - BAM
-      - BBD
-      - BDT
-      - BGN
-      - BHD
-      - BIF
-      - BMD
-      - BND
-      - BOB
-      - BOV
-      - BRL
-      - BSD
-      - BTN
-      - BWP
-      - BYN
-      - BZD
-      - CAD
-      - CDF
-      - CHE
-      - CHF
-      - CHW
-      - CLF
-      - CLP
-      - CNY
-      - COP
-      - COU
-      - CRC
-      - CUC
-      - CUP
-      - CVE
-      - CZK
-      - DJF
-      - DKK
-      - DOP
-      - DZD
-      - EGP
-      - ERN
-      - ETB
-      - EUR
-      - FJD
-      - FKP
-      - GBP
-      - GEL
-      - GHS
-      - GIP
-      - GMD
-      - GNF
-      - GTQ
-      - GYD
-      - HKD
-      - HNL
-      - HRK
-      - HTG
-      - HUF
-      - IDR
-      - ILS
-      - INR
-      - IQD
-      - IRR
-      - ISK
-      - JMD
-      - JOD
-      - KES
-      - KGS
-      - KHR
-      - KMF
-      - KPW
-      - KWD
-      - KYD
-      - KZT
-      - LAK
-      - LBP
-      - LKR
-      - LRD
-      - LSL
-      - LYD
-      - MAD
-      - MDL
-      - MGA
-      - MKD
-      - MMK
-      - MNT
-      - MOP
-      - MRU
-      - MUR
-      - MVR
-      - MWK
-      - MXN
-      - MXV
-      - MYR
-      - MZN
-      - NAD
-      - NGN
-      - NIO
-      - NOK
-      - NPR
-      - NZD
-      - OMR
-      - PAB
-      - PEN
-      - PGK
-      - PHP
-      - PKR
-      - PLN
-      - PYG
-      - QAR
-      - RON
-      - RSD
-      - RUB
-      - RWF
-      - SAR
-      - SBD
-      - SCR
-      - SDG
-      - SEK
-      - SGD
-      - SHP
-      - SLE
-      - SLL
-      - SOS
-      - SRD
-      - SSP
-      - STN
-      - SVC
-      - SYP
-      - SZL
-      - THB
-      - TJS
-      - TMT
-      - TND
-      - TOP
-      - TRY
-      - TTD
-      - TWD
-      - TZS
-      - UAH
-      - UGX
-      - USN
-      - UYI
-      - UYU
-      - UYW
-      - UZS
-      - VED
-      - VES
-      - VND
-      - VUV
-      - WST
-      - XAF
-      - XAG
-      - XAU
-      - XBA
-      - XBB
-      - XBC
-      - XBD
-      - XCD
-      - XDR
-      - XOF
-      - XPD
-      - XPF
-      - XPT
-      - XSU
-      - XTS
-      - XUA
-      - XXX
-      - YER
-      - ZAR
-      - ZMW
-      - ZWL
-      x-portone-title: 통화
-      x-portone-enum:
-        OMR:
-          title: Rial Omani
-        CUC:
-          title: Peso Convertible
-        BBD:
-          title: Barbados Dollar
-        PLN:
-          title: Zloty
-        SVC:
-          title: El Salvador Colon
-        BMD:
-          title: Bermudian Dollar
-        TJS:
-          title: Somoni
-        TND:
-          title: Tunisian Dinar
-        GNF:
-          title: Guinean Franc
-        SDG:
-          title: Sudanese Pound
-        MRU:
-          title: Ouguiya
-        XBB:
-          title: Bond Markets Unit European Monetary Unit (E.M.U.-6)
-        PKR:
-          title: Pakistan Rupee
-        FKP:
-          title: Falkland Islands Pound
-        MUR:
-          title: Mauritius Rupee
-        XAF:
-          title: CFA Franc BEAC
-        SAR:
-          title: Saudi Riyal
-        CAD:
-          title: Canadian Dollar
-        HKD:
-          title: Hong Kong Dollar
-        PYG:
-          title: Guarani
-        MGA:
-          title: Malagasy Ariary
-        UYI:
-          title: Uruguay Peso en Unidades Indexadas (UI)
-        AUD:
-          title: Australian Dollar
-        AMD:
-          title: Armenian Dram
-        YER:
-          title: Yemeni Rial
-        CHE:
-          title: WIR Euro
-        MMK:
-          title: Kyat
-        SEK:
-          title: Swedish Krona
-        TRY:
-          title: Turkish Lira
-        XBC:
-          title: Bond Markets Unit European Unit of Account 9 (E.U.A.-9)
-        KES:
-          title: Kenyan Shilling
-        GEL:
-          title: Lari
-        GTQ:
-          title: Quetzal
-        TZS:
-          title: Tanzanian Shilling
-        CUP:
-          title: Cuban Peso
-        ALL:
-          title: Lek
-        ERN:
-          title: Nakfa
-        BRL:
-          title: Brazilian Real
-        UGX:
-          title: Uganda Shilling
-        XUA:
-          title: ADB Unit of Account
-        GIP:
-          title: Gibraltar Pound
-        MZN:
-          title: Mozambique Metical
-        KRW:
-          title: 대한민국 원화
-        JOD:
-          title: Jordanian Dinar
-        IQD:
-          title: Iraqi Dinar
-        VUV:
-          title: Vatu
-        XXX:
-          title: The codes assigned for transactions where no currency is involved
-        UZS:
-          title: Uzbekistan Sum
-        BOV:
-          title: Mvdol
-        UAH:
-          title: Hryvnia
-        PEN:
-          title: Sol
-        KMF:
-          title: 'Comorian Franc '
-        DOP:
-          title: Dominican Peso
-        BDT:
-          title: Taka
-        LKR:
-          title: Sri Lanka Rupee
-        FJD:
-          title: Fiji Dollar
-        LSL:
-          title: Loti
-        BSD:
-          title: Bahamian Dollar
-        SRD:
-          title: Surinam Dollar
-        XTS:
-          title: Codes specifically reserved for testing purposes
-        SHP:
-          title: Saint Helena Pound
-        LRD:
-          title: Liberian Dollar
-        QAR:
-          title: Qatari Rial
-        BND:
-          title: Brunei Dollar
-        CDF:
-          title: Congolese Franc
-        SLE:
-          title: Leone
-        USN:
-          title: US Dollar (Next day)
-        VES:
-          title: Bolívar Soberano
-        TMT:
-          title: Turkmenistan New Manat
-        CHW:
-          title: WIR Franc
-        BGN:
-          title: Bulgarian Lev
-        JMD:
-          title: Jamaican Dollar
-        SZL:
-          title: Lilangeni
-        CZK:
-          title: Czech Koruna
-        ZMW:
-          title: Zambian Kwacha
-        UYU:
-          title: Peso Uruguayo
-        NPR:
-          title: Nepalese Rupee
-        EGP:
-          title: Egyptian Pound
-        AZN:
-          title: Azerbaijan Manat
-        CLP:
-          title: Chilean Peso
-        MOP:
-          title: Pataca
-        SCR:
-          title: Seychelles Rupee
-        HTG:
-          title: Gourde
-        VND:
-          title: Dong
-        LAK:
-          title: Lao Kip
-        BTN:
-          title: Ngultrum
-        GBP:
-          title: Pound Sterling
-        SSP:
-          title: South Sudanese Pound
-        XPD:
-          title: Palladium
-        TWD:
-          title: New Taiwan Dollar
-        DZD:
-          title: Algerian Dinar
-        MXN:
-          title: Mexican Peso
-        XDR:
-          title: SDR (Special Drawing Right)
-        ZWL:
-          title: Zimbabwe Dollar
-        AWG:
-          title: Aruban Florin
-        THB:
-          title: Baht
-        ISK:
-          title: Iceland Krona
-        LBP:
-          title: Lebanese Pound
-        SGD:
-          title: Singapore Dollar
-        MWK:
-          title: Malawi Kwacha
-        KZT:
-          title: Tenge
-        CRC:
-          title: Costa Rican Colon
-        WST:
-          title: Tala
-        DJF:
-          title: Djibouti Franc
-        LYD:
-          title: Libyan Dinar
-        NGN:
-          title: Naira
-        BIF:
-          title: Burundi Franc
-        AED:
-          title: UAE Dirham
-        CHF:
-          title: Swiss Franc
-        RWF:
-          title: Rwanda Franc
-        XBD:
-          title: Bond Markets Unit European Unit of Account 17 (E.U.A.-17)
-        INR:
-          title: Indian Rupee
-        CLF:
-          title: Unidad de Fomento
-        XOF:
-          title: CFA Franc BCEAO
-        COU:
-          title: Unidad de Valor Real
-        MXV:
-          title: Mexican Unidad de Inversion (UDI)
-        PGK:
-          title: Kina
-        CNY:
-          title: Yuan Renminbi
-        SYP:
-          title: Syrian Pound
-        VED:
-          title: Bolívar Soberano
-        RON:
-          title: Romanian Leu
-        AFN:
-          title: Afghani
-        PHP:
-          title: Philippine Peso
-        MDL:
-          title: Moldovan Leu
-        KHR:
-          title: Riel
-        XPT:
-          title: Platinum
-        COP:
-          title: Colombian Peso
-        DKK:
-          title: Danish Krone
-        KYD:
-          title: Cayman Islands Dollar
-        XPF:
-          title: CFP Franc
-        GMD:
-          title: Dalasi
-        MVR:
-          title: Rufiyaa
-        STN:
-          title: Dobra
-        TTD:
-          title: Trinidad and Tobago Dollar
-        PAB:
-          title: Balboa
-        XAU:
-          title: Gold
-        XAG:
-          title: Silver
-        JPY:
-          title: 일본 엔화
-        TOP:
-          title: Pa’anga
-        BWP:
-          title: Pula
-        MKD:
-          title: Denar
-        ARS:
-          title: Argentine Peso
-        HUF:
-          title: Forint
-        MYR:
-          title: Malaysian Ringgit
-        USD:
-          title: 미국 달러
-        SLL:
-          title: Leone
-        MAD:
-          title: Moroccan Dirham
-        RUB:
-          title: Russian Ruble
-        MNT:
-          title: Tugrik
-        BOB:
-          title: Boliviano
-        GYD:
-          title: Guyana Dollar
-        SBD:
-          title: Solomon Islands Dollar
-        XBA:
-          title: Bond Markets Unit European Composite Unit (EURCO)
-        BHD:
-          title: Bahraini Dinar
-        HNL:
-          title: Lempira
-        UYW:
-          title: Unidad Previsional
-        NZD:
-          title: New Zealand Dollar
-        XCD:
-          title: East Caribbean Dollar
-        XSU:
-          title: Sucre
-        KGS:
-          title: Som
-        AOA:
-          title: Kwanza
-        BZD:
-          title: Belize Dollar
-        IDR:
-          title: Rupiah
-        SOS:
-          title: Somali Shilling
-        NIO:
-          title: Cordoba Oro
-        GHS:
-          title: Ghana Cedi
-        ANG:
-          title: Netherlands Antillean Guilder
-        RSD:
-          title: Serbian Dinar
-        ILS:
-          title: New Israeli Sheqel
-        NOK:
-          title: Norwegian Krone
-        KWD:
-          title: Kuwaiti Dinar
-        NAD:
-          title: Namibia Dollar
-        ETB:
-          title: Ethiopian Birr
-        BYN:
-          title: Belarusian Ruble
-        KPW:
-          title: North Korean Won
-        EUR:
-          title: Euro
-        CVE:
-          title: Cabo Verde Escudo
-        ZAR:
-          title: Rand
-        IRR:
-          title: Iranian Rial
-        HRK:
-          title: Kuna (Replaced by EUR)
-        BAM:
-          title: Convertible Mark
-    Customer:
-      title: 고객 정보
-      description: 고객 정보
-      type: object
-      properties:
-        id:
-          type: string
-          title: 고객 아이디
-          description: 고객사가 지정한 고객의 고유 식별자입니다.
-        name:
-          type: string
-          title: 이름
-        birthYear:
-          type: string
-          title: 출생 연도
-        birthMonth:
-          type: string
-          title: 출생 월
-        birthDay:
-          type: string
-          title: 출생 일자
-        gender:
-          $ref: '#/components/schemas/Gender'
-          title: 성별
-        email:
-          type: string
-          title: 이메일
-        phoneNumber:
-          type: string
-          title: 전화번호
-        address:
-          $ref: '#/components/schemas/Address'
-          title: 주소
-        zipcode:
-          type: string
-          title: 우편번호
-      x-portone-title: 고객 정보
-    PaymentScheduleSortBy:
-      title: 결제 예약 건 정렬 기준
-      description: 결제 예약 건 정렬 기준
-      type: string
-      enum:
-      - CREATED_AT
-      - TIME_TO_PAY
-      - COMPLETED_AT
-      - STATUS_TIMESTAMP
-      x-portone-title: 결제 예약 건 정렬 기준
-      x-portone-enum:
-        CREATED_AT:
-          title: 결제 예약 생성 시각
-        TIME_TO_PAY:
-          title: 결제 예정 시각
-        COMPLETED_AT:
-          title: 예약 결제 시도(성공 / 실패) 시각
-        STATUS_TIMESTAMP:
-          title: 결제 시도 또는 예정 시각. 해지 건은 해지 시각.
-    ScheduledPaymentSchedule:
-      title: 결제 예약 완료 상태
-      description: 결제 예약 완료 상태
-      type: object
-      required:
-      - status
-      - id
-      - merchantId
-      - storeId
-      - paymentId
-      - billingKey
-      - orderName
-      - isCulturalExpense
-      - isEscrow
-      - customer
-      - customData
-      - totalAmount
-      - currency
-      - createdAt
-      - timeToPay
-      properties:
-        status:
-          type: string
-          title: 결제 예약 건 상태
-        id:
-          type: string
-          title: 결제 예약 건 아이디
-        merchantId:
-          type: string
-          title: 고객사 아이디
-        storeId:
-          type: string
-          title: 상점 아이디
-        paymentId:
-          type: string
-          title: 결제 건 아이디
-        billingKey:
-          type: string
-          title: 빌링키
-        orderName:
-          type: string
-          title: 주문명
-        isCulturalExpense:
-          type: boolean
-          title: 문화비 지출 여부
-        isEscrow:
-          type: boolean
-          title: 에스크로 결제 여부
-        customer:
-          $ref: '#/components/schemas/Customer'
-          title: 고객 정보
-        customData:
-          type: string
-          title: 사용자 지정 데이터
-        totalAmount:
-          type: integer
-          format: int64
-          title: 결제 총 금액
-        taxFreeAmount:
-          type: integer
-          format: int64
-          title: 면세액
-        vatAmount:
-          type: integer
-          format: int64
-          title: 부가세
-        currency:
-          $ref: '#/components/schemas/Currency'
-          title: 통화
-        installmentMonth:
-          type: integer
-          format: int32
-          title: 할부 개월 수
-        noticeUrls:
-          type: array
-          items:
-            type: string
-          title: 웹훅 주소
-        products:
-          title: 상품 정보
-          type: array
-          items:
-            $ref: '#/components/schemas/PaymentProduct'
-        createdAt:
-          type: string
-          format: date-time
-          title: 결제 예약 등록 시점
-        timeToPay:
-          type: string
-          format: date-time
-          title: 결제 예정 시점
-      x-portone-title: 결제 예약 완료 상태
-    PaymentProduct:
-      title: 상품 정보
-      description: 상품 정보
-      type: object
-      required:
-      - id
-      - name
-      - amount
-      - quantity
-      properties:
-        id:
-          type: string
-          title: 상품 고유 식별자
-          description: 고객사가 직접 부여한 식별자입니다.
-        name:
-          type: string
-          title: 상품명
-        tag:
-          type: string
-          title: 상품 태그
-          description: 카테고리 등으로 활용될 수 있습니다.
-        code:
-          type: string
-          title: 상품 코드
-        amount:
-          type: integer
-          format: int64
-          title: 상품 단위가격
-        quantity:
-          type: integer
-          format: int32
-          title: 주문 수량
-        link:
-          type: string
-          title: 판매 링크
-      x-portone-title: 상품 정보
     SucceededPaymentSchedule:
       title: 결제 성공 상태
       description: 결제 성공 상태
@@ -1460,28 +326,52 @@ components:
           format: date-time
           title: 결제 완료 시점
       x-portone-title: 결제 성공 상태
-    PageInfo:
-      title: 반환된 페이지 결과 정보
-      description: 반환된 페이지 결과 정보
+    PaymentScheduleSortBy:
+      title: 결제 예약 건 정렬 기준
+      description: 결제 예약 건 정렬 기준
+      type: string
+      enum:
+      - CREATED_AT
+      - TIME_TO_PAY
+      - COMPLETED_AT
+      - STATUS_TIMESTAMP
+      x-portone-title: 결제 예약 건 정렬 기준
+      x-portone-enum:
+        CREATED_AT:
+          title: 결제 예약 생성 시각
+        TIME_TO_PAY:
+          title: 결제 예정 시각
+        COMPLETED_AT:
+          title: 예약 결제 시도(성공 / 실패) 시각
+        STATUS_TIMESTAMP:
+          title: 결제 시도 또는 예정 시각. 해지 건은 해지 시각.
+    PageInput:
+      title: 다건 조회 API 에 사용되는 페이지 입력 정보
+      description: 다건 조회 API 에 사용되는 페이지 입력 정보
       type: object
-      required:
-      - number
-      - size
-      - totalCount
       properties:
         number:
           type: integer
           format: int32
-          title: 요청된 페이지 번호
+          title: 0부터 시작하는 페이지 번호
         size:
           type: integer
           format: int32
-          title: 요청된 페이지 당 객체 수
-        totalCount:
-          type: integer
-          format: int32
-          title: 실제 반환된 객체 수
-      x-portone-title: 반환된 페이지 결과 정보
+          title: 각 페이지 당 포함할 객체 수
+      x-portone-title: 다건 조회 API 에 사용되는 페이지 입력 정보
+    PaymentScheduleNotFoundError:
+      title: 결제 예약건이 존재하지 않는 경우
+      description: 결제 예약건이 존재하지 않는 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 결제 예약건이 존재하지 않는 경우
+      x-portone-status-code: 404
     PaymentScheduleFilterInput:
       title: 결제 예약 건 다건 조회를 위한 입력 정보
       description: 결제 예약 건 다건 조회를 위한 입력 정보
@@ -1514,45 +404,226 @@ components:
           type: boolean
           title: 테스트 결제 여부
       x-portone-title: 결제 예약 건 다건 조회를 위한 입력 정보
-    SeparatedAddress:
-      title: 분리 형식 주소
-      description: '분리 형식 주소
-
-
-        한 줄 형식 주소와 분리 형식 주소 모두 존재합니다.
-
-        한 줄 형식 주소는 분리 형식 주소를 이어 붙인 형태로 생성됩니다.'
+    PendingPaymentSchedule:
+      title: 결제 완료 대기 상태
+      description: 결제 완료 대기 상태
+      type: object
+      required:
+      - status
+      - id
+      - merchantId
+      - storeId
+      - paymentId
+      - billingKey
+      - orderName
+      - isCulturalExpense
+      - isEscrow
+      - customer
+      - customData
+      - totalAmount
+      - currency
+      - createdAt
+      - timeToPay
+      - startedAt
+      - completedAt
+      properties:
+        status:
+          type: string
+          title: 결제 예약 건 상태
+        id:
+          type: string
+          title: 결제 예약 건 아이디
+        merchantId:
+          type: string
+          title: 고객사 아이디
+        storeId:
+          type: string
+          title: 상점 아이디
+        paymentId:
+          type: string
+          title: 결제 건 아이디
+        billingKey:
+          type: string
+          title: 빌링키
+        orderName:
+          type: string
+          title: 주문명
+        isCulturalExpense:
+          type: boolean
+          title: 문화비 지출 여부
+        isEscrow:
+          type: boolean
+          title: 에스크로 결제 여부
+        customer:
+          $ref: '#/components/schemas/Customer'
+          title: 고객 정보
+        customData:
+          type: string
+          title: 사용자 지정 데이터
+        totalAmount:
+          type: integer
+          format: int64
+          title: 결제 총 금액
+        taxFreeAmount:
+          type: integer
+          format: int64
+          title: 면세액
+        vatAmount:
+          type: integer
+          format: int64
+          title: 부가세
+        currency:
+          $ref: '#/components/schemas/Currency'
+          title: 통화
+        installmentMonth:
+          type: integer
+          format: int32
+          title: 할부 개월 수
+        noticeUrls:
+          type: array
+          items:
+            type: string
+          title: 웹훅 주소
+        products:
+          title: 상품 정보
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentProduct'
+        createdAt:
+          type: string
+          format: date-time
+          title: 결제 예약 등록 시점
+        timeToPay:
+          type: string
+          format: date-time
+          title: 결제 예정 시점
+        startedAt:
+          type: string
+          format: date-time
+          title: 결제 시작 시점
+        completedAt:
+          type: string
+          format: date-time
+          title: 결제 완료 시점
+      x-portone-title: 결제 완료 대기 상태
+    PaymentScheduleAlreadyRevokedError:
+      title: 결제 예약건이 이미 취소된 경우
+      description: 결제 예약건이 이미 취소된 경우
       type: object
       required:
       - type
-      - oneLine
-      - addressLine1
-      - addressLine2
       properties:
         type:
           type: string
-        oneLine:
+        message:
           type: string
-          title: 주소 (한 줄)
-        addressLine1:
+      x-portone-title: 결제 예약건이 이미 취소된 경우
+      x-portone-status-code: 409
+    SortOrder:
+      title: 정렬 방식
+      description: 정렬 방식
+      type: string
+      enum:
+      - DESC
+      - ASC
+      x-portone-title: 정렬 방식
+      x-portone-enum:
+        DESC:
+          title: 내림차순
+        ASC:
+          title: 오름차순
+    ScheduledPaymentSchedule:
+      title: 결제 예약 완료 상태
+      description: 결제 예약 완료 상태
+      type: object
+      required:
+      - status
+      - id
+      - merchantId
+      - storeId
+      - paymentId
+      - billingKey
+      - orderName
+      - isCulturalExpense
+      - isEscrow
+      - customer
+      - customData
+      - totalAmount
+      - currency
+      - createdAt
+      - timeToPay
+      properties:
+        status:
           type: string
-          title: 상세 주소 1
-        addressLine2:
+          title: 결제 예약 건 상태
+        id:
           type: string
-          title: 상세 주소 2
-        city:
+          title: 결제 예약 건 아이디
+        merchantId:
           type: string
-          title: 시/군/구
-        province:
+          title: 고객사 아이디
+        storeId:
           type: string
-          title: 주/도/시
-        country:
-          $ref: '#/components/schemas/Country'
-          title: 국가
-      x-portone-title: 분리 형식 주소
-      x-portone-description: '한 줄 형식 주소와 분리 형식 주소 모두 존재합니다.
-
-        한 줄 형식 주소는 분리 형식 주소를 이어 붙인 형태로 생성됩니다.'
+          title: 상점 아이디
+        paymentId:
+          type: string
+          title: 결제 건 아이디
+        billingKey:
+          type: string
+          title: 빌링키
+        orderName:
+          type: string
+          title: 주문명
+        isCulturalExpense:
+          type: boolean
+          title: 문화비 지출 여부
+        isEscrow:
+          type: boolean
+          title: 에스크로 결제 여부
+        customer:
+          $ref: '#/components/schemas/Customer'
+          title: 고객 정보
+        customData:
+          type: string
+          title: 사용자 지정 데이터
+        totalAmount:
+          type: integer
+          format: int64
+          title: 결제 총 금액
+        taxFreeAmount:
+          type: integer
+          format: int64
+          title: 면세액
+        vatAmount:
+          type: integer
+          format: int64
+          title: 부가세
+        currency:
+          $ref: '#/components/schemas/Currency'
+          title: 통화
+        installmentMonth:
+          type: integer
+          format: int32
+          title: 할부 개월 수
+        noticeUrls:
+          type: array
+          items:
+            type: string
+          title: 웹훅 주소
+        products:
+          title: 상품 정보
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentProduct'
+        createdAt:
+          type: string
+          format: date-time
+          title: 결제 예약 등록 시점
+        timeToPay:
+          type: string
+          format: date-time
+          title: 결제 예정 시점
+      x-portone-title: 결제 예약 완료 상태
     RevokePaymentSchedulesError:
       title: RevokePaymentSchedulesError
       oneOf:
@@ -1575,6 +646,42 @@ components:
           PAYMENT_SCHEDULE_ALREADY_REVOKED: '#/components/schemas/PaymentScheduleAlreadyRevokedError'
           PAYMENT_SCHEDULE_NOT_FOUND: '#/components/schemas/PaymentScheduleNotFoundError'
           UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
+    PaymentProduct:
+      title: 상품 정보
+      description: 상품 정보
+      type: object
+      required:
+      - id
+      - name
+      - amount
+      - quantity
+      properties:
+        id:
+          type: string
+          title: 상품 고유 식별자
+          description: 고객사가 직접 부여한 식별자입니다.
+        name:
+          type: string
+          title: 상품명
+        tag:
+          type: string
+          title: 상품 태그
+          description: 카테고리 등으로 활용될 수 있습니다.
+        code:
+          type: string
+          title: 상품 코드
+        amount:
+          type: integer
+          format: int64
+          title: 상품 단위가격
+        quantity:
+          type: integer
+          format: int32
+          title: 주문 수량
+        link:
+          type: string
+          title: 판매 링크
+      x-portone-title: 상품 정보
     Country:
       title: 국가
       description: 국가
@@ -2329,79 +1436,9 @@ components:
           title: Germany
         SR:
           title: Suriname
-    PaymentSchedule:
-      title: 결제 예약 건
-      description: 결제 예약 건
-      oneOf:
-      - $ref: '#/components/schemas/FailedPaymentSchedule'
-      - $ref: '#/components/schemas/PendingPaymentSchedule'
-      - $ref: '#/components/schemas/RevokedPaymentSchedule'
-      - $ref: '#/components/schemas/ScheduledPaymentSchedule'
-      - $ref: '#/components/schemas/StartedPaymentSchedule'
-      - $ref: '#/components/schemas/SucceededPaymentSchedule'
-      discriminator:
-        propertyName: status
-        mapping:
-          FAILED: '#/components/schemas/FailedPaymentSchedule'
-          PENDING: '#/components/schemas/PendingPaymentSchedule'
-          REVOKED: '#/components/schemas/RevokedPaymentSchedule'
-          SCHEDULED: '#/components/schemas/ScheduledPaymentSchedule'
-          STARTED: '#/components/schemas/StartedPaymentSchedule'
-          SUCCEEDED: '#/components/schemas/SucceededPaymentSchedule'
-      x-portone-title: 결제 예약 건
-      x-portone-discriminator:
-        SCHEDULED:
-          title: 결제 예약 완료
-        STARTED:
-          title: 결제 시작
-        PENDING:
-          title: 결제 완료 대기
-        FAILED:
-          title: 결제 실패
-        REVOKED:
-          title: 취소된 결제 예약
-        SUCCEEDED:
-          title: 결제 성공
-    GetPaymentSchedulesError:
-      title: GetPaymentSchedulesError
-      oneOf:
-      - $ref: '#/components/schemas/ForbiddenError'
-      - $ref: '#/components/schemas/InvalidRequestError'
-      - $ref: '#/components/schemas/UnauthorizedError'
-      discriminator:
-        propertyName: type
-        mapping:
-          FORBIDDEN: '#/components/schemas/ForbiddenError'
-          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
-          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
-    PaymentScheduleStatus:
-      title: 결제 예약 건 상태
-      description: 결제 예약 건 상태
-      type: string
-      enum:
-      - SCHEDULED
-      - STARTED
-      - SUCCEEDED
-      - FAILED
-      - REVOKED
-      - PENDING
-      x-portone-title: 결제 예약 건 상태
-      x-portone-enum:
-        SCHEDULED:
-          title: 예약 완료
-        STARTED:
-          title: 결제 시작
-        PENDING:
-          title: 결제 승인 대기
-        FAILED:
-          title: 결제 실패
-        REVOKED:
-          title: 취소된 결제 예약
-        SUCCEEDED:
-          title: 결제 성공
-    PaymentScheduleAlreadyRevokedError:
-      title: 결제 예약건이 이미 취소된 경우
-      description: 결제 예약건이 이미 취소된 경우
+    ForbiddenError:
+      title: 요청이 거절된 경우
+      description: 요청이 거절된 경우
       type: object
       required:
       - type
@@ -2410,54 +1447,147 @@ components:
           type: string
         message:
           type: string
-      x-portone-title: 결제 예약건이 이미 취소된 경우
-      x-portone-status-code: 409
-    UnauthorizedError:
-      title: 인증 정보가 올바르지 않은 경우
-      description: 인증 정보가 올바르지 않은 경우
+      x-portone-title: 요청이 거절된 경우
+      x-portone-status-code: 403
+    GetPaymentSchedulesResponse:
+      title: 결제 예약 다건 조회 성공 응답 정보
+      description: 결제 예약 다건 조회 성공 응답 정보
       type: object
       required:
-      - type
+      - items
+      - page
       properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 인증 정보가 올바르지 않은 경우
-      x-portone-status-code: 401
-    PaymentScheduleNotFoundError:
-      title: 결제 예약건이 존재하지 않는 경우
-      description: 결제 예약건이 존재하지 않는 경우
+        items:
+          title: 조회된 결제 예약 건 리스트
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentSchedule'
+        page:
+          $ref: '#/components/schemas/PageInfo'
+          title: 조회된 페이지 정보
+      x-portone-title: 결제 예약 다건 조회 성공 응답 정보
+    StartedPaymentSchedule:
+      title: 결제 시작 상태
+      description: 결제 시작 상태
       type: object
       required:
-      - type
+      - status
+      - id
+      - merchantId
+      - storeId
+      - paymentId
+      - billingKey
+      - orderName
+      - isCulturalExpense
+      - isEscrow
+      - customer
+      - customData
+      - totalAmount
+      - currency
+      - createdAt
+      - timeToPay
+      - startedAt
       properties:
-        type:
+        status:
           type: string
-        message:
+          title: 결제 예약 건 상태
+        id:
           type: string
-      x-portone-title: 결제 예약건이 존재하지 않는 경우
-      x-portone-status-code: 404
-    RevokePaymentSchedulesResponse:
-      title: 결제 예약 건 취소 성공 응답
-      description: 결제 예약 건 취소 성공 응답
-      type: object
-      required:
-      - revokedScheduleIds
-      properties:
-        revokedScheduleIds:
+          title: 결제 예약 건 아이디
+        merchantId:
+          type: string
+          title: 고객사 아이디
+        storeId:
+          type: string
+          title: 상점 아이디
+        paymentId:
+          type: string
+          title: 결제 건 아이디
+        billingKey:
+          type: string
+          title: 빌링키
+        orderName:
+          type: string
+          title: 주문명
+        isCulturalExpense:
+          type: boolean
+          title: 문화비 지출 여부
+        isEscrow:
+          type: boolean
+          title: 에스크로 결제 여부
+        customer:
+          $ref: '#/components/schemas/Customer'
+          title: 고객 정보
+        customData:
+          type: string
+          title: 사용자 지정 데이터
+        totalAmount:
+          type: integer
+          format: int64
+          title: 결제 총 금액
+        taxFreeAmount:
+          type: integer
+          format: int64
+          title: 면세액
+        vatAmount:
+          type: integer
+          format: int64
+          title: 부가세
+        currency:
+          $ref: '#/components/schemas/Currency'
+          title: 통화
+        installmentMonth:
+          type: integer
+          format: int32
+          title: 할부 개월 수
+        noticeUrls:
           type: array
           items:
             type: string
-          title: 취소 완료된 결제 예약 건 아이디 목록
-        revokedAt:
+          title: 웹훅 주소
+        products:
+          title: 상품 정보
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentProduct'
+        createdAt:
           type: string
           format: date-time
-          title: 결제 예약 건 취소 완료 시점
-      x-portone-title: 결제 예약 건 취소 성공 응답
-    PendingPaymentSchedule:
-      title: 결제 완료 대기 상태
-      description: 결제 완료 대기 상태
+          title: 결제 예약 등록 시점
+        timeToPay:
+          type: string
+          format: date-time
+          title: 결제 예정 시점
+        startedAt:
+          type: string
+          format: date-time
+          title: 결제 시작 시점
+      x-portone-title: 결제 시작 상태
+    PageInfo:
+      title: 반환된 페이지 결과 정보
+      description: 반환된 페이지 결과 정보
+      type: object
+      required:
+      - number
+      - size
+      - totalCount
+      properties:
+        number:
+          type: integer
+          format: int32
+          title: 요청된 페이지 번호
+        size:
+          type: integer
+          format: int32
+          title: 요청된 페이지 당 객체 수
+        totalCount:
+          type: integer
+          format: int32
+          title: 실제 반환된 객체 수
+      x-portone-title: 반환된 페이지 결과 정보
+    FailedPaymentSchedule:
+      title: 결제 실패 상태
+      description: 결제 실패 상태
       type: object
       required:
       - status
@@ -2556,117 +1686,40 @@ components:
           type: string
           format: date-time
           title: 결제 완료 시점
-      x-portone-title: 결제 완료 대기 상태
-    RevokePaymentSchedulesBody:
-      title: 결제 예약 건 취소 요청 입력 정보
-      description: 결제 예약 건 취소 요청 입력 정보
-      type: object
-      properties:
-        storeId:
-          type: string
-          title: 상점 아이디
-          description: 접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 인증 정보의 상점 아이디를 사용합니다.
-        billingKey:
-          type: string
-          title: 빌링키
-        scheduleIds:
-          type: array
-          items:
-            type: string
-          title: 결제 예약 건 아이디 목록
-      x-portone-title: 결제 예약 건 취소 요청 입력 정보
-    BillingKeyNotFoundError:
-      title: 빌링키가 존재하지 않는 경우
-      description: 빌링키가 존재하지 않는 경우
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 빌링키가 존재하지 않는 경우
-      x-portone-status-code: 404
-    GetPaymentSchedulesBody:
-      title: 결제 예약 다건 조회를 위한 입력 정보
-      description: '결제 예약 다건 조회를 위한 입력 정보
-
-
-        조회 결과는 결제 예정 시점(timeToPay) 기준 최신 순으로 정렬됩니다.'
-      type: object
-      properties:
-        page:
-          $ref: '#/components/schemas/PageInput'
-          title: 요청할 페이지 정보
-          description: '미 입력 시 number: 0, size: 10 으로 기본값이 적용됩니다.'
-        sort:
-          $ref: '#/components/schemas/PaymentScheduleSortInput'
-          title: 정렬 조건
-          description: '미 입력 시 sortBy: TIME_TO_PAY, sortOrder: DESC 으로 기본값이 적용됩니다.'
-        filter:
-          $ref: '#/components/schemas/PaymentScheduleFilterInput'
-          title: 조회할 결제 예약 건의 조건 필터
-      x-portone-title: 결제 예약 다건 조회를 위한 입력 정보
-      x-portone-description: 조회 결과는 결제 예정 시점(timeToPay) 기준 최신 순으로 정렬됩니다.
-    PaymentScheduleAlreadyProcessedError:
-      title: 결제 예약건이 이미 처리된 경우
-      description: 결제 예약건이 이미 처리된 경우
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 결제 예약건이 이미 처리된 경우
-      x-portone-status-code: 409
-    GetPaymentSchedulesResponse:
-      title: 결제 예약 다건 조회 성공 응답 정보
-      description: 결제 예약 다건 조회 성공 응답 정보
-      type: object
-      required:
-      - items
-      - page
-      properties:
-        items:
-          title: 조회된 결제 예약 건 리스트
-          type: array
-          items:
-            $ref: '#/components/schemas/PaymentSchedule'
-        page:
-          $ref: '#/components/schemas/PageInfo'
-          title: 조회된 페이지 정보
-      x-portone-title: 결제 예약 다건 조회 성공 응답 정보
-    GetPaymentScheduleError:
-      title: GetPaymentScheduleError
+      x-portone-title: 결제 실패 상태
+    PaymentSchedule:
+      title: 결제 예약 건
+      description: 결제 예약 건
       oneOf:
-      - $ref: '#/components/schemas/ForbiddenError'
-      - $ref: '#/components/schemas/InvalidRequestError'
-      - $ref: '#/components/schemas/PaymentScheduleNotFoundError'
-      - $ref: '#/components/schemas/UnauthorizedError'
+      - $ref: '#/components/schemas/FailedPaymentSchedule'
+      - $ref: '#/components/schemas/PendingPaymentSchedule'
+      - $ref: '#/components/schemas/RevokedPaymentSchedule'
+      - $ref: '#/components/schemas/ScheduledPaymentSchedule'
+      - $ref: '#/components/schemas/StartedPaymentSchedule'
+      - $ref: '#/components/schemas/SucceededPaymentSchedule'
       discriminator:
-        propertyName: type
+        propertyName: status
         mapping:
-          FORBIDDEN: '#/components/schemas/ForbiddenError'
-          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
-          PAYMENT_SCHEDULE_NOT_FOUND: '#/components/schemas/PaymentScheduleNotFoundError'
-          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
-    PageInput:
-      title: 다건 조회 API 에 사용되는 페이지 입력 정보
-      description: 다건 조회 API 에 사용되는 페이지 입력 정보
-      type: object
-      properties:
-        number:
-          type: integer
-          format: int32
-          title: 0부터 시작하는 페이지 번호
-        size:
-          type: integer
-          format: int32
-          title: 각 페이지 당 포함할 객체 수
-      x-portone-title: 다건 조회 API 에 사용되는 페이지 입력 정보
+          FAILED: '#/components/schemas/FailedPaymentSchedule'
+          PENDING: '#/components/schemas/PendingPaymentSchedule'
+          REVOKED: '#/components/schemas/RevokedPaymentSchedule'
+          SCHEDULED: '#/components/schemas/ScheduledPaymentSchedule'
+          STARTED: '#/components/schemas/StartedPaymentSchedule'
+          SUCCEEDED: '#/components/schemas/SucceededPaymentSchedule'
+      x-portone-title: 결제 예약 건
+      x-portone-discriminator:
+        SCHEDULED:
+          title: 결제 예약 완료
+        STARTED:
+          title: 결제 시작
+        PENDING:
+          title: 결제 완료 대기
+        FAILED:
+          title: 결제 실패
+        REVOKED:
+          title: 취소된 결제 예약
+        SUCCEEDED:
+          title: 결제 성공
     Address:
       title: 분리 형식 주소
       description: '분리 형식 주소
@@ -2688,6 +1741,953 @@ components:
           title: 한 줄 형식
         SEPARATED:
           title: 분리 형식
+    RevokedPaymentSchedule:
+      title: 결제 예약 취소 상태
+      description: 결제 예약 취소 상태
+      type: object
+      required:
+      - status
+      - id
+      - merchantId
+      - storeId
+      - paymentId
+      - billingKey
+      - orderName
+      - isCulturalExpense
+      - isEscrow
+      - customer
+      - customData
+      - totalAmount
+      - currency
+      - createdAt
+      - timeToPay
+      - revokedAt
+      properties:
+        status:
+          type: string
+          title: 결제 예약 건 상태
+        id:
+          type: string
+          title: 결제 예약 건 아이디
+        merchantId:
+          type: string
+          title: 고객사 아이디
+        storeId:
+          type: string
+          title: 상점 아이디
+        paymentId:
+          type: string
+          title: 결제 건 아이디
+        billingKey:
+          type: string
+          title: 빌링키
+        orderName:
+          type: string
+          title: 주문명
+        isCulturalExpense:
+          type: boolean
+          title: 문화비 지출 여부
+        isEscrow:
+          type: boolean
+          title: 에스크로 결제 여부
+        customer:
+          $ref: '#/components/schemas/Customer'
+          title: 고객 정보
+        customData:
+          type: string
+          title: 사용자 지정 데이터
+        totalAmount:
+          type: integer
+          format: int64
+          title: 결제 총 금액
+        taxFreeAmount:
+          type: integer
+          format: int64
+          title: 면세액
+        vatAmount:
+          type: integer
+          format: int64
+          title: 부가세
+        currency:
+          $ref: '#/components/schemas/Currency'
+          title: 통화
+        installmentMonth:
+          type: integer
+          format: int32
+          title: 할부 개월 수
+        noticeUrls:
+          type: array
+          items:
+            type: string
+          title: 웹훅 주소
+        products:
+          title: 상품 정보
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentProduct'
+        createdAt:
+          type: string
+          format: date-time
+          title: 결제 예약 등록 시점
+        timeToPay:
+          type: string
+          format: date-time
+          title: 결제 예정 시점
+        revokedAt:
+          type: string
+          format: date-time
+          title: 결제 취소 시점
+      x-portone-title: 결제 예약 취소 상태
+    GetPaymentScheduleError:
+      title: GetPaymentScheduleError
+      oneOf:
+      - $ref: '#/components/schemas/ForbiddenError'
+      - $ref: '#/components/schemas/InvalidRequestError'
+      - $ref: '#/components/schemas/PaymentScheduleNotFoundError'
+      - $ref: '#/components/schemas/UnauthorizedError'
+      discriminator:
+        propertyName: type
+        mapping:
+          FORBIDDEN: '#/components/schemas/ForbiddenError'
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          PAYMENT_SCHEDULE_NOT_FOUND: '#/components/schemas/PaymentScheduleNotFoundError'
+          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
+    Gender:
+      title: 성별
+      description: 성별
+      type: string
+      enum:
+      - MALE
+      - FEMALE
+      - OTHER
+      x-portone-title: 성별
+      x-portone-enum:
+        MALE:
+          title: 남성
+        FEMALE:
+          title: 여성
+        OTHER:
+          title: 그 외 성별
+    PaymentScheduleAlreadyProcessedError:
+      title: 결제 예약건이 이미 처리된 경우
+      description: 결제 예약건이 이미 처리된 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 결제 예약건이 이미 처리된 경우
+      x-portone-status-code: 409
+    RevokePaymentSchedulesBody:
+      title: 결제 예약 건 취소 요청 입력 정보
+      description: 결제 예약 건 취소 요청 입력 정보
+      type: object
+      properties:
+        storeId:
+          type: string
+          title: 상점 아이디
+          description: 접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 인증 정보의 상점 아이디를 사용합니다.
+        billingKey:
+          type: string
+          title: 빌링키
+        scheduleIds:
+          type: array
+          items:
+            type: string
+          title: 결제 예약 건 아이디 목록
+      x-portone-title: 결제 예약 건 취소 요청 입력 정보
+    SeparatedAddress:
+      title: 분리 형식 주소
+      description: '분리 형식 주소
+
+
+        한 줄 형식 주소와 분리 형식 주소 모두 존재합니다.
+
+        한 줄 형식 주소는 분리 형식 주소를 이어 붙인 형태로 생성됩니다.'
+      type: object
+      required:
+      - type
+      - oneLine
+      - addressLine1
+      - addressLine2
+      properties:
+        type:
+          type: string
+        oneLine:
+          type: string
+          title: 주소 (한 줄)
+        addressLine1:
+          type: string
+          title: 상세 주소 1
+        addressLine2:
+          type: string
+          title: 상세 주소 2
+        city:
+          type: string
+          title: 시/군/구
+        province:
+          type: string
+          title: 주/도/시
+        country:
+          $ref: '#/components/schemas/Country'
+          title: 국가
+      x-portone-title: 분리 형식 주소
+      x-portone-description: '한 줄 형식 주소와 분리 형식 주소 모두 존재합니다.
+
+        한 줄 형식 주소는 분리 형식 주소를 이어 붙인 형태로 생성됩니다.'
+    UnauthorizedError:
+      title: 인증 정보가 올바르지 않은 경우
+      description: 인증 정보가 올바르지 않은 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 인증 정보가 올바르지 않은 경우
+      x-portone-status-code: 401
+    GetPaymentSchedulesBody:
+      title: 결제 예약 다건 조회를 위한 입력 정보
+      description: '결제 예약 다건 조회를 위한 입력 정보
+
+
+        조회 결과는 결제 예정 시점(timeToPay) 기준 최신 순으로 정렬됩니다.'
+      type: object
+      properties:
+        page:
+          $ref: '#/components/schemas/PageInput'
+          title: 요청할 페이지 정보
+          description: '미 입력 시 number: 0, size: 10 으로 기본값이 적용됩니다.'
+        sort:
+          $ref: '#/components/schemas/PaymentScheduleSortInput'
+          title: 정렬 조건
+          description: '미 입력 시 sortBy: TIME_TO_PAY, sortOrder: DESC 으로 기본값이 적용됩니다.'
+        filter:
+          $ref: '#/components/schemas/PaymentScheduleFilterInput'
+          title: 조회할 결제 예약 건의 조건 필터
+      x-portone-title: 결제 예약 다건 조회를 위한 입력 정보
+      x-portone-description: 조회 결과는 결제 예정 시점(timeToPay) 기준 최신 순으로 정렬됩니다.
+    Currency:
+      title: 통화
+      description: 통화
+      type: string
+      enum:
+      - KRW
+      - USD
+      - JPY
+      - AED
+      - AFN
+      - ALL
+      - AMD
+      - ANG
+      - AOA
+      - ARS
+      - AUD
+      - AWG
+      - AZN
+      - BAM
+      - BBD
+      - BDT
+      - BGN
+      - BHD
+      - BIF
+      - BMD
+      - BND
+      - BOB
+      - BOV
+      - BRL
+      - BSD
+      - BTN
+      - BWP
+      - BYN
+      - BZD
+      - CAD
+      - CDF
+      - CHE
+      - CHF
+      - CHW
+      - CLF
+      - CLP
+      - CNY
+      - COP
+      - COU
+      - CRC
+      - CUC
+      - CUP
+      - CVE
+      - CZK
+      - DJF
+      - DKK
+      - DOP
+      - DZD
+      - EGP
+      - ERN
+      - ETB
+      - EUR
+      - FJD
+      - FKP
+      - GBP
+      - GEL
+      - GHS
+      - GIP
+      - GMD
+      - GNF
+      - GTQ
+      - GYD
+      - HKD
+      - HNL
+      - HRK
+      - HTG
+      - HUF
+      - IDR
+      - ILS
+      - INR
+      - IQD
+      - IRR
+      - ISK
+      - JMD
+      - JOD
+      - KES
+      - KGS
+      - KHR
+      - KMF
+      - KPW
+      - KWD
+      - KYD
+      - KZT
+      - LAK
+      - LBP
+      - LKR
+      - LRD
+      - LSL
+      - LYD
+      - MAD
+      - MDL
+      - MGA
+      - MKD
+      - MMK
+      - MNT
+      - MOP
+      - MRU
+      - MUR
+      - MVR
+      - MWK
+      - MXN
+      - MXV
+      - MYR
+      - MZN
+      - NAD
+      - NGN
+      - NIO
+      - NOK
+      - NPR
+      - NZD
+      - OMR
+      - PAB
+      - PEN
+      - PGK
+      - PHP
+      - PKR
+      - PLN
+      - PYG
+      - QAR
+      - RON
+      - RSD
+      - RUB
+      - RWF
+      - SAR
+      - SBD
+      - SCR
+      - SDG
+      - SEK
+      - SGD
+      - SHP
+      - SLE
+      - SLL
+      - SOS
+      - SRD
+      - SSP
+      - STN
+      - SVC
+      - SYP
+      - SZL
+      - THB
+      - TJS
+      - TMT
+      - TND
+      - TOP
+      - TRY
+      - TTD
+      - TWD
+      - TZS
+      - UAH
+      - UGX
+      - USN
+      - UYI
+      - UYU
+      - UYW
+      - UZS
+      - VED
+      - VES
+      - VND
+      - VUV
+      - WST
+      - XAF
+      - XAG
+      - XAU
+      - XBA
+      - XBB
+      - XBC
+      - XBD
+      - XCD
+      - XDR
+      - XOF
+      - XPD
+      - XPF
+      - XPT
+      - XSU
+      - XTS
+      - XUA
+      - XXX
+      - YER
+      - ZAR
+      - ZMW
+      - ZWL
+      x-portone-title: 통화
+      x-portone-enum:
+        OMR:
+          title: Rial Omani
+        CUC:
+          title: Peso Convertible
+        BBD:
+          title: Barbados Dollar
+        PLN:
+          title: Zloty
+        SVC:
+          title: El Salvador Colon
+        BMD:
+          title: Bermudian Dollar
+        TJS:
+          title: Somoni
+        TND:
+          title: Tunisian Dinar
+        GNF:
+          title: Guinean Franc
+        SDG:
+          title: Sudanese Pound
+        MRU:
+          title: Ouguiya
+        XBB:
+          title: Bond Markets Unit European Monetary Unit (E.M.U.-6)
+        PKR:
+          title: Pakistan Rupee
+        FKP:
+          title: Falkland Islands Pound
+        MUR:
+          title: Mauritius Rupee
+        XAF:
+          title: CFA Franc BEAC
+        SAR:
+          title: Saudi Riyal
+        CAD:
+          title: Canadian Dollar
+        HKD:
+          title: Hong Kong Dollar
+        PYG:
+          title: Guarani
+        MGA:
+          title: Malagasy Ariary
+        UYI:
+          title: Uruguay Peso en Unidades Indexadas (UI)
+        AUD:
+          title: Australian Dollar
+        AMD:
+          title: Armenian Dram
+        YER:
+          title: Yemeni Rial
+        CHE:
+          title: WIR Euro
+        MMK:
+          title: Kyat
+        SEK:
+          title: Swedish Krona
+        TRY:
+          title: Turkish Lira
+        XBC:
+          title: Bond Markets Unit European Unit of Account 9 (E.U.A.-9)
+        KES:
+          title: Kenyan Shilling
+        GEL:
+          title: Lari
+        GTQ:
+          title: Quetzal
+        TZS:
+          title: Tanzanian Shilling
+        CUP:
+          title: Cuban Peso
+        ALL:
+          title: Lek
+        ERN:
+          title: Nakfa
+        BRL:
+          title: Brazilian Real
+        UGX:
+          title: Uganda Shilling
+        XUA:
+          title: ADB Unit of Account
+        GIP:
+          title: Gibraltar Pound
+        MZN:
+          title: Mozambique Metical
+        KRW:
+          title: 대한민국 원화
+        JOD:
+          title: Jordanian Dinar
+        IQD:
+          title: Iraqi Dinar
+        VUV:
+          title: Vatu
+        XXX:
+          title: The codes assigned for transactions where no currency is involved
+        UZS:
+          title: Uzbekistan Sum
+        BOV:
+          title: Mvdol
+        UAH:
+          title: Hryvnia
+        PEN:
+          title: Sol
+        KMF:
+          title: 'Comorian Franc '
+        DOP:
+          title: Dominican Peso
+        BDT:
+          title: Taka
+        LKR:
+          title: Sri Lanka Rupee
+        FJD:
+          title: Fiji Dollar
+        LSL:
+          title: Loti
+        BSD:
+          title: Bahamian Dollar
+        SRD:
+          title: Surinam Dollar
+        XTS:
+          title: Codes specifically reserved for testing purposes
+        SHP:
+          title: Saint Helena Pound
+        LRD:
+          title: Liberian Dollar
+        QAR:
+          title: Qatari Rial
+        BND:
+          title: Brunei Dollar
+        CDF:
+          title: Congolese Franc
+        SLE:
+          title: Leone
+        USN:
+          title: US Dollar (Next day)
+        VES:
+          title: Bolívar Soberano
+        TMT:
+          title: Turkmenistan New Manat
+        CHW:
+          title: WIR Franc
+        BGN:
+          title: Bulgarian Lev
+        JMD:
+          title: Jamaican Dollar
+        SZL:
+          title: Lilangeni
+        CZK:
+          title: Czech Koruna
+        ZMW:
+          title: Zambian Kwacha
+        UYU:
+          title: Peso Uruguayo
+        NPR:
+          title: Nepalese Rupee
+        EGP:
+          title: Egyptian Pound
+        AZN:
+          title: Azerbaijan Manat
+        CLP:
+          title: Chilean Peso
+        MOP:
+          title: Pataca
+        SCR:
+          title: Seychelles Rupee
+        HTG:
+          title: Gourde
+        VND:
+          title: Dong
+        LAK:
+          title: Lao Kip
+        BTN:
+          title: Ngultrum
+        GBP:
+          title: Pound Sterling
+        SSP:
+          title: South Sudanese Pound
+        XPD:
+          title: Palladium
+        TWD:
+          title: New Taiwan Dollar
+        DZD:
+          title: Algerian Dinar
+        MXN:
+          title: Mexican Peso
+        XDR:
+          title: SDR (Special Drawing Right)
+        ZWL:
+          title: Zimbabwe Dollar
+        AWG:
+          title: Aruban Florin
+        THB:
+          title: Baht
+        ISK:
+          title: Iceland Krona
+        LBP:
+          title: Lebanese Pound
+        SGD:
+          title: Singapore Dollar
+        MWK:
+          title: Malawi Kwacha
+        KZT:
+          title: Tenge
+        CRC:
+          title: Costa Rican Colon
+        WST:
+          title: Tala
+        DJF:
+          title: Djibouti Franc
+        LYD:
+          title: Libyan Dinar
+        NGN:
+          title: Naira
+        BIF:
+          title: Burundi Franc
+        AED:
+          title: UAE Dirham
+        CHF:
+          title: Swiss Franc
+        RWF:
+          title: Rwanda Franc
+        XBD:
+          title: Bond Markets Unit European Unit of Account 17 (E.U.A.-17)
+        INR:
+          title: Indian Rupee
+        CLF:
+          title: Unidad de Fomento
+        XOF:
+          title: CFA Franc BCEAO
+        COU:
+          title: Unidad de Valor Real
+        MXV:
+          title: Mexican Unidad de Inversion (UDI)
+        PGK:
+          title: Kina
+        CNY:
+          title: Yuan Renminbi
+        SYP:
+          title: Syrian Pound
+        VED:
+          title: Bolívar Soberano
+        RON:
+          title: Romanian Leu
+        AFN:
+          title: Afghani
+        PHP:
+          title: Philippine Peso
+        MDL:
+          title: Moldovan Leu
+        KHR:
+          title: Riel
+        XPT:
+          title: Platinum
+        COP:
+          title: Colombian Peso
+        DKK:
+          title: Danish Krone
+        KYD:
+          title: Cayman Islands Dollar
+        XPF:
+          title: CFP Franc
+        GMD:
+          title: Dalasi
+        MVR:
+          title: Rufiyaa
+        STN:
+          title: Dobra
+        TTD:
+          title: Trinidad and Tobago Dollar
+        PAB:
+          title: Balboa
+        XAU:
+          title: Gold
+        XAG:
+          title: Silver
+        JPY:
+          title: 일본 엔화
+        TOP:
+          title: Pa’anga
+        BWP:
+          title: Pula
+        MKD:
+          title: Denar
+        ARS:
+          title: Argentine Peso
+        HUF:
+          title: Forint
+        MYR:
+          title: Malaysian Ringgit
+        USD:
+          title: 미국 달러
+        SLL:
+          title: Leone
+        MAD:
+          title: Moroccan Dirham
+        RUB:
+          title: Russian Ruble
+        MNT:
+          title: Tugrik
+        BOB:
+          title: Boliviano
+        GYD:
+          title: Guyana Dollar
+        SBD:
+          title: Solomon Islands Dollar
+        XBA:
+          title: Bond Markets Unit European Composite Unit (EURCO)
+        BHD:
+          title: Bahraini Dinar
+        HNL:
+          title: Lempira
+        UYW:
+          title: Unidad Previsional
+        NZD:
+          title: New Zealand Dollar
+        XCD:
+          title: East Caribbean Dollar
+        XSU:
+          title: Sucre
+        KGS:
+          title: Som
+        AOA:
+          title: Kwanza
+        BZD:
+          title: Belize Dollar
+        IDR:
+          title: Rupiah
+        SOS:
+          title: Somali Shilling
+        NIO:
+          title: Cordoba Oro
+        GHS:
+          title: Ghana Cedi
+        ANG:
+          title: Netherlands Antillean Guilder
+        RSD:
+          title: Serbian Dinar
+        ILS:
+          title: New Israeli Sheqel
+        NOK:
+          title: Norwegian Krone
+        KWD:
+          title: Kuwaiti Dinar
+        NAD:
+          title: Namibia Dollar
+        ETB:
+          title: Ethiopian Birr
+        BYN:
+          title: Belarusian Ruble
+        KPW:
+          title: North Korean Won
+        EUR:
+          title: Euro
+        CVE:
+          title: Cabo Verde Escudo
+        ZAR:
+          title: Rand
+        IRR:
+          title: Iranian Rial
+        HRK:
+          title: Kuna (Replaced by EUR)
+        BAM:
+          title: Convertible Mark
+    PaymentScheduleSortInput:
+      title: 결제 예약 건 다건 조회 시 정렬 조건
+      description: 결제 예약 건 다건 조회 시 정렬 조건
+      type: object
+      properties:
+        by:
+          $ref: '#/components/schemas/PaymentScheduleSortBy'
+          title: 정렬 기준 필드
+          description: 어떤 필드를 기준으로 정렬할 지 결정합니다. 비워서 보낼 경우, TIME_TO_PAY가 기본값으로 설정됩니다.
+        order:
+          $ref: '#/components/schemas/SortOrder'
+          title: 정렬 순서
+          description: 어떤 순서로 정렬할 지 결정합니다. 비워서 보낼 경우, DESC(내림차순)가 기본값으로 설정됩니다.
+      x-portone-title: 결제 예약 건 다건 조회 시 정렬 조건
+    BillingKeyAlreadyDeletedError:
+      title: 빌링키가 이미 삭제된 경우
+      description: 빌링키가 이미 삭제된 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 빌링키가 이미 삭제된 경우
+      x-portone-status-code: 409
+    PaymentScheduleStatus:
+      title: 결제 예약 건 상태
+      description: 결제 예약 건 상태
+      type: string
+      enum:
+      - SCHEDULED
+      - STARTED
+      - SUCCEEDED
+      - FAILED
+      - REVOKED
+      - PENDING
+      x-portone-title: 결제 예약 건 상태
+      x-portone-enum:
+        SCHEDULED:
+          title: 예약 완료
+        STARTED:
+          title: 결제 시작
+        PENDING:
+          title: 결제 승인 대기
+        FAILED:
+          title: 결제 실패
+        REVOKED:
+          title: 취소된 결제 예약
+        SUCCEEDED:
+          title: 결제 성공
+    Customer:
+      title: 고객 정보
+      description: 고객 정보
+      type: object
+      properties:
+        id:
+          type: string
+          title: 고객 아이디
+          description: 고객사가 지정한 고객의 고유 식별자입니다.
+        name:
+          type: string
+          title: 이름
+        birthYear:
+          type: string
+          title: 출생 연도
+        birthMonth:
+          type: string
+          title: 출생 월
+        birthDay:
+          type: string
+          title: 출생 일자
+        gender:
+          $ref: '#/components/schemas/Gender'
+          title: 성별
+        email:
+          type: string
+          title: 이메일
+        phoneNumber:
+          type: string
+          title: 전화번호
+        address:
+          $ref: '#/components/schemas/Address'
+          title: 주소
+        zipcode:
+          type: string
+          title: 우편번호
+      x-portone-title: 고객 정보
+    BillingKeyNotFoundError:
+      title: 빌링키가 존재하지 않는 경우
+      description: 빌링키가 존재하지 않는 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 빌링키가 존재하지 않는 경우
+      x-portone-status-code: 404
+    OneLineAddress:
+      title: 한 줄 형식 주소
+      description: '한 줄 형식 주소
+
+
+        한 줄 형식 주소만 존재합니다.'
+      type: object
+      required:
+      - type
+      - oneLine
+      properties:
+        type:
+          type: string
+        oneLine:
+          type: string
+          title: 주소 (한 줄)
+      x-portone-title: 한 줄 형식 주소
+      x-portone-description: 한 줄 형식 주소만 존재합니다.
+    GetPaymentSchedulesError:
+      title: GetPaymentSchedulesError
+      oneOf:
+      - $ref: '#/components/schemas/ForbiddenError'
+      - $ref: '#/components/schemas/InvalidRequestError'
+      - $ref: '#/components/schemas/UnauthorizedError'
+      discriminator:
+        propertyName: type
+        mapping:
+          FORBIDDEN: '#/components/schemas/ForbiddenError'
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
+    RevokePaymentSchedulesResponse:
+      title: 결제 예약 건 취소 성공 응답
+      description: 결제 예약 건 취소 성공 응답
+      type: object
+      required:
+      - revokedScheduleIds
+      properties:
+        revokedScheduleIds:
+          type: array
+          items:
+            type: string
+          title: 취소 완료된 결제 예약 건 아이디 목록
+        revokedAt:
+          type: string
+          format: date-time
+          title: 결제 예약 건 취소 완료 시점
+      x-portone-title: 결제 예약 건 취소 성공 응답
+    InvalidRequestError:
+      title: 요청된 입력 정보가 유효하지 않은 경우
+      description: '요청된 입력 정보가 유효하지 않은 경우
+
+
+        허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.'
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
+      x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
+      x-portone-status-code: 400
   securitySchemes:
     bearerJwt:
       type: http

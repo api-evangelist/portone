@@ -64,6 +64,139 @@ paths:
       - Paymentwall
 components:
   schemas:
+    PaymentwallDeliveryType:
+      title: 페이먼트월 배송 유형
+      description: 페이먼트월 배송 유형
+      type: string
+      enum:
+      - DIGITAL
+      - PHYSICAL
+      x-portone-title: 페이먼트월 배송 유형
+      x-portone-enum:
+        DIGITAL:
+          title: 디지털
+        PHYSICAL:
+          title: 실물
+    PaymentwallDeliveryStatus:
+      title: 페이먼트월 배송 상태
+      description: 페이먼트월 배송 상태
+      type: string
+      enum:
+      - ORDER_PLACED
+      - ORDER_SHIPPED
+      - DELIVERED
+      x-portone-title: 페이먼트월 배송 상태
+      x-portone-enum:
+        ORDER_PLACED:
+          title: 주문 접수
+        ORDER_SHIPPED:
+          title: 배송 중
+        DELIVERED:
+          title: 배송 완료
+    ConfirmPaymentwallDeliveryBody:
+      title: 페이먼트월 배송 정보 등록 입력 정보
+      description: 페이먼트월 배송 정보 등록 입력 정보
+      type: object
+      required:
+      - transactionId
+      - deliveryType
+      - deliveryStatus
+      - estimatedDeliveryDatetime
+      - estimatedUpdateDatetime
+      - refundable
+      - details
+      - shippingAddressEmail
+      properties:
+        transactionId:
+          type: string
+          title: 결제 건 포트원 채번 아이디
+        deliveryType:
+          $ref: '#/components/schemas/PaymentwallDeliveryType'
+          title: 배송 유형
+        deliveryStatus:
+          $ref: '#/components/schemas/PaymentwallDeliveryStatus'
+          title: 배송 상태
+        estimatedDeliveryDatetime:
+          type: string
+          format: date-time
+          title: 배송 완료 예상 일시
+          description: 배송 유형이 DIGITAL인 경우 현재 시각을 입력해도 무방합니다.
+        estimatedUpdateDatetime:
+          type: string
+          format: date-time
+          title: 배송 상태 업데이트 예정 일시
+          description: 배송 유형이 DIGITAL인 경우 현재 시각을 입력해도 무방합니다.
+        reason:
+          type: string
+          title: 상태 변경 사유
+        refundable:
+          type: boolean
+          title: 환불 가능 여부
+        details:
+          type: string
+          title: 상세 설명
+        shippingAddressEmail:
+          type: string
+          title: 고객 이메일 주소
+        carrierTrackingId:
+          type: string
+          title: 운송장 번호
+          description: 배송 유형이 PHYSICAL인 경우 필수입니다.
+        carrierType:
+          type: string
+          title: 운송사 이름
+          description: 배송 유형이 PHYSICAL인 경우 필수입니다.
+        shippingAddressCountry:
+          $ref: '#/components/schemas/Country'
+          title: 수신자 국가
+          description: 배송 유형이 PHYSICAL인 경우 필수입니다.
+        shippingAddressCity:
+          type: string
+          title: 수신자 도시
+          description: 배송 유형이 PHYSICAL인 경우 필수입니다.
+        shippingAddressZip:
+          type: string
+          title: 수신자 우편번호
+          description: 배송 유형이 PHYSICAL인 경우 필수입니다.
+        shippingAddressState:
+          type: string
+          title: 수신자 주
+          description: 배송 유형이 PHYSICAL인 경우 필수입니다.
+        shippingAddressStreet:
+          type: string
+          title: 수신자 도로명 주소
+          description: 배송 유형이 PHYSICAL인 경우 필수입니다.
+        shippingAddressPhone:
+          type: string
+          title: 수신자 전화번호
+          description: 배송 유형이 PHYSICAL인 경우 필수입니다.
+        shippingAddressFirstname:
+          type: string
+          title: 수신자 이름
+          description: 배송 유형이 PHYSICAL인 경우 필수입니다.
+        shippingAddressLastname:
+          type: string
+          title: 수신자 성
+          description: 배송 유형이 PHYSICAL인 경우 필수입니다.
+        attachments:
+          type: array
+          items:
+            type: string
+          title: 배송 증빙 첨부 파일 URL 목록
+          description: 배송 증빙 자료의 URL(이미지 등)을 입력합니다. 증빙 자료를 제공하기 어려운 경우 생략할 수 있습니다.
+      x-portone-title: 페이먼트월 배송 정보 등록 입력 정보
+    ConfirmPaymentwallDeliveryError:
+      title: ConfirmPaymentwallDeliveryError
+      oneOf:
+      - $ref: '#/components/schemas/InvalidRequestError'
+      - $ref: '#/components/schemas/PaymentNotFoundError'
+      - $ref: '#/components/schemas/UnauthorizedError'
+      discriminator:
+        propertyName: type
+        mapping:
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          PAYMENT_NOT_FOUND: '#/components/schemas/PaymentNotFoundError'
+          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
     Country:
       title: 국가
       description: 국가
@@ -818,11 +951,37 @@ components:
           title: Germany
         SR:
           title: Suriname
+    PaymentNotFoundError:
+      title: 결제 건이 존재하지 않는 경우
+      description: 결제 건이 존재하지 않는 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 결제 건이 존재하지 않는 경우
+      x-portone-status-code: 404
     ConfirmPaymentwallDeliveryResponse:
       title: 페이먼트월 배송 정보 등록 성공 응답
       description: 페이먼트월 배송 정보 등록 성공 응답
       type: object
       x-portone-title: 페이먼트월 배송 정보 등록 성공 응답
+    UnauthorizedError:
+      title: 인증 정보가 올바르지 않은 경우
+      description: 인증 정보가 올바르지 않은 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 인증 정보가 올바르지 않은 경우
+      x-portone-status-code: 401
     InvalidRequestError:
       title: 요청된 입력 정보가 유효하지 않은 경우
       description: '요청된 입력 정보가 유효하지 않은 경우
@@ -840,165 +999,6 @@ components:
       x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
       x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
       x-portone-status-code: 400
-    PaymentNotFoundError:
-      title: 결제 건이 존재하지 않는 경우
-      description: 결제 건이 존재하지 않는 경우
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 결제 건이 존재하지 않는 경우
-      x-portone-status-code: 404
-    PaymentwallDeliveryStatus:
-      title: 페이먼트월 배송 상태
-      description: 페이먼트월 배송 상태
-      type: string
-      enum:
-      - ORDER_PLACED
-      - ORDER_SHIPPED
-      - DELIVERED
-      x-portone-title: 페이먼트월 배송 상태
-      x-portone-enum:
-        ORDER_PLACED:
-          title: 주문 접수
-        ORDER_SHIPPED:
-          title: 배송 중
-        DELIVERED:
-          title: 배송 완료
-    UnauthorizedError:
-      title: 인증 정보가 올바르지 않은 경우
-      description: 인증 정보가 올바르지 않은 경우
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 인증 정보가 올바르지 않은 경우
-      x-portone-status-code: 401
-    ConfirmPaymentwallDeliveryError:
-      title: ConfirmPaymentwallDeliveryError
-      oneOf:
-      - $ref: '#/components/schemas/InvalidRequestError'
-      - $ref: '#/components/schemas/PaymentNotFoundError'
-      - $ref: '#/components/schemas/UnauthorizedError'
-      discriminator:
-        propertyName: type
-        mapping:
-          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
-          PAYMENT_NOT_FOUND: '#/components/schemas/PaymentNotFoundError'
-          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
-    PaymentwallDeliveryType:
-      title: 페이먼트월 배송 유형
-      description: 페이먼트월 배송 유형
-      type: string
-      enum:
-      - DIGITAL
-      - PHYSICAL
-      x-portone-title: 페이먼트월 배송 유형
-      x-portone-enum:
-        DIGITAL:
-          title: 디지털
-        PHYSICAL:
-          title: 실물
-    ConfirmPaymentwallDeliveryBody:
-      title: 페이먼트월 배송 정보 등록 입력 정보
-      description: 페이먼트월 배송 정보 등록 입력 정보
-      type: object
-      required:
-      - transactionId
-      - deliveryType
-      - deliveryStatus
-      - estimatedDeliveryDatetime
-      - estimatedUpdateDatetime
-      - refundable
-      - details
-      - shippingAddressEmail
-      properties:
-        transactionId:
-          type: string
-          title: 결제 건 포트원 채번 아이디
-        deliveryType:
-          $ref: '#/components/schemas/PaymentwallDeliveryType'
-          title: 배송 유형
-        deliveryStatus:
-          $ref: '#/components/schemas/PaymentwallDeliveryStatus'
-          title: 배송 상태
-        estimatedDeliveryDatetime:
-          type: string
-          format: date-time
-          title: 배송 완료 예상 일시
-          description: 배송 유형이 DIGITAL인 경우 현재 시각을 입력해도 무방합니다.
-        estimatedUpdateDatetime:
-          type: string
-          format: date-time
-          title: 배송 상태 업데이트 예정 일시
-          description: 배송 유형이 DIGITAL인 경우 현재 시각을 입력해도 무방합니다.
-        reason:
-          type: string
-          title: 상태 변경 사유
-        refundable:
-          type: boolean
-          title: 환불 가능 여부
-        details:
-          type: string
-          title: 상세 설명
-        shippingAddressEmail:
-          type: string
-          title: 고객 이메일 주소
-        carrierTrackingId:
-          type: string
-          title: 운송장 번호
-          description: 배송 유형이 PHYSICAL인 경우 필수입니다.
-        carrierType:
-          type: string
-          title: 운송사 이름
-          description: 배송 유형이 PHYSICAL인 경우 필수입니다.
-        shippingAddressCountry:
-          $ref: '#/components/schemas/Country'
-          title: 수신자 국가
-          description: 배송 유형이 PHYSICAL인 경우 필수입니다.
-        shippingAddressCity:
-          type: string
-          title: 수신자 도시
-          description: 배송 유형이 PHYSICAL인 경우 필수입니다.
-        shippingAddressZip:
-          type: string
-          title: 수신자 우편번호
-          description: 배송 유형이 PHYSICAL인 경우 필수입니다.
-        shippingAddressState:
-          type: string
-          title: 수신자 주
-          description: 배송 유형이 PHYSICAL인 경우 필수입니다.
-        shippingAddressStreet:
-          type: string
-          title: 수신자 도로명 주소
-          description: 배송 유형이 PHYSICAL인 경우 필수입니다.
-        shippingAddressPhone:
-          type: string
-          title: 수신자 전화번호
-          description: 배송 유형이 PHYSICAL인 경우 필수입니다.
-        shippingAddressFirstname:
-          type: string
-          title: 수신자 이름
-          description: 배송 유형이 PHYSICAL인 경우 필수입니다.
-        shippingAddressLastname:
-          type: string
-          title: 수신자 성
-          description: 배송 유형이 PHYSICAL인 경우 필수입니다.
-        attachments:
-          type: array
-          items:
-            type: string
-          title: 배송 증빙 첨부 파일 URL 목록
-          description: 배송 증빙 자료의 URL(이미지 등)을 입력합니다. 증빙 자료를 제공하기 어려운 경우 생략할 수 있습니다.
-      x-portone-title: 페이먼트월 배송 정보 등록 입력 정보
   securitySchemes:
     bearerJwt:
       type: http

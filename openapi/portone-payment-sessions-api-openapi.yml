@@ -169,715 +169,34 @@ paths:
       - Payment Sessions
 components:
   schemas:
-    CheckoutPaymentMethod:
-      title: 결제 수단
-      description: 결제 수단
-      type: string
-      enum:
-      - CARD_KR
-      - N_PAY
-      - KAKAO_PAY
-      - TOSS_PAY
-      - CARD_INTERNATIONAL
-      - PAY_PAL
-      - UNION_PAY
-      - ALIPAY_CN
-      - ALIPAY_HK
-      - TRUE_MONEY
-      - DANA
-      - TOUCH_N_GO
-      - G_CASH
-      - WE_CHAT_PAY
-      - KLARNA
-      - E_CONTEXT
-      - GRAB_PAY_MY
-      - GRAB_PAY_SG
-      - SHOPEE_PAY_TH
-      - PAY_PAY
-      - BPI
-      - RABBIT_LINE_PAY
-      - CONVENIENCE_STORE_JP
-      - AMAZON_PAY
-      - RAKUTEN_PAY
-      - D_BARAI
-      - AU_PAY
-      - MERPAY
-      x-portone-title: 결제 수단
-      x-portone-enum:
-        PAY_PAY: {}
-        ALIPAY_HK: {}
-        PAY_PAL: {}
-        WE_CHAT_PAY: {}
-        UNION_PAY: {}
-        MERPAY: {}
-        E_CONTEXT: {}
-        G_CASH: {}
-        CARD_KR: {}
-        AU_PAY: {}
-        SHOPEE_PAY_TH: {}
-        N_PAY: {}
-        AMAZON_PAY: {}
-        CARD_INTERNATIONAL: {}
-        GRAB_PAY_SG: {}
-        GRAB_PAY_MY: {}
-        KLARNA: {}
-        RABBIT_LINE_PAY: {}
-        KAKAO_PAY: {}
-        RAKUTEN_PAY: {}
-        TOSS_PAY: {}
-        CONVENIENCE_STORE_JP: {}
-        D_BARAI: {}
-        DANA: {}
-        TOUCH_N_GO: {}
-        BPI: {}
-        ALIPAY_CN: {}
-        TRUE_MONEY: {}
-    PaymentSessionAgreement:
-      title: 결제 세션 약관
-      description: 결제 세션 약관
-      type: object
-      required:
-      - name
-      - url
-      properties:
-        name:
-          type: string
-          title: 약관 이름
-        url:
-          type: string
-          title: 약관 URL
-      x-portone-title: 결제 세션 약관
-    PaymentSessionColors:
-      title: 체크아웃 페이지 색 설정
-      description: 체크아웃 페이지 색 설정
-      type: object
-      properties:
-        primary:
-          type: string
-          title: 주 색상
-          description: CSS 색 문자열 형식
-        primaryHover:
-          type: string
-          title: 호버 주 색상
-          description: CSS 색 문자열 형식
-        primaryLight:
-          type: string
-          title: 밝은 주 색상
-          description: CSS 색 문자열 형식
-      x-portone-title: 체크아웃 페이지 색 설정
-    InvalidRequestError:
-      title: 요청된 입력 정보가 유효하지 않은 경우
-      description: '요청된 입력 정보가 유효하지 않은 경우
-
-
-        허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.'
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
-      x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
-      x-portone-status-code: 400
-    CreatePaymentSessionResponse:
-      title: 결제 세션 생성 성공 응답
-      description: 결제 세션 생성 성공 응답
-      type: object
-      required:
-      - sessionId
-      - url
-      - expiresAt
-      properties:
-        sessionId:
-          type: string
-          title: 세션 아이디
-        url:
-          type: string
-          title: 호스티드 체크아웃 페이지 URL
-        expiresAt:
-          type: string
-          format: date-time
-          title: 만료 시각
-      x-portone-title: 결제 세션 생성 성공 응답
-    ForbiddenError:
-      title: 요청이 거절된 경우
-      description: 요청이 거절된 경우
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 요청이 거절된 경우
-      x-portone-status-code: 403
-    MaxTtlExceededError:
-      title: 요청된 TTL이 정책 상한을 초과한 경우
-      description: 요청된 TTL이 정책 상한을 초과한 경우
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 요청된 TTL이 정책 상한을 초과한 경우
-      x-portone-status-code: 400
-    Currency:
-      title: 통화
-      description: 통화
-      type: string
-      enum:
-      - KRW
-      - USD
-      - JPY
-      - AED
-      - AFN
-      - ALL
-      - AMD
-      - ANG
-      - AOA
-      - ARS
-      - AUD
-      - AWG
-      - AZN
-      - BAM
-      - BBD
-      - BDT
-      - BGN
-      - BHD
-      - BIF
-      - BMD
-      - BND
-      - BOB
-      - BOV
-      - BRL
-      - BSD
-      - BTN
-      - BWP
-      - BYN
-      - BZD
-      - CAD
-      - CDF
-      - CHE
-      - CHF
-      - CHW
-      - CLF
-      - CLP
-      - CNY
-      - COP
-      - COU
-      - CRC
-      - CUC
-      - CUP
-      - CVE
-      - CZK
-      - DJF
-      - DKK
-      - DOP
-      - DZD
-      - EGP
-      - ERN
-      - ETB
-      - EUR
-      - FJD
-      - FKP
-      - GBP
-      - GEL
-      - GHS
-      - GIP
-      - GMD
-      - GNF
-      - GTQ
-      - GYD
-      - HKD
-      - HNL
-      - HRK
-      - HTG
-      - HUF
-      - IDR
-      - ILS
-      - INR
-      - IQD
-      - IRR
-      - ISK
-      - JMD
-      - JOD
-      - KES
-      - KGS
-      - KHR
-      - KMF
-      - KPW
-      - KWD
-      - KYD
-      - KZT
-      - LAK
-      - LBP
-      - LKR
-      - LRD
-      - LSL
-      - LYD
-      - MAD
-      - MDL
-      - MGA
-      - MKD
-      - MMK
-      - MNT
-      - MOP
-      - MRU
-      - MUR
-      - MVR
-      - MWK
-      - MXN
-      - MXV
-      - MYR
-      - MZN
-      - NAD
-      - NGN
-      - NIO
-      - NOK
-      - NPR
-      - NZD
-      - OMR
-      - PAB
-      - PEN
-      - PGK
-      - PHP
-      - PKR
-      - PLN
-      - PYG
-      - QAR
-      - RON
-      - RSD
-      - RUB
-      - RWF
-      - SAR
-      - SBD
-      - SCR
-      - SDG
-      - SEK
-      - SGD
-      - SHP
-      - SLE
-      - SLL
-      - SOS
-      - SRD
-      - SSP
-      - STN
-      - SVC
-      - SYP
-      - SZL
-      - THB
-      - TJS
-      - TMT
-      - TND
-      - TOP
-      - TRY
-      - TTD
-      - TWD
-      - TZS
-      - UAH
-      - UGX
-      - USN
-      - UYI
-      - UYU
-      - UYW
-      - UZS
-      - VED
-      - VES
-      - VND
-      - VUV
-      - WST
-      - XAF
-      - XAG
-      - XAU
-      - XBA
-      - XBB
-      - XBC
-      - XBD
-      - XCD
-      - XDR
-      - XOF
-      - XPD
-      - XPF
-      - XPT
-      - XSU
-      - XTS
-      - XUA
-      - XXX
-      - YER
-      - ZAR
-      - ZMW
-      - ZWL
-      x-portone-title: 통화
-      x-portone-enum:
-        OMR:
-          title: Rial Omani
-        CUC:
-          title: Peso Convertible
-        BBD:
-          title: Barbados Dollar
-        PLN:
-          title: Zloty
-        SVC:
-          title: El Salvador Colon
-        BMD:
-          title: Bermudian Dollar
-        TJS:
-          title: Somoni
-        TND:
-          title: Tunisian Dinar
-        GNF:
-          title: Guinean Franc
-        SDG:
-          title: Sudanese Pound
-        MRU:
-          title: Ouguiya
-        XBB:
-          title: Bond Markets Unit European Monetary Unit (E.M.U.-6)
-        PKR:
-          title: Pakistan Rupee
-        FKP:
-          title: Falkland Islands Pound
-        MUR:
-          title: Mauritius Rupee
-        XAF:
-          title: CFA Franc BEAC
-        SAR:
-          title: Saudi Riyal
-        CAD:
-          title: Canadian Dollar
-        HKD:
-          title: Hong Kong Dollar
-        PYG:
-          title: Guarani
-        MGA:
-          title: Malagasy Ariary
-        UYI:
-          title: Uruguay Peso en Unidades Indexadas (UI)
-        AUD:
-          title: Australian Dollar
-        AMD:
-          title: Armenian Dram
-        YER:
-          title: Yemeni Rial
-        CHE:
-          title: WIR Euro
-        MMK:
-          title: Kyat
-        SEK:
-          title: Swedish Krona
-        TRY:
-          title: Turkish Lira
-        XBC:
-          title: Bond Markets Unit European Unit of Account 9 (E.U.A.-9)
-        KES:
-          title: Kenyan Shilling
-        GEL:
-          title: Lari
-        GTQ:
-          title: Quetzal
-        TZS:
-          title: Tanzanian Shilling
-        CUP:
-          title: Cuban Peso
-        ALL:
-          title: Lek
-        ERN:
-          title: Nakfa
-        BRL:
-          title: Brazilian Real
-        UGX:
-          title: Uganda Shilling
-        XUA:
-          title: ADB Unit of Account
-        GIP:
-          title: Gibraltar Pound
-        MZN:
-          title: Mozambique Metical
-        KRW:
-          title: 대한민국 원화
-        JOD:
-          title: Jordanian Dinar
-        IQD:
-          title: Iraqi Dinar
-        VUV:
-          title: Vatu
-        XXX:
-          title: The codes assigned for transactions where no currency is involved
-        UZS:
-          title: Uzbekistan Sum
-        BOV:
-          title: Mvdol
-        UAH:
-          title: Hryvnia
-        PEN:
-          title: Sol
-        KMF:
-          title: 'Comorian Franc '
-        DOP:
-          title: Dominican Peso
-        BDT:
-          title: Taka
-        LKR:
-          title: Sri Lanka Rupee
-        FJD:
-          title: Fiji Dollar
-        LSL:
-          title: Loti
-        BSD:
-          title: Bahamian Dollar
-        SRD:
-          title: Surinam Dollar
-        XTS:
-          title: Codes specifically reserved for testing purposes
-        SHP:
-          title: Saint Helena Pound
-        LRD:
-          title: Liberian Dollar
-        QAR:
-          title: Qatari Rial
-        BND:
-          title: Brunei Dollar
-        CDF:
-          title: Congolese Franc
-        SLE:
-          title: Leone
-        USN:
-          title: US Dollar (Next day)
-        VES:
-          title: Bolívar Soberano
-        TMT:
-          title: Turkmenistan New Manat
-        CHW:
-          title: WIR Franc
-        BGN:
-          title: Bulgarian Lev
-        JMD:
-          title: Jamaican Dollar
-        SZL:
-          title: Lilangeni
-        CZK:
-          title: Czech Koruna
-        ZMW:
-          title: Zambian Kwacha
-        UYU:
-          title: Peso Uruguayo
-        NPR:
-          title: Nepalese Rupee
-        EGP:
-          title: Egyptian Pound
-        AZN:
-          title: Azerbaijan Manat
-        CLP:
-          title: Chilean Peso
-        MOP:
-          title: Pataca
-        SCR:
-          title: Seychelles Rupee
-        HTG:
-          title: Gourde
-        VND:
-          title: Dong
-        LAK:
-          title: Lao Kip
-        BTN:
-          title: Ngultrum
-        GBP:
-          title: Pound Sterling
-        SSP:
-          title: South Sudanese Pound
-        XPD:
-          title: Palladium
-        TWD:
-          title: New Taiwan Dollar
-        DZD:
-          title: Algerian Dinar
-        MXN:
-          title: Mexican Peso
-        XDR:
-          title: SDR (Special Drawing Right)
-        ZWL:
-          title: Zimbabwe Dollar
-        AWG:
-          title: Aruban Florin
-        THB:
-          title: Baht
-        ISK:
-          title: Iceland Krona
-        LBP:
-          title: Lebanese Pound
-        SGD:
-          title: Singapore Dollar
-        MWK:
-          title: Malawi Kwacha
-        KZT:
-          title: Tenge
-        CRC:
-          title: Costa Rican Colon
-        WST:
-          title: Tala
-        DJF:
-          title: Djibouti Franc
-        LYD:
-          title: Libyan Dinar
-        NGN:
-          title: Naira
-        BIF:
-          title: Burundi Franc
-        AED:
-          title: UAE Dirham
-        CHF:
-          title: Swiss Franc
-        RWF:
-          title: Rwanda Franc
-        XBD:
-          title: Bond Markets Unit European Unit of Account 17 (E.U.A.-17)
-        INR:
-          title: Indian Rupee
-        CLF:
-          title: Unidad de Fomento
-        XOF:
-          title: CFA Franc BCEAO
-        COU:
-          title: Unidad de Valor Real
-        MXV:
-          title: Mexican Unidad de Inversion (UDI)
-        PGK:
-          title: Kina
-        CNY:
-          title: Yuan Renminbi
-        SYP:
-          title: Syrian Pound
-        VED:
-          title: Bolívar Soberano
-        RON:
-          title: Romanian Leu
-        AFN:
-          title: Afghani
-        PHP:
-          title: Philippine Peso
-        MDL:
-          title: Moldovan Leu
-        KHR:
-          title: Riel
-        XPT:
-          title: Platinum
-        COP:
-          title: Colombian Peso
-        DKK:
-          title: Danish Krone
-        KYD:
-          title: Cayman Islands Dollar
-        XPF:
-          title: CFP Franc
-        GMD:
-          title: Dalasi
-        MVR:
-          title: Rufiyaa
-        STN:
-          title: Dobra
-        TTD:
-          title: Trinidad and Tobago Dollar
-        PAB:
-          title: Balboa
-        XAU:
-          title: Gold
-        XAG:
-          title: Silver
-        JPY:
-          title: 일본 엔화
-        TOP:
-          title: Pa’anga
-        BWP:
-          title: Pula
-        MKD:
-          title: Denar
-        ARS:
-          title: Argentine Peso
-        HUF:
-          title: Forint
-        MYR:
-          title: Malaysian Ringgit
-        USD:
-          title: 미국 달러
-        SLL:
-          title: Leone
-        MAD:
-          title: Moroccan Dirham
-        RUB:
-          title: Russian Ruble
-        MNT:
-          title: Tugrik
-        BOB:
-          title: Boliviano
-        GYD:
-          title: Guyana Dollar
-        SBD:
-          title: Solomon Islands Dollar
-        XBA:
-          title: Bond Markets Unit European Composite Unit (EURCO)
-        BHD:
-          title: Bahraini Dinar
-        HNL:
-          title: Lempira
-        UYW:
-          title: Unidad Previsional
-        NZD:
-          title: New Zealand Dollar
-        XCD:
-          title: East Caribbean Dollar
-        XSU:
-          title: Sucre
-        KGS:
-          title: Som
-        AOA:
-          title: Kwanza
-        BZD:
-          title: Belize Dollar
-        IDR:
-          title: Rupiah
-        SOS:
-          title: Somali Shilling
-        NIO:
-          title: Cordoba Oro
-        GHS:
-          title: Ghana Cedi
-        ANG:
-          title: Netherlands Antillean Guilder
-        RSD:
-          title: Serbian Dinar
-        ILS:
-          title: New Israeli Sheqel
-        NOK:
-          title: Norwegian Krone
-        KWD:
-          title: Kuwaiti Dinar
-        NAD:
-          title: Namibia Dollar
-        ETB:
-          title: Ethiopian Birr
-        BYN:
-          title: Belarusian Ruble
-        KPW:
-          title: North Korean Won
-        EUR:
-          title: Euro
-        CVE:
-          title: Cabo Verde Escudo
-        ZAR:
-          title: Rand
-        IRR:
-          title: Iranian Rial
-        HRK:
-          title: Kuna (Replaced by EUR)
-        BAM:
-          title: Convertible Mark
+    CreatePaymentSessionError:
+      title: CreatePaymentSessionError
+      oneOf:
+      - $ref: '#/components/schemas/ForbiddenError'
+      - $ref: '#/components/schemas/InvalidRequestError'
+      - $ref: '#/components/schemas/MaxTtlExceededError'
+      - $ref: '#/components/schemas/UnauthorizedError'
+      discriminator:
+        propertyName: type
+        mapping:
+          FORBIDDEN: '#/components/schemas/ForbiddenError'
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          MAX_TTL_EXCEEDED: '#/components/schemas/MaxTtlExceededError'
+          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
+    ClosePaymentSessionError:
+      title: ClosePaymentSessionError
+      oneOf:
+      - $ref: '#/components/schemas/ForbiddenError'
+      - $ref: '#/components/schemas/InvalidRequestError'
+      - $ref: '#/components/schemas/SessionNotFoundError'
+      - $ref: '#/components/schemas/UnauthorizedError'
+      discriminator:
+        propertyName: type
+        mapping:
+          FORBIDDEN: '#/components/schemas/ForbiddenError'
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          SESSION_NOT_FOUND: '#/components/schemas/SessionNotFoundError'
+          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
     PaymentSession:
       title: 결제 세션
       description: 결제 세션
@@ -999,60 +318,30 @@ components:
           format: date-time
           title: 만료 시각
       x-portone-title: 결제 세션
-    PaymentSessionProduct:
-      title: 결제 세션 주문 항목
-      description: 결제 세션 주문 항목
+    PaymentSessionColors:
+      title: 체크아웃 페이지 색 설정
+      description: 체크아웃 페이지 색 설정
       type: object
-      required:
-      - name
-      - unitPrice
-      - quantity
       properties:
-        id:
+        primary:
           type: string
-          title: 항목 아이디
-        name:
+          title: 주 색상
+          description: CSS 색 문자열 형식
+        primaryHover:
           type: string
-          title: 상품 이름
-        code:
+          title: 호버 주 색상
+          description: CSS 색 문자열 형식
+        primaryLight:
           type: string
-          title: 상품 코드
-        unitPrice:
-          type: integer
-          format: int64
-          title: 상품 단가
-        quantity:
-          type: integer
-          format: int32
-          title: 상품 수량
-        startDate:
-          description: 구독 등 제공 기간이 있는 상품의 경우 입력하세요.
-          type: string
-          format: date
-          x-portone-description: 날짜를 나타내는 문자열로, `yyyy-MM-dd` 형식을 따릅니다.
-          title: 제공 시작일
-        endDate:
-          description: 구독 등 제공 기간이 있는 상품의 경우 입력하세요.
-          type: string
-          format: date
-          x-portone-description: 날짜를 나타내는 문자열로, `yyyy-MM-dd` 형식을 따릅니다.
-          title: 제공 종료일
-        url:
-          type: string
-          title: 판매 링크
-        nPayCategoryType:
-          type: string
-          title: 네이버페이 카테고리 타입
-        nPayCategoryId:
-          type: string
-          title: 네이버페이 카테고리 아이디
-        nPayUid:
-          type: string
-          title: 네이버페이 상품 식별자
-      x-portone-title: 결제 세션 주문 항목
-    SessionExpiredError:
-      title: 결제 세션이 만료된 경우
-      description: 결제 세션이 만료된 경우
+          title: 밝은 주 색상
+          description: CSS 색 문자열 형식
+      x-portone-title: 체크아웃 페이지 색 설정
+    InvalidRequestError:
+      title: 요청된 입력 정보가 유효하지 않은 경우
+      description: '요청된 입력 정보가 유효하지 않은 경우
+
+
+        허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.'
       type: object
       required:
       - type
@@ -1061,8 +350,21 @@ components:
           type: string
         message:
           type: string
-      x-portone-title: 결제 세션이 만료된 경우
-      x-portone-status-code: 410
+      x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
+      x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
+      x-portone-status-code: 400
+    ClosePaymentSessionResponse:
+      title: 결제 세션 종료 성공 응답
+      description: 결제 세션 종료 성공 응답
+      type: object
+      required:
+      - closedAt
+      properties:
+        closedAt:
+          type: string
+          format: date-time
+          title: 결제 세션 종료 시각
+      x-portone-title: 결제 세션 종료 성공 응답
     Country:
       title: 국가
       description: 국가
@@ -1817,21 +1119,60 @@ components:
           title: Germany
         SR:
           title: Suriname
-    ClosePaymentSessionResponse:
-      title: 결제 세션 종료 성공 응답
-      description: 결제 세션 종료 성공 응답
+    PaymentSessionProduct:
+      title: 결제 세션 주문 항목
+      description: 결제 세션 주문 항목
       type: object
       required:
-      - closedAt
+      - name
+      - unitPrice
+      - quantity
       properties:
-        closedAt:
+        id:
           type: string
-          format: date-time
-          title: 결제 세션 종료 시각
-      x-portone-title: 결제 세션 종료 성공 응답
-    UnauthorizedError:
-      title: 인증 정보가 올바르지 않은 경우
-      description: 인증 정보가 올바르지 않은 경우
+          title: 항목 아이디
+        name:
+          type: string
+          title: 상품 이름
+        code:
+          type: string
+          title: 상품 코드
+        unitPrice:
+          type: integer
+          format: int64
+          title: 상품 단가
+        quantity:
+          type: integer
+          format: int32
+          title: 상품 수량
+        startDate:
+          description: 구독 등 제공 기간이 있는 상품의 경우 입력하세요.
+          type: string
+          format: date
+          x-portone-description: 날짜를 나타내는 문자열로, `yyyy-MM-dd` 형식을 따릅니다.
+          title: 제공 시작일
+        endDate:
+          description: 구독 등 제공 기간이 있는 상품의 경우 입력하세요.
+          type: string
+          format: date
+          x-portone-description: 날짜를 나타내는 문자열로, `yyyy-MM-dd` 형식을 따릅니다.
+          title: 제공 종료일
+        url:
+          type: string
+          title: 판매 링크
+        nPayCategoryType:
+          type: string
+          title: 네이버페이 카테고리 타입
+        nPayCategoryId:
+          type: string
+          title: 네이버페이 카테고리 아이디
+        nPayUid:
+          type: string
+          title: 네이버페이 상품 식별자
+      x-portone-title: 결제 세션 주문 항목
+    ForbiddenError:
+      title: 요청이 거절된 경우
+      description: 요청이 거절된 경우
       type: object
       required:
       - type
@@ -1840,61 +1181,8 @@ components:
           type: string
         message:
           type: string
-      x-portone-title: 인증 정보가 올바르지 않은 경우
-      x-portone-status-code: 401
-    GetPaymentSessionError:
-      title: GetPaymentSessionError
-      oneOf:
-      - $ref: '#/components/schemas/InvalidRequestError'
-      - $ref: '#/components/schemas/SessionExpiredError'
-      - $ref: '#/components/schemas/SessionNotFoundError'
-      discriminator:
-        propertyName: type
-        mapping:
-          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
-          SESSION_EXPIRED: '#/components/schemas/SessionExpiredError'
-          SESSION_NOT_FOUND: '#/components/schemas/SessionNotFoundError'
-    ClosePaymentSessionError:
-      title: ClosePaymentSessionError
-      oneOf:
-      - $ref: '#/components/schemas/ForbiddenError'
-      - $ref: '#/components/schemas/InvalidRequestError'
-      - $ref: '#/components/schemas/SessionNotFoundError'
-      - $ref: '#/components/schemas/UnauthorizedError'
-      discriminator:
-        propertyName: type
-        mapping:
-          FORBIDDEN: '#/components/schemas/ForbiddenError'
-          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
-          SESSION_NOT_FOUND: '#/components/schemas/SessionNotFoundError'
-          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
-    SessionNotFoundError:
-      title: 결제 세션이 존재하지 않는 경우
-      description: 결제 세션이 존재하지 않는 경우
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 결제 세션이 존재하지 않는 경우
-      x-portone-status-code: 404
-    CreatePaymentSessionError:
-      title: CreatePaymentSessionError
-      oneOf:
-      - $ref: '#/components/schemas/ForbiddenError'
-      - $ref: '#/components/schemas/InvalidRequestError'
-      - $ref: '#/components/schemas/MaxTtlExceededError'
-      - $ref: '#/components/schemas/UnauthorizedError'
-      discriminator:
-        propertyName: type
-        mapping:
-          FORBIDDEN: '#/components/schemas/ForbiddenError'
-          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
-          MAX_TTL_EXCEEDED: '#/components/schemas/MaxTtlExceededError'
-          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
+      x-portone-title: 요청이 거절된 경우
+      x-portone-status-code: 403
     CreatePaymentSessionBody:
       title: 결제 세션 생성 요청
       description: 결제 세션 생성 요청
@@ -2006,6 +1294,718 @@ components:
           format: int64
           title: 세션 TTL (초)
       x-portone-title: 결제 세션 생성 요청
+    CheckoutPaymentMethod:
+      title: 결제 수단
+      description: 결제 수단
+      type: string
+      enum:
+      - CARD_KR
+      - N_PAY
+      - KAKAO_PAY
+      - TOSS_PAY
+      - CARD_INTERNATIONAL
+      - PAY_PAL
+      - UNION_PAY
+      - ALIPAY_CN
+      - ALIPAY_HK
+      - TRUE_MONEY
+      - DANA
+      - TOUCH_N_GO
+      - G_CASH
+      - WE_CHAT_PAY
+      - KLARNA
+      - E_CONTEXT
+      - GRAB_PAY_MY
+      - GRAB_PAY_SG
+      - SHOPEE_PAY_TH
+      - PAY_PAY
+      - BPI
+      - RABBIT_LINE_PAY
+      - CONVENIENCE_STORE_JP
+      - AMAZON_PAY
+      - RAKUTEN_PAY
+      - D_BARAI
+      - AU_PAY
+      - MERPAY
+      x-portone-title: 결제 수단
+      x-portone-enum:
+        PAY_PAY: {}
+        ALIPAY_HK: {}
+        PAY_PAL: {}
+        WE_CHAT_PAY: {}
+        UNION_PAY: {}
+        MERPAY: {}
+        E_CONTEXT: {}
+        G_CASH: {}
+        CARD_KR: {}
+        AU_PAY: {}
+        SHOPEE_PAY_TH: {}
+        N_PAY: {}
+        AMAZON_PAY: {}
+        CARD_INTERNATIONAL: {}
+        GRAB_PAY_SG: {}
+        GRAB_PAY_MY: {}
+        KLARNA: {}
+        RABBIT_LINE_PAY: {}
+        KAKAO_PAY: {}
+        RAKUTEN_PAY: {}
+        TOSS_PAY: {}
+        CONVENIENCE_STORE_JP: {}
+        D_BARAI: {}
+        DANA: {}
+        TOUCH_N_GO: {}
+        BPI: {}
+        ALIPAY_CN: {}
+        TRUE_MONEY: {}
+    PaymentSessionAgreement:
+      title: 결제 세션 약관
+      description: 결제 세션 약관
+      type: object
+      required:
+      - name
+      - url
+      properties:
+        name:
+          type: string
+          title: 약관 이름
+        url:
+          type: string
+          title: 약관 URL
+      x-portone-title: 결제 세션 약관
+    SessionNotFoundError:
+      title: 결제 세션이 존재하지 않는 경우
+      description: 결제 세션이 존재하지 않는 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 결제 세션이 존재하지 않는 경우
+      x-portone-status-code: 404
+    CreatePaymentSessionResponse:
+      title: 결제 세션 생성 성공 응답
+      description: 결제 세션 생성 성공 응답
+      type: object
+      required:
+      - sessionId
+      - url
+      - expiresAt
+      properties:
+        sessionId:
+          type: string
+          title: 세션 아이디
+        url:
+          type: string
+          title: 호스티드 체크아웃 페이지 URL
+        expiresAt:
+          type: string
+          format: date-time
+          title: 만료 시각
+      x-portone-title: 결제 세션 생성 성공 응답
+    SessionExpiredError:
+      title: 결제 세션이 만료된 경우
+      description: 결제 세션이 만료된 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 결제 세션이 만료된 경우
+      x-portone-status-code: 410
+    UnauthorizedError:
+      title: 인증 정보가 올바르지 않은 경우
+      description: 인증 정보가 올바르지 않은 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 인증 정보가 올바르지 않은 경우
+      x-portone-status-code: 401
+    Currency:
+      title: 통화
+      description: 통화
+      type: string
+      enum:
+      - KRW
+      - USD
+      - JPY
+      - AED
+      - AFN
+      - ALL
+      - AMD
+      - ANG
+      - AOA
+      - ARS
+      - AUD
+      - AWG
+      - AZN
+      - BAM
+      - BBD
+      - BDT
+      - BGN
+      - BHD
+      - BIF
+      - BMD
+      - BND
+      - BOB
+      - BOV
+      - BRL
+      - BSD
+      - BTN
+      - BWP
+      - BYN
+      - BZD
+      - CAD
+      - CDF
+      - CHE
+      - CHF
+      - CHW
+      - CLF
+      - CLP
+      - CNY
+      - COP
+      - COU
+      - CRC
+      - CUC
+      - CUP
+      - CVE
+      - CZK
+      - DJF
+      - DKK
+      - DOP
+      - DZD
+      - EGP
+      - ERN
+      - ETB
+      - EUR
+      - FJD
+      - FKP
+      - GBP
+      - GEL
+      - GHS
+      - GIP
+      - GMD
+      - GNF
+      - GTQ
+      - GYD
+      - HKD
+      - HNL
+      - HRK
+      - HTG
+      - HUF
+      - IDR
+      - ILS
+      - INR
+      - IQD
+      - IRR
+      - ISK
+      - JMD
+      - JOD
+      - KES
+      - KGS
+      - KHR
+      - KMF
+      - KPW
+      - KWD
+      - KYD
+      - KZT
+      - LAK
+      - LBP
+      - LKR
+      - LRD
+      - LSL
+      - LYD
+      - MAD
+      - MDL
+      - MGA
+      - MKD
+      - MMK
+      - MNT
+      - MOP
+      - MRU
+      - MUR
+      - MVR
+      - MWK
+      - MXN
+      - MXV
+      - MYR
+      - MZN
+      - NAD
+      - NGN
+      - NIO
+      - NOK
+      - NPR
+      - NZD
+      - OMR
+      - PAB
+      - PEN
+      - PGK
+      - PHP
+      - PKR
+      - PLN
+      - PYG
+      - QAR
+      - RON
+      - RSD
+      - RUB
+      - RWF
+      - SAR
+      - SBD
+      - SCR
+      - SDG
+      - SEK
+      - SGD
+      - SHP
+      - SLE
+      - SLL
+      - SOS
+      - SRD
+      - SSP
+      - STN
+      - SVC
+      - SYP
+      - SZL
+      - THB
+      - TJS
+      - TMT
+      - TND
+      - TOP
+      - TRY
+      - TTD
+      - TWD
+      - TZS
+      - UAH
+      - UGX
+      - USN
+      - UYI
+      - UYU
+      - UYW
+      - UZS
+      - VED
+      - VES
+      - VND
+      - VUV
+      - WST
+      - XAF
+      - XAG
+      - XAU
+      - XBA
+      - XBB
+      - XBC
+      - XBD
+      - XCD
+      - XDR
+      - XOF
+      - XPD
+      - XPF
+      - XPT
+      - XSU
+      - XTS
+      - XUA
+      - XXX
+      - YER
+      - ZAR
+      - ZMW
+      - ZWL
+      x-portone-title: 통화
+      x-portone-enum:
+        OMR:
+          title: Rial Omani
+        CUC:
+          title: Peso Convertible
+        BBD:
+          title: Barbados Dollar
+        PLN:
+          title: Zloty
+        SVC:
+          title: El Salvador Colon
+        BMD:
+          title: Bermudian Dollar
+        TJS:
+          title: Somoni
+        TND:
+          title: Tunisian Dinar
+        GNF:
+          title: Guinean Franc
+        SDG:
+          title: Sudanese Pound
+        MRU:
+          title: Ouguiya
+        XBB:
+          title: Bond Markets Unit European Monetary Unit (E.M.U.-6)
+        PKR:
+          title: Pakistan Rupee
+        FKP:
+          title: Falkland Islands Pound
+        MUR:
+          title: Mauritius Rupee
+        XAF:
+          title: CFA Franc BEAC
+        SAR:
+          title: Saudi Riyal
+        CAD:
+          title: Canadian Dollar
+        HKD:
+          title: Hong Kong Dollar
+        PYG:
+          title: Guarani
+        MGA:
+          title: Malagasy Ariary
+        UYI:
+          title: Uruguay Peso en Unidades Indexadas (UI)
+        AUD:
+          title: Australian Dollar
+        AMD:
+          title: Armenian Dram
+        YER:
+          title: Yemeni Rial
+        CHE:
+          title: WIR Euro
+        MMK:
+          title: Kyat
+        SEK:
+          title: Swedish Krona
+        TRY:
+          title: Turkish Lira
+        XBC:
+          title: Bond Markets Unit European Unit of Account 9 (E.U.A.-9)
+        KES:
+          title: Kenyan Shilling
+        GEL:
+          title: Lari
+        GTQ:
+          title: Quetzal
+        TZS:
+          title: Tanzanian Shilling
+        CUP:
+          title: Cuban Peso
+        ALL:
+          title: Lek
+        ERN:
+          title: Nakfa
+        BRL:
+          title: Brazilian Real
+        UGX:
+          title: Uganda Shilling
+        XUA:
+          title: ADB Unit of Account
+        GIP:
+          title: Gibraltar Pound
+        MZN:
+          title: Mozambique Metical
+        KRW:
+          title: 대한민국 원화
+        JOD:
+          title: Jordanian Dinar
+        IQD:
+          title: Iraqi Dinar
+        VUV:
+          title: Vatu
+        XXX:
+          title: The codes assigned for transactions where no currency is involved
+        UZS:
+          title: Uzbekistan Sum
+        BOV:
+          title: Mvdol
+        UAH:
+          title: Hryvnia
+        PEN:
+          title: Sol
+        KMF:
+          title: 'Comorian Franc '
+        DOP:
+          title: Dominican Peso
+        BDT:
+          title: Taka
+        LKR:
+          title: Sri Lanka Rupee
+        FJD:
+          title: Fiji Dollar
+        LSL:
+          title: Loti
+        BSD:
+          title: Bahamian Dollar
+        SRD:
+          title: Surinam Dollar
+        XTS:
+          title: Codes specifically reserved for testing purposes
+        SHP:
+          title: Saint Helena Pound
+        LRD:
+          title: Liberian Dollar
+        QAR:
+          title: Qatari Rial
+        BND:
+          title: Brunei Dollar
+        CDF:
+          title: Congolese Franc
+        SLE:
+          title: Leone
+        USN:
+          title: US Dollar (Next day)
+        VES:
+          title: Bolívar Soberano
+        TMT:
+          title: Turkmenistan New Manat
+        CHW:
+          title: WIR Franc
+        BGN:
+          title: Bulgarian Lev
+        JMD:
+          title: Jamaican Dollar
+        SZL:
+          title: Lilangeni
+        CZK:
+          title: Czech Koruna
+        ZMW:
+          title: Zambian Kwacha
+        UYU:
+          title: Peso Uruguayo
+        NPR:
+          title: Nepalese Rupee
+        EGP:
+          title: Egyptian Pound
+        AZN:
+          title: Azerbaijan Manat
+        CLP:
+          title: Chilean Peso
+        MOP:
+          title: Pataca
+        SCR:
+          title: Seychelles Rupee
+        HTG:
+          title: Gourde
+        VND:
+          title: Dong
+        LAK:
+          title: Lao Kip
+        BTN:
+          title: Ngultrum
+        GBP:
+          title: Pound Sterling
+        SSP:
+          title: South Sudanese Pound
+        XPD:
+          title: Palladium
+        TWD:
+          title: New Taiwan Dollar
+        DZD:
+          title: Algerian Dinar
+        MXN:
+          title: Mexican Peso
+        XDR:
+          title: SDR (Special Drawing Right)
+        ZWL:
+          title: Zimbabwe Dollar
+        AWG:
+          title: Aruban Florin
+        THB:
+          title: Baht
+        ISK:
+          title: Iceland Krona
+        LBP:
+          title: Lebanese Pound
+        SGD:
+          title: Singapore Dollar
+        MWK:
+          title: Malawi Kwacha
+        KZT:
+          title: Tenge
+        CRC:
+          title: Costa Rican Colon
+        WST:
+          title: Tala
+        DJF:
+          title: Djibouti Franc
+        LYD:
+          title: Libyan Dinar
+        NGN:
+          title: Naira
+        BIF:
+          title: Burundi Franc
+        AED:
+          title: UAE Dirham
+        CHF:
+          title: Swiss Franc
+        RWF:
+          title: Rwanda Franc
+        XBD:
+          title: Bond Markets Unit European Unit of Account 17 (E.U.A.-17)
+        INR:
+          title: Indian Rupee
+        CLF:
+          title: Unidad de Fomento
+        XOF:
+          title: CFA Franc BCEAO
+        COU:
+          title: Unidad de Valor Real
+        MXV:
+          title: Mexican Unidad de Inversion (UDI)
+        PGK:
+          title: Kina
+        CNY:
+          title: Yuan Renminbi
+        SYP:
+          title: Syrian Pound
+        VED:
+          title: Bolívar Soberano
+        RON:
+          title: Romanian Leu
+        AFN:
+          title: Afghani
+        PHP:
+          title: Philippine Peso
+        MDL:
+          title: Moldovan Leu
+        KHR:
+          title: Riel
+        XPT:
+          title: Platinum
+        COP:
+          title: Colombian Peso
+        DKK:
+          title: Danish Krone
+        KYD:
+          title: Cayman Islands Dollar
+        XPF:
+          title: CFP Franc
+        GMD:
+          title: Dalasi
+        MVR:
+          title: Rufiyaa
+        STN:
+          title: Dobra
+        TTD:
+          title: Trinidad and Tobago Dollar
+        PAB:
+          title: Balboa
+        XAU:
+          title: Gold
+        XAG:
+          title: Silver
+        JPY:
+          title: 일본 엔화
+        TOP:
+          title: Pa’anga
+        BWP:
+          title: Pula
+        MKD:
+          title: Denar
+        ARS:
+          title: Argentine Peso
+        HUF:
+          title: Forint
+        MYR:
+          title: Malaysian Ringgit
+        USD:
+          title: 미국 달러
+        SLL:
+          title: Leone
+        MAD:
+          title: Moroccan Dirham
+        RUB:
+          title: Russian Ruble
+        MNT:
+          title: Tugrik
+        BOB:
+          title: Boliviano
+        GYD:
+          title: Guyana Dollar
+        SBD:
+          title: Solomon Islands Dollar
+        XBA:
+          title: Bond Markets Unit European Composite Unit (EURCO)
+        BHD:
+          title: Bahraini Dinar
+        HNL:
+          title: Lempira
+        UYW:
+          title: Unidad Previsional
+        NZD:
+          title: New Zealand Dollar
+        XCD:
+          title: East Caribbean Dollar
+        XSU:
+          title: Sucre
+        KGS:
+          title: Som
+        AOA:
+          title: Kwanza
+        BZD:
+          title: Belize Dollar
+        IDR:
+          title: Rupiah
+        SOS:
+          title: Somali Shilling
+        NIO:
+          title: Cordoba Oro
+        GHS:
+          title: Ghana Cedi
+        ANG:
+          title: Netherlands Antillean Guilder
+        RSD:
+          title: Serbian Dinar
+        ILS:
+          title: New Israeli Sheqel
+        NOK:
+          title: Norwegian Krone
+        KWD:
+          title: Kuwaiti Dinar
+        NAD:
+          title: Namibia Dollar
+        ETB:
+          title: Ethiopian Birr
+        BYN:
+          title: Belarusian Ruble
+        KPW:
+          title: North Korean Won
+        EUR:
+          title: Euro
+        CVE:
+          title: Cabo Verde Escudo
+        ZAR:
+          title: Rand
+        IRR:
+          title: Iranian Rial
+        HRK:
+          title: Kuna (Replaced by EUR)
+        BAM:
+          title: Convertible Mark
+    GetPaymentSessionError:
+      title: GetPaymentSessionError
+      oneOf:
+      - $ref: '#/components/schemas/InvalidRequestError'
+      - $ref: '#/components/schemas/SessionExpiredError'
+      - $ref: '#/components/schemas/SessionNotFoundError'
+      discriminator:
+        propertyName: type
+        mapping:
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          SESSION_EXPIRED: '#/components/schemas/SessionExpiredError'
+          SESSION_NOT_FOUND: '#/components/schemas/SessionNotFoundError'
+    MaxTtlExceededError:
+      title: 요청된 TTL이 정책 상한을 초과한 경우
+      description: 요청된 TTL이 정책 상한을 초과한 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 요청된 TTL이 정책 상한을 초과한 경우
+      x-portone-status-code: 400
   securitySchemes:
     bearerJwt:
       type: http
