@@ -623,6 +623,8 @@ apis:
   humanURL: https://developers.portone.io/api/rest-v1
   baseURL: https://api.iamport.kr
   tags:
+  - B2B
+  tags_raw:
   - B2 B
   properties:
   - type: OpenAPI
@@ -648,6 +650,9 @@ apis:
   - type: Documentation
     url: https://developers.portone.io/api/rest-v2/paymentSession
 common:
+- type: CapabilityMap
+  url: capabilities/portone-capability-edges.yml
+  name: PortOne Business Capability Map
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/portone/overview
 - type: AgenticAccess
