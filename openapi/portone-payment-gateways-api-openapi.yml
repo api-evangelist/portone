@@ -99,65 +99,82 @@ paths:
       - Payment Gateways
 components:
   schemas:
-    PgCardPromotion:
-      title: PG사 카드 프로모션
-      description: 'PG사 카드 프로모션
-
-
-        PG사에서 제공하는 카드 프로모션 정보입니다.'
+    GetPgCardPromotionsError:
+      title: GetPgCardPromotionsError
+      oneOf:
+      - $ref: '#/components/schemas/ChannelNotFoundError'
+      - $ref: '#/components/schemas/InvalidRequestError'
+      - $ref: '#/components/schemas/PgProviderError'
+      - $ref: '#/components/schemas/UnauthorizedError'
+      discriminator:
+        propertyName: type
+        mapping:
+          CHANNEL_NOT_FOUND: '#/components/schemas/ChannelNotFoundError'
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          PG_PROVIDER: '#/components/schemas/PgProviderError'
+          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
+    ChannelNotFoundError:
+      title: 요청된 채널이 존재하지 않는 경우
+      description: 요청된 채널이 존재하지 않는 경우
       type: object
       required:
-      - promotionId
-      - cardCompany
-      - discountAmount
-      - minimumPaymentAmount
+      - type
       properties:
-        promotionId:
+        type:
           type: string
-          title: 프로모션 아이디
-          description: PG사에서 부여한 프로모션 식별자입니다.
-        cardCompany:
-          $ref: '#/components/schemas/PgPromotionCardCompany'
-          title: 카드사
-          description: 프로모션이 적용되는 카드사입니다.
-        discountAmount:
-          type: integer
-          format: int64
-          title: 할인 금액
-          description: 프로모션 적용 시 할인되는 금액입니다.
-        minimumPaymentAmount:
-          type: integer
-          format: int64
-          title: 최소 결제 금액
-          description: 프로모션이 적용되기 위한 최소 결제 금액입니다.
-      x-portone-title: PG사 카드 프로모션
-      x-portone-description: PG사에서 제공하는 카드 프로모션 정보입니다.
-    GetPgCardPromotionsResponse:
-      title: PG사 카드 프로모션 조회 응답
-      description: PG사 카드 프로모션 조회 응답
+        message:
+          type: string
+      x-portone-title: 요청된 채널이 존재하지 않는 경우
+      x-portone-status-code: 404
+    UnauthorizedError:
+      title: 인증 정보가 올바르지 않은 경우
+      description: 인증 정보가 올바르지 않은 경우
       type: object
+      required:
+      - type
       properties:
-        promotions:
-          title: 카드 프로모션 목록
-          type: array
-          items:
-            $ref: '#/components/schemas/PgCardPromotion'
-          x-portone-title: PG사 카드 프로모션
-          x-portone-description: PG사에서 제공하는 카드 프로모션 정보입니다.
-          properties:
-            promotionId:
-              title: 프로모션 아이디
-              description: PG사에서 부여한 프로모션 식별자입니다.
-            cardCompany:
-              title: 카드사
-              description: 프로모션이 적용되는 카드사입니다.
-            discountAmount:
-              title: 할인 금액
-              description: 프로모션 적용 시 할인되는 금액입니다.
-            minimumPaymentAmount:
-              title: 최소 결제 금액
-              description: 프로모션이 적용되기 위한 최소 결제 금액입니다.
-      x-portone-title: PG사 카드 프로모션 조회 응답
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 인증 정보가 올바르지 않은 경우
+      x-portone-status-code: 401
+    InvalidRequestError:
+      title: 요청된 입력 정보가 유효하지 않은 경우
+      description: '요청된 입력 정보가 유효하지 않은 경우
+
+
+        허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.'
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
+      x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
+      x-portone-status-code: 400
+    PgProviderError:
+      title: PG사에서 오류를 전달한 경우
+      description: PG사에서 오류를 전달한 경우
+      type: object
+      required:
+      - type
+      - pgCode
+      - pgMessage
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+        pgCode:
+          type: string
+        pgMessage:
+          type: string
+      x-portone-title: PG사에서 오류를 전달한 경우
+      x-portone-status-code: 502
     PgPromotionCardCompany:
       title: PG 프로모션 카드사
       description: 'PG 프로모션 카드사
@@ -238,82 +255,65 @@ components:
           title: 카카오뱅크
         TOSS_BANK:
           title: 토스뱅크
-    GetPgCardPromotionsError:
-      title: GetPgCardPromotionsError
-      oneOf:
-      - $ref: '#/components/schemas/ChannelNotFoundError'
-      - $ref: '#/components/schemas/InvalidRequestError'
-      - $ref: '#/components/schemas/PgProviderError'
-      - $ref: '#/components/schemas/UnauthorizedError'
-      discriminator:
-        propertyName: type
-        mapping:
-          CHANNEL_NOT_FOUND: '#/components/schemas/ChannelNotFoundError'
-          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
-          PG_PROVIDER: '#/components/schemas/PgProviderError'
-          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
-    PgProviderError:
-      title: PG사에서 오류를 전달한 경우
-      description: PG사에서 오류를 전달한 경우
-      type: object
-      required:
-      - type
-      - pgCode
-      - pgMessage
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-        pgCode:
-          type: string
-        pgMessage:
-          type: string
-      x-portone-title: PG사에서 오류를 전달한 경우
-      x-portone-status-code: 502
-    ChannelNotFoundError:
-      title: 요청된 채널이 존재하지 않는 경우
-      description: 요청된 채널이 존재하지 않는 경우
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 요청된 채널이 존재하지 않는 경우
-      x-portone-status-code: 404
-    UnauthorizedError:
-      title: 인증 정보가 올바르지 않은 경우
-      description: 인증 정보가 올바르지 않은 경우
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 인증 정보가 올바르지 않은 경우
-      x-portone-status-code: 401
-    InvalidRequestError:
-      title: 요청된 입력 정보가 유효하지 않은 경우
-      description: '요청된 입력 정보가 유효하지 않은 경우
+    PgCardPromotion:
+      title: PG사 카드 프로모션
+      description: 'PG사 카드 프로모션
 
 
-        허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.'
+        PG사에서 제공하는 카드 프로모션 정보입니다.'
       type: object
       required:
-      - type
+      - promotionId
+      - cardCompany
+      - discountAmount
+      - minimumPaymentAmount
       properties:
-        type:
+        promotionId:
           type: string
-        message:
-          type: string
-      x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
-      x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
-      x-portone-status-code: 400
+          title: 프로모션 아이디
+          description: PG사에서 부여한 프로모션 식별자입니다.
+        cardCompany:
+          $ref: '#/components/schemas/PgPromotionCardCompany'
+          title: 카드사
+          description: 프로모션이 적용되는 카드사입니다.
+        discountAmount:
+          type: integer
+          format: int64
+          title: 할인 금액
+          description: 프로모션 적용 시 할인되는 금액입니다.
+        minimumPaymentAmount:
+          type: integer
+          format: int64
+          title: 최소 결제 금액
+          description: 프로모션이 적용되기 위한 최소 결제 금액입니다.
+      x-portone-title: PG사 카드 프로모션
+      x-portone-description: PG사에서 제공하는 카드 프로모션 정보입니다.
+    GetPgCardPromotionsResponse:
+      title: PG사 카드 프로모션 조회 응답
+      description: PG사 카드 프로모션 조회 응답
+      type: object
+      properties:
+        promotions:
+          title: 카드 프로모션 목록
+          type: array
+          items:
+            $ref: '#/components/schemas/PgCardPromotion'
+          x-portone-title: PG사 카드 프로모션
+          x-portone-description: PG사에서 제공하는 카드 프로모션 정보입니다.
+          properties:
+            promotionId:
+              title: 프로모션 아이디
+              description: PG사에서 부여한 프로모션 식별자입니다.
+            cardCompany:
+              title: 카드사
+              description: 프로모션이 적용되는 카드사입니다.
+            discountAmount:
+              title: 할인 금액
+              description: 프로모션 적용 시 할인되는 금액입니다.
+            minimumPaymentAmount:
+              title: 최소 결제 금액
+              description: 프로모션이 적용되기 위한 최소 결제 금액입니다.
+      x-portone-title: PG사 카드 프로모션 조회 응답
   securitySchemes:
     bearerJwt:
       type: http

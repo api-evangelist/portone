@@ -56,27 +56,6 @@ paths:
       - Login
 components:
   schemas:
-    LoginViaApiSecretBody:
-      title: API Secret 로그인을 위한 입력 정보
-      description: API Secret 로그인을 위한 입력 정보
-      type: object
-      required:
-      - apiSecret
-      properties:
-        apiSecret:
-          type: string
-          title: 발급받은 API secret
-      x-portone-title: API Secret 로그인을 위한 입력 정보
-    LoginViaApiSecretError:
-      title: LoginViaApiSecretError
-      oneOf:
-      - $ref: '#/components/schemas/InvalidRequestError'
-      - $ref: '#/components/schemas/UnauthorizedError'
-      discriminator:
-        propertyName: type
-        mapping:
-          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
-          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
     LoginViaApiSecretResponse:
       title: API key 로그인 성공 응답
       description: API key 로그인 성공 응답
@@ -126,6 +105,27 @@ components:
       x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
       x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
       x-portone-status-code: 400
+    LoginViaApiSecretBody:
+      title: API Secret 로그인을 위한 입력 정보
+      description: API Secret 로그인을 위한 입력 정보
+      type: object
+      required:
+      - apiSecret
+      properties:
+        apiSecret:
+          type: string
+          title: 발급받은 API secret
+      x-portone-title: API Secret 로그인을 위한 입력 정보
+    LoginViaApiSecretError:
+      title: LoginViaApiSecretError
+      oneOf:
+      - $ref: '#/components/schemas/InvalidRequestError'
+      - $ref: '#/components/schemas/UnauthorizedError'
+      discriminator:
+        propertyName: type
+        mapping:
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
   securitySchemes:
     bearerJwt:
       type: http

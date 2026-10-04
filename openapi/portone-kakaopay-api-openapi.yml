@@ -67,39 +67,6 @@ paths:
       - Kakaopay
 components:
   schemas:
-    GetKakaopayPaymentOrderResponse:
-      title: 카카오페이 주문 조회 응답
-      description: 카카오페이 주문 조회 응답
-      type: object
-      required:
-      - statusCode
-      - body
-      properties:
-        statusCode:
-          type: integer
-          format: int32
-          title: HTTP 상태 코드
-        body:
-          type: string
-          title: HTTP 응답 본문 (JSON)
-      x-portone-title: 카카오페이 주문 조회 응답
-    InvalidRequestError:
-      title: 요청된 입력 정보가 유효하지 않은 경우
-      description: '요청된 입력 정보가 유효하지 않은 경우
-
-
-        허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.'
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
-      x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
-      x-portone-status-code: 400
     UnauthorizedError:
       title: 인증 정보가 올바르지 않은 경우
       description: 인증 정보가 올바르지 않은 경우
@@ -123,6 +90,39 @@ components:
         mapping:
           INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
           UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
+    InvalidRequestError:
+      title: 요청된 입력 정보가 유효하지 않은 경우
+      description: '요청된 입력 정보가 유효하지 않은 경우
+
+
+        허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.'
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
+      x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
+      x-portone-status-code: 400
+    GetKakaopayPaymentOrderResponse:
+      title: 카카오페이 주문 조회 응답
+      description: 카카오페이 주문 조회 응답
+      type: object
+      required:
+      - statusCode
+      - body
+      properties:
+        statusCode:
+          type: integer
+          format: int32
+          title: HTTP 상태 코드
+        body:
+          type: string
+          title: HTTP 응답 본문 (JSON)
+      x-portone-title: 카카오페이 주문 조회 응답
   securitySchemes:
     bearerJwt:
       type: http

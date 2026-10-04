@@ -169,34 +169,6 @@ paths:
       - Payment Sessions
 components:
   schemas:
-    CreatePaymentSessionError:
-      title: CreatePaymentSessionError
-      oneOf:
-      - $ref: '#/components/schemas/ForbiddenError'
-      - $ref: '#/components/schemas/InvalidRequestError'
-      - $ref: '#/components/schemas/MaxTtlExceededError'
-      - $ref: '#/components/schemas/UnauthorizedError'
-      discriminator:
-        propertyName: type
-        mapping:
-          FORBIDDEN: '#/components/schemas/ForbiddenError'
-          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
-          MAX_TTL_EXCEEDED: '#/components/schemas/MaxTtlExceededError'
-          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
-    ClosePaymentSessionError:
-      title: ClosePaymentSessionError
-      oneOf:
-      - $ref: '#/components/schemas/ForbiddenError'
-      - $ref: '#/components/schemas/InvalidRequestError'
-      - $ref: '#/components/schemas/SessionNotFoundError'
-      - $ref: '#/components/schemas/UnauthorizedError'
-      discriminator:
-        propertyName: type
-        mapping:
-          FORBIDDEN: '#/components/schemas/ForbiddenError'
-          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
-          SESSION_NOT_FOUND: '#/components/schemas/SessionNotFoundError'
-          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
     PaymentSession:
       title: 결제 세션
       description: 결제 세션
@@ -318,30 +290,123 @@ components:
           format: date-time
           title: 만료 시각
       x-portone-title: 결제 세션
-    PaymentSessionColors:
-      title: 체크아웃 페이지 색 설정
-      description: 체크아웃 페이지 색 설정
+    PaymentSessionProduct:
+      title: 결제 세션 주문 항목
+      description: 결제 세션 주문 항목
       type: object
+      required:
+      - name
+      - unitPrice
+      - quantity
       properties:
-        primary:
+        id:
           type: string
-          title: 주 색상
-          description: CSS 색 문자열 형식
-        primaryHover:
+          title: 항목 아이디
+        name:
           type: string
-          title: 호버 주 색상
-          description: CSS 색 문자열 형식
-        primaryLight:
+          title: 상품 이름
+        code:
           type: string
-          title: 밝은 주 색상
-          description: CSS 색 문자열 형식
-      x-portone-title: 체크아웃 페이지 색 설정
-    InvalidRequestError:
-      title: 요청된 입력 정보가 유효하지 않은 경우
-      description: '요청된 입력 정보가 유효하지 않은 경우
-
-
-        허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.'
+          title: 상품 코드
+        unitPrice:
+          type: integer
+          format: int64
+          title: 상품 단가
+        quantity:
+          type: integer
+          format: int32
+          title: 상품 수량
+        startDate:
+          description: 구독 등 제공 기간이 있는 상품의 경우 입력하세요.
+          type: string
+          format: date
+          x-portone-description: 날짜를 나타내는 문자열로, `yyyy-MM-dd` 형식을 따릅니다.
+          title: 제공 시작일
+        endDate:
+          description: 구독 등 제공 기간이 있는 상품의 경우 입력하세요.
+          type: string
+          format: date
+          x-portone-description: 날짜를 나타내는 문자열로, `yyyy-MM-dd` 형식을 따릅니다.
+          title: 제공 종료일
+        url:
+          type: string
+          title: 판매 링크
+        nPayCategoryType:
+          type: string
+          title: 네이버페이 카테고리 타입
+        nPayCategoryId:
+          type: string
+          title: 네이버페이 카테고리 아이디
+        nPayUid:
+          type: string
+          title: 네이버페이 상품 식별자
+      x-portone-title: 결제 세션 주문 항목
+    CheckoutPaymentMethod:
+      title: 결제 수단
+      description: 결제 수단
+      type: string
+      enum:
+      - CARD_KR
+      - N_PAY
+      - KAKAO_PAY
+      - TOSS_PAY
+      - CARD_INTERNATIONAL
+      - PAY_PAL
+      - UNION_PAY
+      - ALIPAY_CN
+      - ALIPAY_HK
+      - TRUE_MONEY
+      - DANA
+      - TOUCH_N_GO
+      - G_CASH
+      - WE_CHAT_PAY
+      - KLARNA
+      - E_CONTEXT
+      - GRAB_PAY_MY
+      - GRAB_PAY_SG
+      - SHOPEE_PAY_TH
+      - PAY_PAY
+      - BPI
+      - RABBIT_LINE_PAY
+      - CONVENIENCE_STORE_JP
+      - AMAZON_PAY
+      - RAKUTEN_PAY
+      - D_BARAI
+      - AU_PAY
+      - MERPAY
+      x-portone-title: 결제 수단
+      x-portone-enum:
+        PAY_PAY: {}
+        ALIPAY_HK: {}
+        PAY_PAL: {}
+        WE_CHAT_PAY: {}
+        UNION_PAY: {}
+        MERPAY: {}
+        E_CONTEXT: {}
+        G_CASH: {}
+        CARD_KR: {}
+        AU_PAY: {}
+        SHOPEE_PAY_TH: {}
+        N_PAY: {}
+        AMAZON_PAY: {}
+        CARD_INTERNATIONAL: {}
+        GRAB_PAY_SG: {}
+        GRAB_PAY_MY: {}
+        KLARNA: {}
+        RABBIT_LINE_PAY: {}
+        KAKAO_PAY: {}
+        RAKUTEN_PAY: {}
+        TOSS_PAY: {}
+        CONVENIENCE_STORE_JP: {}
+        D_BARAI: {}
+        DANA: {}
+        TOUCH_N_GO: {}
+        BPI: {}
+        ALIPAY_CN: {}
+        TRUE_MONEY: {}
+    ForbiddenError:
+      title: 요청이 거절된 경우
+      description: 요청이 거절된 경우
       type: object
       required:
       - type
@@ -350,9 +415,60 @@ components:
           type: string
         message:
           type: string
-      x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
-      x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
-      x-portone-status-code: 400
+      x-portone-title: 요청이 거절된 경우
+      x-portone-status-code: 403
+    GetPaymentSessionError:
+      title: GetPaymentSessionError
+      oneOf:
+      - $ref: '#/components/schemas/InvalidRequestError'
+      - $ref: '#/components/schemas/SessionExpiredError'
+      - $ref: '#/components/schemas/SessionNotFoundError'
+      discriminator:
+        propertyName: type
+        mapping:
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          SESSION_EXPIRED: '#/components/schemas/SessionExpiredError'
+          SESSION_NOT_FOUND: '#/components/schemas/SessionNotFoundError'
+    ClosePaymentSessionError:
+      title: ClosePaymentSessionError
+      oneOf:
+      - $ref: '#/components/schemas/ForbiddenError'
+      - $ref: '#/components/schemas/InvalidRequestError'
+      - $ref: '#/components/schemas/SessionNotFoundError'
+      - $ref: '#/components/schemas/UnauthorizedError'
+      discriminator:
+        propertyName: type
+        mapping:
+          FORBIDDEN: '#/components/schemas/ForbiddenError'
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          SESSION_NOT_FOUND: '#/components/schemas/SessionNotFoundError'
+          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
+    UnauthorizedError:
+      title: 인증 정보가 올바르지 않은 경우
+      description: 인증 정보가 올바르지 않은 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 인증 정보가 올바르지 않은 경우
+      x-portone-status-code: 401
+    SessionExpiredError:
+      title: 결제 세션이 만료된 경우
+      description: 결제 세션이 만료된 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 결제 세션이 만료된 경우
+      x-portone-status-code: 410
     ClosePaymentSessionResponse:
       title: 결제 세션 종료 성공 응답
       description: 결제 세션 종료 성공 응답
@@ -365,6 +481,19 @@ components:
           format: date-time
           title: 결제 세션 종료 시각
       x-portone-title: 결제 세션 종료 성공 응답
+    MaxTtlExceededError:
+      title: 요청된 TTL이 정책 상한을 초과한 경우
+      description: 요청된 TTL이 정책 상한을 초과한 경우
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 요청된 TTL이 정책 상한을 초과한 경우
+      x-portone-status-code: 400
     Country:
       title: 국가
       description: 국가
@@ -1119,272 +1248,6 @@ components:
           title: Germany
         SR:
           title: Suriname
-    PaymentSessionProduct:
-      title: 결제 세션 주문 항목
-      description: 결제 세션 주문 항목
-      type: object
-      required:
-      - name
-      - unitPrice
-      - quantity
-      properties:
-        id:
-          type: string
-          title: 항목 아이디
-        name:
-          type: string
-          title: 상품 이름
-        code:
-          type: string
-          title: 상품 코드
-        unitPrice:
-          type: integer
-          format: int64
-          title: 상품 단가
-        quantity:
-          type: integer
-          format: int32
-          title: 상품 수량
-        startDate:
-          description: 구독 등 제공 기간이 있는 상품의 경우 입력하세요.
-          type: string
-          format: date
-          x-portone-description: 날짜를 나타내는 문자열로, `yyyy-MM-dd` 형식을 따릅니다.
-          title: 제공 시작일
-        endDate:
-          description: 구독 등 제공 기간이 있는 상품의 경우 입력하세요.
-          type: string
-          format: date
-          x-portone-description: 날짜를 나타내는 문자열로, `yyyy-MM-dd` 형식을 따릅니다.
-          title: 제공 종료일
-        url:
-          type: string
-          title: 판매 링크
-        nPayCategoryType:
-          type: string
-          title: 네이버페이 카테고리 타입
-        nPayCategoryId:
-          type: string
-          title: 네이버페이 카테고리 아이디
-        nPayUid:
-          type: string
-          title: 네이버페이 상품 식별자
-      x-portone-title: 결제 세션 주문 항목
-    ForbiddenError:
-      title: 요청이 거절된 경우
-      description: 요청이 거절된 경우
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 요청이 거절된 경우
-      x-portone-status-code: 403
-    CreatePaymentSessionBody:
-      title: 결제 세션 생성 요청
-      description: 결제 세션 생성 요청
-      type: object
-      required:
-      - storeId
-      - paymentId
-      - profileKey
-      - country
-      - currency
-      - totalAmount
-      - orderName
-      properties:
-        storeId:
-          type: string
-          title: 상점 아이디
-        paymentId:
-          type: string
-          title: 결제 건 아이디
-        profileKey:
-          type: string
-          title: 프로필 키
-        paymentMethod:
-          $ref: '#/components/schemas/CheckoutPaymentMethod'
-          title: 결제 수단 지정
-          description: 지정한 경우, 정보 추가 입력이 필요하지 않은 경우에 주문서를 건너뛰고 결제로 바로 이동합니다.
-        country:
-          $ref: '#/components/schemas/Country'
-          title: 국가
-        currency:
-          $ref: '#/components/schemas/Currency'
-          title: 통화
-        totalAmount:
-          type: integer
-          format: int64
-          title: 전체 결제 금액
-        orderName:
-          type: string
-          title: 주문명
-        redirectUrl:
-          type: string
-          title: 결제 완료 후 리다이렉트 URL
-          description: 지정하지 않으면 기본 결과 페이지가 표시됩니다.
-        products:
-          title: 주문 항목 목록
-          type: array
-          items:
-            $ref: '#/components/schemas/PaymentSessionProduct'
-          x-portone-title: 결제 세션 주문 항목
-          properties:
-            url:
-              title: 판매 링크
-            id:
-              title: 항목 아이디
-            nPayUid:
-              title: 네이버페이 상품 식별자
-            unitPrice:
-              title: 상품 단가
-            startDate:
-              title: 제공 시작일
-              description: 구독 등 제공 기간이 있는 상품의 경우 입력하세요.
-            name:
-              title: 상품 이름
-            quantity:
-              title: 상품 수량
-            endDate:
-              title: 제공 종료일
-              description: 구독 등 제공 기간이 있는 상품의 경우 입력하세요.
-            nPayCategoryId:
-              title: 네이버페이 카테고리 아이디
-            code:
-              title: 상품 코드
-            nPayCategoryType:
-              title: 네이버페이 카테고리 타입
-        customerName:
-          type: string
-          title: 구매자 이름
-        customerEmail:
-          type: string
-          title: 구매자 이메일
-        storeName:
-          type: string
-          title: 상점 이름
-          description: 페이지 헤더 및 결제사 UI에 표시됩니다.
-        agreements:
-          title: 사용자 지정 약관 목록
-          type: array
-          items:
-            $ref: '#/components/schemas/PaymentSessionAgreement'
-          x-portone-title: 결제 세션 약관
-          properties:
-            name:
-              title: 약관 이름
-            url:
-              title: 약관 URL
-          description: 구매자가 모든 약관에 동의해야 결제 버튼이 활성화됩니다.
-        orderImageUrl:
-          type: string
-          title: 주문 대표 이미지 URL
-        customData:
-          type: string
-          title: 사용자 지정 데이터
-          description: 결제 완료 후 결제 건 조회에서도 확인할 수 있습니다.
-        colors:
-          $ref: '#/components/schemas/PaymentSessionColors'
-          title: 체크아웃 페이지 색 설정
-        ttlSeconds:
-          type: integer
-          format: int64
-          title: 세션 TTL (초)
-      x-portone-title: 결제 세션 생성 요청
-    CheckoutPaymentMethod:
-      title: 결제 수단
-      description: 결제 수단
-      type: string
-      enum:
-      - CARD_KR
-      - N_PAY
-      - KAKAO_PAY
-      - TOSS_PAY
-      - CARD_INTERNATIONAL
-      - PAY_PAL
-      - UNION_PAY
-      - ALIPAY_CN
-      - ALIPAY_HK
-      - TRUE_MONEY
-      - DANA
-      - TOUCH_N_GO
-      - G_CASH
-      - WE_CHAT_PAY
-      - KLARNA
-      - E_CONTEXT
-      - GRAB_PAY_MY
-      - GRAB_PAY_SG
-      - SHOPEE_PAY_TH
-      - PAY_PAY
-      - BPI
-      - RABBIT_LINE_PAY
-      - CONVENIENCE_STORE_JP
-      - AMAZON_PAY
-      - RAKUTEN_PAY
-      - D_BARAI
-      - AU_PAY
-      - MERPAY
-      x-portone-title: 결제 수단
-      x-portone-enum:
-        PAY_PAY: {}
-        ALIPAY_HK: {}
-        PAY_PAL: {}
-        WE_CHAT_PAY: {}
-        UNION_PAY: {}
-        MERPAY: {}
-        E_CONTEXT: {}
-        G_CASH: {}
-        CARD_KR: {}
-        AU_PAY: {}
-        SHOPEE_PAY_TH: {}
-        N_PAY: {}
-        AMAZON_PAY: {}
-        CARD_INTERNATIONAL: {}
-        GRAB_PAY_SG: {}
-        GRAB_PAY_MY: {}
-        KLARNA: {}
-        RABBIT_LINE_PAY: {}
-        KAKAO_PAY: {}
-        RAKUTEN_PAY: {}
-        TOSS_PAY: {}
-        CONVENIENCE_STORE_JP: {}
-        D_BARAI: {}
-        DANA: {}
-        TOUCH_N_GO: {}
-        BPI: {}
-        ALIPAY_CN: {}
-        TRUE_MONEY: {}
-    PaymentSessionAgreement:
-      title: 결제 세션 약관
-      description: 결제 세션 약관
-      type: object
-      required:
-      - name
-      - url
-      properties:
-        name:
-          type: string
-          title: 약관 이름
-        url:
-          type: string
-          title: 약관 URL
-      x-portone-title: 결제 세션 약관
-    SessionNotFoundError:
-      title: 결제 세션이 존재하지 않는 경우
-      description: 결제 세션이 존재하지 않는 경우
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 결제 세션이 존재하지 않는 경우
-      x-portone-status-code: 404
     CreatePaymentSessionResponse:
       title: 결제 세션 생성 성공 응답
       description: 결제 세션 생성 성공 응답
@@ -1405,32 +1268,6 @@ components:
           format: date-time
           title: 만료 시각
       x-portone-title: 결제 세션 생성 성공 응답
-    SessionExpiredError:
-      title: 결제 세션이 만료된 경우
-      description: 결제 세션이 만료된 경우
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 결제 세션이 만료된 경우
-      x-portone-status-code: 410
-    UnauthorizedError:
-      title: 인증 정보가 올바르지 않은 경우
-      description: 인증 정보가 올바르지 않은 경우
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-      x-portone-title: 인증 정보가 올바르지 않은 경우
-      x-portone-status-code: 401
     Currency:
       title: 통화
       description: 통화
@@ -1981,21 +1818,41 @@ components:
           title: Kuna (Replaced by EUR)
         BAM:
           title: Convertible Mark
-    GetPaymentSessionError:
-      title: GetPaymentSessionError
+    PaymentSessionColors:
+      title: 체크아웃 페이지 색 설정
+      description: 체크아웃 페이지 색 설정
+      type: object
+      properties:
+        primary:
+          type: string
+          title: 주 색상
+          description: CSS 색 문자열 형식
+        primaryHover:
+          type: string
+          title: 호버 주 색상
+          description: CSS 색 문자열 형식
+        primaryLight:
+          type: string
+          title: 밝은 주 색상
+          description: CSS 색 문자열 형식
+      x-portone-title: 체크아웃 페이지 색 설정
+    CreatePaymentSessionError:
+      title: CreatePaymentSessionError
       oneOf:
+      - $ref: '#/components/schemas/ForbiddenError'
       - $ref: '#/components/schemas/InvalidRequestError'
-      - $ref: '#/components/schemas/SessionExpiredError'
-      - $ref: '#/components/schemas/SessionNotFoundError'
+      - $ref: '#/components/schemas/MaxTtlExceededError'
+      - $ref: '#/components/schemas/UnauthorizedError'
       discriminator:
         propertyName: type
         mapping:
+          FORBIDDEN: '#/components/schemas/ForbiddenError'
           INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
-          SESSION_EXPIRED: '#/components/schemas/SessionExpiredError'
-          SESSION_NOT_FOUND: '#/components/schemas/SessionNotFoundError'
-    MaxTtlExceededError:
-      title: 요청된 TTL이 정책 상한을 초과한 경우
-      description: 요청된 TTL이 정책 상한을 초과한 경우
+          MAX_TTL_EXCEEDED: '#/components/schemas/MaxTtlExceededError'
+          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
+    SessionNotFoundError:
+      title: 결제 세션이 존재하지 않는 경우
+      description: 결제 세션이 존재하지 않는 경우
       type: object
       required:
       - type
@@ -2004,8 +1861,151 @@ components:
           type: string
         message:
           type: string
-      x-portone-title: 요청된 TTL이 정책 상한을 초과한 경우
+      x-portone-title: 결제 세션이 존재하지 않는 경우
+      x-portone-status-code: 404
+    PaymentSessionAgreement:
+      title: 결제 세션 약관
+      description: 결제 세션 약관
+      type: object
+      required:
+      - name
+      - url
+      properties:
+        name:
+          type: string
+          title: 약관 이름
+        url:
+          type: string
+          title: 약관 URL
+      x-portone-title: 결제 세션 약관
+    InvalidRequestError:
+      title: 요청된 입력 정보가 유효하지 않은 경우
+      description: '요청된 입력 정보가 유효하지 않은 경우
+
+
+        허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.'
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 요청된 입력 정보가 유효하지 않은 경우
+      x-portone-description: 허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.
       x-portone-status-code: 400
+    CreatePaymentSessionBody:
+      title: 결제 세션 생성 요청
+      description: 결제 세션 생성 요청
+      type: object
+      required:
+      - storeId
+      - paymentId
+      - profileKey
+      - country
+      - currency
+      - totalAmount
+      - orderName
+      properties:
+        storeId:
+          type: string
+          title: 상점 아이디
+        paymentId:
+          type: string
+          title: 결제 건 아이디
+        profileKey:
+          type: string
+          title: 프로필 키
+        paymentMethod:
+          $ref: '#/components/schemas/CheckoutPaymentMethod'
+          title: 결제 수단 지정
+          description: 지정한 경우, 정보 추가 입력이 필요하지 않은 경우에 주문서를 건너뛰고 결제로 바로 이동합니다.
+        country:
+          $ref: '#/components/schemas/Country'
+          title: 국가
+        currency:
+          $ref: '#/components/schemas/Currency'
+          title: 통화
+        totalAmount:
+          type: integer
+          format: int64
+          title: 전체 결제 금액
+        orderName:
+          type: string
+          title: 주문명
+        redirectUrl:
+          type: string
+          title: 결제 완료 후 리다이렉트 URL
+          description: 지정하지 않으면 기본 결과 페이지가 표시됩니다.
+        products:
+          title: 주문 항목 목록
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentSessionProduct'
+          x-portone-title: 결제 세션 주문 항목
+          properties:
+            url:
+              title: 판매 링크
+            id:
+              title: 항목 아이디
+            nPayUid:
+              title: 네이버페이 상품 식별자
+            unitPrice:
+              title: 상품 단가
+            startDate:
+              title: 제공 시작일
+              description: 구독 등 제공 기간이 있는 상품의 경우 입력하세요.
+            name:
+              title: 상품 이름
+            quantity:
+              title: 상품 수량
+            endDate:
+              title: 제공 종료일
+              description: 구독 등 제공 기간이 있는 상품의 경우 입력하세요.
+            nPayCategoryId:
+              title: 네이버페이 카테고리 아이디
+            code:
+              title: 상품 코드
+            nPayCategoryType:
+              title: 네이버페이 카테고리 타입
+        customerName:
+          type: string
+          title: 구매자 이름
+        customerEmail:
+          type: string
+          title: 구매자 이메일
+        storeName:
+          type: string
+          title: 상점 이름
+          description: 페이지 헤더 및 결제사 UI에 표시됩니다.
+        agreements:
+          title: 사용자 지정 약관 목록
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentSessionAgreement'
+          x-portone-title: 결제 세션 약관
+          properties:
+            name:
+              title: 약관 이름
+            url:
+              title: 약관 URL
+          description: 구매자가 모든 약관에 동의해야 결제 버튼이 활성화됩니다.
+        orderImageUrl:
+          type: string
+          title: 주문 대표 이미지 URL
+        customData:
+          type: string
+          title: 사용자 지정 데이터
+          description: 결제 완료 후 결제 건 조회에서도 확인할 수 있습니다.
+        colors:
+          $ref: '#/components/schemas/PaymentSessionColors'
+          title: 체크아웃 페이지 색 설정
+        ttlSeconds:
+          type: integer
+          format: int64
+          title: 세션 TTL (초)
+      x-portone-title: 결제 세션 생성 요청
   securitySchemes:
     bearerJwt:
       type: http
