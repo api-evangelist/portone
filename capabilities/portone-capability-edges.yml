@@ -1,0 +1,27 @@
+slug: portone
+provider: PortOne
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Payments
+  spec_file: portone-payments-api-openapi.yml
+  capability_id: BC-4250.40
+  capability_id_l1: BC-4250
+  capability_name: Payment Collection & Dunning
+  confidence: 0.7
+  evidence: POST /payments/{paymentId}/capture capturePayment 수동 매입; POST /payments/{paymentId}/billing-key
+    payWithBillingKey 빌링키 결제; POST /payments/{paymentId}/cancel cancelPayment 결제 취소
+  reason: 'Core payment execution: authorise/confirm, capture, cancel, pay with stored billing key, cash
+    receipts and escrow. This is payment-method management and payment authorisation/collection; mapped
+    to BC-4250.40 as the only candidate covering payment collection, with moderate-high confidence since
+    the vendor is a general payment orchestrator rather than a subscription biller.'
