@@ -50,7 +50,7 @@ tags_raw:
 - Billing
 - Identity Verification
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: portone:portone-rest-api-v1
@@ -648,6 +648,8 @@ apis:
   - type: Documentation
     url: https://developers.portone.io/api/rest-v2/paymentSession
 common:
+- url: https://blog.portone.io/rss.xml
+  type: BlogRSS
 - type: CapabilityMap
   url: capabilities/portone-capability-edges.yml
   name: PortOne Business Capability Map
