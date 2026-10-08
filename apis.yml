@@ -618,12 +618,12 @@ apis:
   - type: Documentation
     url: https://developers.portone.io/api/rest-v2/paymentSession
 - aid: portone:portone-b2-b-api
-  name: PortOne B2 B API
-  description: The B2 B API from PortOne — 26 operation(s) for b2 b.
+  name: PortOne B2B API
+  description: The B2B API from PortOne — 26 operation(s) for b2b.
   humanURL: https://developers.portone.io/api/rest-v1
   baseURL: https://api.iamport.kr
   tags:
-  - B2 B
+  - B2B
   properties:
   - type: OpenAPI
     url: openapi/portone-b2-b-api-openapi.yml
