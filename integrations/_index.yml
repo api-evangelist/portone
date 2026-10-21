@@ -147,3 +147,16 @@
     detected: '2026-10-20'
   status: not-a-workflow
   arazzo: null
+- slug: portone-salesforce-commerce-cloud-own
+  label: Salesforce Commerce Cloud (own)
+  partner: salesforce-commerce-cloud
+  partner_name: Salesforce Commerce Cloud (own)
+  category: eCommerce, paymentsProcessing
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://appexchange.salesforce.com/appxListingDetail?listingId=95697192-7e2f-41d9-8fe5-3ca04df31585
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
