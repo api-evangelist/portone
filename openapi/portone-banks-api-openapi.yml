@@ -446,3 +446,9 @@ x-portone-categories:
 - id: common
   title: 공통 API
   description: 공통 API 기능을 제공합니다.
+x-provenance:
+  method: harvested
+  publisher: PortOne
+  source: https://developers.portone.io/api/schema/v2/openapi.json
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
