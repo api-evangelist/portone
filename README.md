@@ -1,4 +1,4 @@
-# PortOne (portone)
+# PortOne
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,236 +64,188 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-PortOne (formerly Iamport) is a Korea-based payment orchestration platform that lets online businesses integrate one API to reach 100+ Korean and global payment methods and PSPs. The V2 REST API (`api.portone.io`) covers payments, billing keys, scheduled/recurring payments, identity verification, cash receipts, B2B tax invoices, and partner settlement, with the legacy V1 API still served at `api.iamport.kr`.
+PortOne (formerly Iamport) is a Korea-based payment orchestration platform that lets online businesses integrate one API to reach 100+ Korean and global payment methods and PSPs. The V2 REST API (api.portone.io) covers payments, billing keys, scheduled/recurring payments, identity verification, cash receipts, B2B tax invoices, and partner settlement, with the legacy V1 API still served at api.iamport.kr.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/portone/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/portone/refs/heads/main/apis.yml)
+**Areas:** Payments · Payment Orchestration · Fintech · South Korea · Billing · Identity Verification
 
-## Tags
+## PortOne on APIs.io
 
-- Payments
-- Payment Orchestration
-- Fintech
-- Korea
-- Billing
-- Identity Verification
+Everything profiled for PortOne is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/portone/](https://apis.io/providers/portone/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (20)
 
-- **Created:** 2026-07-17
-- **Modified:** 2026-07-17
+- [PortOne REST API (V1, legacy Iamport)](https://apis.io/apis/portone/portone-rest-api-v1/) — Legacy V1 (Iamport) REST API on api.iamport.kr — token-authenticated (POST /users/getToken with imp_key/imp_secret) payment lookup, cancellation,…
+- [PortOne Banks API](https://apis.io/apis/portone/portone-banks-api/) — The Banks API from PortOne — 1 operation(s) for banks.
+- [PortOne Billing Keys API](https://apis.io/apis/portone/portone-billing-keys-api/) — The Billing Keys API from PortOne — 4 operation(s) for billing keys.
+- [PortOne Cash Receipts API](https://apis.io/apis/portone/portone-cash-receipts-api/) — The Cash Receipts API from PortOne — 1 operation(s) for cash receipts.
+- [PortOne Checkout Profiles API](https://apis.io/apis/portone/portone-checkout-profiles-api/) — The Checkout Profiles API from PortOne — 1 operation(s) for checkout profiles.
+- [PortOne Identity Verifications API](https://apis.io/apis/portone/portone-identity-verifications-api/) — The Identity Verifications API from PortOne — 5 operation(s) for identity verifications.
+- [PortOne Kakaopay API](https://apis.io/apis/portone/portone-kakaopay-api/) — The Kakaopay API from PortOne — 1 operation(s) for kakaopay.
+- [PortOne Login API](https://apis.io/apis/portone/portone-login-api/) — The Login API from PortOne — 1 operation(s) for login.
+- [PortOne Payment Events By Cursor API](https://apis.io/apis/portone/portone-payment-events-by-cursor-api/) — The Payment Events By Cursor API from PortOne — 1 operation(s) for payment events by cursor.
+- [PortOne Payment Gateways API](https://apis.io/apis/portone/portone-payment-gateways-api/) — The Payment Gateways API from PortOne — 1 operation(s) for payment gateways.
+- [PortOne Payment Reconciliations API](https://apis.io/apis/portone/portone-payment-reconciliations-api/) — The Payment Reconciliations API from PortOne — 2 operation(s) for payment reconciliations.
+- [PortOne Payment Schedules API](https://apis.io/apis/portone/portone-payment-schedules-api/) — The Payment Schedules API from PortOne — 2 operation(s) for payment schedules.
+- [PortOne Payment Sessions API](https://apis.io/apis/portone/portone-payment-sessions-api/) — The Payment Sessions API from PortOne — 3 operation(s) for payment sessions.
+- [PortOne Payments API](https://apis.io/apis/portone/portone-payments-api/) — The Payments API from PortOne — 18 operation(s) for payments.
+- [PortOne Payments By Cursor API](https://apis.io/apis/portone/portone-payments-by-cursor-api/) — The Payments By Cursor API from PortOne — 1 operation(s) for payments by cursor.
+- [PortOne Paymentwall API](https://apis.io/apis/portone/portone-paymentwall-api/) — The Paymentwall API from PortOne — 1 operation(s) for paymentwall.
+- [PortOne Platform API](https://apis.io/apis/portone/portone-platform-api/) — The Platform API from PortOne — 44 operation(s) for platform.
+- [PortOne Promotions API](https://apis.io/apis/portone/portone-promotions-api/) — The Promotions API from PortOne — 1 operation(s) for promotions.
+- [PortOne Token API](https://apis.io/apis/portone/portone-token-api/) — The Token API from PortOne — 1 operation(s) for token.
+- [PortOne B2B API](https://apis.io/apis/portone/portone-b2-b-api/) — The B2B API from PortOne — 26 operation(s) for b2b.
 
-## APIs
+### Published properties
 
-### PortOne Payments API (V2)
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Core payment lifecycle over api.portone.io — single/bulk payment lookup, manual (keyed) payments, capture, cancellation, escrow, virtual-account close, and cash-receipt issuance, keyed by merchant-supplied paymentId.
+#### AsyncAPI (1)
 
-- **Human URL:** [https://developers.portone.io/api/rest-v2/payment](https://developers.portone.io/api/rest-v2/payment)
-- **Base URL:** `https://api.portone.io`
+Event-driven and webhook contracts.
 
-#### Tags
+- [Portone Webhooks](https://apis.io/asyncapis/portone/portone-webhooks/)
 
-- Payments
-- Cancellation
-- Escrow
-- Virtual Account
+#### MCP servers (1)
 
-#### Properties
+Model Context Protocol servers that expose the API to agents.
 
-- [Documentation](https://developers.portone.io/api/rest-v2/payment)
-- [API Reference](https://developers.portone.io/api/rest-v2)
-- [OpenAPI](openapi/portone-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/portone.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [portone-mcp-server](https://apis.io/servers/portone/portone-mcp-server/)
 
-### PortOne Billing Keys API (V2)
+#### Agentic access (1)
 
-Issue, look up, and delete billing keys and charge non-authenticated (card-on-file) payments with them for subscriptions and recurring billing.
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- **Human URL:** [https://developers.portone.io/api/rest-v2/payment.billingKey](https://developers.portone.io/api/rest-v2/payment.billingKey)
-- **Base URL:** `https://api.portone.io`
+- [Portone Agentic Access](https://apis.io/agentic-access/portone/portone-agentic-access/)
 
-#### Tags
+#### Collections (38)
 
-- Billing
-- Recurring
-- Tokenization
+Postman and Open Collection request collections.
 
-#### Properties
+- [PortOne B2b API](https://apis.io/collections/portone/open-portone-b2b-api/)
+- [PortOne B2b Banks API](https://apis.io/collections/portone/open-portone-banks-api/)
+- [PortOne B2b Billing Keys API](https://apis.io/collections/portone/open-portone-billing-keys-api/)
+- [PortOne B2b Cash Receipts API](https://apis.io/collections/portone/open-portone-cash-receipts-api/)
+- [PortOne B2b Checkout Profiles API](https://apis.io/collections/portone/open-portone-checkout-profiles-api/)
+- [PortOne B2b Identity Verifications API](https://apis.io/collections/portone/open-portone-identity-verifications-api/)
+- [PortOne B2b Kakaopay API](https://apis.io/collections/portone/open-portone-kakaopay-api/)
+- [PortOne B2b Login API](https://apis.io/collections/portone/open-portone-login-api/)
+- [PortOne B2b Payment Events By Cursor API](https://apis.io/collections/portone/open-portone-payment-events-by-cursor-api/)
+- [PortOne B2b Payment Gateways API](https://apis.io/collections/portone/open-portone-payment-gateways-api/)
+- [PortOne B2b Payment Reconciliations API](https://apis.io/collections/portone/open-portone-payment-reconciliations-api/)
+- [PortOne B2b Payment Schedules API](https://apis.io/collections/portone/open-portone-payment-schedules-api/)
+- [PortOne B2b Payment Sessions API](https://apis.io/collections/portone/open-portone-payment-sessions-api/)
+- [PortOne B2b Payments API](https://apis.io/collections/portone/open-portone-payments-api/)
+- [PortOne B2b Payments By Cursor API](https://apis.io/collections/portone/open-portone-payments-by-cursor-api/)
+- [PortOne B2b Paymentwall API](https://apis.io/collections/portone/open-portone-paymentwall-api/)
+- [PortOne B2b Platform API](https://apis.io/collections/portone/open-portone-platform-api/)
+- [PortOne B2b Promotions API](https://apis.io/collections/portone/open-portone-promotions-api/)
+- [PortOne B2b Token API](https://apis.io/collections/portone/open-portone-token-api/)
+- [PortOne B2b API](https://apis.io/collections/portone/postman-portone-b2b-api/)
+- [PortOne B2b Banks API](https://apis.io/collections/portone/postman-portone-banks-api/)
+- [PortOne B2b Billing Keys API](https://apis.io/collections/portone/postman-portone-billing-keys-api/)
+- [PortOne B2b Cash Receipts API](https://apis.io/collections/portone/postman-portone-cash-receipts-api/)
+- [PortOne B2b Checkout Profiles API](https://apis.io/collections/portone/postman-portone-checkout-profiles-api/)
+- [PortOne B2b Identity Verifications API](https://apis.io/collections/portone/postman-portone-identity-verifications-api/)
+- …and 13 more published on APIs.io
 
-- [Documentation](https://developers.portone.io/api/rest-v2/payment.billingKey)
-- [OpenAPI](openapi/portone-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/portone.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+#### Overlays (1)
 
-### PortOne Payment Schedule API (V2)
+OpenAPI overlays, including conversational phrasing for each operation.
 
-Reserve future billing-key charges and query or revoke scheduled payments for subscription and installment workflows.
+- [Portone Overlay](https://apis.io/overlays/portone/portone-overlay/)
 
-- **Human URL:** [https://developers.portone.io/api/rest-v2/paymentSchedule](https://developers.portone.io/api/rest-v2/paymentSchedule)
-- **Base URL:** `https://api.portone.io`
+#### Security (4)
 
-#### Tags
+Authentication, trust centre, and vulnerability disclosure.
 
-- Scheduling
-- Recurring
-- Reservations
+- [Portone Authentication](https://apis.io/security/portone/portone-authentication/)
+- [Portone Domain Security](https://apis.io/security/portone/portone-domain-security/)
+- [Portone Trust Center](https://apis.io/security/portone/portone-trust-center/)
+- [Portone Vulnerability Disclosure](https://apis.io/security/portone/portone-vulnerability-disclosure/)
 
-#### Properties
+#### Plans and pricing (1)
 
-- [Documentation](https://developers.portone.io/api/rest-v2/paymentSchedule)
-- [OpenAPI](openapi/portone-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+Published plans, tiers and prices.
 
-### PortOne Identity Verification API (V2)
+- [Portone Plans Pricing](https://apis.io/plans/portone/portone-plans-pricing/)
 
-Korean identity verification (bon-in injung / 본인인증) — send and confirm verification, and retrieve verified holder data via carrier and credit-authority channels.
+#### Rate limits (1)
 
-- **Human URL:** [https://developers.portone.io/api/rest-v2/identityVerification](https://developers.portone.io/api/rest-v2/identityVerification)
-- **Base URL:** `https://api.portone.io`
+Published request limits.
 
-#### Tags
+- [Portone Rate Limits](https://apis.io/rate-limits/portone/portone-rate-limits/)
 
-- Identity Verification
-- KYC
-- Bon-in Injung
+#### FinOps (1)
 
-#### Properties
+What the API costs to run, by operation.
 
-- [Documentation](https://developers.portone.io/api/rest-v2/identityVerification)
-- [OpenAPI](openapi/portone-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Portone Finops](https://apis.io/finops/portone/portone-finops/)
 
-### PortOne Cash Receipts API (V2)
+## Where to find this API
 
-Issue, cancel, and look up Korean cash receipts (hyeongeum yeongsujeung / 현금영수증) required for tax-deductible cash and transfer settlements.
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- **Human URL:** [https://developers.portone.io/api/rest-v2/cashReceipt](https://developers.portone.io/api/rest-v2/cashReceipt)
-- **Base URL:** `https://api.portone.io`
-
-#### Tags
-
-- Cash Receipt
-- Tax
-- Hyeongeum Yeongsujeung
-
-#### Properties
-
-- [Documentation](https://developers.portone.io/api/rest-v2/cashReceipt)
-- [OpenAPI](openapi/portone-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-
-### PortOne B2B Tax Invoice API (V2)
-
-Electronic tax invoice (segyegyesanseo / 세금계산서) issuance, cancellation, bulk operations, counterparty (member company) lookup, and NTS reporting for B2B settlement.
-
-- **Human URL:** [https://developers.portone.io/api/rest-v2/b2b](https://developers.portone.io/api/rest-v2/b2b)
-- **Base URL:** `https://api.portone.io`
-
-#### Tags
-
-- B2B
-- Tax Invoice
-- Segyegyesanseo
-
-#### Properties
-
-- [Documentation](https://developers.portone.io/api/rest-v2/b2b)
-- [OpenAPI](openapi/portone-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-
-### PortOne Platform Partner Settlement API (V2)
-
-Marketplace/platform settlement engine — manage partners, contracts, policies, transfers, order-sheets, and payouts for splitting funds across sellers.
-
-- **Human URL:** [https://developers.portone.io/api/rest-v2/platform](https://developers.portone.io/api/rest-v2/platform)
-- **Base URL:** `https://api.portone.io`
-
-#### Tags
-
-- Platform
-- Settlement
-- Marketplace
-
-#### Properties
-
-- [Documentation](https://developers.portone.io/api/rest-v2/platform)
-- [OpenAPI](openapi/portone-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-
-### PortOne Payment Sessions & Checkout API (V2)
-
-Create and manage server-side payment sessions and checkout profiles that back PortOne's hosted/SDK checkout experience.
-
-- **Human URL:** [https://developers.portone.io/api/rest-v2/paymentSession](https://developers.portone.io/api/rest-v2/paymentSession)
-- **Base URL:** `https://api.portone.io`
-
-#### Tags
-
-- Checkout
-- Sessions
-- Hosted Payment
-
-#### Properties
-
-- [Documentation](https://developers.portone.io/api/rest-v2/paymentSession)
-- [OpenAPI](openapi/portone-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-
-### PortOne Payment Reconciliation API (V2)
-
-Retrieve payment reconciliation rounds and line items for matching PortOne transaction records against PSP settlement statements.
-
-- **Human URL:** [https://developers.portone.io/api/rest-v2](https://developers.portone.io/api/rest-v2)
-- **Base URL:** `https://api.portone.io`
-
-#### Tags
-
-- Reconciliation
-- Reporting
-- Ledger
-
-#### Properties
-
-- [API Reference](https://developers.portone.io/api/rest-v2)
-- [OpenAPI](openapi/portone-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-
-### PortOne REST API (V1, legacy Iamport)
-
-Legacy V1 (Iamport) REST API on api.iamport.kr — token-authenticated (POST /users/getToken with imp_key/imp_secret) payment lookup, cancellation, non-authenticated and scheduled payments, virtual accounts, and identity verification. Maintained for existing integrations; new integrations are directed to V2.
-
-- **Human URL:** [https://developers.portone.io/api/rest-v1](https://developers.portone.io/api/rest-v1)
-- **Base URL:** `https://api.iamport.kr`
-
-#### Tags
-
-- Payments
-- Legacy
-- Iamport
-
-#### Properties
-
-- [Documentation](https://developers.portone.io/api/rest-v1)
-- [API Reference](https://developers.portone.io/api/rest-v1/payment)
-
-## Common Properties
-
-- [Agentic Access](agentic-access/portone-agentic-access.yml)
-- [Trust Center](security/portone-trust-center.yml)
-- [Vulnerability Disclosure](security/portone-vulnerability-disclosure.yml)
-- [Domain Security](security/portone-domain-security.yml)
-- [Authentication](authentication/portone-authentication.yml)
-- [GitHub Organization](https://github.com/portone-io)
-- [LinkedIn](https://www.linkedin.com/company/portoneglobal)
 - [Website](https://portone.io/)
 - [Documentation](https://developers.portone.io/)
-- [Plans](plans/portone-plans-pricing.yml)
-- [Rate Limits](rate-limits/portone-rate-limits.yml)
-- [Fin Ops](finops/portone-finops.yml)
+- [Getting started](https://developers.portone.io/opi/ko/quick-guide/payment)
+- [Sign up](https://admin.portone.io/)
+- [Support](https://developers.portone.io/opi/ko/support/contact)
 - [Blog](https://developers.portone.io/opi/ko/support/release-note)
+- [Terms of service](https://terms.portone.io/)
+- [GitHub](https://github.com/portone-io)
+- [Status](https://iamport.github.io/service-status/)
 
-## Notes
+## API Evangelist rating
 
-- **Rebrand:** PortOne is the rebrand of **Iamport** (아임포트). The legacy V1 API is still served under the `api.iamport.kr` host and the original GitHub org is [github.com/iamport](https://github.com/iamport); current repos live at [github.com/portone-io](https://github.com/portone-io).
-- **Authentication (V2):** `Authorization: PortOne <API_SECRET>` (custom scheme keyword `PortOne`, not `Bearer`), or a short-lived JWT via `Authorization: Bearer <accessToken>`.
-- **Authentication (V1):** two-step token exchange — `POST /users/getToken` with `imp_key` + `imp_secret`.
-- **Async model:** payment status changes are delivered via HTTP **webhooks** (outbound POST, with a resend-webhook operation), not WebSocket or SSE.
-- **Agent tooling:** PortOne publishes an official MCP server ([github.com/portone-io/mcp-server](https://github.com/portone-io/mcp-server)) and server SDKs ([github.com/portone-io/server-sdk](https://github.com/portone-io/server-sdk)).
-- **Currency:** KRW for Korea settlement; multi-currency supported through global PSPs.
+**Kin Score 48.5** — developing · rubric 0.25.0 · scored 2026-10-23
 
-## Maintainers
+| Facet | Score |
+|---|---|
+| Discoverability | 71.7 |
+| Contract quality | 57.3 |
+| Contract governance | 4.5 |
+| Operational transparency | 52.6 |
+| Developer ergonomics | 81.5 |
+| Access clarity | 15.8 |
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Agent readiness 37.6** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | documented (partial credit) |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | — |
+
+**Regulatory alignment 25.0** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/portone/](https://apis.io/providers/portone/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for PortOne: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/portone/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
